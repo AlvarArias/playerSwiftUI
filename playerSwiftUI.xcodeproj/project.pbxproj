@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */; };
-		62A9F00F275F5B3500B345AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F00E275F5B3500B345AE /* ContentView.swift */; };
 		62A9F011275F5B3800B345AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A9F010275F5B3800B345AE /* Assets.xcassets */; };
 		62A9F014275F5B3800B345AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A9F013275F5B3800B345AE /* Preview Assets.xcassets */; };
+		62A9F01D275F689100B345AE /* ExampleSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */; };
+		62A9F021275F8DE300B345AE /* RadioObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F020275F8DE300B345AE /* RadioObj.swift */; };
+		62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F022275FE7FB00B345AE /* PlayerConector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		62A9F009275F5B3500B345AE /* playerSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playerSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUIApp.swift; sourceTree = "<group>"; };
-		62A9F00E275F5B3500B345AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		62A9F010275F5B3800B345AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62A9F013275F5B3800B345AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSwiftUIView.swift; sourceTree = "<group>"; };
+		62A9F020275F8DE300B345AE /* RadioObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioObj.swift; sourceTree = "<group>"; };
+		62A9F022275FE7FB00B345AE /* PlayerConector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConector.swift; sourceTree = "<group>"; };
+		62A9F024275FEE5700B345AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +56,13 @@
 		62A9F00B275F5B3500B345AE /* playerSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				62A9F024275FEE5700B345AE /* Info.plist */,
 				62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */,
-				62A9F00E275F5B3500B345AE /* ContentView.swift */,
+				62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */,
+				62A9F020275F8DE300B345AE /* RadioObj.swift */,
 				62A9F010275F5B3800B345AE /* Assets.xcassets */,
 				62A9F012275F5B3800B345AE /* Preview Content */,
+				62A9F022275FE7FB00B345AE /* PlayerConector.swift */,
 			);
 			path = playerSwiftUI;
 			sourceTree = "<group>";
@@ -137,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62A9F00F275F5B3500B345AE /* ContentView.swift in Sources */,
+				62A9F01D275F689100B345AE /* ExampleSwiftUIView.swift in Sources */,
+				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
+				62A9F021275F8DE300B345AE /* RadioObj.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +282,7 @@
 				DEVELOPMENT_TEAM = DDWAVNG7Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = playerSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +312,7 @@
 				DEVELOPMENT_TEAM = DDWAVNG7Q4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = playerSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
