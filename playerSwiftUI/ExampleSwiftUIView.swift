@@ -65,7 +65,9 @@ struct ExampleSwiftUIView: View {
                            VStack {
                                Text(String(localIndex))
                                Text(myRadioNow[localIndex].radioName)
-                               Image(myRadioNow[localIndex].radioLogoName).resizable().aspectRatio(contentMode: .fit).frame(width: 250, height: 200)
+                               Image(myRadioNow[localIndex].radioLogoName).resizable().aspectRatio(contentMode: .fit).frame(width: 250, height: 200).onTapGesture{
+                                   print(localIndex)
+                               }
                                
                                Button(action: {
                                  
@@ -81,10 +83,7 @@ struct ExampleSwiftUIView: View {
                                    Image(self.isPlaying == true ? "icon_pause" : "icon 5").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
             
                                }.padding(.top)
-                               
                            }
-                        
-                           
                        }
                    }
                    .frame(height: 450)
