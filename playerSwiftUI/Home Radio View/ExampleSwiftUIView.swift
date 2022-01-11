@@ -12,6 +12,9 @@ import CoreMedia
 struct ExampleSwiftUIView: View {
     
     @State var isPlaying : Bool = false
+    @State var isSelect : Bool = false
+    
+    @StateObject var user = User()
     
     var myPlayer = playerConector()
     
@@ -30,14 +33,21 @@ struct ExampleSwiftUIView: View {
                        LazyHGrid(rows: rows, alignment: .top) {
                            ForEach(items, id: \.self) { myIitem in
                                let localIndex = myIitem - 1
+                               
                                VStack {
                                    Text(String(localIndex))
                                    Text(myRadioNow[localIndex].radioName)
+                                   
                                    Image(myRadioNow[localIndex].radioLogoName).resizable().aspectRatio(contentMode: .fit).frame(width: 250, height: 200).onTapGesture{
-                                       
+
+                                       isSelect.toggle()
                                        print(myRadioNow[localIndex].radioURL)
+                                       print("user.score\(user.score)")
+                                       user.score += 1
+                                       print(user.score)
                                    }
                                }.padding()
+                               NavigationLink("", destination: DetailSwiftUIView(), isActive: $isSelect)
                            }
                        }
                        .frame(height: 350)
@@ -46,7 +56,9 @@ struct ExampleSwiftUIView: View {
                    FavoritesSwiftUIView()
                    
                }.navigationBarTitle("Home Radio").background(Color.newSecundaryColor)
-               }
+                       .navigationBarTitleDisplayMode(.inline)
+               
+               }.environmentObject(user)
         }
 }
 

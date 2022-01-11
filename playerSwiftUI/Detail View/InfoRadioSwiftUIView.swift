@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InfoRadioSwiftUIView: View {
     
+    @EnvironmentObject var user: User
+    
     init(){
             UITableView.appearance().backgroundColor = .clear
         }
@@ -21,6 +23,7 @@ struct InfoRadioSwiftUIView: View {
             Text("Info radio ").listRowBackground(Color.newSecundaryColor)
             Text("Info radio ").listRowBackground(Color.newSecundaryColor)
             Text("Info radio ").listRowBackground(Color.newSecundaryColor)
+            Text("User: \(user.score)")
             
         }.background(Color.newSecundaryColor)
      }

@@ -10,6 +10,8 @@ import SwiftUI
 struct DetailSwiftUIView: View {
     
     @State private var showDetails = false
+   
+    
     
     var body: some View {
         NavigationView {
