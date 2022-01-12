@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
@@ -30,11 +31,11 @@ struct MyRadioGen {
     let xmltvid: String
 }
 
+
 enum Channeltype {
     case lokalKanal
     case rikskanal
 }
-
 
 
 
@@ -70,3 +71,16 @@ struct myRadio {
 class User: ObservableObject {
     @Published var score = 0
 }
+
+struct DemoRadio: Codable {
+    let image: String
+    let imagetemplate: String
+    let color: String
+    let tagline: String
+    let siteurl: String
+    let url: String
+    let scheduleurl: String
+    let xmltvid: String
+}
+
+

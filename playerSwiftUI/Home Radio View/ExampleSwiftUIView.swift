@@ -25,7 +25,11 @@ struct ExampleSwiftUIView: View {
     let rows = [GridItem(.fixed(10))]
     
     let items = 1...3
-    
+
+    // Test data JSON
+    // let menu = Bundle.main.decode([MenuSection].self, from: "menu.json")
+    let myRadioDemo = Bundle.main.decode([DemoRadio].self, from: "radios.json")
+
            var body: some View {
                NavigationView {
                VStack {
@@ -45,19 +49,21 @@ struct ExampleSwiftUIView: View {
                                        print("user.score\(user.score)")
                                        user.score += 1
                                        print(user.score)
+                                       print(" siteurl: \(myRadioDemo[0].siteurl) \(myRadioDemo.count)")
                                    }
                                }.padding()
                                NavigationLink("", destination: DetailSwiftUIView(), isActive: $isSelect)
                            }
                        }
                        .frame(height: 350)
+      
                    }.background(Color.newPrimaryColor)
                 
                    FavoritesSwiftUIView()
                    
                }.navigationBarTitle("Home Radio").background(Color.newSecundaryColor)
                        .navigationBarTitleDisplayMode(.inline)
-               
+                   
                }.environmentObject(user)
         }
 }

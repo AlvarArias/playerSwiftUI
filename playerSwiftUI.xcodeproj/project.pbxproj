@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		629D68BB278EC409005E0214 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BA278EC409005E0214 /* Helper.swift */; };
+		629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */; };
 		62A0A54D27862B74002CEB18 /* DetailSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0A54C27862B74002CEB18 /* DetailSwiftUIView.swift */; };
 		62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */; };
 		62A0A55127864E4D002CEB18 /* InfoRadioSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0A55027864E4D002CEB18 /* InfoRadioSwiftUIView.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		629D68BA278EC409005E0214 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiosSwiftUIView.swift; sourceTree = "<group>"; };
 		62A0A54C27862B74002CEB18 /* DetailSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSwiftUIView.swift; sourceTree = "<group>"; };
 		62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSwiftUIView.swift; sourceTree = "<group>"; };
 		62A0A55027864E4D002CEB18 /* InfoRadioSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRadioSwiftUIView.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 				62A9F020275F8DE300B345AE /* RadioObj.swift */,
 				62A9F022275FE7FB00B345AE /* PlayerConector.swift */,
 				62DBB5B0278CE8FA003EEFE2 /* radios.json */,
+				629D68BA278EC409005E0214 /* Helper.swift */,
 			);
 			path = "Data model";
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 		62DBB5B5278E2F33003EEFE2 /* Home Radio View */ = {
 			isa = PBXGroup;
 			children = (
+				629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */,
 				62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */,
 				62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */,
 			);
@@ -204,8 +210,10 @@
 				62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */,
 				62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */,
 				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
+				629D68BB278EC409005E0214 /* Helper.swift in Sources */,
 				62A9F021275F8DE300B345AE /* RadioObj.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
+				629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */,
 				62A0A55127864E4D002CEB18 /* InfoRadioSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
