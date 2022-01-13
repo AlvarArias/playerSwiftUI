@@ -72,6 +72,12 @@ class User: ObservableObject {
     @Published var score = 0
 }
 
+class User2: ObservableObject {
+    @Published var image = "url test"
+    @Published var imagetemplate: String?
+    @Published var scheduleurl: String?
+}
+
 struct DemoRadio: Codable {
     let image: String
     let imagetemplate: String
@@ -83,4 +89,6 @@ struct DemoRadio: Codable {
     let xmltvid: String
 }
 
+//let myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
 
+//let myRadioTest: [User2] = Bundle.main.decode([User2].self, from: "radios.json")

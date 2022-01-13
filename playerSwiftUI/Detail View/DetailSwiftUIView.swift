@@ -11,6 +11,9 @@ struct DetailSwiftUIView: View {
     
     @State private var showDetails = false
    
+    var myRadioNowD : [myRadio]
+    var localIndexD: Int
+    
     
     
     var body: some View {
@@ -18,14 +21,17 @@ struct DetailSwiftUIView: View {
             ZStack {
              Color.newPrimaryColor.edgesIgnoringSafeArea(.all)
             
-        VStack {
+            VStack {
+            Text(myRadioNowD[localIndexD].radioName)
+            Image(uiImage: UIImage(named: myRadioNowD[localIndexD].radioLogoName)!).resizable().aspectRatio(contentMode: .fit).padding()
             
-            Image(uiImage: UIImage(named: "miRadio")!).resizable().aspectRatio(contentMode: .fit).padding()
-            
+                //Image(myRadioNowD[localIndexD].radioLogoName).resizable().aspectRatio(contentMode: .fit).frame(width: 250, height: 200).padding()
+                
             InfoRadioSwiftUIView ()
             
             Button(action: {
                       print("button pressed")
+                    print(myRadioNowD[localIndexD].radioName)
 
                     }) {
                         Image("Pause2")
@@ -33,7 +39,7 @@ struct DetailSwiftUIView: View {
                     }
             
             
-        }.navigationTitle("Radio detail").padding()
+            }.navigationTitle("Radio detail").padding()
                 
             
         }
@@ -42,8 +48,13 @@ struct DetailSwiftUIView: View {
 }
 
 struct DetailSwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailSwiftUIView()
+   
+ static var previews: some View {
+     
+     var theRadio = [myRadio(radioURL: "132", chanelID: "132", radioName: "P1", radioLogoName: "P1"), myRadio(radioURL: "2562", chanelID: "132", radioName: "P2", radioLogoName: "P2"), myRadio(radioURL: "164", chanelID: "164", radioName: "P3", radioLogoName: "P3")]
+     
+     
+        DetailSwiftUIView(myRadioNowD: theRadio, localIndexD: 0)
     }
 }
 

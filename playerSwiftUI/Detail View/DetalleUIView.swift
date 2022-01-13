@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct DetalleUIView: View {
+    
+    var choice: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Your Choice is \(choice)")
     }
 }
 
 struct DetalleUIView_Previews: PreviewProvider {
     static var previews: some View {
-        DetalleUIView()
+        DetalleUIView(choice: "test")
     }
 }

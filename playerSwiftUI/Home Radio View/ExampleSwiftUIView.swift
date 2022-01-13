@@ -24,47 +24,65 @@ struct ExampleSwiftUIView: View {
     
     let rows = [GridItem(.fixed(10))]
     
-    let items = 1...3
+    let items = 0...2
 
     // Test data JSON
     // let menu = Bundle.main.decode([MenuSection].self, from: "menu.json")
-    let myRadioDemo = Bundle.main.decode([DemoRadio].self, from: "radios.json")
+    
+    
+      let myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
 
+    
            var body: some View {
                NavigationView {
-               VStack {
+               
+                VStack {
+                    
+                    ScrollView {
+                    
                    ScrollView(.horizontal) {
+                    
                        LazyHGrid(rows: rows, alignment: .top) {
-                           ForEach(items, id: \.self) { myIitem in
-                               let localIndex = myIitem - 1
-                               
+                        
+                       ForEach(items, id: \.self) { index in
+
                                VStack {
-                                   Text(String(localIndex))
-                                   Text(myRadioNow[localIndex].radioName)
                                    
-                                   Image(myRadioNow[localIndex].radioLogoName).resizable().aspectRatio(contentMode: .fit).frame(width: 250, height: 200).onTapGesture{
+                                   Text(String(index))
+                                   Text(myRadioNow[index].radioName)
+                                   
+                                   Image(myRadioNow[index].radioLogoName).resizable().aspectRatio(contentMode: .fit).onTapGesture{
 
                                        isSelect.toggle()
-                                       print(myRadioNow[localIndex].radioURL)
+                                       print(myRadioNow[index].radioURL)
                                        print("user.score\(user.score)")
                                        user.score += 1
                                        print(user.score)
                                        print(" siteurl: \(myRadioDemo[0].siteurl) \(myRadioDemo.count)")
                                    }
+                                   
                                }.padding()
-                               NavigationLink("", destination: DetailSwiftUIView(), isActive: $isSelect)
-                           }
+                               NavigationLink("", destination: DetailSwiftUIView(myRadioNowD: myRadioNow, localIndexD: index), isActive: $isSelect)
+                        
+                            }
                        }
                        .frame(height: 350)
-      
+
+                       
                    }.background(Color.newPrimaryColor)
                 
-                   FavoritesSwiftUIView()
+
+                        
+                   //RadiosSwiftUIView()
+                   
+                   //FavoritesSwiftUIView()
                    
                }.navigationBarTitle("Home Radio").background(Color.newSecundaryColor)
                        .navigationBarTitleDisplayMode(.inline)
                    
-               }.environmentObject(user)
+                }.environmentObject(user)
+                       
+            }
         }
 }
 
