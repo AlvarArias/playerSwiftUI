@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct SliderSwiftUIView: View {
+    
+    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
+    
+    @State var items = 0...5
+    
+    
     var body: some View {
        
-        NavigationView {
+        let url = URL(string: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square")
         
+        NavigationView {
+            VStack {
         TabView {
             
-            NavigationLink(destination: DetalleUIView(choice: "P1")) {
+            NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
                 Image("P1")
             }
             
-            NavigationLink(destination: DetalleUIView(choice: "P1")) {
+            NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
                 Image("P2")
             }
             
-            NavigationLink(destination: DetalleUIView(choice: "P3")) {
+            NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
                 Image("P3")
             }
        
@@ -30,41 +38,46 @@ struct SliderSwiftUIView: View {
         .tabViewStyle(.page).foregroundColor(.white)
         .background(Color.newSecundaryColor)
         .frame(width: UIScreen.main.bounds.width, height: 300)
-        }
+                Text("Favorites")
+                List {
+                    ForEach(items, id: \.self) { index in
+                    
+                        HStack {
+                           
+                            AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                     .frame(width: 50, height: 50)
+                            },
+                            placeholder: {
+                                ProgressView()
+                            })
+                            
+                            Text(myRadioDemo[index].tagline).font(.body).lineLimit(3)
+                                .frame(width: 200)
+                          
+                            NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
+                                
+                                Text("")
+                            }
+                            
+                            
+                        }
+                        
+                               }
+                               .navigationBarTitle("Radio App", displayMode: .inline)
+                           }
+                Text("Barra inferior")
+                }
+        }.onAppear(){print(myRadioDemo[0])
     }
+
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         SliderSwiftUIView()
     }
+    }
 }
 
-/*
- Image(uiImage: UIImage(named:"P1")!).resizable().aspectRatio(contentMode: .fit).padding().onTapGesture {
-     print("P1")}
-     
- Image(uiImage: UIImage(named:"P2")!).resizable().aspectRatio(contentMode: .fit).padding().onTapGesture {
-     print("P2") }
- 
- Image(uiImage: UIImage(named:"P3")!).resizable().aspectRatio(contentMode: .fit).padding().onTapGesture {
-     print("P3")}
- 
- */
 
-/*
- NavigationLink(destination: Text("DetalleUIView")){
-     Image("P1")
- }
- 
- NavigationLink(destination: Text("DetalleUIView")) {
-     Image("P1")
- }
- 
- NavigationLink(destination: Text("DetalleUIView")) {
-         Image("P2")
- }
- 
- NavigationLink(destination: Text("DetalleUIView")) {
-         Image("P3")
- }
- */

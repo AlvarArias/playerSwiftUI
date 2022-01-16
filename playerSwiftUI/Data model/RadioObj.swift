@@ -78,7 +78,7 @@ class User2: ObservableObject {
     @Published var scheduleurl: String?
 }
 
-struct DemoRadio: Codable {
+struct DemoRadio: Codable, Hashable {
     let image: String
     let imagetemplate: String
     let color: String

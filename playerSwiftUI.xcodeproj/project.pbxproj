@@ -19,6 +19,7 @@
 		62A9F01D275F689100B345AE /* ExampleSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */; };
 		62A9F021275F8DE300B345AE /* RadioObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F020275F8DE300B345AE /* RadioObj.swift */; };
 		62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F022275FE7FB00B345AE /* PlayerConector.swift */; };
+		62C06B4027936A4000FE5E7C /* BarrPlaySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */; };
 		62DBB5B1278CE8FA003EEFE2 /* radios.json in Resources */ = {isa = PBXBuildFile; fileRef = 62DBB5B0278CE8FA003EEFE2 /* radios.json */; };
 		62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */; };
 		62ED857F2790CBC3009A7C1C /* SliderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED857E2790CBC2009A7C1C /* SliderItem.swift */; };
@@ -52,6 +53,7 @@
 		62A9F020275F8DE300B345AE /* RadioObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioObj.swift; sourceTree = "<group>"; };
 		62A9F022275FE7FB00B345AE /* PlayerConector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConector.swift; sourceTree = "<group>"; };
 		62A9F024275FEE5700B345AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrPlaySwiftUIView.swift; sourceTree = "<group>"; };
 		62DBB5B0278CE8FA003EEFE2 /* radios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios.json; sourceTree = "<group>"; };
 		62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleUIView.swift; sourceTree = "<group>"; };
 		62ED857E2790CBC2009A7C1C /* SliderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderItem.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				62A0A54C27862B74002CEB18 /* DetailSwiftUIView.swift */,
 				62A0A55027864E4D002CEB18 /* InfoRadioSwiftUIView.swift */,
 				62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */,
+				62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */,
 			);
 			path = "Detail View";
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				62A0A54D27862B74002CEB18 /* DetailSwiftUIView.swift in Sources */,
 				62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */,
 				62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */,
+				62C06B4027936A4000FE5E7C /* BarrPlaySwiftUIView.swift in Sources */,
 				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
 				62ED857F2790CBC3009A7C1C /* SliderItem.swift in Sources */,
 				629D68BB278EC409005E0214 /* Helper.swift in Sources */,
