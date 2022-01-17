@@ -22,27 +22,29 @@ let sourceXML = """
  </scheduledepisode>
 """
 
-struct Note: Codable {
+
+struct Scheduledepisode: Codable {
     let episodeid: String
     let title: String
     let description: String
     let starttimeutc : String
-}
+    }
 
+    
 let formatter1 = DateFormatter()
 
 struct XMLSwiftUIView: View {
     
-    let note = try! XMLDecoder().decode(Note.self, from: Data(sourceXML.utf8))
+    let note = try! XMLDecoder().decode(Scheduledepisode.self, from: Data(sourceXML.utf8))
    
     
     
     var body: some View {
         VStack{
-        Text(note.episodeid)
-        Text(note.title)
-        Text(note.description)
-        Text(note.starttimeutc)
+        Text(Scheduledepisode.episodeid)
+        Text(Scheduledepisode.title)
+        Text(Scheduledepisode.description)
+        Text(Scheduledepisode.starttimeutc)
         }
     }
 }
