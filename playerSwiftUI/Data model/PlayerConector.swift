@@ -13,7 +13,7 @@ import AVKit
 class playerConector: ObservableObject {
     
      //The player
-         var player: AVPlayer!
+       @Published var player: AVPlayer!
          let url1  = URL.init(string:"https://sverigesradio.se/topsy/direkt/srapi/2562.mp3")
          var if_played = true
 

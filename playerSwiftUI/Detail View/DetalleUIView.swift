@@ -6,19 +6,32 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct DetalleUIView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     
     var choice: String
     var choice1 : DemoRadio
+    
+    // Player variables
+    @State var player = AVPlayer()
+    let url1  = "https://sverigesradio.se/topsy/direkt/srapi/2562.mp3"
+    @State var isPlaying : Bool = false
+    @State var volum : Float = 0
+    @State var sliderValue: Double = 0
+    //@State var Myplayer = playerConector()
         
     var body: some View {
         
         let url = URL(string: choice1.image)
         
+        
         NavigationView {
-        VStack {
+            
+            
+            VStack {
             
             //Image("P1").resizable().frame(width: 300, height: 300)
             AsyncImage(url: URL(string: choice1.image), content: { image in
@@ -29,11 +42,10 @@ struct DetalleUIView: View {
             placeholder: {
                 ProgressView()
             })
-            
-            
-            
+        
             Text("Your Choice is \(choice)")
             
+                
             List {
                 Text(choice1.tagline).listRowBackground(Color.newSecundaryColor)
                 Text(choice1.imagetemplate).listRowBackground(Color.newSecundaryColor)
@@ -44,12 +56,50 @@ struct DetalleUIView: View {
                 
             }.background(Color.newSecundaryColor)
             
-            Text("Barra inferior")
-            BarrPlaySwiftUIView()
             
+            //BarrPlaySwiftUIView()
+            Button( action: {
+            
+                player = AVPlayer(url: URL(string: choice1.url)!)
+                self.isPlaying.toggle()
+                player.play()
+                
+                
+                if isPlaying == false {
+                    player.pause()
+                }
+                
+                //Myplayer.play_radio(url: (URL(string: choice1.url) ?? URL(string: url1))!)
+    
+            })
+            {
+                if isPlaying == true {
+                    
+                    Image("icon_pause").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+                    //Slider(value: $sliderValue, in: 0...10)
+                        //Slider(value: $Myplayer.player.volume, in: 0...10).padding()
+                    //Text("Current slider value: \(sliderValue, specifier: "%.2f")")
+                    
+                    
+                } else {
+                    Image("icon 5").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+                }
+            }
+                
             }.navigationBarTitle("Radio", displayMode: .inline)
-            
+                // new button back
+                .navigationBarItems(
+                    leading:
+                    Button(action : {
+                        player.pause()
+                        self.presentationMode.wrappedValue.dismiss()
+                        print("click and stop audio")
+                    }){
+                            Text("Back")
+                    }
+                )
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

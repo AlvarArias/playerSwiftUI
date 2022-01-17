@@ -12,7 +12,8 @@ struct playerSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             //ExampleSwiftUIView()
-            SliderSwiftUIView()
+            //SliderSwiftUIView()
+            SplashSwiftUIView()
         }
     }
 }

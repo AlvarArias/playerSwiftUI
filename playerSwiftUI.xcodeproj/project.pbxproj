@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62192A802796040C0090579A /* XMLSwiftUIView.swift */; };
+		62192A84279608CE0090579A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 62192A83279608CE0090579A /* XMLCoder */; };
 		629D68BB278EC409005E0214 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BA278EC409005E0214 /* Helper.swift */; };
 		629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */; };
 		629F1C8127905D27001BF441 /* SliderSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */; };
@@ -20,6 +22,7 @@
 		62A9F021275F8DE300B345AE /* RadioObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F020275F8DE300B345AE /* RadioObj.swift */; };
 		62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F022275FE7FB00B345AE /* PlayerConector.swift */; };
 		62C06B4027936A4000FE5E7C /* BarrPlaySwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */; };
+		62D824772795AD5700461EF9 /* SplashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */; };
 		62DBB5B1278CE8FA003EEFE2 /* radios.json in Resources */ = {isa = PBXBuildFile; fileRef = 62DBB5B0278CE8FA003EEFE2 /* radios.json */; };
 		62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */; };
 		62ED857F2790CBC3009A7C1C /* SliderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED857E2790CBC2009A7C1C /* SliderItem.swift */; };
@@ -39,6 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		62192A802796040C0090579A /* XMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLSwiftUIView.swift; sourceTree = "<group>"; };
 		629D68BA278EC409005E0214 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiosSwiftUIView.swift; sourceTree = "<group>"; };
 		629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSwiftUIView.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 		62A9F022275FE7FB00B345AE /* PlayerConector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConector.swift; sourceTree = "<group>"; };
 		62A9F024275FEE5700B345AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrPlaySwiftUIView.swift; sourceTree = "<group>"; };
+		62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashSwiftUIView.swift; sourceTree = "<group>"; };
 		62DBB5B0278CE8FA003EEFE2 /* radios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios.json; sourceTree = "<group>"; };
 		62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleUIView.swift; sourceTree = "<group>"; };
 		62ED857E2790CBC2009A7C1C /* SliderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderItem.swift; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62192A84279608CE0090579A /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +83,7 @@
 				62A9F022275FE7FB00B345AE /* PlayerConector.swift */,
 				62DBB5B0278CE8FA003EEFE2 /* radios.json */,
 				629D68BA278EC409005E0214 /* Helper.swift */,
+				62192A802796040C0090579A /* XMLSwiftUIView.swift */,
 			);
 			path = "Data model";
 			sourceTree = "<group>";
@@ -138,6 +145,7 @@
 				62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */,
 				629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */,
 				62ED857E2790CBC2009A7C1C /* SliderItem.swift */,
+				62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */,
 			);
 			path = "Home Radio View";
 			sourceTree = "<group>";
@@ -159,6 +167,9 @@
 			dependencies = (
 			);
 			name = playerSwiftUI;
+			packageProductDependencies = (
+				62192A83279608CE0090579A /* XMLCoder */,
+			);
 			productName = playerSwiftUI;
 			productReference = 62A9F009275F5B3500B345AE /* playerSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +198,9 @@
 				Base,
 			);
 			mainGroup = 62A9F000275F5B3500B345AE;
+			packageReferences = (
+				62192A82279608CE0090579A /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			productRefGroup = 62A9F00A275F5B3500B345AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -221,9 +235,11 @@
 				62C06B4027936A4000FE5E7C /* BarrPlaySwiftUIView.swift in Sources */,
 				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
 				62ED857F2790CBC3009A7C1C /* SliderItem.swift in Sources */,
+				62D824772795AD5700461EF9 /* SplashSwiftUIView.swift in Sources */,
 				629D68BB278EC409005E0214 /* Helper.swift in Sources */,
 				62A9F021275F8DE300B345AE /* RadioObj.swift in Sources */,
 				629F1C8127905D27001BF441 /* SliderSwiftUIView.swift in Sources */,
+				62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
 				629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */,
 				62A0A55127864E4D002CEB18 /* InfoRadioSwiftUIView.swift in Sources */,
@@ -431,6 +447,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		62192A82279608CE0090579A /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		62192A83279608CE0090579A /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62192A82279608CE0090579A /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 62A9F001275F5B3500B345AE /* Project object */;
 }

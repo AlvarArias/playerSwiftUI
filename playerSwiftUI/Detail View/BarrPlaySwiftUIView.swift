@@ -41,7 +41,8 @@ struct BarrPlaySwiftUIView: View {
             } else {
                 Image("icon 5").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
             }
-        }.background(Color.red)
+        }//.background(Color.red)
+     
     }
 }
 struct BarrPlaySwiftUIView_Previews: PreviewProvider {
