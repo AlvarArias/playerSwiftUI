@@ -25,15 +25,15 @@ struct scheduledEpisode {
     var theEpisodeTitle = String()
     var theEpisodeDescription = String()
     var theStartTime = String()
+    // https://api.sr.se/v2/scheduledepisodes?channelid=132
     
     
-    
-    func loadData() {
+     func loadData(theRadioURL: String) {
         
         let semaphore = DispatchSemaphore (value: 0)
         
 
-        var request = URLRequest(url: URL(string: "https://api.sr.se/v2/scheduledepisodes?channelid=132")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: theRadioURL)!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
 
     

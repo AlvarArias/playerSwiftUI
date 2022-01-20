@@ -13,6 +13,7 @@ struct playerSwiftUIApp: App {
         WindowGroup {
             //XMLSwiftUIView()
             SplashSwiftUIView()
+            //newDetailSwiftUIView()
         }
     }
 }

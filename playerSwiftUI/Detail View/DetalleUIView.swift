@@ -8,16 +8,18 @@
 import SwiftUI
 import AVKit
 
-struct DetalleUIView: View {
+struct DetalleUIView : View {
     
     @Environment(\.presentationMode) var presentationMode
-    
+
     /*init(){
             UITableView.appearance().backgroundColor = .clear
         }*/
     
     var choice: String
-    var choice1 : DemoRadio
+    @State var choice1 : DemoRadio
+    
+    
     
     // Player variables
     @State var player = AVPlayer()
@@ -58,7 +60,7 @@ struct DetalleUIView: View {
             }.background(Color.newColorGreenLight)
             */
                 
-                XMLSwiftUIView()
+                newXMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
             Button( action: {

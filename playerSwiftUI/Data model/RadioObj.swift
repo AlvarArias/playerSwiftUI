@@ -89,6 +89,4 @@ struct DemoRadio: Codable, Hashable {
     let xmltvid: String
 }
 
-//let myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
 
-//let myRadioTest: [User2] = Bundle.main.decode([User2].self, from: "radios.json")

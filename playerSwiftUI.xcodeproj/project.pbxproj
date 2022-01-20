@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62192A802796040C0090579A /* XMLSwiftUIView.swift */; };
 		62192A84279608CE0090579A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 62192A83279608CE0090579A /* XMLCoder */; };
+		624E945F2799C7B700803A83 /* newXMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */; };
 		629D68BB278EC409005E0214 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BA278EC409005E0214 /* Helper.swift */; };
 		629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */; };
 		629F1C8127905D27001BF441 /* SliderSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		62192A802796040C0090579A /* XMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLSwiftUIView.swift; sourceTree = "<group>"; };
+		624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newXMLSwiftUIView.swift; sourceTree = "<group>"; };
 		629D68BA278EC409005E0214 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiosSwiftUIView.swift; sourceTree = "<group>"; };
 		629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSwiftUIView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				629D68BA278EC409005E0214 /* Helper.swift */,
 				62192A802796040C0090579A /* XMLSwiftUIView.swift */,
 				62A5540927989DAA00FB5615 /* Request.swift */,
+				624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */,
 			);
 			path = "Data model";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
 				629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */,
 				62A0A55127864E4D002CEB18 /* InfoRadioSwiftUIView.swift in Sources */,
+				624E945F2799C7B700803A83 /* newXMLSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

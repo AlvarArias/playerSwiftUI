@@ -33,6 +33,8 @@ let formatter1 = DateFormatter()
 
 struct XMLSwiftUIView: View {
     
+
+    
     init(){
         UITableView.appearance().backgroundColor = .clear
         UITableView.appearance().separatorStyle = .none
@@ -40,10 +42,13 @@ struct XMLSwiftUIView: View {
     }
     
     @StateObject var parserControl = ParseController()
+
    
+    let theFakeURL = "https://api.sr.se/v2/scheduledepisodes?channelid=132"
     
     let note = try! XMLDecoder().decode(Note.self, from: Data(sourceXML.utf8))
 
+    
     
     var body: some View {
         VStack{
@@ -66,7 +71,8 @@ struct XMLSwiftUIView: View {
             
         }.background(Color.newColorGreenLight)
         .onAppear(perform: {
-            DispatchQueue.main.async { parserControl.loadData()
+            DispatchQueue.main.async { parserControl.loadData(theRadioURL: theFakeURL)
+                
                 //print(parserControl.Schedule[0].episodeTitle)
     }
             //print(parserControl.Schedule[0].episodeTitle)

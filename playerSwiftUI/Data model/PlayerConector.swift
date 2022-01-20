@@ -46,20 +46,6 @@ class playerConector: ObservableObject {
         
         
 }
-/*
-class Bicycle {
-    var color: String
-    init(color: String) {
-        self.color = color
-    }
-}
-class MountainBike: Bicycle {
-    var tireThickness: Double
-    init(color: String, tireThickness: Double) {
-        self.tireThickness = tireThickness
-        super.init(color: color)
-    }
-}
-*/
+
 
 
