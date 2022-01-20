@@ -30,7 +30,7 @@ struct scheduledEpisode {
     
     func loadData() {
         
-        var semaphore = DispatchSemaphore (value: 0)
+        let semaphore = DispatchSemaphore (value: 0)
         
 
         var request = URLRequest(url: URL(string: "https://api.sr.se/v2/scheduledepisodes?channelid=132")!,timeoutInterval: Double.infinity)

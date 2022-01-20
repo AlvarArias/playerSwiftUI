@@ -12,6 +12,10 @@ struct DetalleUIView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    /*init(){
+            UITableView.appearance().backgroundColor = .clear
+        }*/
+    
     var choice: String
     var choice1 : DemoRadio
     
@@ -21,7 +25,7 @@ struct DetalleUIView: View {
     @State var isPlaying : Bool = false
     @State var volum : Float = 0
     @State var sliderValue: Double = 0
-    //@State var Myplayer = playerConector()
+
         
     var body: some View {
         
@@ -33,7 +37,6 @@ struct DetalleUIView: View {
             
             VStack {
             
-            //Image("P1").resizable().frame(width: 300, height: 300)
             AsyncImage(url: URL(string: choice1.image), content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fill)
@@ -43,19 +46,19 @@ struct DetalleUIView: View {
                 ProgressView()
             })
         
-            Text("Your Choice is \(choice)")
+                Text("Your Choice is \(choice1.url)")
             
-                
+            /*
             List {
-                Text(choice1.tagline).listRowBackground(Color.newSecundaryColor)
-                Text(choice1.imagetemplate).listRowBackground(Color.newSecundaryColor)
-                Text(choice1.scheduleurl).listRowBackground(Color.newSecundaryColor)
-                Text(choice1.imagetemplate).listRowBackground(Color.newSecundaryColor)
-                //Text("User: \(user.score)")
-                //Text("User: \(user2.image)")
+                Text(choice1.tagline).listRowBackground(Color.newColorGreenLight)
+                Text(choice1.imagetemplate).listRowBackground(Color.newColorGreenLight)
+                Text(choice1.scheduleurl).listRowBackground(Color.newColorGreenLight)
+                Text(choice1.imagetemplate).listRowBackground(Color.newColorGreenLight)
+         
+            }.background(Color.newColorGreenLight)
+            */
                 
-            }.background(Color.newSecundaryColor)
-            
+                XMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
             Button( action: {
@@ -69,18 +72,13 @@ struct DetalleUIView: View {
                     player.pause()
                 }
                 
-                //Myplayer.play_radio(url: (URL(string: choice1.url) ?? URL(string: url1))!)
     
             })
             {
                 if isPlaying == true {
                     
                     Image("icon_pause").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
-                    //Slider(value: $sliderValue, in: 0...10)
-                        //Slider(value: $Myplayer.player.volume, in: 0...10).padding()
-                    //Text("Current slider value: \(sliderValue, specifier: "%.2f")")
-                    
-                    
+            
                 } else {
                     Image("icon 5").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
                 }
@@ -97,7 +95,7 @@ struct DetalleUIView: View {
                     }){
                             Text("Back")
                     }
-                )
+                ).background(Color.newColorGreenLight)
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -108,7 +106,3 @@ struct DetalleUIView_Previews: PreviewProvider {
         DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.", siteurl: "https://sverigesradio.se/p1", url: "https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se"))
     }
 }
-/*
- DemoRadio(image: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.", siteurl: "https://sverigesradio.se/p1", url: "https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se")
- 
- */

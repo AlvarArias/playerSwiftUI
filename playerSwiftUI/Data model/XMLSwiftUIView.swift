@@ -33,6 +33,12 @@ let formatter1 = DateFormatter()
 
 struct XMLSwiftUIView: View {
     
+    init(){
+        UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().separatorStyle = .none
+        //UITableView.appearance().separatorStyle = .singleLine
+    }
+    
     @StateObject var parserControl = ParseController()
    
     
@@ -41,33 +47,25 @@ struct XMLSwiftUIView: View {
     
     var body: some View {
         VStack{
-        Text(note.episodeid)
-        Text(note.title)
-        Text(note.description)
-        Text(note.starttimeutc)
+        //Text(note.episodeid)
+        //Text(note.title)
+        //Text(note.description)
+        //Text(note.starttimeutc)
         
             
             if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
                         List{
                             ForEach(1...3, id:\.self) {item in
-                                Text(parserControl.Schedule[item].episodeTitle)
+                                Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight)
+                                
                             }
-                        }
+                        }.background(Color.newColorGreenLight)
+                    
             }
-            
-        //Text(parserControl.Schedule[0].episodeTitle)
         
-       
             
-            Button(action: {
-                parserControl.loadData()
-                //print(parserControl.Schedule[0].episodeTitle)
-                
-            }) {
-                Text("LOAD")
-            }
-            
-        }.onAppear(perform: {
+        }.background(Color.newColorGreenLight)
+        .onAppear(perform: {
             DispatchQueue.main.async { parserControl.loadData()
                 //print(parserControl.Schedule[0].episodeTitle)
     }
@@ -83,17 +81,3 @@ struct XMLSwiftUIView_Previews: PreviewProvider {
 }
 
 
-/*
- <scheduledepisode>
- <episodeid>1862297</episodeid>
- <title>Nyheter från Ekot</title>
- <description>Senaste nytt varje timme från Ekoredaktionen.</description>
- <starttimeutc>2022-01-16T23:00:00Z</starttimeutc>
- <endtimeutc>2022-01-16T23:02:00Z</endtimeutc>
- <program id="5380" name="Nyhetsuppdatering från Ekot"/>
- <channel id="132" name="P1"/>
- <imageurl>https://static-cdn.sr.se/images/5380/bd64d128-9787-4a22-8a62-d7e83abbbb6e.jpg?preset=api-default-square</imageurl>
- <imageurltemplate>https://static-cdn.sr.se/images/5380/bd64d128-9787-4a22-8a62-d7e83abbbb6e.jpg</imageurltemplate>
- </scheduledepisode>
- 
- */

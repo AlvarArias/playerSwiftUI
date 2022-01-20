@@ -78,12 +78,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		624E945D2799A64B00803A83 /* unused */ = {
+			isa = PBXGroup;
+			children = (
+				629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */,
+				62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */,
+				62A0A54C27862B74002CEB18 /* DetailSwiftUIView.swift */,
+				62A0A55027864E4D002CEB18 /* InfoRadioSwiftUIView.swift */,
+			);
+			path = unused;
+			sourceTree = "<group>";
+		};
 		62A0A54B27862AEC002CEB18 /* Data model */ = {
 			isa = PBXGroup;
 			children = (
+				62DBB5B0278CE8FA003EEFE2 /* radios.json */,
 				62A9F020275F8DE300B345AE /* RadioObj.swift */,
 				62A9F022275FE7FB00B345AE /* PlayerConector.swift */,
-				62DBB5B0278CE8FA003EEFE2 /* radios.json */,
 				629D68BA278EC409005E0214 /* Helper.swift */,
 				62192A802796040C0090579A /* XMLSwiftUIView.swift */,
 				62A5540927989DAA00FB5615 /* Request.swift */,
@@ -110,6 +121,7 @@
 		62A9F00B275F5B3500B345AE /* playerSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				624E945D2799A64B00803A83 /* unused */,
 				62A9F024275FEE5700B345AE /* Info.plist */,
 				62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */,
 				62DBB5B5278E2F33003EEFE2 /* Home Radio View */,
@@ -132,10 +144,8 @@
 		62DBB5B4278E2F19003EEFE2 /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
-				62A0A54C27862B74002CEB18 /* DetailSwiftUIView.swift */,
-				62A0A55027864E4D002CEB18 /* InfoRadioSwiftUIView.swift */,
-				62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */,
 				62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */,
+				62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */,
 			);
 			path = "Detail View";
 			sourceTree = "<group>";
@@ -143,11 +153,9 @@
 		62DBB5B5278E2F33003EEFE2 /* Home Radio View */ = {
 			isa = PBXGroup;
 			children = (
-				629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */,
 				62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */,
-				62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */,
-				629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */,
 				62ED857E2790CBC2009A7C1C /* SliderItem.swift */,
+				629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */,
 				62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */,
 			);
 			path = "Home Radio View";
@@ -391,7 +399,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.playerSwiftUI;
+				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.playerSwiftUIfinal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -421,7 +429,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.playerSwiftUI;
+				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.playerSwiftUIfinal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

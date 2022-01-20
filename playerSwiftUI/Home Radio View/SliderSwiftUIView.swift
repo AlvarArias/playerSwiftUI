@@ -35,8 +35,8 @@ struct SliderSwiftUIView: View {
             }
        
         }
-        .tabViewStyle(.page).foregroundColor(.white)
-        .background(Color.newSecundaryColor)
+        .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
+        .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
                 Text("Favorites")
                 List {
@@ -47,7 +47,7 @@ struct SliderSwiftUIView: View {
                             AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
-                                     .frame(width: 50, height: 50)
+                                    .frame(width: 50, height: 50)
                             },
                             placeholder: {
                                 ProgressView()
@@ -67,9 +67,10 @@ struct SliderSwiftUIView: View {
                                }
                                .navigationBarTitle("Radio App", displayMode: .inline)
                            }
-                Text("Barra inferior")
-                }
-        }.onAppear(){print(myRadioDemo[0])
+                Text("Powered by SVT Radio")
+            }.background(Color.newColorGrayLight)
+        }.onAppear(){ print(myRadioDemo[0])
+                
     }
 
 }

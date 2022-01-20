@@ -11,7 +11,8 @@ import SwiftUI
 struct playerSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            XMLSwiftUIView()
+            //XMLSwiftUIView()
+            SplashSwiftUIView()
         }
     }
 }
