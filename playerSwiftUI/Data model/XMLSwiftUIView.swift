@@ -22,30 +22,57 @@ let sourceXML = """
  </scheduledepisode>
 """
 
-
-struct Scheduledepisode: Codable {
+struct Note: Codable {
     let episodeid: String
     let title: String
     let description: String
     let starttimeutc : String
-    }
-
+}
     
 let formatter1 = DateFormatter()
 
 struct XMLSwiftUIView: View {
     
-    let note = try! XMLDecoder().decode(Scheduledepisode.self, from: Data(sourceXML.utf8))
+    @StateObject var parserControl = ParseController()
    
     
+    let note = try! XMLDecoder().decode(Note.self, from: Data(sourceXML.utf8))
+
     
     var body: some View {
         VStack{
-        Text(Scheduledepisode.episodeid)
-        Text(Scheduledepisode.title)
-        Text(Scheduledepisode.description)
-        Text(Scheduledepisode.starttimeutc)
-        }
+        Text(note.episodeid)
+        Text(note.title)
+        Text(note.description)
+        Text(note.starttimeutc)
+        
+            
+            if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
+                        List{
+                            ForEach(1...3, id:\.self) {item in
+                                Text(parserControl.Schedule[item].episodeTitle)
+                            }
+                        }
+            }
+            
+        //Text(parserControl.Schedule[0].episodeTitle)
+        
+       
+            
+            Button(action: {
+                parserControl.loadData()
+                //print(parserControl.Schedule[0].episodeTitle)
+                
+            }) {
+                Text("LOAD")
+            }
+            
+        }.onAppear(perform: {
+            DispatchQueue.main.async { parserControl.loadData()
+                //print(parserControl.Schedule[0].episodeTitle)
+    }
+            //print(parserControl.Schedule[0].episodeTitle)
+        })
     }
 }
     
