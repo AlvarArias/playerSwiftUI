@@ -8,6 +8,10 @@
 import SwiftUI
 import AVKit
 
+class theURLSetting : ObservableObject {
+    @Published var theURL: String = ""
+}
+
 struct DetalleUIView : View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -15,6 +19,8 @@ struct DetalleUIView : View {
     /*init(){
             UITableView.appearance().backgroundColor = .clear
         }*/
+    
+    @StateObject var receivedURL = theURLSetting()
     
     var choice: String
     @State var choice1 : DemoRadio
@@ -32,11 +38,9 @@ struct DetalleUIView : View {
     var body: some View {
         
         let url = URL(string: choice1.image)
-        
-        
+    
         NavigationView {
-            
-            
+        
             VStack {
             
             AsyncImage(url: URL(string: choice1.image), content: { image in
@@ -48,18 +52,8 @@ struct DetalleUIView : View {
                 ProgressView()
             })
         
-                Text("Your Choice is \(choice1.url)")
+                Text("Next programs")
             
-            /*
-            List {
-                Text(choice1.tagline).listRowBackground(Color.newColorGreenLight)
-                Text(choice1.imagetemplate).listRowBackground(Color.newColorGreenLight)
-                Text(choice1.scheduleurl).listRowBackground(Color.newColorGreenLight)
-                Text(choice1.imagetemplate).listRowBackground(Color.newColorGreenLight)
-         
-            }.background(Color.newColorGreenLight)
-            */
-                
                 newXMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
@@ -100,6 +94,11 @@ struct DetalleUIView : View {
                 ).background(Color.newColorGreenLight)
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear(perform: {
+            receivedURL.theURL = choice1.scheduleurl
+            print(receivedURL.theURL)
+        })
+        .environmentObject(receivedURL)
     }
 }
 

@@ -38,7 +38,7 @@ struct SliderSwiftUIView: View {
         .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
-                Text("Favorites")
+                Text("Select your radio")
                 List {
                     ForEach(items, id: \.self) { index in
                     
@@ -67,7 +67,7 @@ struct SliderSwiftUIView: View {
                                }
                                .navigationBarTitle("Radio App", displayMode: .inline)
                            }
-                Text("Powered by SVT Radio")
+                Text("Radio on line")
             }.background(Color.newColorGrayLight)
         }.onAppear(){ print(myRadioDemo[0])
                 

@@ -20,14 +20,17 @@ struct newXMLSwiftUIView: View {
 
     let theFakeURL = "https://api.sr.se/v2/scheduledepisodes?channelid=132"
     
+    @EnvironmentObject var receivedURL: theURLSetting
+    
     var body: some View {
         VStack{
        
             if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
                         List{
                             ForEach(1...3, id:\.self) {item in
-                                Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight)
-                                
+                                Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight).font(.title2)
+                                Text(parserControl.Schedule[item].episodeDescription).listRowBackground(Color.newColorGreenLight).font(.body)
+                                Text(parserControl.Schedule[item].episodeStarttimeutc).listRowBackground(Color.newColorGreenLight).font(.body)
                             }
                         }.background(Color.newColorGreenLight)
                     
@@ -36,8 +39,8 @@ struct newXMLSwiftUIView: View {
             
         }.background(Color.newColorGreenLight)
         .onAppear(perform: {
-            DispatchQueue.main.async { parserControl.loadData(theRadioURL: theFakeURL)
-                
+            //DispatchQueue.main.async { parserControl.loadData(theRadioURL: theFakeURL)
+            DispatchQueue.main.async { parserControl.loadData(theRadioURL: receivedURL.theURL)
             }
 
         })
