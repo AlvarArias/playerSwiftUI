@@ -73,10 +73,10 @@ struct DetalleUIView : View {
             {
                 if isPlaying == true {
                     
-                    Image("icon_pause").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+                    Image("Pause2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
             
                 } else {
-                    Image("icon 5").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
                 }
             }
                 
