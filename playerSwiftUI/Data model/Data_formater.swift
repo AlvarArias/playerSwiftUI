@@ -10,10 +10,6 @@ import UIKit
 
 
 class theDateFormater {
-
-    // The default timeZone on ISO8601DateFormatter is UTC.
-    // Set timeZone to UTTimeZone.current to get local time.
-    
     
     func transformDate (theProgramDate: String) -> String {
         
@@ -24,17 +20,10 @@ class theDateFormater {
         inputFormatter.dateFormat = "H:mm d-MMM-yy"
         
         let localDate = localISOFormatter.date(from: theProgramDate)
-        
-        print("The Date from String")
-        print(localDate?.description ?? "no date")
-        
         let resultString = inputFormatter.string(from: localDate!)
-        print("New format")
         let final = String(resultString)
-        print(final)
-        
+       
         return final
-        
     }
     
 }

@@ -13,14 +13,13 @@ struct SliderSwiftUIView: View {
     
     @State var items = 0...9
     
-    
     var body: some View {
-       
-        let url = URL(string: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square")
-        
+               
         NavigationView {
+            
             VStack {
-        TabView {
+                
+                TabView {
             
             NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
                 Image("P1")
@@ -38,7 +37,14 @@ struct SliderSwiftUIView: View {
         .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
-                Text("Select your radio")
+                
+                HStack {
+                    Text("Select your radio").padding()
+                    CheckNetworkView()
+                }
+                
+                
+                
                 List {
                     ForEach(items, id: \.self) { index in
                     
@@ -61,8 +67,8 @@ struct SliderSwiftUIView: View {
                                 Text("")
                             }
                             
-                            
-                        }
+                           
+                        } .listRowSeparator(.hidden)
                         
                                }
                                .navigationBarTitle("Radio App", displayMode: .inline)

@@ -31,13 +31,13 @@ struct newXMLSwiftUIView: View {
        
             if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
                         List{
-                            ForEach(1...4, id:\.self) {item in
+                            ForEach(0...4, id:\.self) {item in
                                 let myNewDateValue = myNewDate.transformDate(theProgramDate: parserControl.Schedule[item].episodeStarttimeutc)
                                 Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight).font(.title2)
                                 Text(parserControl.Schedule[item].episodeDescription).listRowBackground(Color.newColorGreenLight).font(.body)
                                 Text("Program time : \(myNewDateValue)").listRowBackground(Color.newColorGreenLight).font(.body)
                                     .listRowSeparator(.hidden)
-                            }
+                            }.listRowSeparator(.hidden)
                         }.background(Color.newColorGreenLight)
                     
             }

@@ -20,13 +20,12 @@ struct DetalleUIView : View {
             UITableView.appearance().backgroundColor = .clear
         }*/
     
+    // Radio Object
     @StateObject var receivedURL = theURLSetting()
-    
     var choice: String
     @State var choice1 : DemoRadio
     
-    
-    
+
     // Player variables
     @State var player = AVPlayer()
     let url1  = "https://sverigesradio.se/topsy/direkt/srapi/2562.mp3"
@@ -42,7 +41,8 @@ struct DetalleUIView : View {
         NavigationView {
         
             VStack {
-            
+                
+            // Detail Image
             AsyncImage(url: URL(string: choice1.image), content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fill)

@@ -11,6 +11,8 @@
 		62192A84279608CE0090579A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 62192A83279608CE0090579A /* XMLCoder */; };
 		624E945F2799C7B700803A83 /* newXMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */; };
 		629AC835279D998600AA2BD9 /* Data_formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AC834279D998600AA2BD9 /* Data_formater.swift */; };
+		629AC837279DF34300AA2BD9 /* network_checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AC836279DF34300AA2BD9 /* network_checker.swift */; };
+		629AC839279DF4C500AA2BD9 /* CheckNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */; };
 		629D68BB278EC409005E0214 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BA278EC409005E0214 /* Helper.swift */; };
 		629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */; };
 		629F1C8127905D27001BF441 /* SliderSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */; };
@@ -48,6 +50,8 @@
 		62192A802796040C0090579A /* XMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLSwiftUIView.swift; sourceTree = "<group>"; };
 		624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newXMLSwiftUIView.swift; sourceTree = "<group>"; };
 		629AC834279D998600AA2BD9 /* Data_formater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_formater.swift; sourceTree = "<group>"; };
+		629AC836279DF34300AA2BD9 /* network_checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = network_checker.swift; sourceTree = "<group>"; };
+		629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetworkView.swift; sourceTree = "<group>"; };
 		629D68BA278EC409005E0214 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiosSwiftUIView.swift; sourceTree = "<group>"; };
 		629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSwiftUIView.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		624E945D2799A64B00803A83 /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				62ED857E2790CBC2009A7C1C /* SliderItem.swift */,
 				629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */,
 				62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */,
 				62A0A54C27862B74002CEB18 /* DetailSwiftUIView.swift */,
@@ -104,6 +109,7 @@
 				62A5540927989DAA00FB5615 /* Request.swift */,
 				624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */,
 				629AC834279D998600AA2BD9 /* Data_formater.swift */,
+				629AC836279DF34300AA2BD9 /* network_checker.swift */,
 			);
 			path = "Data model";
 			sourceTree = "<group>";
@@ -160,9 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */,
-				62ED857E2790CBC2009A7C1C /* SliderItem.swift */,
-				629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */,
 				62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */,
+				629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */,
+				629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */,
 			);
 			path = "Home Radio View";
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 				62A5540A27989DAA00FB5615 /* Request.swift in Sources */,
 				62A0A54D27862B74002CEB18 /* DetailSwiftUIView.swift in Sources */,
 				62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */,
+				629AC839279DF4C500AA2BD9 /* CheckNetworkView.swift in Sources */,
 				62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */,
 				62C06B4027936A4000FE5E7C /* BarrPlaySwiftUIView.swift in Sources */,
 				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
@@ -260,6 +267,7 @@
 				629F1C8127905D27001BF441 /* SliderSwiftUIView.swift in Sources */,
 				62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
+				629AC837279DF34300AA2BD9 /* network_checker.swift in Sources */,
 				629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */,
 				62A0A55127864E4D002CEB18 /* InfoRadioSwiftUIView.swift in Sources */,
 				624E945F2799C7B700803A83 /* newXMLSwiftUIView.swift in Sources */,
