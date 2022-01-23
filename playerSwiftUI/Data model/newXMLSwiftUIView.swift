@@ -11,7 +11,7 @@ import SwiftUI
 struct newXMLSwiftUIView: View {
     
     
-    init(){
+    init() {
         UITableView.appearance().backgroundColor = .clear
         UITableView.appearance().separatorStyle = .none
     }
@@ -22,15 +22,21 @@ struct newXMLSwiftUIView: View {
     
     @EnvironmentObject var receivedURL: theURLSetting
     
+    var myNewDate = theDateFormater()
+    
+    
+    
     var body: some View {
         VStack{
        
             if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
                         List{
-                            ForEach(1...3, id:\.self) {item in
+                            ForEach(1...4, id:\.self) {item in
+                                let myNewDateValue = myNewDate.transformDate(theProgramDate: parserControl.Schedule[item].episodeStarttimeutc)
                                 Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight).font(.title2)
                                 Text(parserControl.Schedule[item].episodeDescription).listRowBackground(Color.newColorGreenLight).font(.body)
-                                Text(parserControl.Schedule[item].episodeStarttimeutc).listRowBackground(Color.newColorGreenLight).font(.body)
+                                Text("Program time : \(myNewDateValue)").listRowBackground(Color.newColorGreenLight).font(.body)
+                                    .listRowSeparator(.hidden)
                             }
                         }.background(Color.newColorGreenLight)
                     
@@ -41,6 +47,9 @@ struct newXMLSwiftUIView: View {
         .onAppear(perform: {
             //DispatchQueue.main.async { parserControl.loadData(theRadioURL: theFakeURL)
             DispatchQueue.main.async { parserControl.loadData(theRadioURL: receivedURL.theURL)
+            
+                myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
+                
             }
 
         })

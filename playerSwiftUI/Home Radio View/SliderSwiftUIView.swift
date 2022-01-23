@@ -11,7 +11,7 @@ struct SliderSwiftUIView: View {
     
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
     
-    @State var items = 0...5
+    @State var items = 0...9
     
     
     var body: some View {
