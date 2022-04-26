@@ -34,6 +34,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		628CF57627A42BD800024E8B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62A4D29A2760AE2B00D29403 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,6 +59,7 @@
 /* Begin PBXFileReference section */
 		62192A802796040C0090579A /* XMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLSwiftUIView.swift; sourceTree = "<group>"; };
 		624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newXMLSwiftUIView.swift; sourceTree = "<group>"; };
+		628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = playerSwiftUI.entitlements; sourceTree = "<group>"; };
 		629AC834279D998600AA2BD9 /* Data_formater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_formater.swift; sourceTree = "<group>"; };
 		629AC836279DF34300AA2BD9 /* network_checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = network_checker.swift; sourceTree = "<group>"; };
 		629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetworkView.swift; sourceTree = "<group>"; };
@@ -94,6 +105,8 @@
 				62A0A54E27863EA7002CEB18 /* FavoritesSwiftUIView.swift */,
 				62A0A54C27862B74002CEB18 /* DetailSwiftUIView.swift */,
 				62A0A55027864E4D002CEB18 /* InfoRadioSwiftUIView.swift */,
+				62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */,
+				62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */,
 			);
 			path = unused;
 			sourceTree = "<group>";
@@ -107,7 +120,6 @@
 				629D68BA278EC409005E0214 /* Helper.swift */,
 				62192A802796040C0090579A /* XMLSwiftUIView.swift */,
 				62A5540927989DAA00FB5615 /* Request.swift */,
-				624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */,
 				629AC834279D998600AA2BD9 /* Data_formater.swift */,
 				629AC836279DF34300AA2BD9 /* network_checker.swift */,
 			);
@@ -133,6 +145,7 @@
 		62A9F00B275F5B3500B345AE /* playerSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */,
 				624E945D2799A64B00803A83 /* unused */,
 				62A9F024275FEE5700B345AE /* Info.plist */,
 				62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */,
@@ -156,8 +169,8 @@
 		62DBB5B4278E2F19003EEFE2 /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
-				62C06B3F27936A3F00FE5E7C /* BarrPlaySwiftUIView.swift */,
 				62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */,
+				624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */,
 			);
 			path = "Detail View";
 			sourceTree = "<group>";
@@ -165,7 +178,6 @@
 		62DBB5B5278E2F33003EEFE2 /* Home Radio View */ = {
 			isa = PBXGroup;
 			children = (
-				62A9F01C275F689100B345AE /* ExampleSwiftUIView.swift */,
 				62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */,
 				629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */,
 				629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */,
@@ -184,6 +196,7 @@
 				62A9F006275F5B3500B345AE /* Frameworks */,
 				62A9F007275F5B3500B345AE /* Resources */,
 				62A4D29A2760AE2B00D29403 /* Embed Watch Content */,
+				628CF57627A42BD800024E8B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -396,12 +409,14 @@
 		62A9F018275F5B3800B345AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = playerSwiftUI/playerSwiftUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"playerSwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = DDWAVNG7Q4;
+				DEVELOPMENT_TEAM = 8D7GNS96P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = playerSwiftUI/Info.plist;
@@ -415,8 +430,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.playerSwiftUIfinal;
+				MARKETING_VERSION = 1.03;
+				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.radioPlayerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -427,12 +442,14 @@
 		62A9F019275F5B3800B345AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = playerSwiftUI/playerSwiftUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"playerSwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = DDWAVNG7Q4;
+				DEVELOPMENT_TEAM = 8D7GNS96P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = playerSwiftUI/Info.plist;
@@ -446,8 +463,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.playerSwiftUIfinal;
+				MARKETING_VERSION = 1.03;
+				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.radioPlayerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

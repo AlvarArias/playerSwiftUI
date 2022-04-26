@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SliderSwiftUIView: View {
     
+    // Usa decode helper
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
     
     @State var items = 0...9
+    
     
     var body: some View {
                
@@ -73,7 +75,19 @@ struct SliderSwiftUIView: View {
                                }
                                .navigationBarTitle("Radio App", displayMode: .inline)
                            }
-                Text("Radio on line")
+                VStack {
+                    Text("Radio on line")
+                    
+                    Button(action: {
+                        
+                        print("Sharer")
+                       
+                        
+                    }) {
+                        Text("Sharer")
+                    }
+                }
+               
             }.background(Color.newColorGrayLight)
         }.onAppear(){ print(myRadioDemo[0])
                 

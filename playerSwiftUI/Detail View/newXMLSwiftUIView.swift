@@ -16,6 +16,7 @@ struct newXMLSwiftUIView: View {
         UITableView.appearance().separatorStyle = .none
     }
     
+    // PlayerConector
     @StateObject var parserControl = ParseController()
 
     let theFakeURL = "https://api.sr.se/v2/scheduledepisodes?channelid=132"

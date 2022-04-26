@@ -78,6 +78,7 @@ class User2: ObservableObject {
     @Published var scheduleurl: String?
 }
 
+// Listado de radios 
 struct DemoRadio: Codable, Hashable {
     let image: String
     let imagetemplate: String

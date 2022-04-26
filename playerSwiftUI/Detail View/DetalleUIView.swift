@@ -57,6 +57,7 @@ struct DetalleUIView : View {
                 newXMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
+                
             Button( action: {
             
                 player = AVPlayer(url: URL(string: choice1.url)!)
