@@ -15,10 +15,6 @@ class theURLSetting : ObservableObject {
 struct DetalleUIView : View {
     
     @Environment(\.presentationMode) var presentationMode
-
-    /*init(){
-            UITableView.appearance().backgroundColor = .clear
-        }*/
     
     // Radio Object
     @StateObject var receivedURL = theURLSetting()

@@ -14,7 +14,9 @@ struct SliderSwiftUIView: View {
     
     @State var items = 0...9
     
-    
+    @State private var showingFavorite = false
+    @State private var showingmySettings = false
+  
     var body: some View {
                
         NavigationView {
@@ -75,6 +77,8 @@ struct SliderSwiftUIView: View {
                                }
                                .navigationBarTitle("Radio App", displayMode: .inline)
                            }
+               
+                /*
                 VStack {
                     Text("Radio on line")
                     
@@ -87,8 +91,30 @@ struct SliderSwiftUIView: View {
                         Text("Sharer")
                     }
                 }
+                 */
+            /*
+                if (showingmySettings) {
+                   //mySettingsView()
+                }
+           */
                
             }.background(Color.newColorGrayLight)
+                .toolbar {
+                        ToolbarItemGroup(placement: .bottomBar) {
+                    
+                                                
+                    Button { showingmySettings.toggle()
+                                                } label: {
+                                                    Image(systemName: "gearshape")}
+                    .sheet(isPresented: $showingmySettings) {mySettingsView()}
+                    
+                    Button { showingFavorite.toggle()
+                                                } label: {
+                                                    Image(systemName: "star")}
+                        
+                                }
+                            }
+                                
         }.onAppear(){ print(myRadioDemo[0])
                 
     }
