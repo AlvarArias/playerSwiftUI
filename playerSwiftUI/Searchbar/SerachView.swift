@@ -58,8 +58,9 @@ struct SerachView: View {
                }
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    Button("Dismiss") {
-                           dismiss() } 
+                    Button { dismiss() } label: {
+                               Image(systemName: "arrow.down")}
+
                     }
            }
         }

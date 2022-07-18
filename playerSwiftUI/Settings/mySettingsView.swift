@@ -62,8 +62,10 @@ struct mySettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
-                Button("Dismiss") {
-                       dismiss() }
+                Button {dismiss() } label: {
+                    Image(systemName: "arrow.down")
+                    
+                }
                 }
        }
     }
