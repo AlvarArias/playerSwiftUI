@@ -16,6 +16,8 @@ struct SerachView: View {
     @State var items = 0...9
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -54,8 +56,14 @@ struct SerachView: View {
                        placement: .navigationBarDrawer(displayMode: .always))
                 
                }
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button("Dismiss") {
+                           dismiss() } 
+                    }
            }
         }
+    }
            var searchResults: [DemoRadio] {
                if searchText.isEmpty {
                    return myRadioDemo

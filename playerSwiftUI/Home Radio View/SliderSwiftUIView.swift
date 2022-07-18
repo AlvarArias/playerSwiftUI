@@ -114,7 +114,7 @@ struct SliderSwiftUIView: View {
                                             } label: {
                                                     Image(systemName: "magnifyingglass.circle")}
                     .sheet(isPresented: $showingmySearch) {SerachView()}
-                        
+                    
                                 }
                             }
                                 

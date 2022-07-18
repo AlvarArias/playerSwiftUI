@@ -19,6 +19,7 @@ struct mySettingsView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
+        NavigationView {
         Form {
             Section(header: Text(" my PROFILE")) {
                 TextField("Input Username", text: $username)
@@ -55,15 +56,17 @@ struct mySettingsView: View {
                 }) {
                     Text("Reset all settings")
                 }
-                
-                Button("Dismiss") {
-                    dismiss()
-                }
-                
             }
         }
         .navigationBarTitle("Player Settings")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .bottomBar) {
+                Button("Dismiss") {
+                       dismiss() }
+                }
+       }
+    }
     }
 }
 
