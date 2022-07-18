@@ -11,8 +11,8 @@ import SwiftUI
 struct playerSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            //SplashSwiftUIView()
-            SerachView()
+            SplashSwiftUIView()
+            //SerachView()
         }
     }
 }

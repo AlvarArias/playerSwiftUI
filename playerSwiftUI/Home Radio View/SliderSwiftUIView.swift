@@ -16,7 +16,8 @@ struct SliderSwiftUIView: View {
     
     @State private var showingFavorite = false
     @State private var showingmySettings = false
-  
+    @State private var showingmySearch = false
+    
     var body: some View {
                
         NavigationView {
@@ -104,9 +105,15 @@ struct SliderSwiftUIView: View {
                                                     Image(systemName: "gearshape")}
                     .sheet(isPresented: $showingmySettings) {mySettingsView()}
                    
+                    Spacer()
                     Button { showingFavorite.toggle()
                                                 } label: {
                                                     Image(systemName: "star")}
+                    Spacer()
+                    Button { showingmySearch.toggle()
+                                            } label: {
+                                                    Image(systemName: "magnifyingglass.circle")}
+                    .sheet(isPresented: $showingmySearch) {SerachView()}
                         
                                 }
                             }
