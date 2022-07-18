@@ -80,6 +80,7 @@ class User2: ObservableObject {
 
 // Listado de radios 
 struct DemoRadio: Codable, Hashable {
+
     let image: String
     let imagetemplate: String
     let color: String

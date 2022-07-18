@@ -92,11 +92,7 @@ struct SliderSwiftUIView: View {
                     }
                 }
                  */
-            /*
-                if (showingmySettings) {
-                   //mySettingsView()
-                }
-           */
+                
                
             }.background(Color.newColorGrayLight)
                 .toolbar {
@@ -107,7 +103,7 @@ struct SliderSwiftUIView: View {
                                                 } label: {
                                                     Image(systemName: "gearshape")}
                     .sheet(isPresented: $showingmySettings) {mySettingsView()}
-                    
+                   
                     Button { showingFavorite.toggle()
                                                 } label: {
                                                     Image(systemName: "star")}
