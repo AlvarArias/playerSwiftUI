@@ -102,17 +102,23 @@ struct SliderSwiftUIView: View {
                                                 
                     Button { showingmySettings.toggle()
                                                 } label: {
-                                                    Image(systemName: "gearshape")}
+                                                    Image(systemName: "gearshape")
+                    .foregroundColor(.newSecundaryColor)
+                                                }
                     .sheet(isPresented: $showingmySettings) {mySettingsView()}
                    
                     Spacer()
                     Button { showingFavorite.toggle()
                                                 } label: {
-                                                    Image(systemName: "star")}
+                                                    Image(systemName: "star")
+                    .foregroundColor(.newSecundaryColor)
+                                                }
                     Spacer()
                     Button { showingmySearch.toggle()
                                             } label: {
-                                                    Image(systemName: "magnifyingglass.circle")}
+                                                    Image(systemName: "magnifyingglass.circle")
+                        .foregroundColor(.newSecundaryColor)
+                                            }
                     .sheet(isPresented: $showingmySearch) {SerachView()}
                     
                                 }

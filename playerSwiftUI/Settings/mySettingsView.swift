@@ -64,6 +64,7 @@ struct mySettingsView: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {dismiss() } label: {
                     Image(systemName: "arrow.down")
+                    .foregroundColor(.newSecundaryColor)
                     
                 }
                 }

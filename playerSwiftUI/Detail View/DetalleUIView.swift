@@ -60,8 +60,11 @@ struct DetalleUIView : View {
                     } label: {
                         if showingStar {
                            Image(systemName: "star.fill" )
+                                .foregroundColor(.newSecundaryColor)
                         } else {
-                            Image(systemName: "star")}
+                            Image(systemName: "star")
+                                .foregroundColor(.newSecundaryColor)
+                        }
                     }
                     
                     
@@ -103,7 +106,10 @@ struct DetalleUIView : View {
                         self.presentationMode.wrappedValue.dismiss()
                         print("click and stop audio")
                     }){
-                            Text("Back")
+                            //Text("Back").foregroundColor(.newSecundaryColor)
+                        Image(systemName: "arrow.uturn.backward")
+                            .foregroundColor(.newSecundaryColor)
+                        
                     }
                 ).background(Color.newColorGreenLight)
         }
