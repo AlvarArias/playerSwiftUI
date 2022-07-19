@@ -29,7 +29,8 @@ struct DetalleUIView : View {
     @State var volum : Float = 0
     @State var sliderValue: Double = 0
 
-        
+    @State var showingStar = false
+    
     var body: some View {
         
         let url = URL(string: choice1.image)
@@ -48,8 +49,24 @@ struct DetalleUIView : View {
                 ProgressView()
             })
         
-                Text("Next programs")
+                HStack{
+                
+                    Text("Next programs").padding()
             
+                    Button {
+                        showingStar.toggle()
+                        print("Select Favorite")
+                        
+                    } label: {
+                        if showingStar {
+                           Image(systemName: "star.fill" )
+                        } else {
+                            Image(systemName: "star")}
+                    }
+                    
+                    
+                }
+                    
                 newXMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
