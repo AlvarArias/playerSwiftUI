@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SliderSwiftUIView: View {
-    
     // Usa decode helper
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
     
@@ -66,7 +65,17 @@ struct SliderSwiftUIView: View {
                             
                             Text(myRadioDemo[index].tagline).font(.body).lineLimit(3)
                                 .frame(width: 200)
+                                .font(.body)
                           
+                            Spacer()
+                            
+                            
+                            if (myRadioDemo[index].isFavorite) {
+                                            Image(systemName: "star.fill")
+                                    .foregroundColor(.yellow)
+                                        }
+                            
+                            
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
                                 
                                 Text("")

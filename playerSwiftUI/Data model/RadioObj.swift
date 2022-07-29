@@ -79,7 +79,7 @@ class User2: ObservableObject {
 }
 
 // Listado de radios 
-struct DemoRadio: Codable, Hashable {
+struct DemoRadio: Hashable, Codable  {
 
     let image: String
     let imagetemplate: String
@@ -89,6 +89,7 @@ struct DemoRadio: Codable, Hashable {
     let url: String
     let scheduleurl: String
     let xmltvid: String
+    var isFavorite: Bool
 }
 
 

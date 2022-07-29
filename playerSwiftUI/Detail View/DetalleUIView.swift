@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import Lottie
 
 class theURLSetting : ObservableObject {
     @Published var theURL: String = ""
@@ -30,10 +31,14 @@ struct DetalleUIView : View {
     @State var sliderValue: Double = 0
 
     @State var showingStar = false
+    @State var isShowEq = false
+    
+    // Binding
+    //@Binding var isSet: Bool
     
     var body: some View {
         
-        let url = URL(string: choice1.image)
+        //let url = URL(string: choice1.image)
     
         NavigationView {
         
@@ -50,12 +55,29 @@ struct DetalleUIView : View {
             })
         
                 HStack{
-                
+                    /*
+                    if isShowEq {
+                    LottieView(lottieFile: "music-equalizer")
+                        .frame(width: 50, height: 50)
+                    }
+                    */
+                    
                     Text("Next programs").padding()
-            
+                    /*
+                    Button {
+                                isSet.toggle()
+                            } label: {
+                                Label("Toggle Favorite", systemImage: isSet ? "star.fill" : "star")
+                                    .labelStyle(.iconOnly)
+                                    .foregroundColor(isSet ? .yellow : .gray)
+                            }
+                    */
+                    
                     Button {
                         showingStar.toggle()
                         print("Select Favorite")
+                        //choice1.isFavorite = true
+                    
                         
                     } label: {
                         if showingStar {
@@ -69,7 +91,12 @@ struct DetalleUIView : View {
                     
                     
                 }
-                    
+                
+                if isShowEq {
+                LottieView(lottieFile: "music-equalizer")
+                    .frame(width: 50, height: 50)
+                }
+                
                 newXMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
@@ -79,19 +106,20 @@ struct DetalleUIView : View {
                 player = AVPlayer(url: URL(string: choice1.url)!)
                 self.isPlaying.toggle()
                 player.play()
+                isShowEq = true
                 
                 
                 if isPlaying == false {
                     player.pause()
+                    isShowEq = false
                 }
                 
     
             })
             {
                 if isPlaying == true {
-                    
                     Image("Pause2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
-            
+                    
                 } else {
                     Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
                 }
@@ -124,6 +152,6 @@ struct DetalleUIView : View {
 
 struct DetalleUIView_Previews: PreviewProvider {
     static var previews: some View {
-        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.", siteurl: "https://sverigesradio.se/p1", url: "https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se"))
+        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.", siteurl: "https://sverigesradio.se/p1", url: "https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", isFavorite: false))
     }
 }

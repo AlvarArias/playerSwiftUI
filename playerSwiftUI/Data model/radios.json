@@ -8,7 +8,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/132.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=132",
         "channeltype": "Rikskanal",
-        "xmltvid": "p1.sr.se"
+        "xmltvid": "p1.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/163/2186754_512_512.jpg?preset=api-default-square",
@@ -19,7 +20,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/163.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=163",
         "channeltype": "Rikskanal",
-        "xmltvid": "p2.sr.se"
+        "xmltvid": "p2.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/164/2186756_512_512.jpg?preset=api-default-square",
@@ -30,7 +32,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/164.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=164",
         "channeltype": "Rikskanal",
-        "xmltvid": "p3.sr.se"
+        "xmltvid": "p3.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/105/7e0c4da5-427c-4d88-9b9d-94a7b104eabb.jpg?preset=api-default-square",
@@ -41,7 +44,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/213.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=213",
         "channeltype": "Lokal kanal",
-        "xmltvid": "p4blek.sr.se"
+        "xmltvid": "p4blek.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/161/37b7d118-6d38-4a7d-87fd-216caf6cb7c6.jpg?preset=api-default-square",
@@ -52,7 +56,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/223.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=223",
         "channeltype": "Lokal kanal",
-        "xmltvid": "p4dala.sr.se"
+        "xmltvid": "p4dala.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/94/99c16fdf-e9b7-4232-ba4b-223f0f8e4e79.jpg?preset=api-default-square",
@@ -63,7 +68,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/205.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=205",
         "channeltype": "Lokal kanal",
-        "xmltvid": "p4gotl.sr.se"
+        "xmltvid": "p4gotl.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/99/aae78c01-297f-495b-ab93-ec8eab92c0ea.jpg?preset=api-default-square",
@@ -74,7 +80,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/210.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=210",
         "channeltype": "Lokal kanal",
-        "xmltvid": "p4gavl.sr.se"
+        "xmltvid": "p4gavl.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/104/0904f0e7-53d3-4d22-b100-0c417b5db972.jpg?preset=api-default-square",
@@ -85,7 +92,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/212.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=212",
         "channeltype": "Lokal kanal",
-        "xmltvid": "p4gbg.sr.se"
+        "xmltvid": "p4gbg.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/128/df8f9818-c563-431f-930b-be1a49705008.jpg?preset=api-default-square",
@@ -96,7 +104,8 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/220.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=220",
         "channeltype": "Lokal kanal",
-        "xmltvid": "p4hall.sr.se"
+        "xmltvid": "p4hall.sr.se",
+        "isFavorite": false
     },
     {
         "image": "https://static-cdn.sr.se/images/78/3f969001-3c0d-46c0-a3a6-30b44ef999c0.jpg?preset=api-default-square",
@@ -107,6 +116,7 @@
         "url": "https://sverigesradio.se/topsy/direkt/srapi/200.mp3",
         "scheduleurl": "https://api.sr.se/v2/scheduledepisodes?channelid=200",
         "channeltype": "Lokal kanal",
-        "xmltvid": "p4jmtl.sr.se"
+        "xmltvid": "p4jmtl.sr.se",
+        "isFavorite": false
     }
 ]
