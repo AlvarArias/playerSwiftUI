@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SliderSwiftUIView: View {
-    ≈
+    
     /*
     var max: String {
         UserDefaults.standard.object(forKey: "username") as! String
