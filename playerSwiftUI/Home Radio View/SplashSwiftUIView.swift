@@ -10,7 +10,8 @@ import SwiftUI
 struct SplashSwiftUIView: View {
 
     @State var isActive:Bool = false
-
+    @ObservedObject var userSettings = UserSettings()
+    
     var body: some View {
         VStack {
             
@@ -21,6 +22,7 @@ struct SplashSwiftUIView: View {
             } else {
                 
                 Text("Wellcome").font(Font.largeTitle)
+                Text(userSettings.username)
                 Image("miRadio").resizable().aspectRatio(contentMode: .fit).padding().frame(height: 200)
                 
             }
