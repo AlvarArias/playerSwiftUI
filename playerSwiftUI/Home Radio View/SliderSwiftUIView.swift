@@ -16,6 +16,10 @@ struct SliderSwiftUIView: View {
     */
 
     @AppStorage("username") private var theUserName = ""
+    @AppStorage("ringtone") private var theFirstRadio = ""
+    
+   
+    //var namesOfIntegers: [Int: String] = [:]
     
     // Usa decode helper
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
@@ -28,6 +32,7 @@ struct SliderSwiftUIView: View {
     //@State private var animationAmount = 1.0
     @State var numberOfShakes: CGFloat = 0
     
+    
     var body: some View {
                
         NavigationView {
@@ -35,9 +40,45 @@ struct SliderSwiftUIView: View {
             VStack {
                 
                 Text(theUserName)
-                
+                //Text(theFirstRadio)
+            
                 TabView {
             
+                    if theFirstRadio == "P2" {
+                    
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                            Image("P2")
+                        }
+                        
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                            Image("P3")
+                        }
+                        
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                                Image("P1")
+                        }
+                        
+                        
+                    }
+                    
+                    else if theFirstRadio == "P3" {
+                        
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                            Image("P3")
+                        }
+                        
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                                Image("P1")
+                        }
+                        
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                            Image("P2")
+                        }
+                        
+                    }
+                    
+                    else {
+                    
             NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
                     Image("P1")
             }
@@ -49,12 +90,17 @@ struct SliderSwiftUIView: View {
             NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
                 Image("P3")
             }
+        
+                    }
+        
        
         }
         .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
-        
+        .onAppear(){
+            print(theFirstRadio)
+        }
                 
                 HStack {
                     Text("Select your radio").padding()

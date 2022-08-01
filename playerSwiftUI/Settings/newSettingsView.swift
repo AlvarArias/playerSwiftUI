@@ -32,7 +32,7 @@ struct newSettingsView: View {
                     }
                     
                 }
-                .pickerStyle(.segmented)
+                //.pickerStyle(.segmented)
                 //Text("Selected color: \(selectedColorIndex)")
             }
         }
