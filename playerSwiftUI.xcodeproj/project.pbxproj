@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62192A802796040C0090579A /* XMLSwiftUIView.swift */; };
 		62192A84279608CE0090579A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 62192A83279608CE0090579A /* XMLCoder */; };
+		622D45812897D409002810AD /* mySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45802897D409002810AD /* mySettings.swift */; };
+		622D45832897D45B002810AD /* newSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45822897D45B002810AD /* newSettingsView.swift */; };
 		6243647228816ED700A20017 /* mySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243647128816ED700A20017 /* mySettingsView.swift */; };
 		6244C2222885614200FE15B7 /* SerachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6244C2212885614200FE15B7 /* SerachView.swift */; };
 		624E945F2799C7B700803A83 /* newXMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */; };
@@ -63,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		62192A802796040C0090579A /* XMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLSwiftUIView.swift; sourceTree = "<group>"; };
+		622D45802897D409002810AD /* mySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySettings.swift; sourceTree = "<group>"; };
+		622D45822897D45B002810AD /* newSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSettingsView.swift; sourceTree = "<group>"; };
 		6231D0E6287F54590026A11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = playerSwiftUI/Info.plist; sourceTree = SOURCE_ROOT; };
 		6243647128816ED700A20017 /* mySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySettingsView.swift; sourceTree = "<group>"; };
 		6244C2212885614200FE15B7 /* SerachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6243647128816ED700A20017 /* mySettingsView.swift */,
+				622D45822897D45B002810AD /* newSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 				62A5540927989DAA00FB5615 /* Request.swift */,
 				629AC834279D998600AA2BD9 /* Data_formater.swift */,
 				629AC836279DF34300AA2BD9 /* network_checker.swift */,
+				622D45802897D409002810AD /* mySettings.swift */,
 			);
 			path = "Data model";
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 				629AC839279DF4C500AA2BD9 /* CheckNetworkView.swift in Sources */,
 				62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */,
 				62C06B4027936A4000FE5E7C /* BarrPlaySwiftUIView.swift in Sources */,
+				622D45832897D45B002810AD /* newSettingsView.swift in Sources */,
 				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
 				62ED857F2790CBC3009A7C1C /* SliderItem.swift in Sources */,
 				62D824772795AD5700461EF9 /* SplashSwiftUIView.swift in Sources */,
@@ -317,6 +324,7 @@
 				62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
 				6243647228816ED700A20017 /* mySettingsView.swift in Sources */,
+				622D45812897D409002810AD /* mySettings.swift in Sources */,
 				629AC837279DF34300AA2BD9 /* network_checker.swift in Sources */,
 				629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */,
 				6299BFB228940CE9003C1DB0 /* LottieView.swift in Sources */,

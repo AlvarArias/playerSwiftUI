@@ -16,6 +16,8 @@ struct SliderSwiftUIView: View {
     @State private var showingFavorite = false
     @State private var showingmySettings = false
     @State private var showingmySearch = false
+    //@State private var animationAmount = 1.0
+    @State var numberOfShakes: CGFloat = 0
     
     var body: some View {
                
@@ -26,7 +28,7 @@ struct SliderSwiftUIView: View {
                 TabView {
             
             NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
-                Image("P1")
+                    Image("P1")
             }
             
             NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
@@ -41,13 +43,19 @@ struct SliderSwiftUIView: View {
         .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
+        
                 
                 HStack {
                     Text("Select your radio").padding()
+                        
+                    
                     CheckNetworkView()
                 }
-                
-                
+                /*
+                .onAppear {
+                    withAnimation(.easeIn(duration: 2.0)) { numberOfShakes = 10}
+                                }
+                */
                 
                 List {
                     ForEach(items, id: \.self) { index in
@@ -114,7 +122,10 @@ struct SliderSwiftUIView: View {
                                                     Image(systemName: "gearshape")
                     .foregroundColor(.newSecundaryColor)
                                                 }
-                    .sheet(isPresented: $showingmySettings) {mySettingsView()}
+                    .sheet(isPresented: $showingmySettings) {
+                        //mySettingsView()
+                        newSettingsView()
+                    }
                    
                     Spacer()
                     Button { showingFavorite.toggle()

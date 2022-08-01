@@ -108,13 +108,11 @@ struct DetalleUIView : View {
                 player.play()
                 isShowEq = true
                 
-                
                 if isPlaying == false {
                     player.pause()
                     isShowEq = false
                 }
-                
-    
+        
             })
             {
                 if isPlaying == true {
