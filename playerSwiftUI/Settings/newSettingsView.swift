@@ -40,13 +40,13 @@ struct newSettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
-                Button {dismiss() } label: {
+                Button {dismiss()} label: {
                     Image(systemName: "arrow.down")
                     .foregroundColor(.newSecundaryColor)
                     
+                    }
                 }
-                }
-       }
+            }
             
             
         }

@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct SliderSwiftUIView: View {
-    
-    @ObservedObject var userSettings = UserSettings()
+    ≈
+    /*
+    var max: String {
+        UserDefaults.standard.object(forKey: "username") as! String
+    }
+    */
+
+    @AppStorage("username") private var theUserName = ""
     
     // Usa decode helper
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
@@ -27,6 +33,8 @@ struct SliderSwiftUIView: View {
         NavigationView {
             
             VStack {
+                
+                Text(theUserName)
                 
                 TabView {
             
@@ -96,8 +104,8 @@ struct SliderSwiftUIView: View {
                         } .listRowSeparator(.hidden)
                         
                                }
-                               //.navigationBarTitle("Radio App", displayMode: .inline)
-                               .navigationBarTitle(userSettings.username, displayMode: .inline)
+                               .navigationBarTitle("Radio App", displayMode: .inline)
+                    
                            }
                
                 /*
