@@ -76,7 +76,8 @@ struct DetalleUIView : View {
                     Button {
                         showingStar.toggle()
                         print("Select Favorite")
-                        //choice1.isFavorite = true
+                        //FIXME: Add Binding to favorites funtionallity
+                        
                     
                         
                     } label: {
@@ -97,6 +98,8 @@ struct DetalleUIView : View {
                     .frame(width: 50, height: 50)
                 }
                 
+                //TODO: Add song player now in other view
+                
                 newXMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
@@ -112,6 +115,25 @@ struct DetalleUIView : View {
                     player.pause()
                     isShowEq = false
                 }
+                
+                //TODO: Check backgroung sound is working and how to stop it See add Wiget for playing control
+                // Function play in background
+                
+                /*
+                do {
+                    try AVAudioSession.sharedInstance()
+                                          .setCategory(AVAudioSession.Category.playback)
+                    print("AVAudioSession Category Playback OK")
+                    do {
+                        try AVAudioSession.sharedInstance().setActive(true)
+                        print("AVAudioSession is Active")
+                    } catch let error as NSError {
+                        print(error.localizedDescription)
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                */
         
             })
             {

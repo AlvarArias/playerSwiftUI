@@ -115,7 +115,6 @@
 		6243647028816EA500A20017 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				6243647128816ED700A20017 /* mySettingsView.swift */,
 				622D45822897D45B002810AD /* newSettingsView.swift */,
 			);
 			path = Settings;
@@ -132,6 +131,7 @@
 		624E945D2799A64B00803A83 /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				6243647128816ED700A20017 /* mySettingsView.swift */,
 				6231D0E6287F54590026A11D /* Info.plist */,
 				62ED857E2790CBC2009A7C1C /* SliderItem.swift */,
 				629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */,
