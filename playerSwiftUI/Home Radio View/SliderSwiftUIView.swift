@@ -14,6 +14,7 @@ struct SliderSwiftUIView: View {
         UserDefaults.standard.object(forKey: "username") as! String
     }
     */
+   
 
     @AppStorage("username") private var theUserName = ""
     @AppStorage("ringtone") private var theFirstRadio = ""
@@ -41,9 +42,10 @@ struct SliderSwiftUIView: View {
                 
                 Text(theUserName)
                 //Text(theFirstRadio)
+               
             
                 TabView {
-            
+           
                     if theFirstRadio == "P2" {
                     
                         NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
@@ -98,9 +100,7 @@ struct SliderSwiftUIView: View {
         .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
-        .onAppear(){
-            print(theFirstRadio)
-        }
+        
                 
                 HStack {
                     Text("Select your radio").padding()

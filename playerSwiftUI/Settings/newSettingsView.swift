@@ -7,11 +7,24 @@
 
 import SwiftUI
 
+class RefreshActionPerformer: ObservableObject {
+    @Published private(set) var isPerforming = false
+
+    func perform(_ action: RefreshAction) async {
+        guard !isPerforming else { return }
+        isPerforming = true
+        await action()
+        isPerforming = false
+    }
+}
+
 struct newSettingsView: View {
     
     @ObservedObject var userSettings = UserSettings()
     
     @Environment(\.dismiss) var dismiss
+
+    @State private var showing = false
     
     var body: some View {
         NavigationView {
@@ -30,24 +43,29 @@ struct newSettingsView: View {
                     ForEach(userSettings.ringtones, id:\.self){ringtone in
                         Text(ringtone)
                     }
-                    
                 }
-                //.pickerStyle(.segmented)
-                //Text("Selected color: \(selectedColorIndex)")
+                Text("Selected radio: \(userSettings.ringtone)")
             }
         }
         .navigationBarTitle("Player Settings")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
-                Button {dismiss()} label: {
+                
+                Button { //dismiss()
+                    showing = true
+                    
+                } label: {
                     Image(systemName: "arrow.down")
                     .foregroundColor(.newSecundaryColor)
                     
                     }
+                .fullScreenCover(isPresented: $showing, content: SliderSwiftUIView.init)
+               
+                
                 }
-            }
             
+            }
             
         }
      }
