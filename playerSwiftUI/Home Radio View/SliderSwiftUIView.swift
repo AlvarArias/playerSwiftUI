@@ -9,18 +9,8 @@ import SwiftUI
 
 struct SliderSwiftUIView: View {
     
-    /*
-    var max: String {
-        UserDefaults.standard.object(forKey: "username") as! String
-    }
-    */
-   
-
     @AppStorage("username") private var theUserName = ""
     @AppStorage("ringtone") private var theFirstRadio = ""
-    
-   
-    //var namesOfIntegers: [Int: String] = [:]
     
     // Usa decode helper
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
@@ -41,9 +31,7 @@ struct SliderSwiftUIView: View {
             VStack {
                 
                 Text(theUserName)
-                //Text(theFirstRadio)
-               
-            
+             
                 TabView {
            
                     if theFirstRadio == "P2" {
@@ -108,11 +96,9 @@ struct SliderSwiftUIView: View {
                     
                     CheckNetworkView()
                 }
-                /*
-                .onAppear {
-                    withAnimation(.easeIn(duration: 2.0)) { numberOfShakes = 10}
-                                }
-                */
+                
+                // TODO: Add more radio Station
+                // FIXME: Show favorites and impleent this in the view
                 
                 List {
                     ForEach(items, id: \.self) { index in
@@ -153,7 +139,9 @@ struct SliderSwiftUIView: View {
                                .navigationBarTitle("Radio App", displayMode: .inline)
                     
                            }
-               
+                
+               //TODO: Add social shared funtionality
+                
                 /*
                 VStack {
                     Text("Radio on line")
@@ -181,7 +169,7 @@ struct SliderSwiftUIView: View {
                     .foregroundColor(.newSecundaryColor)
                                                 }
                     .sheet(isPresented: $showingmySettings) {
-                        //mySettingsView()
+                      
                         newSettingsView()
                     }
                    
