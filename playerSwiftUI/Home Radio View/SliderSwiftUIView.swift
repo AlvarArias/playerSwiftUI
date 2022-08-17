@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SliderSwiftUIView: View {
     
+
     @AppStorage("username") private var theUserName = ""
     @AppStorage("ringtone") private var theFirstRadio = ""
     
@@ -190,10 +191,8 @@ struct SliderSwiftUIView: View {
                                 }
                             }
                                 
-        }.onAppear(){ print(myRadioDemo[0])
-                
-    }
-
+        }
+        
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {

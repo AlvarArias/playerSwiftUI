@@ -15,6 +15,9 @@ class theURLSetting : ObservableObject {
 
 struct DetalleUIView : View {
     
+    // Testing song view model
+    @StateObject private var vm = SongViewModel()
+    
     @Environment(\.presentationMode) var presentationMode
     
     // Radio Object
@@ -99,6 +102,10 @@ struct DetalleUIView : View {
                 }
                 
                 //TODO: Add song player now in other view
+                // SongView Model and Sing Object Added
+                // Testing Fech Song is working
+                // MAke dinamis the channel for the Url
+                // Add the content to the Screen
                 
                 newXMLSwiftUIView()
             
@@ -167,6 +174,13 @@ struct DetalleUIView : View {
             print(receivedURL.theURL)
         })
         .environmentObject(receivedURL)
+        
+        .onAppear(perform: vm.fetchUsers)
+            .alert(isPresented: $vm.hasError, error: vm.error){
+                Button(action: vm.fetchUsers){
+                        Text("Retry")
+                }
+            }
     }
 }
 
