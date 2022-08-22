@@ -104,13 +104,14 @@ struct DetalleUIView : View {
                 //TODO: Add song player now in other view
                 // SongView Model and Sing Object Added
                 // Testing Fech Song is working
-                // MAke dinamis the channel for the Url
+                // Make dinamis the channel for the Url
                 // Add the content to the Screen
                 
                 newXMLSwiftUIView()
             
             //BarrPlaySwiftUIView()
-                
+            
+            //TODO: Make button play automatic when the view is load.
             Button( action: {
             
                 player = AVPlayer(url: URL(string: choice1.url)!)

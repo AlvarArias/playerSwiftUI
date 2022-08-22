@@ -23,6 +23,7 @@ struct SliderSwiftUIView: View {
     @State private var showingmySearch = false
     //@State private var animationAmount = 1.0
     @State var numberOfShakes: CGFloat = 0
+    @State private var isImageLoad = false
     
     
     var body: some View {
@@ -105,7 +106,21 @@ struct SliderSwiftUIView: View {
                     ForEach(items, id: \.self) { index in
                     
                         HStack {
-                           
+                            if (!isImageLoad) {
+                                AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 50, height: 50)
+                                },
+                                placeholder: {
+                                    ProgressView()
+                                }).onAppear {
+                                    isImageLoad = true
+                                    print(" Image is load \(isImageLoad)")
+                                }
+                                
+                            }
+                            
                             AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
