@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6d308e53a9c7e618b3ab9a32d5b502ae08c58355"
+      }
+    },
+    {
+      "identity" : "xmlcoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MaxDesiatov/XMLCoder.git",
+      "state" : {
+        "revision" : "f30119af03996939cc4f54e0bf0dda9f88a84da5",
+        "version" : "0.13.1"
+      }
+    }
+  ],
+  "version" : 2
+}
