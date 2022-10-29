@@ -29,13 +29,14 @@ struct scheduledEpisode {
     
     
      func loadData(theRadioURL: String) {
+         
+         if (theRadioURL == "") { return } else {
         
         let semaphore = DispatchSemaphore (value: 0)
         
 
         var request = URLRequest(url: URL(string: theRadioURL)!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
-
     
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
           guard let data = data else {
@@ -56,8 +57,12 @@ struct scheduledEpisode {
         }
         task.resume()
         semaphore.wait()
-        
+         
+         }
+             
         }
+         
+         
  
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {

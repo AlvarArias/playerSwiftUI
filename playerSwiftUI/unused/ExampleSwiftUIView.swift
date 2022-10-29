@@ -58,7 +58,7 @@ struct ExampleSwiftUIView: View {
                                        print("user.score\(user.score)")
                                        user.score += 1
                                        print(user.score)
-                                       print(" siteurl: \(myRadioDemo[0].siteurl) \(myRadioDemo.count)")
+                                       //print(" siteurl: \(myRadioDemo[0].siteurl) \(myRadioDemo.count)")
                                    }
                                    
                                }.padding()

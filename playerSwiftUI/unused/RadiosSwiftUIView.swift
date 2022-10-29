@@ -45,7 +45,7 @@ struct RadiosSwiftUIView: View {
 
                             isSelect.toggle()
                                 print(myRadioDemo[localIndex].image)
-                            print(" siteurl: \(myRadioDemo[localIndex].siteurl) \(myRadioDemo.count)")
+                            //print(" siteurl: \(myRadioDemo[localIndex].siteurl) \(myRadioDemo.count)")
                         }
                     }.padding()
                     //NavigationLink("", destination: DetailSwiftUIView(), isActive: $isSelect)

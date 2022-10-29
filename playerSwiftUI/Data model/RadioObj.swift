@@ -87,9 +87,25 @@ struct DemoRadio: Hashable, Codable  {
     let tagline: String
     let siteurl: String
     let url: String
-    let scheduleurl: String
+    let scheduleurl: String?
     let xmltvid: String
-    var isFavorite: Bool
+    //var isFavorite: Bool
+    let name: String
+    let id: String
+    
+    
 }
 
+class Favorites: ObservableObject {
+    @Published var theRadios: Set<DemoRadio> = []
+    //@Published var favorites: Set<String> = []
+    /**
+     init(red: Double, green: Double, blue: Double) {
+             self.red   = red
+             self.green = green
+             self.blue  = blue
+         }
+     */
+    
+}
 

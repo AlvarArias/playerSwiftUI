@@ -19,6 +19,8 @@ struct DetalleUIView : View {
     @StateObject private var vm = SongViewModel()
     
     @Environment(\.presentationMode) var presentationMode
+    // favorite
+    @Environment(\.managedObjectContext) var moc
     
     // Radio Object
     @StateObject var receivedURL = theURLSetting()
@@ -38,6 +40,9 @@ struct DetalleUIView : View {
     
     // Binding
     //@Binding var isSet: Bool
+    
+    // Favorites test
+    @StateObject var favorites = Favorites()
     
     var body: some View {
         
@@ -80,7 +85,9 @@ struct DetalleUIView : View {
                         showingStar.toggle()
                         print("Select Favorite")
                         //FIXME: Add Binding to favorites funtionallity
-                        
+                        //favorites.theRadios.description = "Test de favoritos"
+                        let favorite = Favorite(context: moc)
+                        //favorite.isFavorite
                     
                         
                     } label: {
@@ -153,7 +160,7 @@ struct DetalleUIView : View {
                 }
             }
                 
-            }.navigationBarTitle("Radio", displayMode: .inline)
+            }.navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
                 // new button back
                 .navigationBarItems(
                     leading:
@@ -169,9 +176,10 @@ struct DetalleUIView : View {
                     }
                 ).background(Color.newColorGreenLight)
         }
+        .background(Color.newColorGreenLight)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
-            receivedURL.theURL = choice1.scheduleurl
+            receivedURL.theURL = choice1.scheduleurl ?? "http://api.sr.se/v2/scheduledepisodes?channelid=132"
             print(receivedURL.theURL)
         })
         .environmentObject(receivedURL)
@@ -187,6 +195,6 @@ struct DetalleUIView : View {
 
 struct DetalleUIView_Previews: PreviewProvider {
     static var previews: some View {
-        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.", siteurl: "https://sverigesradio.se/p1", url: "https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", isFavorite: false))
+        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"))
     }
 }

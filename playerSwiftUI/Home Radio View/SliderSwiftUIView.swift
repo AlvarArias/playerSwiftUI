@@ -14,9 +14,9 @@ struct SliderSwiftUIView: View {
     @AppStorage("ringtone") private var theFirstRadio = ""
     
     // Usa decode helper
-    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
+    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios23.json")
     
-    @State var items = 0...9
+    @State var items = 0...51
     
     @State private var showingFavorite = false
     @State private var showingmySettings = false
@@ -136,11 +136,12 @@ struct SliderSwiftUIView: View {
                           
                             Spacer()
                             
-                            
+                            /*
                             if (myRadioDemo[index].isFavorite) {
                                             Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
                                         }
+                            */
                             
                             
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {

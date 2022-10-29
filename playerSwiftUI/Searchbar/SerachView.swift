@@ -13,8 +13,8 @@ struct SerachView: View {
     let names = ["Alvar","Juan","Martin"]
     @State private var searchText=""
     
-    @State var items = 0...9
-    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios.json")
+    @State var items = 0...51
+    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios23.json")
     
     @Environment(\.dismiss) var dismiss
     

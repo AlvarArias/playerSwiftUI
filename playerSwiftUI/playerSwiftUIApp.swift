@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct playerSwiftUIApp: App {
+    
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             SplashSwiftUIView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
            
         }
     }
