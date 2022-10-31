@@ -1,30 +1,34 @@
 //
-//  SerachView.swift
+//  FavoriteDispView.swift
 //  playerSwiftUI
 //
-//  Created by Alvar Arias on 2022-07-18.
+//  Created by Alvar Arias on 2022-10-31.
 //
-
 import Foundation
 import SwiftUI
 
-struct SerachView: View {
+struct FavoriteDispView: View {
     
-    @State private var searchText=""
+    @State private var searchText="163"
     
-    @State var items = 0...51
-    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios23.json")
+    @State private var items = 0...51
+    @State private var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios23.json")
     
     @Environment(\.dismiss) var dismiss
     
+    // User default for favorites
+    let defaults = UserDefaults.standard
+    @State var showingStar = false
     
     var body: some View {
         NavigationView {
             VStack {
                  
                 List {
-                    ForEach(searchResults, id: \.self) { name in
-                       
+                    ForEach(myRadioDemo, id: \.self) { name in
+                    
+                        if checkIsFavorite(myRadioFavo: name.id) {
+                            
                         HStack {
                            
                             AsyncImage(url: URL(string: name.image), content: { image in
@@ -47,13 +51,11 @@ struct SerachView: View {
                            
                         } .listRowSeparator(.hidden)
                         
+                    }
                         
                     }
-                    .navigationBarTitle("Radio App search", displayMode: .inline)
+                    .navigationBarTitle("Radio App Favorites", displayMode: .inline)
                 }
-                
-                .searchable(text: $searchText,
-                            placement: .navigationBarDrawer(displayMode: .always))
                 
                }
             .toolbar {
@@ -67,28 +69,38 @@ struct SerachView: View {
            }
         }
     }
-           var searchResults: [DemoRadio] {
-               if searchText.isEmpty {
-                   return myRadioDemo
-               } else {
-                   return myRadioDemo.filter { word in
-                       word.tagline.contains(searchText)
-               }
-               
-              
-           }
-       }
+           
+    
+    func checkIsFavorite(myRadioFavo:String) ->Bool {
+        
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+            let decoder = JSONDecoder()
+            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+                print("loadedPerson.name")
+                print(loadedPerson.mytest)
+                
+                // Check value in array
+                if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
+                   // it exists, do something
+                 //print("Radio \(myRadioFavo) is Favorite")
+                 
+                return true
+                    
+                } else {
+                   //item could not be found
+                    //print("Radio \(myRadioFavo) is not Favorite")
+                    
+                    return false
+                }
+            }
+        }
+        return false
+    }
 
 }
     
-/*
-struct SerachView_Previews: PreviewProvider {
+struct FavoriteDispView_Previews: PreviewProvider {
     static var previews: some View {
-        SerachView()
+        FavoriteDispView()
     }
 }
-*/
-    
-    
-
-

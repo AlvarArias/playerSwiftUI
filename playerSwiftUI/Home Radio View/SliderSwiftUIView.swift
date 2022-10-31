@@ -204,7 +204,7 @@ struct SliderSwiftUIView: View {
                                                     Image(systemName: "star")
                     .foregroundColor(.newSecundaryColor)
                                                     
-                    .sheet(isPresented: $showingFavorite) {MainFavoritesView()}
+                    .sheet(isPresented: $showingFavorite) {FavoriteDispView()}
                                                     
                                                 }
                     Spacer()
