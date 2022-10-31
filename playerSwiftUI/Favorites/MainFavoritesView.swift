@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Person: Codable {
-    //var name: String
     var mytest : [String]
 }
 
@@ -16,11 +15,9 @@ struct Person: Codable {
 
 struct MainFavoritesView: View {
     
-    @ObservedObject var userSettings = UserSettings()
-    @State var showingStar = false
     
-    //let taylor = Person(name: "Taylor Swift")
-    let taylor = Person(mytest: ["p1", "p2"])
+    @State var showingStar = false
+
     // User default for favorites
     let defaults = UserDefaults.standard
     
@@ -28,8 +25,7 @@ struct MainFavoritesView: View {
     var body: some View {
         VStack{
         Text("Favorite")
-        Text(userSettings.favorite.description)
-            
+        
             Button {
                 print("Save Data")
                 print(checkIsFavorite(myRadioFavo: "p1"))
@@ -48,11 +44,11 @@ struct MainFavoritesView: View {
             Button {
                 showingStar.toggle()
                 if showingStar {
-                    //print(showingStar)
+    
                     saveNewData()
                     
                 } else {
-                    //print(showingStar)
+                  
                     deleteNewData()
                 }
                 
@@ -61,7 +57,7 @@ struct MainFavoritesView: View {
                 if showingStar {
                    Image(systemName: "star.fill" )
                         .foregroundColor(.newSecundaryColor)
-                } else if checkIsFavorite(myRadioFavo: "p1") {
+                } else if checkIsFavorite(myRadioFavo: "p4") {
                    
                     Image(systemName: "star.fill" )
                          .foregroundColor(.newSecundaryColor)
@@ -96,7 +92,7 @@ struct MainFavoritesView: View {
                 print(loadedPerson.mytest)
                 
                 // Check value in array
-                if loadedPerson.mytest.contains(where: {$0 == "p1"}) {
+                if loadedPerson.mytest.contains(where: {$0 == "p4"}) {
                    // it exists, do something
                    print("element exists")
                     
@@ -104,7 +100,7 @@ struct MainFavoritesView: View {
                     
                 } else {
                    //item could not be found
-                    let moreData = "p1"
+                    let moreData = "p4"
                     loadedPerson.mytest.append(moreData)
                     print("saveNewData()")
                     print(loadedPerson.mytest)
@@ -125,10 +121,10 @@ struct MainFavoritesView: View {
                 print(loadedPerson.mytest)
                 
                 // Check value in array
-                if loadedPerson.mytest.contains(where: {$0 == "p1"}) {
+                if loadedPerson.mytest.contains(where: {$0 == "p4"}) {
                    // it exists, do something
                  print("P1 exists")
-                 let myIndex = loadedPerson.mytest.firstIndex(of: "p1")
+                 let myIndex = loadedPerson.mytest.firstIndex(of: "p4")
                     print(myIndex!)
                  
                     loadedPerson.mytest.remove(at: myIndex!)

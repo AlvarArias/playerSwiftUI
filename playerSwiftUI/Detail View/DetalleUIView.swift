@@ -48,7 +48,6 @@ struct DetalleUIView : View {
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
     let defaults = UserDefaults.standard
-    @State private var myArray = [String]()
     
     var body: some View {
         
@@ -77,83 +76,29 @@ struct DetalleUIView : View {
                     */
                     
                     Text("Next programs").padding()
-                    /*
-                    Button {
-                                isSet.toggle()
-                            } label: {
-                                Label("Toggle Favorite", systemImage: isSet ? "star.fill" : "star")
-                                    .labelStyle(.iconOnly)
-                                    .foregroundColor(isSet ? .yellow : .gray)
-                            }
-                    */
-                    
+                   
+                   // nuevo boton
                     Button {
                         showingStar.toggle()
-                        print("Select Favorite")
-                        //FIXME: Add Binding to favorites funtionallity
-                        //favorites.theRadios.description = "Test de favoritos"
-                        isFavorite = true
-                        //favorite.isFavorite
-                        /*
-                         let favorite = Favorite(context: moc)
-                         favorite.id = choice1.id
-                         favorite.name = choice1.name
-                         favorite.image = choice1.image
-                         favorite.isFavorite = isFavorite
-                        favorite.tagline = choice1.tagline
-                        favorite.url = choice1.url
-                        favorite.scheduleurl = choice1.scheduleurl
-                    
-                         try? moc.save()
-                         */
-                        /*
-                        print(choice1.id)
-                        print(choice1.name)
-                        print(choice1.image)
-                        print(isFavorite)
-                        print(choice1.tagline)
-                        print(choice1.url)
-                        print(choice1.scheduleurl)
-                        */
-                        
-                        //print("test song")
-                        //vm.fetchUsers()
-                        print(myArray)
-                        if showingStar == true {
-                            print("Star fill")
-                            
-                            // get the initial value
-                            let myArray = userSettings.favorite
-                            print("my array: \(myArray)")
-                            
-                            //remove eold array
-                            UserDefaults.standard.removeObject(forKey: "myArray")
-                            
-                            // add the new value
-                            self.myArray.append(choice1.id)
-                            print("new Array")
-                            
-                            // Set a new array
-                            defaults.set(myArray, forKey: "SavedArray")
-                            print("new user array")
-                            print(userSettings.favorite.description)
+                        if showingStar {
+            
+                            saveNewData()
                             
                         } else {
-                            print("Star empy")
-                            /*
-                            let useTouchID = defaults.array(forKey: "SavedArray")
-                            print("exist array")
-                            print(useTouchID ?? "no array")
-                            */
-                            print(userSettings.favorite.description)
-                            
+                          
+                            deleteNewData()
                         }
                         
-                        
                     } label: {
+                        
                         if showingStar {
                            Image(systemName: "star.fill" )
                                 .foregroundColor(.newSecundaryColor)
+                        } else if checkIsFavorite(myRadioFavo: choice1.id) {
+                           
+                            Image(systemName: "star.fill" )
+                                 .foregroundColor(.newSecundaryColor)
+                            
                         } else {
                             Image(systemName: "star")
                                 .foregroundColor(.newSecundaryColor)
@@ -253,6 +198,102 @@ struct DetalleUIView : View {
             }
          */
     }
+    
+    // Funciones Favorites
+    func saveData(myData: Person) {
+        
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(myData) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "SavedPerson")
+        }
+    }
+    
+    func saveNewData() {
+        
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+            let decoder = JSONDecoder()
+            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+                print("loadedPerson.name")
+                //print(loadedPerson.name)
+                print(loadedPerson.mytest)
+                
+                // Check value in array
+                if loadedPerson.mytest.contains(where: {$0 == choice1.id}) {
+                   // it exists, do something
+                   print("element exists")
+                    
+                 return
+                    
+                } else {
+                   //item could not be found
+                    let moreData = choice1.id
+                    loadedPerson.mytest.append(moreData)
+                    print("saveNewData()")
+                    print(loadedPerson.mytest)
+                    saveData(myData: loadedPerson)
+                    print("new element added")
+                }
+            }
+        } else { print("no data")}
+        
+    }
+    
+    func deleteNewData() {
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+            let decoder = JSONDecoder()
+            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+                print("loadedPerson.name")
+                //print(loadedPerson.name)
+                print(loadedPerson.mytest)
+                
+                // Check value in array
+                if loadedPerson.mytest.contains(where: {$0 == choice1.id}) {
+                   // it exists, do something
+                 print("Favorite exists")
+                    let myIndex = loadedPerson.mytest.firstIndex(of: choice1.id)
+                    print(myIndex!)
+                 
+                    loadedPerson.mytest.remove(at: myIndex!)
+                    
+                } else {
+                   //item could not be found
+                    print("elemento no existe")
+                }
+                
+                print("deleteNewData()")
+                print(loadedPerson.mytest)
+                
+                saveData(myData: loadedPerson)
+                
+            }
+        } else { print("no data")}
+    }
+    
+    
+    func checkIsFavorite(myRadioFavo:String) ->Bool {
+        
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+            let decoder = JSONDecoder()
+            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+                print("loadedPerson.name")
+                print(loadedPerson.mytest)
+                
+                // Check value in array
+                if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
+                
+                return true
+                    
+                } else {
+    
+                    return false
+                }
+            }
+        }
+        return false
+    }
+    
+    
 }
 
 struct DetalleUIView_Previews: PreviewProvider {
