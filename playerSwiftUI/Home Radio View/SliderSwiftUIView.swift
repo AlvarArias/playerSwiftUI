@@ -29,7 +29,7 @@ struct SliderSwiftUIView: View {
    
     // User default for favorites
     let defaults = UserDefaults.standard
-    @State var showingStar = false
+  
     
     var body: some View {
                
@@ -108,37 +108,13 @@ struct SliderSwiftUIView: View {
                 
                 // TODO: Add more radio Station
                 // FIXME: Show favorites and impleent this in the view
-                
+              
+                    
                 List {
                     ForEach(items, id: \.self) { index in
                     
                         HStack {
-                            /*
-                            if (!isImageLoad) {
-                                AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 50, height: 50)
-                                },
-                                placeholder: {
-                                    ProgressView()
-                                }).onAppear {
-                                    isImageLoad = true
-                                    print(" Image is load \(isImageLoad)")
-                                }
-                                
-                            }
-                            */
-                            /*
-                            AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                            },
-                            placeholder: {
-                                ProgressView()
-                            })
-                            */
+                            
                             CachedAsyncImage (url: URL(string: myRadioDemo[index].image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -155,7 +131,6 @@ struct SliderSwiftUIView: View {
                           
                             Spacer()
                             
-                            
                             if checkIsFavorite(myRadioFavo: myRadioDemo[index].id) {
                                  Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
@@ -163,10 +138,7 @@ struct SliderSwiftUIView: View {
                                 Image(systemName: "star")
                                  
                             }
-                           
-                            
-                            
-                            
+                               
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
                                 
                                 Text("")
@@ -179,6 +151,11 @@ struct SliderSwiftUIView: View {
                                .navigationBarTitle("Radio App", displayMode: .inline)
                     
                            }
+                .onAppear {
+                    print("list appear")
+                   
+                }
+                
                 
                //TODO: Add social shared funtionality
                 

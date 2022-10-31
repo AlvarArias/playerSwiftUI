@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CachedAsyncImage
 
 struct SerachView: View {
     
@@ -17,6 +18,8 @@ struct SerachView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    // User default for favorites
+    let defaults = UserDefaults.standard
     
     var body: some View {
         NavigationView {
@@ -26,7 +29,7 @@ struct SerachView: View {
                     ForEach(searchResults, id: \.self) { name in
                        
                         HStack {
-                           
+                           /*
                             AsyncImage(url: URL(string: name.image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -35,9 +38,33 @@ struct SerachView: View {
                             placeholder: {
                                 ProgressView()
                             })
+                            */
+                            
+                            CachedAsyncImage (url: URL(string: name.image), content: { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 50, height: 50)
+                            },
+                            placeholder: {
+                                ProgressView()
+                            })
+                            
                             
                             Text(name.tagline).font(.body).lineLimit(3)
                                 .frame(width: 200)
+                                .font(.body)
+                            
+                            Spacer()
+                            
+                            
+                            if checkIsFavorite(myRadioFavo: name.id) {
+                                 Image(systemName: "star.fill")
+                                    .foregroundColor(.yellow)
+                            } else {
+                                Image(systemName: "star")
+                                 
+                            }
+                           
                           
                             NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
                                 
@@ -78,6 +105,33 @@ struct SerachView: View {
               
            }
        }
+    
+    func checkIsFavorite(myRadioFavo:String) -> Bool{
+        
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+                print("loadedPerson.name")
+                print(loadedPerson.mytest)
+                
+                // Check value in array
+                if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
+                   // it exists, do something
+                 //print("Radio \(myRadioFavo) is Favorite")
+                 
+                return true
+                    
+                } else {
+                   //item could not be found
+                    //print("Radio \(myRadioFavo) is not Favorite")
+                    
+                    return false
+                }
+            }
+        }
+        return false
+    }
+    
 
 }
     

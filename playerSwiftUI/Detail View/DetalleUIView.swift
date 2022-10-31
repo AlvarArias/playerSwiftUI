@@ -19,9 +19,8 @@ struct DetalleUIView : View {
     @StateObject private var vm = SongViewModel()
     
     @Environment(\.presentationMode) var presentationMode
-    // favorite
-    @Environment(\.managedObjectContext) var moc
-    
+  
+
     // Radio Object
     @StateObject var receivedURL = theURLSetting()
     var choice: String
@@ -39,11 +38,8 @@ struct DetalleUIView : View {
     @State var isShowEq = false
     @State private var isFavorite = false
     
-    // Binding
-    //@Binding var isSet: Bool
-    
-    // Favorites test
-    @StateObject var favorites = Favorites()
+    // Favorites
+    //@StateObject var favorites = Favorites()
     
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()

@@ -624,8 +624,8 @@
     "name": "SR Extra14"
   },
   {
-    "image": "",
-    "imagetemplate": "",
+    "image": "https://static-cdn.sr.se/images/4866/92556cd3-3254-4424-91bb-6ba511f60f4c.jpg?preset=api-default-square",
+    "imagetemplate": "https://static-cdn.sr.se/images/4866/92556cd3-3254-4424-91bb-6ba511f60f4c.jpg",
     "color": "808080",
     "tagline": "Evenemangskanal från Sverigesradio",
     "siteurl": "https://sverigesradio.se/",

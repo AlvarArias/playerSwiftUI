@@ -6,6 +6,7 @@
 //
 import Foundation
 import SwiftUI
+import CachedAsyncImage
 
 struct FavoriteDispView: View {
     
@@ -31,6 +32,7 @@ struct FavoriteDispView: View {
                             
                         HStack {
                            
+                            /*
                             AsyncImage(url: URL(string: name.image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -39,7 +41,17 @@ struct FavoriteDispView: View {
                             placeholder: {
                                 ProgressView()
                             })
+                            */
+                            CachedAsyncImage (url: URL(string: name.image), content: { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 50, height: 50)
+                            },
+                            placeholder: {
+                                ProgressView()
+                            })
                             
+                             
                             Text(name.tagline).font(.body).lineLimit(3)
                                 .frame(width: 200)
                                 .font(.body)
