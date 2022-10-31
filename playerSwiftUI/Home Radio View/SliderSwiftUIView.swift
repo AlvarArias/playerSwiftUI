@@ -25,6 +25,12 @@ struct SliderSwiftUIView: View {
     @State var numberOfShakes: CGFloat = 0
     @State private var isImageLoad = false
     
+    @State var tasks : [Task] = []
+    let firstElement = Task(id: "203")
+    let secondElement = Task(id: "167")
+    
+                 
+    
     
     var body: some View {
                
@@ -90,7 +96,9 @@ struct SliderSwiftUIView: View {
         .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
-        
+        .onAppear {
+            tasks.append(contentsOf: [firstElement, secondElement])
+        }
                 
                 HStack {
                     Text("Select your radio").padding()
@@ -195,6 +203,9 @@ struct SliderSwiftUIView: View {
                                                 } label: {
                                                     Image(systemName: "star")
                     .foregroundColor(.newSecundaryColor)
+                                                    
+                    .sheet(isPresented: $showingFavorite) {MainFavoritesView()}
+                                                    
                                                 }
                     Spacer()
                     Button { showingmySearch.toggle()

@@ -13,14 +13,16 @@
 		622D45832897D45B002810AD /* newSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45822897D45B002810AD /* newSettingsView.swift */; };
 		6243647228816ED700A20017 /* mySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243647128816ED700A20017 /* mySettingsView.swift */; };
 		6244C2222885614200FE15B7 /* SerachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6244C2212885614200FE15B7 /* SerachView.swift */; };
+		624CC691290FD09B007186A2 /* MainFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CC690290FD09B007186A2 /* MainFavoritesView.swift */; };
+		624CC693290FE2A7007186A2 /* NewFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CC692290FE2A7007186A2 /* NewFavoriteModel.swift */; };
 		624D37D328ACC917008A5F3A /* song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D37D228ACC917008A5F3A /* song.swift */; };
 		624D37D528ACC92F008A5F3A /* songViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D37D428ACC92F008A5F3A /* songViewModel.swift */; };
-		624E80B8290D778F005E4450 /* radios2.json in Resources */ = {isa = PBXBuildFile; fileRef = 624E80B7290D778F005E4450 /* radios2.json */; };
 		624E80BA290D7E6A005E4450 /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 624E80B9290D7E6A005E4450 /* radios23.json */; };
 		624E945F2799C7B700803A83 /* newXMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */; };
 		624F747F290C3268003C3849 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F747E290C3268003C3849 /* DataController.swift */; };
 		624F7482290C32B3003C3849 /* ModelPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 624F7480290C32B3003C3849 /* ModelPlayer.xcdatamodeld */; };
 		6256950B28B35D12004DD765 /* playerSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6256950A28B35D12004DD765 /* playerSwiftUITests.swift */; };
+		625E8709290EE7230030E31A /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E8708290EE7230030E31A /* FavoritesView.swift */; };
 		6299BFAE28940B30003C1DB0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6299BFAD28940B30003C1DB0 /* Lottie */; };
 		6299BFB028940C59003C1DB0 /* music-equalizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 6299BFAF28940C59003C1DB0 /* music-equalizer.json */; };
 		6299BFB228940CE9003C1DB0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299BFB128940CE9003C1DB0 /* LottieView.swift */; };
@@ -87,15 +89,17 @@
 		6231D0E6287F54590026A11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = playerSwiftUI/Info.plist; sourceTree = SOURCE_ROOT; };
 		6243647128816ED700A20017 /* mySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySettingsView.swift; sourceTree = "<group>"; };
 		6244C2212885614200FE15B7 /* SerachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachView.swift; sourceTree = "<group>"; };
+		624CC690290FD09B007186A2 /* MainFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFavoritesView.swift; sourceTree = "<group>"; };
+		624CC692290FE2A7007186A2 /* NewFavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavoriteModel.swift; sourceTree = "<group>"; };
 		624D37D228ACC917008A5F3A /* song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = song.swift; sourceTree = "<group>"; };
 		624D37D428ACC92F008A5F3A /* songViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songViewModel.swift; sourceTree = "<group>"; };
-		624E80B7290D778F005E4450 /* radios2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios2.json; sourceTree = "<group>"; };
 		624E80B9290D7E6A005E4450 /* radios23.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios23.json; sourceTree = "<group>"; };
 		624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newXMLSwiftUIView.swift; sourceTree = "<group>"; };
 		624F747E290C3268003C3849 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		624F7481290C32B3003C3849 /* ModelPlayer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelPlayer.xcdatamodel; sourceTree = "<group>"; };
 		6256950828B35D12004DD765 /* playerSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playerSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6256950A28B35D12004DD765 /* playerSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUITests.swift; sourceTree = "<group>"; };
+		625E8708290EE7230030E31A /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = playerSwiftUI.entitlements; sourceTree = "<group>"; };
 		6299BFAF28940C59003C1DB0 /* music-equalizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "music-equalizer.json"; sourceTree = "<group>"; };
 		6299BFB128940CE9003C1DB0 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,16 @@
 			path = Searchbar;
 			sourceTree = "<group>";
 		};
+		624CC68F290FD078007186A2 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				625E8708290EE7230030E31A /* FavoritesView.swift */,
+				624CC690290FD09B007186A2 /* MainFavoritesView.swift */,
+				624CC692290FE2A7007186A2 /* NewFavoriteModel.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		624D37D128ACC8CC008A5F3A /* Song playing now */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +212,6 @@
 			children = (
 				624D37D128ACC8CC008A5F3A /* Song playing now */,
 				62DBB5B0278CE8FA003EEFE2 /* radios.json */,
-				624E80B7290D778F005E4450 /* radios2.json */,
 				624E80B9290D7E6A005E4450 /* radios23.json */,
 				624F7480290C32B3003C3849 /* ModelPlayer.xcdatamodeld */,
 				62A9F020275F8DE300B345AE /* RadioObj.swift */,
@@ -235,6 +248,7 @@
 		62A9F00B275F5B3500B345AE /* playerSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				624CC68F290FD078007186A2 /* Favorites */,
 				628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */,
 				624E945D2799A64B00803A83 /* unused */,
 				62A9F024275FEE5700B345AE /* Info.plist */,
@@ -377,7 +391,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				624E80B8290D778F005E4450 /* radios2.json in Resources */,
 				6299BFB028940C59003C1DB0 /* music-equalizer.json in Resources */,
 				62DBB5B1278CE8FA003EEFE2 /* radios.json in Resources */,
 				624E80BA290D7E6A005E4450 /* radios23.json in Resources */,
@@ -413,14 +426,17 @@
 				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
 				62ED857F2790CBC3009A7C1C /* SliderItem.swift in Sources */,
 				624D37D528ACC92F008A5F3A /* songViewModel.swift in Sources */,
+				624CC693290FE2A7007186A2 /* NewFavoriteModel.swift in Sources */,
 				62D824772795AD5700461EF9 /* SplashSwiftUIView.swift in Sources */,
 				6244C2222885614200FE15B7 /* SerachView.swift in Sources */,
 				629D68BB278EC409005E0214 /* Helper.swift in Sources */,
 				62A9F021275F8DE300B345AE /* RadioObj.swift in Sources */,
 				629AC835279D998600AA2BD9 /* Data_formater.swift in Sources */,
+				624CC691290FD09B007186A2 /* MainFavoritesView.swift in Sources */,
 				629F1C8127905D27001BF441 /* SliderSwiftUIView.swift in Sources */,
 				62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
+				625E8709290EE7230030E31A /* FavoritesView.swift in Sources */,
 				6243647228816ED700A20017 /* mySettingsView.swift in Sources */,
 				624F747F290C3268003C3849 /* DataController.swift in Sources */,
 				622D45812897D409002810AD /* mySettings.swift in Sources */,

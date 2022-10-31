@@ -87,7 +87,7 @@ struct DemoRadio: Hashable, Codable  {
     let tagline: String
     let siteurl: String
     let url: String
-    let scheduleurl: String?
+    let scheduleurl: String
     let xmltvid: String
     //var isFavorite: Bool
     let name: String

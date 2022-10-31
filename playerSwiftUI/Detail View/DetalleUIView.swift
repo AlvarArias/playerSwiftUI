@@ -37,12 +37,18 @@ struct DetalleUIView : View {
 
     @State var showingStar = false
     @State var isShowEq = false
+    @State private var isFavorite = false
     
     // Binding
     //@Binding var isSet: Bool
     
     // Favorites test
     @StateObject var favorites = Favorites()
+    
+    // User default for favorites
+    @ObservedObject var userSettings = UserSettings()
+    let defaults = UserDefaults.standard
+    @State private var myArray = [String]()
     
     var body: some View {
         
@@ -86,9 +92,63 @@ struct DetalleUIView : View {
                         print("Select Favorite")
                         //FIXME: Add Binding to favorites funtionallity
                         //favorites.theRadios.description = "Test de favoritos"
-                        let favorite = Favorite(context: moc)
+                        isFavorite = true
                         //favorite.isFavorite
+                        /*
+                         let favorite = Favorite(context: moc)
+                         favorite.id = choice1.id
+                         favorite.name = choice1.name
+                         favorite.image = choice1.image
+                         favorite.isFavorite = isFavorite
+                        favorite.tagline = choice1.tagline
+                        favorite.url = choice1.url
+                        favorite.scheduleurl = choice1.scheduleurl
                     
+                         try? moc.save()
+                         */
+                        /*
+                        print(choice1.id)
+                        print(choice1.name)
+                        print(choice1.image)
+                        print(isFavorite)
+                        print(choice1.tagline)
+                        print(choice1.url)
+                        print(choice1.scheduleurl)
+                        */
+                        
+                        //print("test song")
+                        //vm.fetchUsers()
+                        print(myArray)
+                        if showingStar == true {
+                            print("Star fill")
+                            
+                            // get the initial value
+                            let myArray = userSettings.favorite
+                            print("my array: \(myArray)")
+                            
+                            //remove eold array
+                            UserDefaults.standard.removeObject(forKey: "myArray")
+                            
+                            // add the new value
+                            self.myArray.append(choice1.id)
+                            print("new Array")
+                            
+                            // Set a new array
+                            defaults.set(myArray, forKey: "SavedArray")
+                            print("new user array")
+                            print(userSettings.favorite.description)
+                            
+                        } else {
+                            print("Star empy")
+                            /*
+                            let useTouchID = defaults.array(forKey: "SavedArray")
+                            print("exist array")
+                            print(useTouchID ?? "no array")
+                            */
+                            print(userSettings.favorite.description)
+                            
+                        }
+                        
                         
                     } label: {
                         if showingStar {
@@ -179,17 +239,19 @@ struct DetalleUIView : View {
         .background(Color.newColorGreenLight)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
-            receivedURL.theURL = choice1.scheduleurl ?? "http://api.sr.se/v2/scheduledepisodes?channelid=132"
+            receivedURL.theURL = choice1.scheduleurl 
             print(receivedURL.theURL)
         })
         .environmentObject(receivedURL)
-        
+       
+        /*
         .onAppear(perform: vm.fetchUsers)
             .alert(isPresented: $vm.hasError, error: vm.error){
                 Button(action: vm.fetchUsers){
                         Text("Retry")
                 }
             }
+         */
     }
 }
 

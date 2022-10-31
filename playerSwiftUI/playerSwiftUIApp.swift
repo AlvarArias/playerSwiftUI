@@ -15,6 +15,7 @@ struct playerSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             SplashSwiftUIView()
+            //FavoritesView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
            
         }

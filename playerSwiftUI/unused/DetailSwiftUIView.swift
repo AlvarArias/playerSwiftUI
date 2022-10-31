@@ -51,7 +51,7 @@ struct DetailSwiftUIView_Previews: PreviewProvider {
    
  static var previews: some View {
      
-     var theRadio = [myRadio(radioURL: "132", chanelID: "132", radioName: "P1", radioLogoName: "P1"), myRadio(radioURL: "2562", chanelID: "132", radioName: "P2", radioLogoName: "P2"), myRadio(radioURL: "164", chanelID: "164", radioName: "P3", radioLogoName: "P3")]
+     let theRadio = [myRadio(radioURL: "132", chanelID: "132", radioName: "P1", radioLogoName: "P1"), myRadio(radioURL: "2562", chanelID: "132", radioName: "P2", radioLogoName: "P2"), myRadio(radioURL: "164", chanelID: "164", radioName: "P3", radioLogoName: "P3")]
      
      
         DetailSwiftUIView(myRadioNowD: theRadio, localIndexD: 0)

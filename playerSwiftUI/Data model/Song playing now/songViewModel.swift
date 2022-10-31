@@ -20,7 +20,7 @@ final class SongViewModel: ObservableObject {
         isRefreshing = true
         hasError = false
         
-        let userUrlString = "http://api.sr.se/api/v2/playlists/rightnow?channelid=164&format=JSON"
+        let userUrlString = "http://api.sr.se/api/v2/playlists/rightnow?channelid=163&format=JSON"
         if let url = URL(string: userUrlString) {
         
         URLSession
@@ -44,6 +44,8 @@ final class SongViewModel: ObservableObject {
                             // TODO: Handle setting the data
                             
                             self?.mySongNow = theSong
+                            
+                            print(self?.mySongNow.song?.artist ?? "no artist")
     
                         } else {
                             self?.hasError = true

@@ -27,6 +27,12 @@ class UserSettings: ObservableObject {
         }
     }
     
+    @Published var favorite: [String] {
+        didSet {
+            UserDefaults.standard.set(favorite, forKey: "SavedArray")
+        }
+    }
+    
     public var ringtones = ["P1", "P2", "P3"]
     
     
@@ -37,6 +43,8 @@ class UserSettings: ObservableObject {
         self.isPrivate = UserDefaults.standard.object(forKey: "isAccountPrivate") as? Bool ?? true
         
         self.ringtone = UserDefaults.standard.object(forKey: "ringtone") as? String ?? "P1"
+        
+        self.favorite = UserDefaults.standard.array(forKey: "SavedArray") as? [String] ?? []
     
     }
     
