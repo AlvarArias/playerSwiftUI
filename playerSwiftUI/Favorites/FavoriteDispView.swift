@@ -18,7 +18,7 @@ struct FavoriteDispView: View {
     
     // User default for favorites
     let defaults = UserDefaults.standard
-    @State var showingStar = false
+  
     
     var body: some View {
         NavigationView {
@@ -42,7 +42,15 @@ struct FavoriteDispView: View {
                             
                             Text(name.tagline).font(.body).lineLimit(3)
                                 .frame(width: 200)
+                                .font(.body)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(Color.black)
                           
+                            Spacer()
+                            
+                            Image(systemName: "star.fill")
+                               .foregroundColor(.yellow)
+                            
                             NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
                                 
                                 Text("")

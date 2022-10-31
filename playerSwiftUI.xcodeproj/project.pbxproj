@@ -16,6 +16,7 @@
 		624CC691290FD09B007186A2 /* MainFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CC690290FD09B007186A2 /* MainFavoritesView.swift */; };
 		624CC693290FE2A7007186A2 /* NewFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CC692290FE2A7007186A2 /* NewFavoriteModel.swift */; };
 		624CC69729103849007186A2 /* FavoriteDispView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624CC69629103849007186A2 /* FavoriteDispView.swift */; };
+		624CC69A29107399007186A2 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 624CC69929107399007186A2 /* CachedAsyncImage */; };
 		624D37D328ACC917008A5F3A /* song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D37D228ACC917008A5F3A /* song.swift */; };
 		624D37D528ACC92F008A5F3A /* songViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D37D428ACC92F008A5F3A /* songViewModel.swift */; };
 		624E80BA290D7E6A005E4450 /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 624E80B9290D7E6A005E4450 /* radios23.json */; };
@@ -142,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624CC69A29107399007186A2 /* CachedAsyncImage in Frameworks */,
 				62192A84279608CE0090579A /* XMLCoder in Frameworks */,
 				6299BFAE28940B30003C1DB0 /* Lottie in Frameworks */,
 			);
@@ -335,6 +337,7 @@
 			packageProductDependencies = (
 				62192A83279608CE0090579A /* XMLCoder */,
 				6299BFAD28940B30003C1DB0 /* Lottie */,
+				624CC69929107399007186A2 /* CachedAsyncImage */,
 			);
 			productName = playerSwiftUI;
 			productReference = 62A9F009275F5B3500B345AE /* playerSwiftUI.app */;
@@ -371,6 +374,7 @@
 			packageReferences = (
 				62192A82279608CE0090579A /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				6299BFAC28940B30003C1DB0 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				624CC69829107399007186A2 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = 62A9F00A275F5B3500B345AE /* Products */;
 			projectDirPath = "";
@@ -727,6 +731,14 @@
 				minimumVersion = 0.9.0;
 			};
 		};
+		624CC69829107399007186A2 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		6299BFAC28940B30003C1DB0 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -742,6 +754,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62192A82279608CE0090579A /* XCRemoteSwiftPackageReference "XMLCoder" */;
 			productName = XMLCoder;
+		};
+		624CC69929107399007186A2 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624CC69829107399007186A2 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
 		};
 		6299BFAD28940B30003C1DB0 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

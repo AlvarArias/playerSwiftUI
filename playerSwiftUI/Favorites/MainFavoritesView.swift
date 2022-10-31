@@ -148,7 +148,7 @@ struct MainFavoritesView: View {
         
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
-            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
                 print("loadedPerson.name")
                 print(loadedPerson.mytest)
                 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct SliderSwiftUIView: View {
     
@@ -25,12 +26,10 @@ struct SliderSwiftUIView: View {
     @State var numberOfShakes: CGFloat = 0
     @State private var isImageLoad = false
     
-    @State var tasks : [Task] = []
-    let firstElement = Task(id: "203")
-    let secondElement = Task(id: "167")
-    
-                 
-    
+   
+    // User default for favorites
+    let defaults = UserDefaults.standard
+    @State var showingStar = false
     
     var body: some View {
                
@@ -97,7 +96,7 @@ struct SliderSwiftUIView: View {
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
         .onAppear {
-            tasks.append(contentsOf: [firstElement, secondElement])
+            //tarea cuando aparece
         }
                 
                 HStack {
@@ -114,6 +113,7 @@ struct SliderSwiftUIView: View {
                     ForEach(items, id: \.self) { index in
                     
                         HStack {
+                            /*
                             if (!isImageLoad) {
                                 AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
                                     image.resizable()
@@ -128,7 +128,8 @@ struct SliderSwiftUIView: View {
                                 }
                                 
                             }
-                            
+                            */
+                            /*
                             AsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -137,6 +138,16 @@ struct SliderSwiftUIView: View {
                             placeholder: {
                                 ProgressView()
                             })
+                            */
+                            CachedAsyncImage (url: URL(string: myRadioDemo[index].image), content: { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 50, height: 50)
+                            },
+                            placeholder: {
+                                ProgressView()
+                            })
+                            
                             
                             Text(myRadioDemo[index].tagline).font(.body).lineLimit(3)
                                 .frame(width: 200)
@@ -144,12 +155,16 @@ struct SliderSwiftUIView: View {
                           
                             Spacer()
                             
-                            /*
-                            if (myRadioDemo[index].isFavorite) {
-                                            Image(systemName: "star.fill")
+                            
+                            if checkIsFavorite(myRadioFavo: myRadioDemo[index].id) {
+                                 Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
-                                        }
-                            */
+                            } else {
+                                Image(systemName: "star")
+                                 
+                            }
+                           
+                            
                             
                             
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
@@ -217,15 +232,43 @@ struct SliderSwiftUIView: View {
                     
                                 }
                             }
-                                
+            
+            }
         }
+        
+        func checkIsFavorite(myRadioFavo:String) -> Bool{
+            
+            if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+                let decoder = JSONDecoder()
+                if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+                    print("loadedPerson.name")
+                    print(loadedPerson.mytest)
+                    
+                    // Check value in array
+                    if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
+                       // it exists, do something
+                     //print("Radio \(myRadioFavo) is Favorite")
+                     
+                    return true
+                        
+                    } else {
+                       //item could not be found
+                        //print("Radio \(myRadioFavo) is not Favorite")
+                        
+                        return false
+                    }
+                }
+            }
+            return false
+        }
+        
         
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         SliderSwiftUIView()
     }
-    }
 }
+
 
 
