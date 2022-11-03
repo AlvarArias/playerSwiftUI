@@ -10,7 +10,7 @@ import Foundation
 final class SongViewModel: ObservableObject {
     
     //@Published var users: [User] = []
-    @Published var mySongNow: Playlist = Playlist(song: Song(title: "", songDescription: "", artist: "", composer: "", conductor: "", albumname: "", recordlabel: "", producer: "", starttimeutc: "", stoptimeutc: ""))
+    @Published var mySongNow: Playlist = Playlist(song: Song(title: "", songdescription: "", artist: "", composer: "", conductor: "", albumname: "", recordlabel: "", producer: "", starttimeutc: "", stoptimeutc: ""))
     @Published var hasError = false
     @Published var error: UserError?
     @Published private(set) var isRefreshing = false
@@ -37,15 +37,15 @@ final class SongViewModel: ObservableObject {
                     } else {
                         
                         let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase // Handle propieties that look like first_name > firstname
+                        //decoder.keyDecodingStrategy = .convertFromSnakeCase // Handle propieties that look like first_name > firstname
                         
                         if let data = data,
                             let theSong = try? decoder.decode(Playlist.self, from: data){
                             // TODO: Handle setting the data
-                            
-                            self?.mySongNow = theSong
-                            
-                            print(self?.mySongNow.song?.artist ?? "no artist")
+                            print(data)
+                            print("theSong")
+                            print(theSong)
+                            print(theSong.song?.artist ?? "no artist")
     
                         } else {
                             self?.hasError = true

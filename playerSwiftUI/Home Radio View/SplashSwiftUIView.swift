@@ -11,6 +11,7 @@ struct SplashSwiftUIView: View {
 
     @State var isActive:Bool = false
     @ObservedObject var userSettings = UserSettings()
+   
     
     var body: some View {
         VStack {
@@ -35,7 +36,10 @@ struct SplashSwiftUIView: View {
                 }
             }
         }
+       
     }
+    
+    
 }
 
 struct SplashSwiftUIView_Previews: PreviewProvider {

@@ -63,7 +63,7 @@ struct FavoriteDispView: View {
                             Image(systemName: "star.fill")
                                .foregroundColor(.yellow)
                             
-                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
+                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name, isNight: .constant(false))) {
                                 
                                 Text("")
                             }
@@ -95,7 +95,7 @@ struct FavoriteDispView: View {
         
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
-            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
                 print("loadedPerson.name")
                 print(loadedPerson.mytest)
                 

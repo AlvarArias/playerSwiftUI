@@ -27,9 +27,9 @@ class UserSettings: ObservableObject {
         }
     }
     
-    @Published var favorite: [String] {
+    @Published var favorite: String {
         didSet {
-            UserDefaults.standard.set(favorite, forKey: "SavedArray")
+            UserDefaults.standard.set(favorite, forKey: "SavedFavoriteUS")
         }
     }
     
@@ -44,7 +44,7 @@ class UserSettings: ObservableObject {
         
         self.ringtone = UserDefaults.standard.object(forKey: "ringtone") as? String ?? "P1"
         
-        self.favorite = UserDefaults.standard.array(forKey: "SavedArray") as? [String] ?? []
+        self.favorite = UserDefaults.standard.object(forKey: "SavedFavoriteUS") as? String ?? "p1"
     
     }
     

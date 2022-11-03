@@ -11,6 +11,7 @@ import Lottie
 
 class theURLSetting : ObservableObject {
     @Published var theURL: String = ""
+    @Published var isFavorite : Bool = false
 }
 
 struct DetalleUIView : View {
@@ -40,10 +41,13 @@ struct DetalleUIView : View {
     
     // Favorites
     //@StateObject var favorites = Favorites()
+    @Binding var isNight : Bool
     
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
+    
     let defaults = UserDefaults.standard
+    
     
     var body: some View {
         
@@ -79,10 +83,22 @@ struct DetalleUIView : View {
                         if showingStar {
             
                             saveNewData()
+                            receivedURL.isFavorite = true
+                            print("receivedURL.isFavorite \(receivedURL.isFavorite)")
+                            userSettings.favorite = "test from view"
+                            
+                            isNight = true
+                            print("is isNight from detail is favorite")
+                            print(isNight)
                             
                         } else {
                           
                             deleteNewData()
+                            receivedURL.isFavorite = false
+                            
+                            isNight = false
+                            print("is isNight from detail not favorite")
+                            print(isNight)
                         }
                         
                     } label: {
@@ -100,7 +116,11 @@ struct DetalleUIView : View {
                                 .foregroundColor(.newSecundaryColor)
                         }
                     }
-                    
+                    .onAppear {
+                        isNight = true
+                        print("is isNight from detail from appear")
+                        print(isNight)
+                    }
                     
                 }
                 
@@ -121,7 +141,6 @@ struct DetalleUIView : View {
             
             //TODO: Make button play automatic when the view is load.
             Button( action: {
-            
                 player = AVPlayer(url: URL(string: choice1.url)!)
                 self.isPlaying.toggle()
                 player.play()
@@ -163,9 +182,13 @@ struct DetalleUIView : View {
                 
             }.navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
                 // new button back
+            
                 .navigationBarItems(
                     leading:
+                       // NavigationLink("Go to back", destination: SliderSwiftUIView())
+                    
                     Button(action : {
+                        
                         player.pause()
                         self.presentationMode.wrappedValue.dismiss()
                         print("click and stop audio")
@@ -174,7 +197,9 @@ struct DetalleUIView : View {
                         Image(systemName: "arrow.uturn.backward")
                             .foregroundColor(.newSecundaryColor)
                         
+                        
                     }
+                
                 ).background(Color.newColorGreenLight)
         }
         .background(Color.newColorGreenLight)
@@ -206,7 +231,7 @@ struct DetalleUIView : View {
     }
     
     func saveNewData() {
-        
+       
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
@@ -236,6 +261,7 @@ struct DetalleUIView : View {
     }
     
     func deleteNewData() {
+     
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
@@ -289,11 +315,11 @@ struct DetalleUIView : View {
         return false
     }
     
-    
+  
 }
 
 struct DetalleUIView_Previews: PreviewProvider {
     static var previews: some View {
-        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"))
+        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"), isNight: .constant(false))
     }
 }

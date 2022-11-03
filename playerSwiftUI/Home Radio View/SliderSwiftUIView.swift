@@ -29,7 +29,11 @@ struct SliderSwiftUIView: View {
    
     // User default for favorites
     let defaults = UserDefaults.standard
-  
+    //@AppStorage("favorite") var theUserFavorite = ""
+    @State var isNight = false
+    
+    @EnvironmentObject var receivedURL: theURLSetting
+   
     
     var body: some View {
                
@@ -43,15 +47,15 @@ struct SliderSwiftUIView: View {
            
                     if theFirstRadio == "P2" {
                     
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1], isNight: .constant(false))) {
                             Image("P2")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2], isNight: .constant(false))) {
                             Image("P3")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0], isNight: .constant(false))) {
                                 Image("P1")
                         }
                         
@@ -60,15 +64,15 @@ struct SliderSwiftUIView: View {
                     
                     else if theFirstRadio == "P3" {
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2], isNight: .constant(false))) {
                             Image("P3")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0], isNight: .constant(false))) {
                                 Image("P1")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1], isNight: .constant(false))) {
                             Image("P2")
                         }
                         
@@ -76,15 +80,15 @@ struct SliderSwiftUIView: View {
                     
                     else {
                     
-            NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0], isNight: .constant(true))) {
                     Image("P1")
             }
             
-            NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1], isNight: .constant(false))) {
                 Image("P2")
             }
             
-            NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2], isNight: .constant(false))) {
                 Image("P3")
             }
         
@@ -131,15 +135,23 @@ struct SliderSwiftUIView: View {
                           
                             Spacer()
                             
+                            // MARK: add  binding variable for selected favorite from page
+                            // if else binding change show the star fill
+                            // apple tutorial
+                            
                             if checkIsFavorite(myRadioFavo: myRadioDemo[index].id) {
                                  Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
+                                
+                            } else if (isNight == true) {
+                                     Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
                             } else {
                                 Image(systemName: "star")
                                  
                             }
-                               
-                            NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
+                            
+                            NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index], isNight: .constant(checkIsFavorite(myRadioFavo: myRadioDemo[index].id)))) {
                                 
                                 Text("")
                             }
@@ -152,29 +164,14 @@ struct SliderSwiftUIView: View {
                     
                            }
                 .onAppear {
-                    print("list appear")
+                    print("is Night")
+                    print(isNight)
                    
                 }
-                
-                
+               
                //TODO: Add social shared funtionality
                 
-                /*
-                VStack {
-                    Text("Radio on line")
-                    
-                    Button(action: {
-                        
-                        print("Sharer")
-                       
-                        
-                    }) {
-                        Text("Sharer")
-                    }
-                }
-                 */
-                
-               
+
             }.background(Color.newColorGrayLight)
                 .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
@@ -237,9 +234,12 @@ struct SliderSwiftUIView: View {
                 }
             }
             return false
+            
+                
         }
         
-        
+    
+    
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,18 +8,18 @@
 import Foundation
 
 struct SongNow: Codable {
-    let playlist: Playlist
+    var playlist: Playlist
 }
 
 struct Playlist: Codable {
-    let song: Song?
+    var song: Song?
 
 }
 
 struct Song: Codable {
-    let title, songDescription, artist, composer: String
-    let conductor, albumname, recordlabel, producer: String
-    let starttimeutc, stoptimeutc: String
+    var title, songdescription, artist, composer: String
+    var conductor, albumname, recordlabel, producer: String
+    var starttimeutc, stoptimeutc: String
 }
 
 /**

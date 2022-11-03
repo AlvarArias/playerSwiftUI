@@ -66,7 +66,7 @@ struct SerachView: View {
                             }
                            
                           
-                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
+                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name, isNight: .constant(false))) {
                                 
                                 Text("")
                             }
