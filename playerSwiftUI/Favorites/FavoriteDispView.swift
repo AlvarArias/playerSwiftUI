@@ -23,9 +23,11 @@ struct FavoriteDispView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack {
                  
                 List {
+                
                     ForEach(myRadioDemo, id: \.self) { name in
                     
                         if checkIsFavorite(myRadioFavo: name.id) {
@@ -71,14 +73,17 @@ struct FavoriteDispView: View {
                            
                         } .listRowSeparator(.hidden)
                         
+                        } else {
+                            Text("No data")
+                        }
+                     
                     }
-                        
-                    }
+                  
                     .navigationBarTitle("Radio App Favorites", displayMode: .inline)
                 }
                 
                }
-            .toolbar {
+                .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button { dismiss() } label: {
                                Image(systemName: "arrow.down")

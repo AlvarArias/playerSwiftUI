@@ -14,10 +14,10 @@ struct playerSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //SplashSwiftUIView()
+            SplashSwiftUIView()
             //FavoritesView()
-            TestSongView(resultado2: .init(title: "title", description: "description", artist: "artist", composer: "composer", conductor: "conductor", albumname: "albumname", recordlabel: "recordlabel", producer: "producer"))
-                //.environment(\.managedObjectContext, dataController.container.viewContext)
+            //TestSongView(resultado2: .init(title: "title", description: "description", artist: "artist", composer: "composer", conductor: "conductor", albumname: "albumname", recordlabel: "recordlabel", producer: "producer"))
+                .environment(\.managedObjectContext, dataController.container.viewContext)
                 
         }
     }

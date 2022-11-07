@@ -186,8 +186,6 @@
 		624D37D128ACC8CC008A5F3A /* Song playing now */ = {
 			isa = PBXGroup;
 			children = (
-				624D37D428ACC92F008A5F3A /* songViewModel.swift */,
-				624D37D228ACC917008A5F3A /* song.swift */,
 				624B45D429129CE7004C0ACB /* TestSongView.swift */,
 				624B45D62912B1B1004C0ACB /* NewSongModel.swift */,
 			);
@@ -197,6 +195,8 @@
 		624E945D2799A64B00803A83 /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				624D37D228ACC917008A5F3A /* song.swift */,
+				624D37D428ACC92F008A5F3A /* songViewModel.swift */,
 				6243647128816ED700A20017 /* mySettingsView.swift */,
 				6231D0E6287F54590026A11D /* Info.plist */,
 				62ED857E2790CBC2009A7C1C /* SliderItem.swift */,
@@ -656,7 +656,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.032;
 				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.radioPlayerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -689,7 +689,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.03;
+				MARKETING_VERSION = 1.032;
 				PRODUCT_BUNDLE_IDENTIFIER = se.alvararias.radioPlayerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

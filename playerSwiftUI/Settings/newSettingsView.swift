@@ -39,7 +39,7 @@ struct newSettingsView: View {
                 */
                 Text("First radio home")
                 
-                Picker(selection: $userSettings.ringtone, label: Text("Ringtone")){
+                Picker(selection: $userSettings.ringtone, label: Text("Select radio")){
                     ForEach(userSettings.ringtones, id:\.self){ringtone in
                         Text(ringtone)
                     }

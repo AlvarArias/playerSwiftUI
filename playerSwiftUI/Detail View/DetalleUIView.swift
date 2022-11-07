@@ -15,10 +15,7 @@ class theURLSetting : ObservableObject {
 }
 
 struct DetalleUIView : View {
-    
-    // Testing song view model
-    @StateObject private var vm = SongViewModel()
-    
+        
     @Environment(\.presentationMode) var presentationMode
   
 
@@ -47,7 +44,7 @@ struct DetalleUIView : View {
     @ObservedObject var userSettings = UserSettings()
     
     let defaults = UserDefaults.standard
-    
+        
     
     var body: some View {
         
@@ -81,24 +78,25 @@ struct DetalleUIView : View {
                     Button {
                         showingStar.toggle()
                         if showingStar {
-            
+                            //saveData(myData)
                             saveNewData()
                             receivedURL.isFavorite = true
                             print("receivedURL.isFavorite \(receivedURL.isFavorite)")
                             userSettings.favorite = "test from view"
-                            
+                            /*
                             isNight = true
                             print("is isNight from detail is favorite")
                             print(isNight)
-                            
+                            */
                         } else {
                           
                             deleteNewData()
                             receivedURL.isFavorite = false
-                            
+                            /*
                             isNight = false
                             print("is isNight from detail not favorite")
                             print(isNight)
+                            */
                         }
                         
                     } label: {
@@ -117,9 +115,12 @@ struct DetalleUIView : View {
                         }
                     }
                     .onAppear {
+                        /*
                         isNight = true
                         print("is isNight from detail from appear")
                         print(isNight)
+                        */
+                        
                     }
                     
                 }
@@ -210,16 +211,10 @@ struct DetalleUIView : View {
         })
         .environmentObject(receivedURL)
        
-        /*
-        .onAppear(perform: vm.fetchUsers)
-            .alert(isPresented: $vm.hasError, error: vm.error){
-                Button(action: vm.fetchUsers){
-                        Text("Retry")
-                }
-            }
-         */
+        
     }
     
+    // Funciones Favorites
     // Funciones Favorites
     func saveData(myData: Person) {
         
@@ -227,12 +222,30 @@ struct DetalleUIView : View {
         if let encoded = try? encoder.encode(myData) {
             let defaults = UserDefaults.standard
             defaults.set(encoded, forKey: "SavedPerson")
+            print("End saveData(myData: Person)")
         }
     }
+    /*
+    func saveData(myData: Person) {
+        print("saveData(myData: Person)")
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(myData) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "SavedPerson")
+            print("End saveData(myData: Person)")
+        }
+    }
+    */
+    
     
     func saveNewData() {
+        print("saveNewData()")
        
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+            
+            print("savedPerson inside if")
+            print(savedPerson)
+            
             let decoder = JSONDecoder()
             if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
                 print("loadedPerson.name")
@@ -247,7 +260,7 @@ struct DetalleUIView : View {
                  return
                     
                 } else {
-                   //item could not be found
+                   
                     let moreData = choice1.id
                     loadedPerson.mytest.append(moreData)
                     print("saveNewData()")
@@ -256,7 +269,7 @@ struct DetalleUIView : View {
                     print("new element added")
                 }
             }
-        } else { print("no data")}
+        } else { print("no data saveNewData()")}
         
     }
     
@@ -289,7 +302,7 @@ struct DetalleUIView : View {
                 saveData(myData: loadedPerson)
                 
             }
-        } else { print("no data")}
+        } else { print("no data deleteNewData()")}
     }
     
     
