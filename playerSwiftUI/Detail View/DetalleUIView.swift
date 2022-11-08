@@ -221,7 +221,23 @@ struct DetalleUIView : View {
     // MARK: problema detectado para cargar los favoritos, necesto inicailizarlos
     // al borrar la funcion el array crece pero necesito una logica mejor para que
     // funcione en todos los telefonos
-    
+    
+    
+    func saveData2() {
+        // funcion que se ejecute una sola vez
+        if controlFunc {
+            
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(myData) {
+                let defaults = UserDefaults.standard
+                defaults.set(encoded, forKey: "SavedPerson")
+                print("End saveData(myData: Person)")
+                print(defaults.stringArray(forKey: "SavedPerson") ?? "No value")
+            
+                controlFunc = false
+            }
+        }
+    }
     
     func saveData(myData: Person) {
         
