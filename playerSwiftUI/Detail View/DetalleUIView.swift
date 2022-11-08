@@ -218,6 +218,11 @@ struct DetalleUIView : View {
     }
     
     // Funciones Favorites
+    // MARK: problema detectado para cargar los favoritos, necesto inicailizarlos
+    // al borrar la funcion el array crece pero necesito una logica mejor para que
+    // funcione en todos los telefonos
+    
+    
     func saveData(myData: Person) {
         
         if controlFunc {
