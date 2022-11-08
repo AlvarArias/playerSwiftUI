@@ -14,6 +14,9 @@ struct SliderSwiftUIView: View {
     @AppStorage("username") private var theUserName = ""
     @AppStorage("ringtone") private var theFirstRadio = ""
     
+   
+    
+    
     // Usa decode helper
     @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios23.json")
     
@@ -30,6 +33,10 @@ struct SliderSwiftUIView: View {
     // User default for favorites
     let defaults = UserDefaults.standard
     //@AppStorage("favorite") var theUserFavorite = ""
+    @State private var newtest = Person(mytest: [""])
+    @State private var isNew = false
+    
+    
     @State var isNight = false
     
     @EnvironmentObject var receivedURL: theURLSetting
@@ -113,7 +120,6 @@ struct SliderSwiftUIView: View {
                 // TODO: Add more radio Station
                 // FIXME: Show favorites and impleent this in the view
               
-                    
                 List {
                     ForEach(items, id: \.self) { index in
                     
@@ -146,7 +152,12 @@ struct SliderSwiftUIView: View {
                             } else if (isNight == true) {
                                      Image(systemName: "star.fill")
                                         .foregroundColor(.yellow)
-                            } else {
+                            } else if (isNew) {
+                                // New variables
+                                Image(systemName: "star.fill")
+                                   .foregroundColor(.yellow)
+                            }
+                            else {
                                 Image(systemName: "star")
                                  
                             }
@@ -166,6 +177,7 @@ struct SliderSwiftUIView: View {
                 .onAppear {
                     print("is Night")
                     print(isNight)
+                    
                    
                 }
                
@@ -217,6 +229,12 @@ struct SliderSwiftUIView: View {
                 if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
                     print("loadedPerson.name")
                     print(loadedPerson.mytest)
+                    
+                    // lo hacemos igual a load person
+                    newtest.mytest = loadedPerson.mytest
+                    if newtest.mytest.contains(where: {$0 == myRadioFavo}) {
+                     isNew = true
+                    }
                     
                     // Check value in array
                     if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {

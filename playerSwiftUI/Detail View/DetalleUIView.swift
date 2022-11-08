@@ -44,6 +44,9 @@ struct DetalleUIView : View {
     @ObservedObject var userSettings = UserSettings()
     
     let defaults = UserDefaults.standard
+    
+    var myData = Person(mytest: ["Alvar", "Joel"])
+    @State var controlFunc = true
         
     
     var body: some View {
@@ -78,7 +81,7 @@ struct DetalleUIView : View {
                     Button {
                         showingStar.toggle()
                         if showingStar {
-                            //saveData(myData)
+                            saveData(myData: myData)
                             saveNewData()
                             receivedURL.isFavorite = true
                             print("receivedURL.isFavorite \(receivedURL.isFavorite)")
@@ -215,14 +218,18 @@ struct DetalleUIView : View {
     }
     
     // Funciones Favorites
-    // Funciones Favorites
     func saveData(myData: Person) {
         
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(myData) {
-            let defaults = UserDefaults.standard
-            defaults.set(encoded, forKey: "SavedPerson")
-            print("End saveData(myData: Person)")
+        if controlFunc {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(myData) {
+                let defaults = UserDefaults.standard
+                defaults.set(encoded, forKey: "SavedPerson")
+                print("End saveData(myData: Person)")
+                print(defaults.stringArray(forKey: "SavedPerson") ?? "No value")
+            
+                controlFunc = false
+            }
         }
     }
     /*
@@ -240,6 +247,7 @@ struct DetalleUIView : View {
     
     func saveNewData() {
         print("saveNewData()")
+        
        
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             

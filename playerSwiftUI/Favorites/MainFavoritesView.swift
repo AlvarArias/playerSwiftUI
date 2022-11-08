@@ -21,6 +21,8 @@ struct MainFavoritesView: View {
     // User default for favorites
     let defaults = UserDefaults.standard
     
+    //var myData : Person
+    
     
     var body: some View {
         VStack{

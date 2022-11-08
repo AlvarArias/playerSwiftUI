@@ -74,7 +74,7 @@ struct FavoriteDispView: View {
                         } .listRowSeparator(.hidden)
                         
                         } else {
-                            Text("No data")
+                            //Text("No data")
                         }
                      
                     }
