@@ -144,7 +144,8 @@ struct SliderSwiftUIView: View {
                             // MARK: add  binding variable for selected favorite from page
                             // if else binding change show the star fill
                             // apple tutorial
-                            
+                            // MARK: Favorite start
+                            /*
                             if checkIsFavorite(myRadioFavo: myRadioDemo[index].id) {
                                  Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
@@ -161,7 +162,7 @@ struct SliderSwiftUIView: View {
                                 Image(systemName: "star")
                                  
                             }
-                            
+                            */
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index], isNight: .constant(checkIsFavorite(myRadioFavo: myRadioDemo[index].id)))) {
                                 
                                 Text("")
@@ -199,6 +200,8 @@ struct SliderSwiftUIView: View {
                         newSettingsView()
                     }
                    
+                    // MARK: favorite menu out
+                    /*
                     Spacer()
                     Button { showingFavorite.toggle()
                                                 } label: {
@@ -208,6 +211,7 @@ struct SliderSwiftUIView: View {
                     .sheet(isPresented: $showingFavorite) {FavoriteDispView()}
                                                     
                                                 }
+                    */
                     Spacer()
                     Button { showingmySearch.toggle()
                                             } label: {

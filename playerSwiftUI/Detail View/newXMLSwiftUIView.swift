@@ -25,8 +25,6 @@ struct newXMLSwiftUIView: View {
     
     var myNewDate = theDateFormater()
     
-    
-    
     var body: some View {
         VStack{
        

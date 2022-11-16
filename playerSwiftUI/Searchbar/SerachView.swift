@@ -55,8 +55,8 @@ struct SerachView: View {
                                 .font(.body)
                             
                             Spacer()
-                            
-                            
+                            // MARK: Favotite button out
+                            /*
                             if checkIsFavorite(myRadioFavo: name.id) {
                                  Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
@@ -64,7 +64,7 @@ struct SerachView: View {
                                 Image(systemName: "star")
                                  
                             }
-                           
+                           */
                           
                             NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name, isNight: .constant(false))) {
                                 

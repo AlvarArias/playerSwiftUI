@@ -77,7 +77,9 @@ struct DetalleUIView : View {
                     
                     Text("Next programs").padding()
                    
-                   // nuevo boton
+                   // nuevo boton start
+                   // MARK: Button start out
+                    /*
                     Button {
                         showingStar.toggle()
                         if showingStar {
@@ -125,7 +127,7 @@ struct DetalleUIView : View {
                         */
                         
                     }
-                    
+                    */
                 }
                 
                 if isShowEq {
