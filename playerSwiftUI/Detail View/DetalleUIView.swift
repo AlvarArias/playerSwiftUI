@@ -79,7 +79,16 @@ struct DetalleUIView : View {
                    
                    // nuevo boton start
                    // MARK: Button start out
-                    /*
+                    
+                    Button {
+                        print("savedPerson ")
+                        let savedPerson = defaults.object(forKey: "SavedPerson")
+                        print(savedPerson ?? "No value")
+                        
+                    } label: {
+                        Image(systemName: "paperplane")
+                    }
+                    
                     Button {
                         showingStar.toggle()
                         if showingStar {
@@ -88,20 +97,12 @@ struct DetalleUIView : View {
                             receivedURL.isFavorite = true
                             print("receivedURL.isFavorite \(receivedURL.isFavorite)")
                             userSettings.favorite = "test from view"
-                            /*
-                            isNight = true
-                            print("is isNight from detail is favorite")
-                            print(isNight)
-                            */
+                            
                         } else {
                           
                             deleteNewData()
                             receivedURL.isFavorite = false
-                            /*
-                            isNight = false
-                            print("is isNight from detail not favorite")
-                            print(isNight)
-                            */
+                            
                         }
                         
                     } label: {
@@ -120,14 +121,10 @@ struct DetalleUIView : View {
                         }
                     }
                     .onAppear {
-                        /*
-                        isNight = true
-                        print("is isNight from detail from appear")
-                        print(isNight)
-                        */
+                        
                         
                     }
-                    */
+                    
                 }
                 
                 if isShowEq {
@@ -279,7 +276,7 @@ struct DetalleUIView : View {
             
             let decoder = JSONDecoder()
             if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                print("loadedPerson.name")
+                //print("loadedPerson.name")
                 //print(loadedPerson.name)
                 print(loadedPerson.mytest)
                 
@@ -309,7 +306,7 @@ struct DetalleUIView : View {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                print("loadedPerson.name")
+                //print("loadedPerson.name")
                 //print(loadedPerson.name)
                 print(loadedPerson.mytest)
                 
@@ -341,7 +338,7 @@ struct DetalleUIView : View {
         
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
-            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
                 print("loadedPerson.name")
                 print(loadedPerson.mytest)
                 

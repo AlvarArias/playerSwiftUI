@@ -101,7 +101,7 @@ struct FavoriteDispView: View {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                print("loadedPerson.name")
+                //print("loadedPerson.name")
                 print(loadedPerson.mytest)
                 
                 // Check value in array

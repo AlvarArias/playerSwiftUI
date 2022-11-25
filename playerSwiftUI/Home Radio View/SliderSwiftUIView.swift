@@ -55,15 +55,15 @@ struct SliderSwiftUIView: View {
                     if theFirstRadio == "P2" {
                     
                         NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1], isNight: .constant(false))) {
-                            Image("P2")
+                            Image("P2").accessibilityLabel("P2")
                         }
                         
                         NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2], isNight: .constant(false))) {
-                            Image("P3")
+                            Image("P3").accessibilityLabel("P3")
                         }
                         
                         NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0], isNight: .constant(false))) {
-                                Image("P1")
+                            Image("P1").accessibilityLabel("P1")
                         }
                         
                         
@@ -112,6 +112,7 @@ struct SliderSwiftUIView: View {
                 
                 HStack {
                     Text("Select your radio").padding()
+                        .accessibilityLabel("Select your radio")
                         
                     
                     CheckNetworkView()
@@ -178,9 +179,11 @@ struct SliderSwiftUIView: View {
                 .onAppear {
                     print("is Night")
                     print(isNight)
-                    
+                
                    
                 }
+                .accessibilityLabel("ListOfRadios")
+                
                
                //TODO: Add social shared funtionality
                 
@@ -231,8 +234,8 @@ struct SliderSwiftUIView: View {
             if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
                 let decoder = JSONDecoder()
                 if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                    print("loadedPerson.name")
-                    print(loadedPerson.mytest)
+                   // print("loadedPerson.name")
+                    //print(loadedPerson.mytest)
                     
                     // lo hacemos igual a load person
                     newtest.mytest = loadedPerson.mytest

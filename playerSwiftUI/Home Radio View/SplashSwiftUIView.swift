@@ -22,9 +22,11 @@ struct SplashSwiftUIView: View {
                 
             } else {
                 
-                Text("Wellcome").font(Font.largeTitle)
+                Text("Welcome").font(Font.largeTitle).accessibilityLabel("Welcome")
                 Text(userSettings.username)
                 Image("miRadio").resizable().aspectRatio(contentMode: .fit).padding().frame(height: 200)
+                    .accessibilityLabel("miRadio")
+                    
                 
             }
             

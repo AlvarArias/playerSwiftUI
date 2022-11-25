@@ -111,8 +111,8 @@ struct SerachView: View {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                print("loadedPerson.name")
-                print(loadedPerson.mytest)
+                //print("loadedPerson.name")
+                //print(loadedPerson.mytest)
                 
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
