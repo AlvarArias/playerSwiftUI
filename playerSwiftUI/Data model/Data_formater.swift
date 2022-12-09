@@ -8,7 +8,10 @@
 import Foundation
 import UIKit
 
-
+/// Data formater
+///
+/// This class transfor a ISO Data format to Date format
+/// "H:mm d-MMM-yy"
 class theDateFormater {
     
     func transformDate (theProgramDate: String) -> String {
@@ -27,6 +30,5 @@ class theDateFormater {
     }
     
 }
-
 
 

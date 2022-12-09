@@ -6,7 +6,10 @@
 //
 
 import SwiftUI
-
+/// View for Check Network
+///
+/// This is an example of a View for implement
+///  Check Network function
 struct CheckNetworkView: View {
     
     //Network check
@@ -39,3 +42,5 @@ struct CheckNetworkView_Previews: PreviewProvider {
         CheckNetworkView()
     }
 }
+
+

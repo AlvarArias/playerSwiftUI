@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62192A802796040C0090579A /* XMLSwiftUIView.swift */; };
 		62192A84279608CE0090579A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 62192A83279608CE0090579A /* XMLCoder */; };
+		622ABE662934FA7000D052D2 /* Ency_Doc_Diagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 622ABE652934FA7000D052D2 /* Ency_Doc_Diagram.pdf */; };
 		622D45812897D409002810AD /* mySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45802897D409002810AD /* mySettings.swift */; };
 		622D45832897D45B002810AD /* newSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45822897D45B002810AD /* newSettingsView.swift */; };
 		623E24BE292E396E0034A076 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 623E24BD292E396E0034A076 /* CachedAsyncImage */; };
@@ -105,6 +106,7 @@
 
 /* Begin PBXFileReference section */
 		62192A802796040C0090579A /* XMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLSwiftUIView.swift; sourceTree = "<group>"; };
+		622ABE652934FA7000D052D2 /* Ency_Doc_Diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Ency_Doc_Diagram.pdf; sourceTree = "<group>"; };
 		622D45802897D409002810AD /* mySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySettings.swift; sourceTree = "<group>"; };
 		622D45822897D45B002810AD /* newSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSettingsView.swift; sourceTree = "<group>"; };
 		6231D0E6287F54590026A11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = playerSwiftUI/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -199,6 +201,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		622ABE602934EDD600D052D2 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				624C33DC292555E100528E45 /* Notes  */,
+				622ABE652934FA7000D052D2 /* Ency_Doc_Diagram.pdf */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
 		6243647028816EA500A20017 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,11 +347,11 @@
 		62A9F00B275F5B3500B345AE /* playerSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				622ABE602934EDD600D052D2 /* Notes */,
 				624CC68F290FD078007186A2 /* Favorites */,
 				628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */,
 				624E945D2799A64B00803A83 /* unused */,
 				62A9F024275FEE5700B345AE /* Info.plist */,
-				624C33DC292555E100528E45 /* Notes  */,
 				62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */,
 				62DBB5B5278E2F33003EEFE2 /* Home Radio View */,
 				62DBB5B4278E2F19003EEFE2 /* Detail View */,
@@ -549,6 +560,7 @@
 				62DBB5B1278CE8FA003EEFE2 /* radios.json in Resources */,
 				624E80BA290D7E6A005E4450 /* radios23.json in Resources */,
 				62A9F014275F5B3800B345AE /* Preview Assets.xcassets in Resources */,
+				622ABE662934FA7000D052D2 /* Ency_Doc_Diagram.pdf in Resources */,
 				62A9F011275F5B3800B345AE /* Assets.xcassets in Resources */,
 				624C33DD292555E100528E45 /* Notes  in Resources */,
 			);

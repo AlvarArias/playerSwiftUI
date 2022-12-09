@@ -18,6 +18,7 @@ struct SplashSwiftUIView: View {
             
             if self.isActive {
                 
+                // Next View
                 SliderSwiftUIView()
                 
             } else {
@@ -26,19 +27,24 @@ struct SplashSwiftUIView: View {
                 Text(userSettings.username)
                 Image("miRadio").resizable().aspectRatio(contentMode: .fit).padding().frame(height: 200)
                     .accessibilityLabel("miRadio")
-                    
-                
             }
             
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                withAnimation{
-                    self.isActive = true
-                }
-            }
+           showNextScreen()
         }
        
+    }
+    /// Function Show the Screen
+    ///
+    /// This functin show the screen after delay of time
+    ///  Use with .onApper {} on the view you will show after.
+    func showNextScreen() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            withAnimation{
+                self.isActive = true
+            }
+        }
     }
     
     

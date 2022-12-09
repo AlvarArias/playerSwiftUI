@@ -6,7 +6,10 @@
 //
 import Foundation
 import Network
- 
+
+ /// Check Network
+///
+///  Thsi class check if the network is valiable or not
 final class NetworkMonitor: ObservableObject {
     let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "Monitor")

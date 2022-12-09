@@ -131,7 +131,7 @@ struct DetalleUIView : View {
                 LottieView(lottieFile: "music-equalizer")
                     .frame(width: 50, height: 50)
                 }
-                
+
                 //TODO: Add song player now in other view
                 // SongView Model and Sing Object Added
                 // Testing Fech Song is working
