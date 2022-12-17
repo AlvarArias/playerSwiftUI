@@ -74,7 +74,7 @@ struct FavoriteDispView: View {
                         } .listRowSeparator(.hidden)
                         
                         } else {
-                            //Text("No data")
+                            //Text("You have not sectioned any favorites")
                         }
                      
                     }

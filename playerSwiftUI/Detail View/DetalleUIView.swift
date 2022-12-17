@@ -45,7 +45,9 @@ struct DetalleUIView : View {
     
     let defaults = UserDefaults.standard
     
+    // Data user default
     var myData = Person(mytest: ["Alvar", "Joel"])
+    
     @State var controlFunc = true
         
     
@@ -78,8 +80,8 @@ struct DetalleUIView : View {
                     Text("Next programs").padding()
                    
                    // nuevo boton start
-                   // MARK: Button start out
-                    
+                  
+                    /*
                     Button {
                         print("savedPerson ")
                         let savedPerson = defaults.object(forKey: "SavedPerson")
@@ -88,11 +90,12 @@ struct DetalleUIView : View {
                     } label: {
                         Image(systemName: "paperplane")
                     }
-                    
+                    */
+                    // MARK: Button start
                     Button {
                         showingStar.toggle()
                         if showingStar {
-                            saveData(myData: myData)
+                            
                             saveNewData()
                             receivedURL.isFavorite = true
                             print("receivedURL.isFavorite \(receivedURL.isFavorite)")
@@ -217,27 +220,7 @@ struct DetalleUIView : View {
     }
     
     // Funciones Favorites
-    // MARK: problema detectado para cargar los favoritos, necesto inicailizarlos
-    // al borrar la funcion el array crece pero necesito una logica mejor para que
-    // funcione en todos los telefonos
-    
-    
-    func saveData2() {
-        // funcion que se ejecute una sola vez
-        if controlFunc {
-            
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(myData) {
-                let defaults = UserDefaults.standard
-                defaults.set(encoded, forKey: "SavedPerson")
-                print("End saveData(myData: Person)")
-                print(defaults.stringArray(forKey: "SavedPerson") ?? "No value")
-            
-                controlFunc = false
-            }
-        }
-    }
-    
+
     func saveData(myData: Person) {
         
         if controlFunc {
@@ -246,43 +229,23 @@ struct DetalleUIView : View {
                 let defaults = UserDefaults.standard
                 defaults.set(encoded, forKey: "SavedPerson")
                 print("End saveData(myData: Person)")
-                print(defaults.stringArray(forKey: "SavedPerson") ?? "No value")
+                print(defaults.stringArray(forKey: "SavedPerson") ?? "No value encoded Save Data()")
             
                 controlFunc = false
             }
         }
     }
-    /*
-    func saveData(myData: Person) {
-        print("saveData(myData: Person)")
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(myData) {
-            let defaults = UserDefaults.standard
-            defaults.set(encoded, forKey: "SavedPerson")
-            print("End saveData(myData: Person)")
-        }
-    }
-    */
-    
     
     func saveNewData() {
-        print("saveNewData()")
         
-       
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            
-            print("savedPerson inside if")
-            print(savedPerson)
             
             let decoder = JSONDecoder()
             if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                //print("loadedPerson.name")
-                //print(loadedPerson.name)
-                print(loadedPerson.mytest)
                 
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == choice1.id}) {
-                   // it exists, do something
+                   
                    print("element exists")
                     
                  return
@@ -306,10 +269,7 @@ struct DetalleUIView : View {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                //print("loadedPerson.name")
-                //print(loadedPerson.name)
-                print(loadedPerson.mytest)
-                
+               
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == choice1.id}) {
                    // it exists, do something
@@ -339,12 +299,12 @@ struct DetalleUIView : View {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                print("loadedPerson.name")
-                print(loadedPerson.mytest)
+                //print("loadedPerson.name")
+                //print(loadedPerson.mytest)
                 
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
-                
+                print("is favorite")
                 return true
                     
                 } else {
@@ -364,3 +324,36 @@ struct DetalleUIView_Previews: PreviewProvider {
         DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"), isNight: .constant(false))
     }
 }
+
+
+/*
+func saveData(myData: Person) {
+    print("saveData(myData: Person)")
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(myData) {
+        let defaults = UserDefaults.standard
+        defaults.set(encoded, forKey: "SavedPerson")
+        print("End saveData(myData: Person)")
+    }
+}
+*/
+
+/*
+ func saveData2() {
+     // funcion que se ejecute una sola vez
+     if controlFunc {
+         
+         let encoder = JSONEncoder()
+         if let encoded = try? encoder.encode(myData) {
+             let defaults = UserDefaults.standard
+             defaults.set(encoded, forKey: "SavedPerson")
+             print("End saveData(myData: Person)")
+             print(defaults.stringArray(forKey: "SavedPerson") ?? "No value added")
+         
+             controlFunc = false
+         }
+     }
+ }
+ */
+ 
+ 

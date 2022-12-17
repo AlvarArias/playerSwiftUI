@@ -9,8 +9,28 @@ import SwiftUI
 
 struct Person: Codable {
     var mytest : [String]
+    
+    init(mytest: [String]) {
+        
+        self.mytest = mytest
+    }
 }
 
+/*
+struct Color {
+    let red, green, blue: Double
+    init(red: Double, green: Double, blue: Double) {
+        self.red   = red
+        self.green = green
+        self.blue  = blue
+    }
+    init(white: Double) {
+        red   = white
+        green = white
+        blue  = white
+    }
+}
+*/
 
 
 struct MainFavoritesView: View {
@@ -20,9 +40,6 @@ struct MainFavoritesView: View {
 
     // User default for favorites
     let defaults = UserDefaults.standard
-    
-    //var myData : Person
-    
     
     var body: some View {
         VStack{

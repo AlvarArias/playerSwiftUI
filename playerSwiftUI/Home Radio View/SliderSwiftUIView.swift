@@ -164,6 +164,7 @@ struct SliderSwiftUIView: View {
                                  
                             }
                             */
+                            
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index], isNight: .constant(checkIsFavorite(myRadioFavo: myRadioDemo[index].id)))) {
                                 
                                 Text("")
@@ -203,8 +204,8 @@ struct SliderSwiftUIView: View {
                         newSettingsView()
                     }
                    
-                    // MARK: favorite menu out
-                    /*
+                    // MARK: favorite menu Showing
+                    
                     Spacer()
                     Button { showingFavorite.toggle()
                                                 } label: {
@@ -214,7 +215,7 @@ struct SliderSwiftUIView: View {
                     .sheet(isPresented: $showingFavorite) {FavoriteDispView()}
                                                     
                                                 }
-                    */
+                    
                     Spacer()
                     Button { showingmySearch.toggle()
                                             } label: {
