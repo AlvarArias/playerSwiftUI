@@ -16,8 +16,8 @@ struct SliderSwiftUIView: View {
     var body: some View {
     
         NavigationView {
-            ScrollView {
-            HStack {
+          ScrollView {
+                HStack {
                 ScrollView(.vertical) {
                         NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
                             Image("P2")
@@ -33,7 +33,6 @@ struct SliderSwiftUIView: View {
                         
                 }
         }
-         //  .tabViewStyle(.automatic).foregroundColor(Color.newPrimaryColor)
         .background(Color.newColorGrayLight)
         .frame(width: UIScreen.main.bounds.width, height: 300)
     
@@ -41,36 +40,33 @@ struct SliderSwiftUIView: View {
                     Text("Select your radio").padding()
               
                 }
-                
+       
                     ForEach(items, id: \.self) { index in
                     
-                            HStack {
-                            
+                        HStack {
+                            VStack (alignment: .leading){
+                                Text(myRadioDemo[index].name).font(.headline)
                             Text(myRadioDemo[index].tagline).font(.body).lineLimit(3)
-                                .frame(width: 200)
+                                //.frame(width: 200)
                                 .font(.body)
-                             
-                            //Spacer()
+                            }
+                            
+                            Spacer()
                         
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
                                 
-                                Text(">")
+                                //Text(">")
+                                Image(systemName: "play")
                             }
                             
-                                
                             }
-                           
-                        
-                        
-                               
-                               //.navigationBarTitle("Radio App", displayMode: .inline)
-                    
+                            .padding()
+                 
                            }
-               
-                
+            
                     }
-            
-            
+                .navigationBarTitle("Radio App", displayMode: .inline)
+                
                 }.background(Color.newColorGrayLight)
                            
             }
