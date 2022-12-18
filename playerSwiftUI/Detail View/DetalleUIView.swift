@@ -147,11 +147,12 @@ struct DetalleUIView : View {
             
             //TODO: Make button play automatic when the view is load.
             Button( action: {
+                
                 player = AVPlayer(url: URL(string: choice1.url)!)
                 self.isPlaying.toggle()
                 player.play()
                 isShowEq = true
-                
+            
                 if isPlaying == false {
                     player.pause()
                     isShowEq = false
