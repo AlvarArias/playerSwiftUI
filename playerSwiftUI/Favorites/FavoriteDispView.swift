@@ -8,6 +8,7 @@ import Foundation
 import SwiftUI
 import CachedAsyncImage
 
+@available(iOS 15.0, *)
 struct FavoriteDispView: View {
     
     @State private var searchText="163"

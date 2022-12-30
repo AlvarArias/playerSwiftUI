@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 @available(iOS 14.0, *)
 @main
 struct playerSwiftUI2App: App {
@@ -15,4 +16,5 @@ struct playerSwiftUI2App: App {
             SliderSwiftUIView()
         }
     }
+    
 }

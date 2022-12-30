@@ -14,11 +14,14 @@ struct ExampleSwiftUIView: View {
     @State var isPlaying : Bool = false
     @State var isSelect : Bool = false
     
-    @StateObject var user = User()
+   // @StateObject var user = User()
     
     var myPlayer = playerConector()
+    //var myRadio : [DemoRadio]
     
+    /*
     var myRadioNow = [myRadio(radioURL: "132", chanelID: "132", radioName: "P1", radioLogoName: "P1"), myRadio(radioURL: "2562", chanelID: "132", radioName: "P2", radioLogoName: "P2"), myRadio(radioURL: "164", chanelID: "164", radioName: "P3", radioLogoName: "P3")]
+    */
     
     @State var tempURL : String = ""
     
@@ -62,8 +65,10 @@ struct ExampleSwiftUIView: View {
                                    }
                                    
                                }.padding()
-                               NavigationLink("", destination: DetailSwiftUIView(myRadioNowD: myRadioNow, localIndexD: index), isActive: $isSelect)
-                        
+                           /*
+                            NavigationLink("", destination: DetailSwiftUIView(myRadioNowD: myRadioNow, localIndexD: index), isActive: $isSelect)
+                         */
+                           
                             }
                        }
                        .frame(height: 350)
@@ -80,7 +85,7 @@ struct ExampleSwiftUIView: View {
                }.navigationBarTitle("Home Radio").background(Color.newSecundaryColor)
                        .navigationBarTitleDisplayMode(.inline)
                    
-                }.environmentObject(user)
+                }//.environmentObject(user)
                        
             }
         }
@@ -91,7 +96,7 @@ struct ExampleSwiftUIView_Previews: PreviewProvider {
         ExampleSwiftUIView()
     }
 }
-
+/*
 extension Color {
     //static let oldPrimaryColor = Color(UIColor.systemIndigo)
     static let newPrimaryColor = Color("Verde")
@@ -100,7 +105,8 @@ extension Color {
     static let newColorGrayLight = Color("Gris light")
     static let newColorGreenLight = Color("Verde light")
 }
-
+*/
+ 
 /*
 Button(action: {
   

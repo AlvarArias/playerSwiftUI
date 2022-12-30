@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct DetailSwiftUIView: View {
     
     @State private var showDetails = false
    
-    var myRadioNowD : [myRadio]
+    //var myRadioNowD : [myRadio]
+    var myRadioNowD : [DemoRadio]
     var localIndexD: Int
     
     

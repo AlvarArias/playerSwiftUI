@@ -9,9 +9,9 @@ import SwiftUI
 
 struct InfoRadioSwiftUIView: View {
     
-    @EnvironmentObject var user: User
+    //@EnvironmentObject var user: User
     
-    @EnvironmentObject var user2: User2
+    //@EnvironmentObject var user2: User2
     
     init(){
             UITableView.appearance().backgroundColor = .clear

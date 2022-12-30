@@ -31,7 +31,8 @@ struct SplashSwiftUIView: View {
             
         }
         .onAppear {
-           showNextScreen()
+          //showNextScreen()
+          //SliderSwiftUIView()
         }
        
     }

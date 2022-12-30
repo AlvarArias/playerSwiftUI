@@ -16,7 +16,7 @@ class theURLSetting : ObservableObject {
 
 struct DetalleUIView : View {
         
-    @Environment(\.presentationMode) var presentationMode
+    //@Environment(\.presentationMode) var presentationMode
   
 
     // Radio Object
@@ -112,15 +112,15 @@ struct DetalleUIView : View {
                         
                         if showingStar {
                            Image(systemName: "star.fill" )
-                                .foregroundColor(.newSecundaryColor)
+                                //.foregroundColor(.newSecundaryColor)
                         } else if checkIsFavorite(myRadioFavo: choice1.id) {
                            
                             Image(systemName: "star.fill" )
-                                 .foregroundColor(.newSecundaryColor)
+                                 //.foregroundColor(.newSecundaryColor)
                             
                         } else {
                             Image(systemName: "star")
-                                .foregroundColor(.newSecundaryColor)
+                                //.foregroundColor(.newSecundaryColor)
                         }
                     }
                     .onAppear {
@@ -185,6 +185,7 @@ struct DetalleUIView : View {
                 } else {
                     Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
                 }
+                }
             }
                 
             }.navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
@@ -208,8 +209,6 @@ struct DetalleUIView : View {
                     }
                 
                 ).background(Color.newColorGreenLight)
-        }
-        .background(Color.newColorGreenLight)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
             receivedURL.theURL = choice1.scheduleurl 
@@ -217,7 +216,7 @@ struct DetalleUIView : View {
         })
         .environmentObject(receivedURL)
        
-        
+        }
     }
     
     // Funciones Favorites
@@ -249,7 +248,7 @@ struct DetalleUIView : View {
                    
                    print("element exists")
                     
-                 return
+                 //return
                     
                 } else {
                    
@@ -306,19 +305,19 @@ struct DetalleUIView : View {
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
                 print("is favorite")
-                return true
+                    true
                     
                 } else {
-    
-                    return false
+                    
+                    false
                 }
             }
         }
-        return false
+        false
     }
     
-  
 }
+
 
 struct DetalleUIView_Previews: PreviewProvider {
     static var previews: some View {

@@ -16,7 +16,7 @@ struct Person: Codable {
     }
 }
 
-/*
+
 struct Color {
     let red, green, blue: Double
     init(red: Double, green: Double, blue: Double) {
@@ -30,8 +30,6 @@ struct Color {
         blue  = white
     }
 }
-*/
-
 
 struct MainFavoritesView: View {
     
@@ -207,3 +205,6 @@ struct MainFavoritesView_Previews: PreviewProvider {
         MainFavoritesView()
     }
 }
+
+
+ 

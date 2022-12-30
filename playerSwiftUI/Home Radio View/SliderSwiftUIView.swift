@@ -8,6 +8,7 @@
 import SwiftUI
 import CachedAsyncImage
 
+@available(iOS 15.0, *)
 struct SliderSwiftUIView: View {
     
 
@@ -45,7 +46,7 @@ struct SliderSwiftUIView: View {
     var body: some View {
                
         NavigationView {
-            
+        
             VStack {
                 
                 Text(theUserName)
@@ -235,9 +236,7 @@ struct SliderSwiftUIView: View {
             if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
                 let decoder = JSONDecoder()
                 if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                   // print("loadedPerson.name")
-                    //print(loadedPerson.mytest)
-                    
+                   
                     // lo hacemos igual a load person
                     newtest.mytest = loadedPerson.mytest
                     if newtest.mytest.contains(where: {$0 == myRadioFavo}) {
@@ -247,14 +246,12 @@ struct SliderSwiftUIView: View {
                     // Check value in array
                     if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
                        // it exists, do something
-                     //print("Radio \(myRadioFavo) is Favorite")
                      
                     return true
                         
                     } else {
                        //item could not be found
-                        //print("Radio \(myRadioFavo) is not Favorite")
-                        
+     
                         return false
                     }
                 }
