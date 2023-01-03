@@ -43,7 +43,7 @@ struct DetalleUIView : View {
     
     // Favorites
     //@StateObject var favorites = Favorites()
-    //@Binding var isNight : Bool
+
     
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
@@ -52,7 +52,7 @@ struct DetalleUIView : View {
     
     // Data user default
     var myData = Person(mytest: ["Alvar", "Joel"])
-    //var myData = ["Alvar", "Joel"]
+   
     
     @State var controlFunc = true
         
@@ -129,10 +129,6 @@ struct DetalleUIView : View {
                                 //.foregroundColor(.newSecundaryColor)
                         }
                     }
-                    .onAppear {
-                        
-                        
-                    }
                     
                 }
                 
@@ -152,6 +148,7 @@ struct DetalleUIView : View {
             //BarrPlaySwiftUIView()
             
             //TODO: Make button play automatic when the view is load.
+             /*
             Button( action: {
                 
                 player = AVPlayer(url: URL(string: choice1.url)!)
@@ -190,8 +187,9 @@ struct DetalleUIView : View {
                     
                 } else {
                     Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+                    }
                 }
-                }
+               */
             }
                 
             }.navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
@@ -222,9 +220,32 @@ struct DetalleUIView : View {
         })
         .environmentObject(receivedURL)
        
+        .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+            
+           
+            Button {
+                // TODO: ANIMATION STOP
+                isPlaying.toggle()
+                print("isPlaying \(isPlaying)")
+                //isShowEq = true
+                testPlay()
+                
+              
+            } label: {
+                
+                if isPlaying {
+                    Image("Pause2").resizable().aspectRatio(contentMode: .fit).frame(width: 30, height: 30)
+                }
+                else {
+                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 30, height: 30)
+                    }
+                }
+            }
         }
-    
-    
+        
+    }
+
     // Funciones Favorites
 
     func saveData(myData: Person) {
@@ -320,6 +341,34 @@ struct DetalleUIView : View {
             }
         }
         return false
+    }
+    
+    func testPlay(){
+        do {
+            try AVAudioSession.sharedInstance()
+                .setCategory(AVAudioSession.Category.playback)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+                
+                // func Play Now()
+                player = AVPlayer(url: URL(string: choice1.url)!)
+                player.play()
+                
+                
+                if isPlaying == false {
+                    player.pause()
+                    //isShowEq = false
+                }
+                
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
 }
