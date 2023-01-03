@@ -31,12 +31,20 @@ struct FavoriteDispView: View {
                 
                     
                     ForEach(myRadioDemo, id: \.self) { name in
-                    
-                        Text("Favorites")
                         
                         /*
-                        if checkIsFavorite(myRadioFavo: name.id) {
+                        VStack{
                             
+                        Text("Favorites  \(name.id)")
+                        Text("Valor de funcion")
+                            Text (String(checkIsFavorite(myRadioFavo: name.id)))
+                        }
+                        */
+                         
+                        
+                       // if checkIsFavorite(myRadioDavo: name.id) {
+                        
+                         
                         HStack {
                            
                             /*
@@ -49,6 +57,7 @@ struct FavoriteDispView: View {
                                 ProgressView()
                             })
                             */
+                             
                             CachedAsyncImage (url: URL(string: name.image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -70,7 +79,7 @@ struct FavoriteDispView: View {
                             Image(systemName: "star.fill")
                                .foregroundColor(.yellow)
                             
-                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name, isNight: .constant(false))) {
+                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
                                 
                                 Text("")
                             }
@@ -78,6 +87,7 @@ struct FavoriteDispView: View {
                            
                         } .listRowSeparator(.hidden)
                         
+                        /*
                         } else {
                             //Text("You have not sectioned any favorites")
                         }
