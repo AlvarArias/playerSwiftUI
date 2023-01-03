@@ -39,11 +39,9 @@ struct SliderSwiftUIView: View {
     //@AppStorage("favorite") var theUserFavorite = ""
     //@State private var newtest = Person(mytest: [""])
     
-    //@State private var newtest = [""]
+
     @State private var isNew = false
     
-    
-    //@State var isNight = false
     
     @EnvironmentObject var receivedURL: theURLSetting
    
@@ -167,12 +165,7 @@ struct SliderSwiftUIView: View {
                                .navigationBarTitle("Radio App", displayMode: .inline)
                     
                            }
-                .onAppear {
-                    print("is Night")
-                   // print(isNight)
                 
-                   
-                }
                 .accessibilityLabel("ListOfRadios")
                 
                

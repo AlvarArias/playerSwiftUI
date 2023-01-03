@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 import CachedAsyncImage
 
-//@available(iOS 15.0, *)
+
 struct FavoriteDispView: View {
     
     @State private var searchText="163"
@@ -31,33 +31,11 @@ struct FavoriteDispView: View {
                 
                     
                     ForEach(myRadioDemo, id: \.self) { name in
-                        
-                        /*
-                        VStack{
-                            
-                        Text("Favorites  \(name.id)")
-                        Text("Valor de funcion")
-                            Text (String(checkIsFavorite(myRadioFavo: name.id)))
-                        }
-                        */
-                         
-                        
+                    
                        // if checkIsFavorite(myRadioDavo: name.id) {
-                        
-                         
+                                                
                         HStack {
-                           
-                            /*
-                            AsyncImage(url: URL(string: name.image), content: { image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                            },
-                            placeholder: {
-                                ProgressView()
-                            })
-                            */
-                             
+                                                    
                             CachedAsyncImage (url: URL(string: name.image), content: { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -75,9 +53,13 @@ struct FavoriteDispView: View {
                                 .foregroundColor(Color.black)
                           
                             Spacer()
+                            if checkIsFavorite(myRadioFavo: name.id) {
+                                Image(systemName: "star.fill")
+                                   .foregroundColor(.yellow)
+                            } else {
+                                Image(systemName: "star")
+                            }
                             
-                            Image(systemName: "star.fill")
-                               .foregroundColor(.yellow)
                             
                             NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
                                 
@@ -123,7 +105,6 @@ struct FavoriteDispView: View {
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
                    // it exists, do something
-                 //print("Radio \(myRadioFavo) is Favorite")
                  
                 return true
                     
@@ -145,3 +126,14 @@ struct FavoriteDispView_Previews: PreviewProvider {
         FavoriteDispView()
     }
 }
+
+/*
+AsyncImage(url: URL(string: name.image), content: { image in
+    image.resizable()
+        .aspectRatio(contentMode: .fill)
+        .frame(width: 50, height: 50)
+},
+placeholder: {
+    ProgressView()
+})
+*/

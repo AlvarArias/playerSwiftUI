@@ -8,6 +8,7 @@
 import SwiftUI
 import AVKit
 import Lottie
+import CachedAsyncImage
 
 struct Person : Decodable,Encodable, Hashable {
     var mytest : [String]
@@ -59,24 +60,21 @@ struct DetalleUIView : View {
     
     var body: some View {
         
-        //let url = URL(string: choice1.image)
-    
         NavigationView {
         
-            VStack {
+            ScrollView {
+         
+                CachedAsyncImage (url: URL(string: choice1.image), content: { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        //.frame(width: 200, height: 200)
+                },
+                placeholder: {
+                    ProgressView()
+                })
+                .frame(width: UIScreen.main.bounds.width, height: 200)
+                //.background(Color.red)
                 
-            // Detail Image
-            AsyncImage(url: URL(string: choice1.image), content: { image in
-                image.resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 200, height: 200)
-            },
-            placeholder: {
-                ProgressView()
-                    .frame(width: 50, height: 50)
-            })
-            .background(Color.red)
-        
                 HStack{
                     Text("Next programs").padding()
                    
@@ -111,11 +109,11 @@ struct DetalleUIView : View {
                         
                         if showingStar {
                            Image(systemName: "star.fill" )
-                                //.foregroundColor(.newSecundaryColor)
+                                .foregroundColor(.yellow)
                         } else if checkIsFavorite(myRadioFavo: choice1.id) {
                            
                             Image(systemName: "star.fill" )
-                                 //.foregroundColor(.newSecundaryColor)
+                                 .foregroundColor(.yellow)
                             
                         } else {
                             Image(systemName: "star")
@@ -133,32 +131,10 @@ struct DetalleUIView : View {
                 // Next programs
                 newXMLSwiftUIView()
             
-             /*
-            Button( action: {
-                
-                player = AVPlayer(url: URL(string: choice1.url)!)
-                self.isPlaying.toggle()
-                player.play()
-                isShowEq = true
-            
-                if isPlaying == false {
-                    player.pause()
-                    isShowEq = false
                 }
-              
-            })
-            {
-                if isPlaying == true {
-                    Image("Pause2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
-                    
-                } else {
-                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
-                    }
-                }
-               */
-            }
                 
             }.navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
+            
                 // new button back
             
                 .navigationBarItems(
@@ -174,16 +150,12 @@ struct DetalleUIView : View {
                             //Text("Back").foregroundColor(.newSecundaryColor)
                         Image(systemName: "arrow.uturn.backward")
                             //.foregroundColor(.newSecundaryColor)
-                        
-                        
                     }
-                
-                ).background(SwiftUI.Color.white)
+                      
+                )
+        
         .navigationBarBackButtonHidden(true)
-        .onAppear(perform: {
-            receivedURL.theURL = choice1.scheduleurl 
-            print(receivedURL.theURL)
-        })
+    
         .environmentObject(receivedURL)
        
         .toolbar {
@@ -198,14 +170,14 @@ struct DetalleUIView : View {
             } label: {
                 
                 if isPlaying {
-                    Image("Pause2").resizable().aspectRatio(contentMode: .fit)
-                        .frame(width: 50, height: 50)
-                        
+                    //Image("Pause2").resizable().aspectRatio(contentMode: .fit)
+                      //  .frame(width: 50, height: 50)
+                    Image(systemName: "pause.circle.fill")
                 }
                 else {
-                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit)
-                        .frame(width: 50, height: 50)
-                        
+                    //Image("But-Play2").resizable().aspectRatio(contentMode: .fit)
+                      //  .frame(width: 50, height: 50)
+                    Image(systemName: "play.circle")
                     }
                 }
             .padding()
@@ -297,17 +269,14 @@ struct DetalleUIView : View {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                //print("loadedPerson.name")
-                //print(loadedPerson.mytest)
-                
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
                 print("is favorite")
-                    true
+                return true
                     
                 } else {
                     
-                    false
+                  return false
                 }
             }
         }
@@ -383,3 +352,41 @@ func saveData(myData: Person) {
  */
  
  
+/*
+Button( action: {
+   
+   player = AVPlayer(url: URL(string: choice1.url)!)
+   self.isPlaying.toggle()
+   player.play()
+   isShowEq = true
+
+   if isPlaying == false {
+       player.pause()
+       isShowEq = false
+   }
+ 
+})
+{
+   if isPlaying == true {
+       Image("Pause2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+       
+   } else {
+       Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100)
+       }
+   }
+  */
+
+/*
+  // Detail Image
+  AsyncImage(url: URL(string: choice1.image), content: { image in
+      image.resizable()
+          .aspectRatio(contentMode: .fill)
+          .frame(width: 200, height: 200)
+  },
+  placeholder: {
+      ProgressView()
+          .frame(width: 50, height: 50)
+  })
+  .background(Color.red)
+*/
+
