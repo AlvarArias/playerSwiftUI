@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 import CachedAsyncImage
 
-@available(iOS 15.0, *)
+//@available(iOS 15.0, *)
 struct FavoriteDispView: View {
     
     @State private var searchText="163"
@@ -29,8 +29,12 @@ struct FavoriteDispView: View {
                  
                 List {
                 
+                    
                     ForEach(myRadioDemo, id: \.self) { name in
                     
+                        Text("Favorites")
+                        
+                        /*
                         if checkIsFavorite(myRadioFavo: name.id) {
                             
                         HStack {
@@ -77,7 +81,7 @@ struct FavoriteDispView: View {
                         } else {
                             //Text("You have not sectioned any favorites")
                         }
-                     
+                       */
                     }
                   
                     .navigationBarTitle("Radio App Favorites", displayMode: .inline)

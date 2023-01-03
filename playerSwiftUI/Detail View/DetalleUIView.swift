@@ -9,6 +9,11 @@ import SwiftUI
 import AVKit
 import Lottie
 
+struct Person : Decodable,Encodable, Hashable {
+    var mytest : [String]
+}
+
+
 class theURLSetting : ObservableObject {
     @Published var theURL: String = ""
     @Published var isFavorite : Bool = false
@@ -47,7 +52,7 @@ struct DetalleUIView : View {
     
     // Data user default
     var myData = Person(mytest: ["Alvar", "Joel"])
-    
+    //var myData = ["Alvar", "Joel"]
     
     @State var controlFunc = true
         

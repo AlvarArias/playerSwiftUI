@@ -8,7 +8,10 @@
 import SwiftUI
 import CachedAsyncImage
 
-@available(iOS 15.0, *)
+//@available(iOS 15.0, *)
+
+
+
 struct SliderSwiftUIView: View {
     
 
@@ -34,7 +37,9 @@ struct SliderSwiftUIView: View {
     // User default for favorites
     let defaults = UserDefaults.standard
     //@AppStorage("favorite") var theUserFavorite = ""
-    @State private var newtest = Person(mytest: [""])
+    //@State private var newtest = Person(mytest: [""])
+    
+    //@State private var newtest = [""]
     @State private var isNew = false
     
     
@@ -222,11 +227,13 @@ struct SliderSwiftUIView: View {
                 if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
                    
                     // lo hacemos igual a load person
+                    /*
                     newtest.mytest = loadedPerson.mytest
                     if newtest.mytest.contains(where: {$0 == myRadioFavo}) {
                      isNew = true
                     }
-                    
+                    */
+                     
                     // Check value in array
                     if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
                        // it exists, do something
