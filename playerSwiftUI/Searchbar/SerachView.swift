@@ -87,7 +87,7 @@ struct SerachView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button { dismiss() } label: {
                                Image(systemName: "arrow.down")
-                            .foregroundColor(.newSecundaryColor)
+                            .foregroundColor(Color.blue)
                     }
 
                     }

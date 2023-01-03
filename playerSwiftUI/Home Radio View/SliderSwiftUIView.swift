@@ -154,12 +154,12 @@ struct SliderSwiftUIView: View {
                             // if else binding change show the star fill
                             // apple tutorial
                             // MARK: Favorite start
-                            /*
-                            NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index], isNight: .constant(checkIsFavorite(myRadioFavo: myRadioDemo[index].id)))) {
+                            
+                            NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
                                 
                                 Text("")
                             }
-                            */
+                            
                            
                         } .listRowSeparator(.hidden)
                         

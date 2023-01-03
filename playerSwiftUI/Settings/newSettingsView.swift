@@ -49,6 +49,7 @@ struct newSettingsView: View {
         }
         .navigationBarTitle("Player Settings")
         .navigationBarTitleDisplayMode(.inline)
+            
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
                 
@@ -57,8 +58,7 @@ struct newSettingsView: View {
                     
                 } label: {
                     Image(systemName: "arrow.down")
-                    .foregroundColor(.newSecundaryColor)
-                    
+                        .foregroundColor(Color.blue)
                     }
                 .fullScreenCover(isPresented: $showing, content: SliderSwiftUIView.init)
                
