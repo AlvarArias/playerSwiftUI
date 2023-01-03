@@ -69,24 +69,17 @@ struct DetalleUIView : View {
             AsyncImage(url: URL(string: choice1.image), content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fill)
-                     .frame(width: 200, height: 200)
+                    .frame(width: 200, height: 200)
             },
             placeholder: {
                 ProgressView()
+                    .frame(width: 50, height: 50)
             })
+            .background(Color.red)
         
                 HStack{
-                    /*
-                    if isShowEq {
-                    LottieView(lottieFile: "music-equalizer")
-                        .frame(width: 50, height: 50)
-                    }
-                    */
-                    
                     Text("Next programs").padding()
                    
-                   // nuevo boton start
-                  
                     /*
                     Button {
                         print("savedPerson ")
@@ -136,18 +129,10 @@ struct DetalleUIView : View {
                 LottieView(lottieFile: "music-equalizer")
                     .frame(width: 50, height: 50)
                 }
-
-                //TODO: Add song player now in other view
-                // SongView Model and Sing Object Added
-                // Testing Fech Song is working
-                // Make dinamis the channel for the Url
-                // Add the content to the Screen
                 
+                // Next programs
                 newXMLSwiftUIView()
             
-            //BarrPlaySwiftUIView()
-            
-            //TODO: Make button play automatic when the view is load.
              /*
             Button( action: {
                 
@@ -160,26 +145,7 @@ struct DetalleUIView : View {
                     player.pause()
                     isShowEq = false
                 }
-                
-                //TODO: Check backgroung sound is working and how to stop it See add Wiget for playing control
-                // Function play in background
-                
-                /*
-                do {
-                    try AVAudioSession.sharedInstance()
-                                          .setCategory(AVAudioSession.Category.playback)
-                    print("AVAudioSession Category Playback OK")
-                    do {
-                        try AVAudioSession.sharedInstance().setActive(true)
-                        print("AVAudioSession is Active")
-                    } catch let error as NSError {
-                        print(error.localizedDescription)
-                    }
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                */
-        
+              
             })
             {
                 if isPlaying == true {
@@ -222,27 +188,32 @@ struct DetalleUIView : View {
        
         .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-            
-           
+        
             Button {
-                // TODO: ANIMATION STOP
                 isPlaying.toggle()
                 print("isPlaying \(isPlaying)")
-                //isShowEq = true
                 testPlay()
                 
               
             } label: {
                 
                 if isPlaying {
-                    Image("Pause2").resizable().aspectRatio(contentMode: .fit).frame(width: 30, height: 30)
+                    Image("Pause2").resizable().aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                        
                 }
                 else {
-                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit).frame(width: 30, height: 30)
+                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                        
                     }
                 }
+            .padding()
+            //.background(Color.red)
             }
+                
         }
+        
         
     }
 
@@ -355,11 +326,11 @@ struct DetalleUIView : View {
                 // func Play Now()
                 player = AVPlayer(url: URL(string: choice1.url)!)
                 player.play()
-                
+                isShowEq = true
                 
                 if isPlaying == false {
                     player.pause()
-                    //isShowEq = false
+                    isShowEq = false
                 }
                 
                 
