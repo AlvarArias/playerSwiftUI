@@ -32,8 +32,7 @@ struct FavoriteDispView: View {
                     
                     ForEach(myRadioDemo, id: \.self) { name in
                     
-                       // if checkIsFavorite(myRadioDavo: name.id) {
-                                                
+                    
                         HStack {
                                                     
                             CachedAsyncImage (url: URL(string: name.image), content: { image in
@@ -69,11 +68,7 @@ struct FavoriteDispView: View {
                            
                         } .listRowSeparator(.hidden)
                         
-                        /*
-                        } else {
-                            //Text("You have not sectioned any favorites")
-                        }
-                       */
+    
                     }
                   
                     .navigationBarTitle("Radio App Favorites", displayMode: .inline)

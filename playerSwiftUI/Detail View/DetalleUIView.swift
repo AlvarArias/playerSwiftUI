@@ -67,27 +67,16 @@ struct DetalleUIView : View {
                 CachedAsyncImage (url: URL(string: choice1.image), content: { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
-                        //.frame(width: 200, height: 200)
+                        .frame(width: 200, height: 200)
                 },
                 placeholder: {
                     ProgressView()
                 })
-                .frame(width: UIScreen.main.bounds.width, height: 200)
-                //.background(Color.red)
+               
                 
                 HStack{
                     Text("Next programs").padding()
                    
-                    /*
-                    Button {
-                        print("savedPerson ")
-                        let savedPerson = defaults.object(forKey: "SavedPerson")
-                        print(savedPerson ?? "No value")
-                        
-                    } label: {
-                        Image(systemName: "paperplane")
-                    }
-                    */
                     // MARK: Button start
                     Button {
                         showingStar.toggle()
