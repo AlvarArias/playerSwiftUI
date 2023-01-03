@@ -21,16 +21,14 @@ struct InfoRadioSwiftUIView: View {
     var body: some View {
         
         List {
-            Text("Info radio ").listRowBackground(Color.newSecundaryColor)
-            Text("Info radio ").listRowBackground(Color.newSecundaryColor)
-            Text("Info radio ").listRowBackground(Color.newSecundaryColor)
-            Text("Info radio ").listRowBackground(Color.newSecundaryColor)
-            //Text("User: \(user.score)")
-            //Text("User: \(user2.image)")
-            
-        }.background(Color.newSecundaryColor)
+            Text("Info radio ")
+            Text("Info radio ")
+            Text("Info radio ")
+            Text("Info radio ")
+        }
+    
      }
-        
+    
         
 }
 

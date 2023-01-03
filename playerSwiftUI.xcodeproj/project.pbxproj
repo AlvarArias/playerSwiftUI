@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62192A802796040C0090579A /* XMLSwiftUIView.swift */; };
 		62192A84279608CE0090579A /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 62192A83279608CE0090579A /* XMLCoder */; };
+		622482FD296309BC00382923 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622482FC296309BC00382923 /* SplashView.swift */; };
+		622482FF29630A3900382923 /* SliderSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622482FE29630A3900382923 /* SliderSwiftUIView.swift */; };
+		6224830129630BC200382923 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6224830029630BC200382923 /* Media.xcassets */; };
+		6224830229630BC200382923 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6224830029630BC200382923 /* Media.xcassets */; };
+		6224830C296313D400382923 /* Data Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6224830B296313D400382923 /* Data Model.swift */; };
+		6224830D296313D400382923 /* Data Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6224830B296313D400382923 /* Data Model.swift */; };
+		62248310296314F000382923 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6224830F296314F000382923 /* Lottie */; };
+		62248312296314F500382923 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 62248311296314F500382923 /* CachedAsyncImage */; };
 		6228216D294F332700A11422 /* playerSwiftUI2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6228216C294F332700A11422 /* playerSwiftUI2App.swift */; };
 		6228216F294F332700A11422 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6228216E294F332700A11422 /* ContentView.swift */; };
 		62282171294F332800A11422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62282170294F332800A11422 /* Assets.xcassets */; };
@@ -19,6 +27,9 @@
 		62282181294F396800A11422 /* RadioObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62282180294F396800A11422 /* RadioObj.swift */; };
 		62282183294F399C00A11422 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62282182294F399C00A11422 /* Helper.swift */; };
 		62282185294F39D300A11422 /* DetalleUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62282184294F39D300A11422 /* DetalleUIView.swift */; };
+		6229C70229642FBF00AF36F2 /* DetalleUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229C70129642FBF00AF36F2 /* DetalleUIView.swift */; };
+		6229C704296437ED00AF36F2 /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 6229C703296437ED00AF36F2 /* radios23.json */; };
+		6229C7062964380400AF36F2 /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 6229C7052964380400AF36F2 /* radios23.json */; };
 		622D45812897D409002810AD /* mySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45802897D409002810AD /* mySettings.swift */; };
 		622D45832897D45B002810AD /* newSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45822897D45B002810AD /* newSettingsView.swift */; };
 		62337934295F6B7300C290F1 /* newPlayerSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62337933295F6B7300C290F1 /* newPlayerSwiftUIApp.swift */; };
@@ -38,7 +49,6 @@
 		624CC69A29107399007186A2 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 624CC69929107399007186A2 /* CachedAsyncImage */; };
 		624D37D328ACC917008A5F3A /* song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D37D228ACC917008A5F3A /* song.swift */; };
 		624D37D528ACC92F008A5F3A /* songViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D37D428ACC92F008A5F3A /* songViewModel.swift */; };
-		624E80BA290D7E6A005E4450 /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 624E80B9290D7E6A005E4450 /* radios23.json */; };
 		624E945F2799C7B700803A83 /* newXMLSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */; };
 		624F747F290C3268003C3849 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F747E290C3268003C3849 /* DataController.swift */; };
 		624F7482290C32B3003C3849 /* ModelPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 624F7480290C32B3003C3849 /* ModelPlayer.xcdatamodeld */; };
@@ -50,8 +60,6 @@
 		629AC835279D998600AA2BD9 /* Data_formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AC834279D998600AA2BD9 /* Data_formater.swift */; };
 		629AC837279DF34300AA2BD9 /* network_checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AC836279DF34300AA2BD9 /* network_checker.swift */; };
 		629AC839279DF4C500AA2BD9 /* CheckNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */; };
-		629AE7F6295F5234005271DF /* MainFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE7F5295F5234005271DF /* MainFavoritesView.swift */; };
-		629AE7F8295F5373005271DF /* ExampleSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE7F7295F5373005271DF /* ExampleSwiftUIView.swift */; };
 		629AE7FA295F537B005271DF /* DetailSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE7F9295F537B005271DF /* DetailSwiftUIView.swift */; };
 		629D68BB278EC409005E0214 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BA278EC409005E0214 /* Helper.swift */; };
 		629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */; };
@@ -112,6 +120,10 @@
 
 /* Begin PBXFileReference section */
 		62192A802796040C0090579A /* XMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLSwiftUIView.swift; sourceTree = "<group>"; };
+		622482FC296309BC00382923 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		622482FE29630A3900382923 /* SliderSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderSwiftUIView.swift; sourceTree = "<group>"; };
+		6224830029630BC200382923 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6224830B296313D400382923 /* Data Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data Model.swift"; sourceTree = "<group>"; };
 		6228216A294F332700A11422 /* playerSwiftUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playerSwiftUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6228216C294F332700A11422 /* playerSwiftUI2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUI2App.swift; sourceTree = "<group>"; };
 		6228216E294F332700A11422 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +135,9 @@
 		62282182294F399C00A11422 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Helper.swift; path = "playerSwiftUI/Data model/Helper.swift"; sourceTree = SOURCE_ROOT; };
 		62282184294F39D300A11422 /* DetalleUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleUIView.swift; sourceTree = "<group>"; };
 		62282186294F491900A11422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6229C70129642FBF00AF36F2 /* DetalleUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleUIView.swift; sourceTree = "<group>"; };
+		6229C703296437ED00AF36F2 /* radios23.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios23.json; sourceTree = "<group>"; };
+		6229C7052964380400AF36F2 /* radios23.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios23.json; sourceTree = "<group>"; };
 		622D45802897D409002810AD /* mySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySettings.swift; sourceTree = "<group>"; };
 		622D45822897D45B002810AD /* newSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSettingsView.swift; sourceTree = "<group>"; };
 		6231D0E6287F54590026A11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = playerSwiftUI/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -149,7 +164,6 @@
 		624CC69629103849007186A2 /* FavoriteDispView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDispView.swift; sourceTree = "<group>"; };
 		624D37D228ACC917008A5F3A /* song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = song.swift; sourceTree = "<group>"; };
 		624D37D428ACC92F008A5F3A /* songViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songViewModel.swift; sourceTree = "<group>"; };
-		624E80B9290D7E6A005E4450 /* radios23.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios23.json; sourceTree = "<group>"; };
 		624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newXMLSwiftUIView.swift; sourceTree = "<group>"; };
 		624F747E290C3268003C3849 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		624F7481290C32B3003C3849 /* ModelPlayer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ModelPlayer.xcdatamodel; sourceTree = "<group>"; };
@@ -162,8 +176,6 @@
 		629AC834279D998600AA2BD9 /* Data_formater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_formater.swift; sourceTree = "<group>"; };
 		629AC836279DF34300AA2BD9 /* network_checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = network_checker.swift; sourceTree = "<group>"; };
 		629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetworkView.swift; sourceTree = "<group>"; };
-		629AE7F5295F5234005271DF /* MainFavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFavoritesView.swift; sourceTree = "<group>"; };
-		629AE7F7295F5373005271DF /* ExampleSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleSwiftUIView.swift; sourceTree = "<group>"; };
 		629AE7F9295F537B005271DF /* DetailSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSwiftUIView.swift; sourceTree = "<group>"; };
 		629D68BA278EC409005E0214 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		629D68BC278ECAAC005E0214 /* RadiosSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiosSwiftUIView.swift; sourceTree = "<group>"; };
@@ -197,6 +209,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62248310296314F000382923 /* Lottie in Frameworks */,
+				62248312296314F500382923 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +242,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		622483072963135700382923 /* Compartido */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Compartido;
+			sourceTree = "<group>";
+		};
+		6224830E296314F000382923 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6228216B294F332700A11422 /* playerSwiftUI2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +312,10 @@
 				62337935295F6B7300C290F1 /* ContentView.swift */,
 				62337937295F6B7400C290F1 /* Assets.xcassets */,
 				62337939295F6B7400C290F1 /* Preview Content */,
+				622482FC296309BC00382923 /* SplashView.swift */,
+				622482FE29630A3900382923 /* SliderSwiftUIView.swift */,
+				6229C70129642FBF00AF36F2 /* DetalleUIView.swift */,
+				6224830B296313D400382923 /* Data Model.swift */,
 			);
 			path = newPlayerSwiftUI;
 			sourceTree = "<group>";
@@ -291,6 +323,7 @@
 		62337939295F6B7400C290F1 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				6229C703296437ED00AF36F2 /* radios23.json */,
 				6233793A295F6B7400C290F1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -347,8 +380,6 @@
 			children = (
 				629AE7F9295F537B005271DF /* DetailSwiftUIView.swift */,
 				625E8708290EE7230030E31A /* FavoritesView.swift */,
-				629AE7F7295F5373005271DF /* ExampleSwiftUIView.swift */,
-				629AE7F5295F5234005271DF /* MainFavoritesView.swift */,
 				624CC692290FE2A7007186A2 /* NewFavoriteModel.swift */,
 				624CC69629103849007186A2 /* FavoriteDispView.swift */,
 			);
@@ -393,7 +424,7 @@
 			children = (
 				624D37D128ACC8CC008A5F3A /* Song playing now */,
 				62DBB5B0278CE8FA003EEFE2 /* radios.json */,
-				624E80B9290D7E6A005E4450 /* radios23.json */,
+				6229C7052964380400AF36F2 /* radios23.json */,
 				62A9F020275F8DE300B345AE /* RadioObj.swift */,
 				624F7480290C32B3003C3849 /* ModelPlayer.xcdatamodeld */,
 				62A9F022275FE7FB00B345AE /* PlayerConector.swift */,
@@ -418,6 +449,7 @@
 				6228216B294F332700A11422 /* playerSwiftUI2 */,
 				62337932295F6B7300C290F1 /* newPlayerSwiftUI */,
 				62A9F00A275F5B3500B345AE /* Products */,
+				6224830E296314F000382923 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -436,6 +468,7 @@
 		62A9F00B275F5B3500B345AE /* playerSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				622483072963135700382923 /* Compartido */,
 				622ABE602934EDD600D052D2 /* Notes */,
 				624CC68F290FD078007186A2 /* Favorites */,
 				628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */,
@@ -448,6 +481,7 @@
 				6243647028816EA500A20017 /* Settings */,
 				6244C2202885611700FE15B7 /* Searchbar */,
 				62A9F012275F5B3800B345AE /* Preview Content */,
+				6224830029630BC200382923 /* Media.xcassets */,
 			);
 			path = playerSwiftUI;
 			sourceTree = "<group>";
@@ -515,6 +549,10 @@
 			dependencies = (
 			);
 			name = newPlayerSwiftUI;
+			packageProductDependencies = (
+				6224830F296314F000382923 /* Lottie */,
+				62248311296314F500382923 /* CachedAsyncImage */,
+			);
 			productName = newPlayerSwiftUI;
 			productReference = 62337931295F6B7300C290F1 /* newPlayerSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -652,7 +690,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6229C704296437ED00AF36F2 /* radios23.json in Resources */,
 				6233793B295F6B7400C290F1 /* Preview Assets.xcassets in Resources */,
+				6224830229630BC200382923 /* Media.xcassets in Resources */,
 				62337938295F6B7400C290F1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,7 +717,8 @@
 			files = (
 				6299BFB028940C59003C1DB0 /* music-equalizer.json in Resources */,
 				62DBB5B1278CE8FA003EEFE2 /* radios.json in Resources */,
-				624E80BA290D7E6A005E4450 /* radios23.json in Resources */,
+				6224830129630BC200382923 /* Media.xcassets in Resources */,
+				6229C7062964380400AF36F2 /* radios23.json in Resources */,
 				62A9F014275F5B3800B345AE /* Preview Assets.xcassets in Resources */,
 				62A9F011275F5B3800B345AE /* Assets.xcassets in Resources */,
 				624C33DD292555E100528E45 /* Notes  in Resources */,
@@ -706,6 +747,10 @@
 			files = (
 				62337936295F6B7300C290F1 /* ContentView.swift in Sources */,
 				62337934295F6B7300C290F1 /* newPlayerSwiftUIApp.swift in Sources */,
+				6229C70229642FBF00AF36F2 /* DetalleUIView.swift in Sources */,
+				622482FD296309BC00382923 /* SplashView.swift in Sources */,
+				6224830D296313D400382923 /* Data Model.swift in Sources */,
+				622482FF29630A3900382923 /* SliderSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,8 +777,8 @@
 			files = (
 				62A5540A27989DAA00FB5615 /* Request.swift in Sources */,
 				624CC69729103849007186A2 /* FavoriteDispView.swift in Sources */,
+				6224830C296313D400382923 /* Data Model.swift in Sources */,
 				62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */,
-				629AE7F8295F5373005271DF /* ExampleSwiftUIView.swift in Sources */,
 				629AC839279DF4C500AA2BD9 /* CheckNetworkView.swift in Sources */,
 				62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */,
 				62C06B4027936A4000FE5E7C /* BarrPlaySwiftUIView.swift in Sources */,
@@ -758,7 +803,6 @@
 				622D45812897D409002810AD /* mySettings.swift in Sources */,
 				629AC837279DF34300AA2BD9 /* network_checker.swift in Sources */,
 				629D68BD278ECAAC005E0214 /* RadiosSwiftUIView.swift in Sources */,
-				629AE7F6295F5234005271DF /* MainFavoritesView.swift in Sources */,
 				6299BFB228940CE9003C1DB0 /* LottieView.swift in Sources */,
 				62A0A55127864E4D002CEB18 /* InfoRadioSwiftUIView.swift in Sources */,
 				629AE7FA295F537B005271DF /* DetailSwiftUIView.swift in Sources */,
@@ -1118,6 +1162,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1151,6 +1196,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1263,6 +1309,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 62192A82279608CE0090579A /* XCRemoteSwiftPackageReference "XMLCoder" */;
 			productName = XMLCoder;
+		};
+		6224830F296314F000382923 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6299BFAC28940B30003C1DB0 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		62248311296314F500382923 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 623E24BC292E396E0034A076 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
 		};
 		623E24BD292E396E0034A076 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;

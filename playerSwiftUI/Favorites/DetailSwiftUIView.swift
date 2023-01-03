@@ -21,11 +21,11 @@ struct DetailSwiftUIView: View {
     var body: some View {
         NavigationView {
             ZStack {
-             Color.newPrimaryColor.edgesIgnoringSafeArea(.all)
+             //Color.newPrimaryColor.edgesIgnoringSafeArea(.all)
             
             VStack {
-            Text(myRadioNowD[localIndexD].radioName)
-            Image(uiImage: UIImage(named: myRadioNowD[localIndexD].radioLogoName)!).resizable().aspectRatio(contentMode: .fit).padding()
+            Text(myRadioNowD[localIndexD].name)
+                Image(uiImage: UIImage(named: myRadioNowD[localIndexD].image)!).resizable().aspectRatio(contentMode: .fit).padding()
             
                 //Image(myRadioNowD[localIndexD].radioLogoName).resizable().aspectRatio(contentMode: .fit).frame(width: 250, height: 200).padding()
                 
@@ -33,7 +33,7 @@ struct DetailSwiftUIView: View {
             
             Button(action: {
                       print("button pressed")
-                    print(myRadioNowD[localIndexD].radioName)
+                    print(myRadioNowD[localIndexD].name)
 
                     }) {
                         Image("Pause2")
@@ -48,17 +48,23 @@ struct DetailSwiftUIView: View {
     }
 }
 }
-
+/*
 struct DetailSwiftUIView_Previews: PreviewProvider {
    
  static var previews: some View {
      
-     let theRadio = [myRadio(radioURL: "132", chanelID: "132", radioName: "P1", radioLogoName: "P1"), myRadio(radioURL: "2562", chanelID: "132", radioName: "P2", radioLogoName: "P2"), myRadio(radioURL: "164", chanelID: "164", radioName: "P3", radioLogoName: "P3")]
-     
+     /*
+     let theRadio = [myRadioNow(radioURL: "132", chanelID: "132", radioName: "P1", radioLogoName: "P1"), myRadio(radioURL: "2562", chanelID: "132", radioName: "P2", radioLogoName: "P2"), myRadio(radioURL: "164", chanelID: "164", radioName: "P3", radioLogoName: "P3")]
      
         DetailSwiftUIView(myRadioNowD: theRadio, localIndexD: 0)
+      */
+     
+          
+      
     }
 }
+*/
+
 
 /*
 Button(action: {
@@ -82,3 +88,7 @@ Button(action: {
  Color.newSecundaryColor.edgesIgnoringSafeArea(.all)
  }
  */
+
+
+
+

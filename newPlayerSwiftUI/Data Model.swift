@@ -1,12 +1,30 @@
 //
-//  Helper.swift
+//  Data MOdel.swift
 //  playerSwiftUI
 //
-//  Created by Alvar Arias on 2022-01-12.
+//  Created by Alvar Arias on 2023-01-02.
 //
 
+import Foundation
 
-import UIKit
+// Listado de radios
+/*
+struct DemoRadio: Hashable, Codable  {
+
+    let image: String
+    let imagetemplate: String
+    let color: String
+    let tagline: String
+    let siteurl: String
+    let url: String
+    let scheduleurl: String
+    let xmltvid: String
+    //var isFavorite: Bool
+    let name: String
+    let id: String
+    
+    
+}
 
 extension Bundle {
     func decode<T: Decodable>(_ type: T.Type, from file: String) -> T {
@@ -28,25 +46,6 @@ extension Bundle {
     }
 }
 
-
-struct  myColor {
-    static let newPrimaryColor = UIColor(named: "testSetColor")
-    
-}
-
-
-/*
- /*
- extension Color {
-     static let oldPrimaryColor = Color(UIColor.systemIndigo)
-     static let newPrimaryColor = Color("Verde")
-     static let newSecundaryColor = Color("Cafe 1")
-     static let newTerciaryColor = Color("Cafe 2")
-     static let newColorGrayLight = Color("Gris light")
-     static let newColorGreenLight = Color("Verde light")
- }
- */
-
- */
+*/
 
 

@@ -88,7 +88,7 @@ struct FavoriteDispView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button { dismiss() } label: {
                                Image(systemName: "arrow.down")
-                            .foregroundColor(.newSecundaryColor)
+                           // .foregroundColor(.newSecundaryColor)
                     }
 
                     }

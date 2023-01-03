@@ -38,7 +38,7 @@ struct SliderSwiftUIView: View {
     @State private var isNew = false
     
     
-    @State var isNight = false
+    //@State var isNight = false
     
     @EnvironmentObject var receivedURL: theURLSetting
    
@@ -55,15 +55,15 @@ struct SliderSwiftUIView: View {
            
                     if theFirstRadio == "P2" {
                     
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
                             Image("P2").accessibilityLabel("P2")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
                             Image("P3").accessibilityLabel("P3")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
                             Image("P1").accessibilityLabel("P1")
                         }
                         
@@ -72,15 +72,15 @@ struct SliderSwiftUIView: View {
                     
                     else if theFirstRadio == "P3" {
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
                             Image("P3")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
                                 Image("P1")
                         }
                         
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
                             Image("P2")
                         }
                         
@@ -88,15 +88,15 @@ struct SliderSwiftUIView: View {
                     
                     else {
                     
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0], isNight: .constant(true))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
                     Image("P1")
             }
             
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
                 Image("P2")
             }
             
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2], isNight: .constant(false))) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
                 Image("P3")
             }
         
@@ -104,8 +104,10 @@ struct SliderSwiftUIView: View {
         
        
         }
-        .tabViewStyle(.page).foregroundColor(Color.newPrimaryColor)
-        .background(Color.newColorGrayLight)
+                .tabViewStyle(.page)
+                //.foregroundColor()
+                //.background(Color.newColorGrayLight)
+                
         .frame(width: UIScreen.main.bounds.width, height: 300)
         .onAppear {
             //tarea cuando aparece
@@ -148,29 +150,11 @@ struct SliderSwiftUIView: View {
                             // apple tutorial
                             // MARK: Favorite start
                             /*
-                            if checkIsFavorite(myRadioFavo: myRadioDemo[index].id) {
-                                 Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                                
-                            } else if (isNight == true) {
-                                     Image(systemName: "star.fill")
-                                        .foregroundColor(.yellow)
-                            } else if (isNew) {
-                                // New variables
-                                Image(systemName: "star.fill")
-                                   .foregroundColor(.yellow)
-                            }
-                            else {
-                                Image(systemName: "star")
-                                 
-                            }
-                            */
-                            
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index], isNight: .constant(checkIsFavorite(myRadioFavo: myRadioDemo[index].id)))) {
                                 
                                 Text("")
                             }
-                            
+                            */
                            
                         } .listRowSeparator(.hidden)
                         
@@ -180,7 +164,7 @@ struct SliderSwiftUIView: View {
                            }
                 .onAppear {
                     print("is Night")
-                    print(isNight)
+                   // print(isNight)
                 
                    
                 }
@@ -190,7 +174,7 @@ struct SliderSwiftUIView: View {
                //TODO: Add social shared funtionality
                 
 
-            }.background(Color.newColorGrayLight)
+            }//.background(Color.newColorGrayLight)
                 .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
                     
@@ -198,7 +182,7 @@ struct SliderSwiftUIView: View {
                     Button { showingmySettings.toggle()
                                                 } label: {
                                                     Image(systemName: "gearshape")
-                    .foregroundColor(.newSecundaryColor)
+                                                        //.foregroundColor(Color.newPrimaryColor)
                                                 }
                     .sheet(isPresented: $showingmySettings) {
                       
@@ -211,7 +195,7 @@ struct SliderSwiftUIView: View {
                     Button { showingFavorite.toggle()
                                                 } label: {
                                                     Image(systemName: "star")
-                    .foregroundColor(.newSecundaryColor)
+                    //.foregroundColor(.newSecundaryColor)
                                                     
                     .sheet(isPresented: $showingFavorite) {FavoriteDispView()}
                                                     
@@ -221,7 +205,7 @@ struct SliderSwiftUIView: View {
                     Button { showingmySearch.toggle()
                                             } label: {
                                                     Image(systemName: "magnifyingglass.circle")
-                        .foregroundColor(.newSecundaryColor)
+                        //.foregroundColor(.newSecundaryColor)
                                             }
                     .sheet(isPresented: $showingmySearch) {SerachView()}
                     
@@ -269,6 +253,16 @@ struct SliderSwiftUIView_Previews: PreviewProvider {
         SliderSwiftUIView()
     }
 }
+
+
+extension Color {
+    static let newPrimaryColor = Color(red: 166, green: 207, blue: 202)
+    static let newSecundaryColor = Color(red: 203, green: 137, blue: 135)
+    static let newTerciaryColor = Color(red: 232, green: 142, blue: 130)
+    static let newColorGrayLight = Color(red: 247, green: 247, blue: 247)
+    static let newColorGreenLight = Color(red: 236, green: 248, blue: 246)
+}
+
 
 
 

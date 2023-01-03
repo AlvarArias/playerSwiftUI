@@ -16,7 +16,7 @@ class theURLSetting : ObservableObject {
 
 struct DetalleUIView : View {
         
-    //@Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode
   
 
     // Radio Object
@@ -38,7 +38,7 @@ struct DetalleUIView : View {
     
     // Favorites
     //@StateObject var favorites = Favorites()
-    @Binding var isNight : Bool
+    //@Binding var isNight : Bool
     
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
@@ -47,6 +47,7 @@ struct DetalleUIView : View {
     
     // Data user default
     var myData = Person(mytest: ["Alvar", "Joel"])
+    
     
     @State var controlFunc = true
         
@@ -203,12 +204,12 @@ struct DetalleUIView : View {
                     }){
                             //Text("Back").foregroundColor(.newSecundaryColor)
                         Image(systemName: "arrow.uturn.backward")
-                            .foregroundColor(.newSecundaryColor)
+                            //.foregroundColor(.newSecundaryColor)
                         
                         
                     }
                 
-                ).background(Color.newColorGreenLight)
+                ).background(SwiftUI.Color.white)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
             receivedURL.theURL = choice1.scheduleurl 
@@ -217,7 +218,7 @@ struct DetalleUIView : View {
         .environmentObject(receivedURL)
        
         }
-    }
+    
     
     // Funciones Favorites
 
@@ -313,7 +314,7 @@ struct DetalleUIView : View {
                 }
             }
         }
-        false
+        return false
     }
     
 }
@@ -321,7 +322,7 @@ struct DetalleUIView : View {
 
 struct DetalleUIView_Previews: PreviewProvider {
     static var previews: some View {
-        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"), isNight: .constant(false))
+        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"))
     }
 }
 
