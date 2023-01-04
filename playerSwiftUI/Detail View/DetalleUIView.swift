@@ -56,9 +56,7 @@ struct DetalleUIView : View {
         
     
     var body: some View {
-            
-            ScrollView {
-                
+        
                 VStack {
                 
                 CachedAsyncImage (url: URL(string: choice1.image), content: { image in
@@ -116,13 +114,14 @@ struct DetalleUIView : View {
                 }
                
                     // Next programs
+                    VStack {
                     newXMLSwiftUIView()
                         .background(Color.red)
                         .onAppear {
                             print("receivedURL \(receivedURL.theURL)")
                             print("the URL is \(choice1.url)")
                         }
-                
+                    }.background(Color.yellow)
             
             Button {
                 isPlaying.toggle()
@@ -149,8 +148,7 @@ struct DetalleUIView : View {
                 }
         
                 .frame(maxWidth: .infinity)
-            }
-          
+    
             .background(Color.newPrimaryColor)
             
             .navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
