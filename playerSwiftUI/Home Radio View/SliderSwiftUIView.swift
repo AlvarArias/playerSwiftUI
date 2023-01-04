@@ -108,8 +108,7 @@ struct SliderSwiftUIView: View {
        
         }
                 .tabViewStyle(.page)
-                //.foregroundColor()
-                //.background(Color.newColorGrayLight)
+                .background(Color.newColorGrayLight)
                 
         .frame(width: UIScreen.main.bounds.width, height: 300)
         .onAppear {
@@ -168,15 +167,16 @@ struct SliderSwiftUIView: View {
                //TODO: Add social shared funtionality
                 
 
-            }//.background(Color.newColorGrayLight)
-                .toolbar {
+            }
+            .background(Color.newColorGrayLight)
+            .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
                     
                                                 
                     Button { showingmySettings.toggle()
                                                 } label: {
                                                     Image(systemName: "gearshape")
-                                                        //.foregroundColor(Color.newPrimaryColor)
+                                                        .foregroundColor(Color.newSecundaryColor)
                                                 }
                     .sheet(isPresented: $showingmySettings) {
                       
@@ -189,7 +189,7 @@ struct SliderSwiftUIView: View {
                     Button { showingFavorite.toggle()
                                                 } label: {
                                                     Image(systemName: "star")
-                    //.foregroundColor(.newSecundaryColor)
+                    .foregroundColor(.newSecundaryColor)
                                                     
                     .sheet(isPresented: $showingFavorite) {FavoriteDispView()}
                                                     
@@ -199,7 +199,7 @@ struct SliderSwiftUIView: View {
                     Button { showingmySearch.toggle()
                                             } label: {
                                                     Image(systemName: "magnifyingglass.circle")
-                        //.foregroundColor(.newSecundaryColor)
+                        .foregroundColor(.newSecundaryColor)
                                             }
                     .sheet(isPresented: $showingmySearch) {SerachView()}
                     
@@ -252,13 +252,11 @@ struct SliderSwiftUIView_Previews: PreviewProvider {
 
 
 extension Color {
-    static let newPrimaryColor = Color("Verde light")
-    static let newSecundaryColor = Color(red: 203, green: 137, blue: 135)
-    static let newTerciaryColor = Color(red: 232, green: 142, blue: 130)
-    static let newColorGrayLight = Color(red: 247, green: 247, blue: 247)
-    static let newColorGreenLight = Color(red: 236, green: 248, blue: 246)
+    static let newPrimaryColor = Color("Verde")
+    static let newSecundaryColor = Color("Cafe 1")
+    static let newTerciaryColor = Color("Cafe 2")
+    static let newColorGrayLight = Color("Gris light")
+    static let newColorGreenLight = Color("Verde light")
 }
-
-
 
 

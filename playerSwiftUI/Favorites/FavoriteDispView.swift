@@ -73,13 +73,13 @@ struct FavoriteDispView: View {
                   
                     .navigationBarTitle("Radio App Favorites", displayMode: .inline)
                 }
-                
+                .background(Color.newColorGrayLight)
                }
                 .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button { dismiss() } label: {
                                Image(systemName: "arrow.down")
-                           // .foregroundColor(.newSecundaryColor)
+                           .foregroundColor(.newSecundaryColor)
                     }
 
                     }

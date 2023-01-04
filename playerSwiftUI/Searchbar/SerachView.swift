@@ -68,6 +68,7 @@ struct SerachView: View {
                     }
                     .navigationBarTitle("Radio App search", displayMode: .inline)
                 }
+                .background(Color.newColorGrayLight)
                 
                 .searchable(text: $searchText,
                             placement: .navigationBarDrawer(displayMode: .always))
@@ -77,7 +78,7 @@ struct SerachView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button { dismiss() } label: {
                                Image(systemName: "arrow.down")
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(Color.newSecundaryColor)
                     }
 
                     }

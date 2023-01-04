@@ -142,14 +142,12 @@ struct DetalleUIView : View {
                    
                     }
                 }
-            
-                  
-                  
-                }
+            .padding()
+            }
         
                 .frame(maxWidth: .infinity)
     
-            .background(Color.newPrimaryColor)
+                .background(Color.newColorGreenLight)
             
             .navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
             
@@ -168,8 +166,10 @@ struct DetalleUIView : View {
                     }){
                             //Text("Back").foregroundColor(.newSecundaryColor)
                         Image(systemName: "arrow.uturn.backward")
-                            //.foregroundColor(.newSecundaryColor)
+                        .foregroundColor(.newSecundaryColor)
                     }
+                       
+                    
                       
                 )
         
