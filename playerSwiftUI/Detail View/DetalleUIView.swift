@@ -42,10 +42,7 @@ struct DetalleUIView : View {
     @State var isShowEq = false
     @State private var isFavorite = false
     
-    // Favorites
-    //@StateObject var favorites = Favorites()
 
-    
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
     
@@ -59,11 +56,11 @@ struct DetalleUIView : View {
         
     
     var body: some View {
-        
-        NavigationView {
-        
+            
             ScrollView {
-         
+                
+                VStack {
+                
                 CachedAsyncImage (url: URL(string: choice1.image), content: { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
@@ -75,7 +72,8 @@ struct DetalleUIView : View {
                
                 
                 HStack{
-                    Text("Next programs").padding()
+                    Text("Nästa program").padding()
+                        .accessibilityLabel("Nästa program")
                    
                     // MARK: Button start
                     Button {
@@ -116,16 +114,50 @@ struct DetalleUIView : View {
                 LottieView(lottieFile: "music-equalizer")
                     .frame(width: 50, height: 50)
                 }
+               
+                    // Next programs
+                    newXMLSwiftUIView()
+                        .background(Color.red)
+                        .onAppear {
+                            print("receivedURL \(receivedURL.theURL)")
+                            print("the URL is \(choice1.url)")
+                        }
                 
-                // Next programs
-                newXMLSwiftUIView()
             
-                }
+            Button {
+                isPlaying.toggle()
+                print("isPlaying \(isPlaying)")
+                testPlay()
                 
-            }.navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
+              
+            } label: {
+                
+                if isPlaying {
+                    Image("Pause2").resizable().aspectRatio(contentMode: .fit)
+                       .frame(width: 100, height: 100)
+                   
+                }
+                else {
+                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                   
+                    }
+                }
+            
+                  
+                  
+                }
+        
+                .frame(maxWidth: .infinity)
+            }
+          
+            .background(Color.newPrimaryColor)
+            
+            .navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
             
                 // new button back
-            
+            .navigationBarBackButtonHidden(true)
+        
                 .navigationBarItems(
                     leading:
                        // NavigationLink("Go to back", destination: SliderSwiftUIView())
@@ -143,39 +175,14 @@ struct DetalleUIView : View {
                       
                 )
         
-        .navigationBarBackButtonHidden(true)
+                .onAppear(perform: {
+                             receivedURL.theURL = choice1.scheduleurl
+                             print("receivedURL.theURL \(receivedURL.theURL)")
+                         })
     
         .environmentObject(receivedURL)
-       
-        .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
         
-            Button {
-                isPlaying.toggle()
-                print("isPlaying \(isPlaying)")
-                testPlay()
-                
-              
-            } label: {
-                
-                if isPlaying {
-                    //Image("Pause2").resizable().aspectRatio(contentMode: .fit)
-                      //  .frame(width: 50, height: 50)
-                    Image(systemName: "pause.circle.fill")
-                }
-                else {
-                    //Image("But-Play2").resizable().aspectRatio(contentMode: .fit)
-                      //  .frame(width: 50, height: 50)
-                    Image(systemName: "play.circle")
-                    }
-                }
-            .padding()
-            //.background(Color.red)
-            }
-                
-        }
-        
-        
+      
     }
 
     // Funciones Favorites
@@ -260,7 +267,7 @@ struct DetalleUIView : View {
             if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
                 // Check value in array
                 if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
-                print("is favorite")
+                //print("is favorite")
                 return true
                     
                 } else {
@@ -379,3 +386,44 @@ Button( action: {
   .background(Color.red)
 */
 
+// Barra inferior
+ /*
+ .toolbar {
+         ToolbarItemGroup(placement: .bottomBar) {
+ 
+     Button {
+         isPlaying.toggle()
+         print("isPlaying \(isPlaying)")
+         testPlay()
+         
+       
+     } label: {
+         
+         if isPlaying {
+             //Image("Pause2").resizable().aspectRatio(contentMode: .fit)
+               //  .frame(width: 50, height: 50)
+             Image(systemName: "pause.circle.fill")
+         }
+         else {
+             //Image("But-Play2").resizable().aspectRatio(contentMode: .fit)
+               //  .frame(width: 50, height: 50)
+             Image(systemName: "play.circle")
+             }
+         }
+    
+             Button { print("showingmySettings.toggle()")
+                                         } label: {
+                                             Image(systemName: "gearshape")
+                                                 //.foregroundColor(Color.newPrimaryColor)
+                                         }
+             //.sheet(isPresented: $showingmySettings) {
+               
+                 //newSettingsView()
+            // }
+             
+         }
+ 
+ }
+ */
+         
+ 

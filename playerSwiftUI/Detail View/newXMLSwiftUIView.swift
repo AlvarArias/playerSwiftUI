@@ -10,7 +10,7 @@ import SwiftUI
 
 struct newXMLSwiftUIView: View {
     
-    
+   
     init() {
         UITableView.appearance().backgroundColor = .clear
         UITableView.appearance().separatorStyle = .none
@@ -24,6 +24,7 @@ struct newXMLSwiftUIView: View {
     @EnvironmentObject var receivedURL: theURLSetting
     
     var myNewDate = theDateFormater()
+    
     
     var body: some View {
         VStack{
@@ -39,6 +40,8 @@ struct newXMLSwiftUIView: View {
                             }.listRowSeparator(.hidden)
                         }.background(Color.newColorGreenLight)
                     
+            } else {
+                Text("Ingen information tillgänglig")
             }
         
             
@@ -48,6 +51,7 @@ struct newXMLSwiftUIView: View {
             DispatchQueue.main.async { parserControl.loadData(theRadioURL: receivedURL.theURL)
             
                 myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
+             print("receivedURL.theURL XML() \(receivedURL.theURL)")
                 
             }
 

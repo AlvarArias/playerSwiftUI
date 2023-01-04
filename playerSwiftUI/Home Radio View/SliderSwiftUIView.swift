@@ -41,7 +41,7 @@ struct SliderSwiftUIView: View {
     
 
     @State private var isNew = false
-    
+    let textSelect = "Välj din radio"
     
     @EnvironmentObject var receivedURL: theURLSetting
    
@@ -117,8 +117,8 @@ struct SliderSwiftUIView: View {
         }
                 
                 HStack {
-                    Text("Select your radio").padding()
-                        .accessibilityLabel("Select your radio")
+                    Text(textSelect).padding()
+                        .accessibilityLabel(textSelect)
                         
                     
                     CheckNetworkView()
@@ -148,15 +148,11 @@ struct SliderSwiftUIView: View {
                           
                             Spacer()
                             
-                            // MARK: add  binding variable for selected favorite from page
-                            // if else binding change show the star fill
-                            // apple tutorial
-                            // MARK: Favorite start
-                            
+               
                             NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
                                 
                                 Text("")
-                            }
+                            }.accessibilityValue(myRadioDemo[index].id)
                             
                            
                         } .listRowSeparator(.hidden)
@@ -256,7 +252,7 @@ struct SliderSwiftUIView_Previews: PreviewProvider {
 
 
 extension Color {
-    static let newPrimaryColor = Color(red: 166, green: 207, blue: 202)
+    static let newPrimaryColor = Color("Verde light")
     static let newSecundaryColor = Color(red: 203, green: 137, blue: 135)
     static let newTerciaryColor = Color(red: 232, green: 142, blue: 130)
     static let newColorGrayLight = Color(red: 247, green: 247, blue: 247)

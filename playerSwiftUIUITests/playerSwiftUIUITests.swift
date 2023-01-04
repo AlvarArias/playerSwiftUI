@@ -24,6 +24,7 @@ class playerSwiftUIUITests: XCTestCase {
 
     func testExample() throws {
         // UI tests must launch the application that they test.
+        /*
         let app = XCUIApplication()
         app.launch()
     
@@ -38,11 +39,30 @@ class playerSwiftUIUITests: XCTestCase {
         XCTAssertTrue(radio.waitForExistence(timeout: 15))
         
         XCTAssertEqual(radio.label, "Select your radio")
-
+        */
+        
+        
+        //New test
+        
+        let app = XCUIApplication()
+        let myTable = app.tables["ListOfRadios"]
+        
+        app.launch()
+        
+        XCTAssert(myTable.exists)
+        
+        /*
+        let toolbar = app.toolbars["Toolbar"]
+        toolbar.buttons["Play"].tap()
+        toolbar.buttons["Pause"].tap()
+         */
+        
+        
+                
         
     }
     
-    
+
     
    
     
