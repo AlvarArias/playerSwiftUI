@@ -29,25 +29,25 @@ struct newSettingsView: View {
     var body: some View {
         NavigationView {
         Form {
-            Section(header: Text("PROFILE")) {
-                TextField("Username", text: $userSettings.username)
+            Section(header: Text("Användarprofil")) {
+                TextField("Användarnamn", text: $userSettings.username)
             
                 /*
                 Toggle(isOn: $userSettings.isPrivate){
                     Text("Private Account")
                 }
                 */
-                Text("First radio home")
+                Text("Första radiohemmet")
                 
-                Picker(selection: $userSettings.ringtone, label: Text("Select radio")){
+                Picker(selection: $userSettings.ringtone, label: Text("Välj radio")){
                     ForEach(userSettings.ringtones, id:\.self){ringtone in
                         Text(ringtone)
                     }
                 }
-                Text("Selected radio: \(userSettings.ringtone)")
+                Text("Vald radio: \(userSettings.ringtone)")
             }
         }
-        .navigationBarTitle("Player Settings")
+        .navigationBarTitle("Spelarinställningar")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.newColorGrayLight)
         .toolbar {

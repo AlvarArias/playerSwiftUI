@@ -21,6 +21,8 @@ struct FavoriteDispView: View {
     // User default for favorites
     let defaults = UserDefaults.standard
   
+    // User default for favorites
+    @ObservedObject var userSettings = UserSettings()
     
     var body: some View {
         NavigationView {
@@ -31,8 +33,9 @@ struct FavoriteDispView: View {
                 
                     
                     ForEach(myRadioDemo, id: \.self) { name in
-                    
-                        if checkIsFavorite(myRadioFavo: name.id) {
+                    //if checkIsFavorite(myRadioFavo: name.id)
+                        
+                        if checkIsFavorite2(myFavoriteSetting: name.id) {
                         HStack {
                                                     
                             CachedAsyncImage (url: URL(string: name.image), content: { image in
@@ -52,11 +55,20 @@ struct FavoriteDispView: View {
                                 .foregroundColor(Color.black)
                           
                             Spacer()
+                            /*
                             if checkIsFavorite(myRadioFavo: name.id) {
                                 Image(systemName: "star.fill")
                                    .foregroundColor(.yellow)
                             } else {
                                 Image(systemName: "star")
+                            }
+                            */
+                            if checkIsFavorite2(myFavoriteSetting: name.id) {
+                                 Image(systemName: "star.fill")
+                                    .foregroundColor(.yellow)
+                            } else {
+                                Image(systemName: "star")
+                                 
                             }
                             
                             
@@ -71,7 +83,7 @@ struct FavoriteDispView: View {
                         }
                     }
                   
-                    .navigationBarTitle("Radio App Favorites", displayMode: .inline)
+                    .navigationBarTitle("Favoriter", displayMode: .inline)
                 }
                 .background(Color.newColorGrayLight)
                }
@@ -114,6 +126,18 @@ struct FavoriteDispView: View {
         return false
     }
 
+    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
+        
+        if (userSettings.favorite.contains(myFavoriteSetting)) {
+            
+                return true
+                    
+                } else {
+                   
+                  return false
+                }
+            }
+    
 }
     
 struct FavoriteDispView_Previews: PreviewProvider {

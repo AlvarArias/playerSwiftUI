@@ -19,6 +19,10 @@ struct SerachView: View {
     @Environment(\.dismiss) var dismiss
     
     // User default for favorites
+    @ObservedObject var userSettings = UserSettings()
+
+    
+    // User default for favorites
     let defaults = UserDefaults.standard
     
     var body: some View {
@@ -46,7 +50,7 @@ struct SerachView: View {
                             
                             Spacer()
                             // MARK: Favotite button out
-                            
+                            /*
                             if checkIsFavorite(myRadioFavo: name.id) {
                                  Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
@@ -54,7 +58,16 @@ struct SerachView: View {
                                 Image(systemName: "star")
                                  
                             }
+                            */
                            
+                            if checkIsFavorite2(myFavoriteSetting: name.id) {
+                                 Image(systemName: "star.fill")
+                                    .foregroundColor(.yellow)
+                            } else {
+                                Image(systemName: "star")
+                                 
+                            }
+                            
                           
                             NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
                                 
@@ -66,7 +79,7 @@ struct SerachView: View {
                         
                         
                     }
-                    .navigationBarTitle("Radio App search", displayMode: .inline)
+                    .navigationBarTitle("Sök", displayMode: .inline)
                 }
                 .background(Color.newColorGrayLight)
                 
@@ -118,6 +131,20 @@ struct SerachView: View {
         }
         return false
     }
+    
+    
+    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
+        
+        if (userSettings.favorite.contains(myFavoriteSetting)) {
+            
+                return true
+                    
+                } else {
+                   
+                  return false
+                }
+            }
+        
     
 
 }

@@ -45,6 +45,12 @@ struct DetalleUIView : View {
 
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
+    //@AppStorage("username") private var theUserName = ""
+    
+    /*
+     let defaults = UserDefaults.standard
+     let myarray = defaults.stringArray(forKey: "SavedStringArray") ?? [String]()
+     */
     
     let defaults = UserDefaults.standard
     
@@ -78,25 +84,49 @@ struct DetalleUIView : View {
                         showingStar.toggle()
                         if showingStar {
                             
-                            saveNewData()
+                            if (userSettings.favorite.contains(choice1.id)){
+                                print("elemnto existe")
+                                showingStar = false
+                                deleteData2(delFavorite: choice1.id)
+                                print(userSettings.favorite)
+                                print(showingStar)
+                                
+                            } else {
+                                userSettings.favorite.append(choice1.id)
+                                print(userSettings.favorite)
+                            }
+            
+                            //saveNewData()
                             receivedURL.isFavorite = true
                             print("receivedURL.isFavorite \(receivedURL.isFavorite)")
-                            userSettings.favorite = "test from view"
+                            
+                            
                             
                         } else {
                           
-                            deleteNewData()
+                            //deleteNewData()
                             receivedURL.isFavorite = false
-                            
+                            //userSettings.favorite.removeLast()
+                            deleteData2(delFavorite: choice1.id)
+                            print(userSettings.favorite)
+                            showingStar = false
                         }
                         
                     } label: {
                         
+                        /*
+                         else if checkIsFavorite(myRadioFavo: choice1.id) {
+                            
+                             Image(systemName: "star.fill" )
+                                  .foregroundColor(.yellow)
+                             
+                         }*/
+                        
                         if showingStar {
                            Image(systemName: "star.fill" )
                                 .foregroundColor(.yellow)
-                        } else if checkIsFavorite(myRadioFavo: choice1.id) {
-                           
+                        }  else if checkIsFavorite2(myFavoriteSetting: choice1.id) {
+                            
                             Image(systemName: "star.fill" )
                                  .foregroundColor(.yellow)
                             
@@ -123,6 +153,16 @@ struct DetalleUIView : View {
                         }
                     }.background(Color.yellow)
             
+                    /*
+                    Button {
+                        print("delete")
+                        deleteData2(delFavorite: choice1.id)
+                        
+                    } label: {
+                        Image(systemName: "paperplane")
+                    }
+                   */
+                    
             Button {
                 isPlaying.toggle()
                 print("isPlaying \(isPlaying)")
@@ -176,6 +216,8 @@ struct DetalleUIView : View {
                 .onAppear(perform: {
                              receivedURL.theURL = choice1.scheduleurl
                              print("receivedURL.theURL \(receivedURL.theURL)")
+                    print("Favorites \(userSettings.favorite)")
+                    
                          })
     
         .environmentObject(receivedURL)
@@ -257,6 +299,18 @@ struct DetalleUIView : View {
         } else { print("no data deleteNewData()")}
     }
     
+    func deleteData2(delFavorite: String) {
+        
+        if (userSettings.favorite.contains(delFavorite)){
+            let index1 = userSettings.favorite.firstIndex(of: delFavorite) ?? 0
+            userSettings.favorite.remove(at: index1)
+            print(" nuevo array after delete element : \(userSettings.favorite)")
+            showingStar = false
+        
+        } else {
+            print("not value deleted")
+        }
+    }
     
     func checkIsFavorite(myRadioFavo:String) ->Bool {
         
@@ -276,6 +330,19 @@ struct DetalleUIView : View {
         }
         return false
     }
+    
+    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
+        
+        if (userSettings.favorite.contains(myFavoriteSetting)) {
+            
+                return true
+                    
+                } else {
+                   showingStar = false
+                  return false
+                }
+            }
+        
     
     func testPlay(){
         do {
