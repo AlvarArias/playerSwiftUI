@@ -16,7 +16,7 @@ struct newXMLSwiftUIView: View {
         UITableView.appearance().separatorStyle = .none
     }
     
-    // PlayerConector
+   
     @StateObject var parserControl = ParseController()
 
     let theFakeURL = "https://api.sr.se/v2/scheduledepisodes?channelid=132"
@@ -28,7 +28,7 @@ struct newXMLSwiftUIView: View {
     
     var body: some View {
         VStack{
-       
+         
             if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
                         List{
                             ForEach(0...4, id:\.self) {item in
@@ -43,11 +43,11 @@ struct newXMLSwiftUIView: View {
             } else {
                 Text("Ingen information tillgänglig")
             }
-        
+             
             
         }.background(Color.newColorGreenLight)
         .onAppear(perform: {
-            //DispatchQueue.main.async { parserControl.loadData(theRadioURL: theFakeURL)
+            
             DispatchQueue.main.async { parserControl.loadData(theRadioURL: receivedURL.theURL)
             
                 myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
@@ -57,6 +57,8 @@ struct newXMLSwiftUIView: View {
 
         })
     }
+    
+    
 }
     
 struct newXMLSwiftUIView_Previews: PreviewProvider {

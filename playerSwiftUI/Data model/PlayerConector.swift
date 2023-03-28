@@ -10,6 +10,8 @@ import SwiftUI
 import AVFoundation
 import AVKit
 
+// MARK: NOT USING
+/*
 class playerConector: ObservableObject {
     
      //The player
@@ -46,6 +48,6 @@ class playerConector: ObservableObject {
         
         
 }
-
+*/
 
 

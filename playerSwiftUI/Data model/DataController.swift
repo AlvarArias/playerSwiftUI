@@ -8,7 +8,12 @@
 import CoreData
 import Foundation
 
+/**
+A class that manages a Core Data stack and provides access to a persistent store.
 
+Usage: Initialize an instance of DataController to get a Core Data stack and access to a persistent store.
+
+*/
 class DataController: ObservableObject {
     let container = NSPersistentContainer(name: "ModelPlayer")
     

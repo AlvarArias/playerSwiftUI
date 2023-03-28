@@ -338,7 +338,7 @@ struct DetalleUIView : View {
                 return true
                     
                 } else {
-                   showingStar = false
+                   //showingStar = false
                   return false
                 }
             }

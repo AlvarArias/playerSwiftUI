@@ -10,7 +10,7 @@ import SwiftUI
 struct RadiosSwiftUIView: View {
     
     @State var isSelect : Bool = false
-    // let menu = Bundle.main.decode([MenuSection].self, from: "menu.json")
+   
     let myRadioDemo = Bundle.main.decode([DemoRadio].self, from: "radios.json")
    
     let items = 1...10
@@ -19,7 +19,7 @@ struct RadiosSwiftUIView: View {
     
     var body: some View {
         ScrollView(.horizontal) {
-            //let myItems = myRadioDemo.count
+          
             LazyHGrid(rows: rows, alignment: .top) {
                 ForEach(items, id: \.self) { myIitem in
                     let localIndex = myIitem - 1
@@ -35,20 +35,15 @@ struct RadiosSwiftUIView: View {
                         placeholder: {
                             ProgressView()
                         })
-                            
-                
-                   
                         
-                        //Text(myRadioDemo[localIndex].image)
-                        //Image(myRadioNow[localIndex].radioLogoName).resizable().aspectRatio(contentMode: .fit).frame(width: 200, height: 200)
                             .onTapGesture{
 
                             isSelect.toggle()
                                 print(myRadioDemo[localIndex].image)
-                            //print(" siteurl: \(myRadioDemo[localIndex].siteurl) \(myRadioDemo.count)")
+                          
                         }
                     }.padding()
-                    //NavigationLink("", destination: DetailSwiftUIView(), isActive: $isSelect)
+                 
                 }
             }
             .frame(height: 350)

@@ -20,7 +20,13 @@ import UIKit
 
 import Foundation
 
-// Listado de radios 
+/**
+A struct that represents a radio station, containing various properties such as name, image, and URL.
+
+Usage: Initialize an instance of DemoRadio with the desired properties.
+
+Note: This struct conforms to the Hashable and Codable protocols.
+*/
 struct DemoRadio: Hashable, Codable  {
 
     let image: String

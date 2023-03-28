@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 class RefreshActionPerformer: ObservableObject {
     @Published private(set) var isPerforming = false
 
@@ -17,6 +17,7 @@ class RefreshActionPerformer: ObservableObject {
         isPerforming = false
     }
 }
+*/
 
 struct newSettingsView: View {
     
