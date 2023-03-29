@@ -61,7 +61,7 @@ struct newSettingsView: View {
                     Image(systemName: "arrow.down")
                         .foregroundColor(Color.newSecundaryColor)
                     }
-                .fullScreenCover(isPresented: $showing, content: SliderSwiftUIView.init)
+                .fullScreenCover(isPresented: $showing, content: HomeRadioView.init)
                
                 
                 }

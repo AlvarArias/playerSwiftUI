@@ -14,7 +14,7 @@ struct SplashSwiftUIView: View {
     var body: some View {
         VStack {
             if isActive {
-                SliderSwiftUIView()
+                HomeRadioView()
             } else {
                 Text("Welcome")
                     .font(.largeTitle)

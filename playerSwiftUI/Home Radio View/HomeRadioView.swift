@@ -9,7 +9,7 @@ import SwiftUI
 import CachedAsyncImage
 
 
-struct SliderSwiftUIView: View {
+struct HomeRadioView: View {
 
     @AppStorage("username") private var theUserName = ""
     @AppStorage("ringtone") private var theFirstRadio = ""
@@ -39,40 +39,38 @@ struct SliderSwiftUIView: View {
                     switch theFirstRadio {
                     case "P2":
                         NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
-                            Image("P2").accessibilityLabel("P2")
+                            Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                         NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
-                            Image("P3").accessibilityLabel("P3")
+                            Image("P3").accessibilityLabel("P3").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                         NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
-                            Image("P1").accessibilityLabel("P1")
+                            Image("P1").accessibilityLabel("P1").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     case "P3":
                         NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
-                            Image("P3").accessibilityLabel("P3")
+                            Image("P3").accessibilityLabel("P3").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                         NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
-                            Image("P1").accessibilityLabel("P1")
+                            Image("P1").accessibilityLabel("P1").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                         NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
-                            Image("P2").accessibilityLabel("P2")
+                            Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     default:
                         NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
-                            Image("P1").accessibilityLabel("P1")
+                            Image("P1").accessibilityLabel("P1").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                         NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
-                            Image("P2").accessibilityLabel("P2")
+                            Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                         NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
-                            Image("P3").accessibilityLabel("P3")
+                            Image("P3").accessibilityLabel("P3").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     }
                 }
-                
                 .tabViewStyle(.page)
-                .background(Color.newColorGrayLight)
-                
+                .background(Color.newColorGreenLight)
                 .frame(width: UIScreen.main.bounds.width, height: 300)
                 
                 
@@ -167,7 +165,7 @@ struct SliderSwiftUIView: View {
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SliderSwiftUIView()
+        HomeRadioView()
     }
 }
 

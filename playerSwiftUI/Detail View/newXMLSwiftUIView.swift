@@ -46,18 +46,29 @@ struct newXMLSwiftUIView: View {
              
             
         }.background(Color.newColorGreenLight)
-        .onAppear(perform: {
-            
-            DispatchQueue.main.async { parserControl.loadData(theRadioURL: receivedURL.theURL)
-            
-                myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
-             print("receivedURL.theURL XML() \(receivedURL.theURL)")
-                
+  
+            .onAppear {
+                DispatchQueue.main.async {
+                    
+                    CheckDate()
+                }
             }
 
-        })
+        
     }
     
+    private func CheckDate(){
+        
+        parserControl.loadData(theRadioURL: receivedURL.theURL)
+        print("receivedURL.theURL XML() \(receivedURL.theURL)")
+        
+        //myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
+        
+        // Assign the returned result to a variable
+        _ = myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
+
+
+    }
     
 }
     
