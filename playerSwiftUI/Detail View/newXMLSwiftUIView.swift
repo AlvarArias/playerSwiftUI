@@ -27,6 +27,7 @@ struct newXMLSwiftUIView: View {
     
     
     var body: some View {
+        /*
         VStack{
          
             if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
@@ -46,14 +47,44 @@ struct newXMLSwiftUIView: View {
              
             
         }.background(Color.newColorGreenLight)
-  
+        */
+        
+        VStack {
+            ScrollView {
+                if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
+                    ForEach(0...4, id: \.self) { index in
+                        
+                        let item = itemsResult[index]
+                        let myNewDateValue = myNewDate.transformDate(theProgramDate: item.episodeStarttimeutc)
+                        
+                        VStack(alignment: .leading) {
+                            HStack{
+                                Text(item.episodeTitle)
+                                    .font(.body)
+                                Spacer()
+                                Text(myNewDateValue)
+                                    .font(.caption)
+                            }
+                                Text(item.episodeDescription)
+                                    .font(.caption)
+                                    .foregroundColor(Color.gray)
+                            }
+                        .padding()
+                    }
+                } else {
+                    Text("Ingen information tillgänglig")
+                }
+            }
+        }
+        .background(Color.newColorGreenLight)
+
+
             .onAppear {
                 DispatchQueue.main.async {
                     
                     CheckDate()
                 }
             }
-
         
     }
     
@@ -61,12 +92,9 @@ struct newXMLSwiftUIView: View {
         
         parserControl.loadData(theRadioURL: receivedURL.theURL)
         print("receivedURL.theURL XML() \(receivedURL.theURL)")
-        
-        //myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
-        
+    
         // Assign the returned result to a variable
         _ = myNewDate.transformDate(theProgramDate: "2022-01-23T08:03:00Z")
-
 
     }
     

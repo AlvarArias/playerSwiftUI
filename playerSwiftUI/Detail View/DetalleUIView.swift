@@ -117,13 +117,13 @@ struct DetalleUIView : View {
                 }
                
                     // Next programs
-                    VStack {
+                    //VStack {
                     newXMLSwiftUIView()
                         .onAppear {
                             print("receivedURL \(receivedURL.theURL)")
                             print("the URL is \(choice1.url)")
                         }
-                    }.background(Color.yellow)
+                    //}
             
                     
             Button {
@@ -171,11 +171,7 @@ struct DetalleUIView : View {
                         Image(systemName: "arrow.uturn.backward")
                         .foregroundColor(.newSecundaryColor)
                     }
-                       
-                    
-                      
                 )
-        
                 .onAppear(perform: {
                              receivedURL.theURL = choice1.scheduleurl
                              print("receivedURL.theURL \(receivedURL.theURL)")
@@ -184,12 +180,10 @@ struct DetalleUIView : View {
                          })
     
         .environmentObject(receivedURL)
-        
-      
+
     }
     
     // Funciones Favorites
-    
 
     func saveData(myData: Person) {
         
@@ -207,33 +201,20 @@ struct DetalleUIView : View {
     }
     
     func saveNewData() {
-        
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data,
+           var loadedPerson = try? JSONDecoder().decode(Person.self, from: savedPerson),
+           !loadedPerson.mytest.contains(choice1.id) {
             
-            let decoder = JSONDecoder()
-            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                
-                // Check value in array
-                if loadedPerson.mytest.contains(where: {$0 == choice1.id}) {
-                   
-                   print("element exists")
-                    
-                 //return
-                    
-                } else {
-                   
-                    let moreData = choice1.id
-                    loadedPerson.mytest.append(moreData)
-                    print("saveNewData()")
-                    print(loadedPerson.mytest)
-                    saveData(myData: loadedPerson)
-                    print("new element added")
-                }
-            }
-        } else { print("no data saveNewData()")}
-        
+            loadedPerson.mytest.append(choice1.id)
+            print("saveNewData()")
+            print(loadedPerson.mytest)
+            saveData(myData: loadedPerson)
+            print("new element added")
+        } else {
+            print("no data saveNewData() or element already exists")
+        }
     }
-    
+
    
     func deleteData(delFavorite: String) {
         if let index = userSettings.favorite.firstIndex(of: delFavorite) {
@@ -245,12 +226,10 @@ struct DetalleUIView : View {
         showingStar = false
     }
 
-    
     func checkIsFavorite(myFavoriteSetting: String) -> Bool {
         return userSettings.favorite.contains(myFavoriteSetting)
     }
 
-     
     func playSongRadio() {
         do {
             let audioSession = AVAudioSession.sharedInstance()
@@ -273,9 +252,7 @@ struct DetalleUIView : View {
             print("Failed to play audio: \(error.localizedDescription)")
         }
     }
-
-    
-    
+        
 }
 
 
@@ -285,3 +262,32 @@ struct DetalleUIView_Previews: PreviewProvider {
     }
 }
 
+/*
+func saveNewData() {
+    
+    if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+        
+        let decoder = JSONDecoder()
+        if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+            
+            // Check value in array
+            if loadedPerson.mytest.contains(where: {$0 == choice1.id}) {
+               
+               print("element exists")
+                
+             //return
+                
+            } else {
+               
+                let moreData = choice1.id
+                loadedPerson.mytest.append(moreData)
+                print("saveNewData()")
+                print(loadedPerson.mytest)
+                saveData(myData: loadedPerson)
+                print("new element added")
+            }
+        }
+    } else { print("no data saveNewData()")}
+    
+}
+*/
