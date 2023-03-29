@@ -14,8 +14,8 @@ struct playerSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //SplashSwiftUIView()
-            SliderSwiftUIView()
+            SplashSwiftUIView()
+            //SliderSwiftUIView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 
         }
