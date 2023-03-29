@@ -11,6 +11,10 @@ import SwiftUI
 
 struct Person : Decodable,Encodable, Hashable {
     var mytest : [String]
+    
+    
+    
+    
 }
 
 
