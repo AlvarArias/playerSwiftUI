@@ -8,24 +8,36 @@ import SwiftUI
 
 
 struct SplashSwiftUIView: View {
-    @State private var isActive = false
+    
     @ObservedObject private var userSettings = UserSettings()
     
+    @State private var isActive = false
+    @State private var isVStackVisible = false
+
     var body: some View {
         VStack {
             if isActive {
                 HomeRadioView()
             } else {
-                Text("Welcome")
-                    .font(.largeTitle)
-                    .accessibilityLabel("Welcome")
-                Text(userSettings.username)
-                Image("miRadio")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-                    .frame(height: 200)
-                    .accessibilityLabel("miRadio")
+                VStack {
+                    Text("Welcome")
+                        .font(.largeTitle)
+                        .accessibilityLabel("Welcome")
+                    Text(userSettings.username)
+                    Image("miRadio")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                        .frame(height: 200)
+                        .accessibilityLabel("miRadio")
+                }
+                .opacity(isVStackVisible ? 1.0 : 0.0)
+                .animation(.easeIn(duration: 2.0), value: isVStackVisible)
+                .onAppear {
+                    withAnimation {
+                        isVStackVisible = true
+                    }
+                }
             }
         }
         .onAppear {

@@ -241,6 +241,16 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		623E0EDC29D48F5A008A4DDE /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				6243647028816EA500A20017 /* Settings */,
+				6244C2202885611700FE15B7 /* Searchbar */,
+				624CC68F290FD078007186A2 /* Favorites */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
 		6243647028816EA500A20017 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,13 +403,12 @@
 				628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */,
 				624E945D2799A64B00803A83 /* unused */,
 				62A9F024275FEE5700B345AE /* Info.plist */,
+				62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */,
+				62A0A54B27862AEC002CEB18 /* Data model */,
 				62DBB5B5278E2F33003EEFE2 /* Home Radio View */,
 				62DBB5B4278E2F19003EEFE2 /* Detail View */,
-				62A0A54B27862AEC002CEB18 /* Data model */,
 				62A9F010275F5B3800B345AE /* Assets.xcassets */,
-				6243647028816EA500A20017 /* Settings */,
-				6244C2202885611700FE15B7 /* Searchbar */,
-				624CC68F290FD078007186A2 /* Favorites */,
+				623E0EDC29D48F5A008A4DDE /* Toolbar */,
 				62A9F012275F5B3800B345AE /* Preview Content */,
 			);
 			path = playerSwiftUI;
@@ -427,7 +436,6 @@
 		62DBB5B5278E2F33003EEFE2 /* Home Radio View */ = {
 			isa = PBXGroup;
 			children = (
-				62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */,
 				62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */,
 				629F1C8027905D26001BF441 /* HomeRadioView.swift */,
 				629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */,

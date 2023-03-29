@@ -22,6 +22,7 @@ struct HomeRadioView: View {
     @State private var showingFavorite = false
     @State private var showingmySettings = false
     @State private var showingmySearch = false
+    @State private var isVStackVisible = false
 
 
     let textSelect = "Välj din radio"
@@ -72,6 +73,13 @@ struct HomeRadioView: View {
                 .tabViewStyle(.page)
                 .background(Color.newColorGreenLight)
                 .frame(width: UIScreen.main.bounds.width, height: 300)
+                .opacity(isVStackVisible ? 1.0 : 0.0)
+                .animation(.easeIn(duration: 1.5), value: isVStackVisible)
+                .onAppear {
+                    withAnimation {
+                        isVStackVisible = true
+                    }
+                }
                 
                 
                 HStack {
@@ -111,6 +119,13 @@ struct HomeRadioView: View {
                             .cornerRadius(10)
                             .padding(.horizontal)
                             
+                        }
+                        .opacity(isVStackVisible ? 1.0 : 0.0)
+                        .animation(.easeIn(duration: 1.5), value: isVStackVisible)
+                        .onAppear {
+                            withAnimation {
+                                isVStackVisible = true
+                            }
                         }
                         
                     }
