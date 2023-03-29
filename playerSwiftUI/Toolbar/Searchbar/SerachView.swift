@@ -14,7 +14,7 @@ struct SerachView: View {
     @State private var searchText=""
     
     @State var items = 0...51
-    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios23.json")
+    @State var myRadioDemo: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
     
     @Environment(\.dismiss) var dismiss
     
@@ -69,7 +69,7 @@ struct SerachView: View {
                             }
                             
                           
-                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, choice1: name)) {
+                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, selectedRadioStation: name)) {
                                 
                                 Text("")
                             }
@@ -98,7 +98,7 @@ struct SerachView: View {
            }
         }
     }
-           var searchResults: [DemoRadio] {
+           var searchResults: [radioStationInfo] {
                if searchText.isEmpty {
                    return myRadioDemo
                } else {
@@ -114,10 +114,10 @@ struct SerachView: View {
         
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
+            if let loadedPerson = try? decoder.decode(favoriteSaved.self, from: savedPerson) {
    
                 // Check value in array
-                if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
+                if loadedPerson.favoriteId.contains(where: {$0 == myRadioFavo}) {
                    // it exists, do something
                
                 return true

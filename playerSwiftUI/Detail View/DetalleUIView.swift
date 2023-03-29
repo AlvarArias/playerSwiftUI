@@ -24,7 +24,7 @@ struct DetalleUIView : View {
     // Ver si se esta usando
     var choice: String
     
-    @State var choice1 : DemoRadio
+    @State var selectedRadioStation : radioStationInfo
     
     // Player variables
     @State var player = AVPlayer()
@@ -41,13 +41,13 @@ struct DetalleUIView : View {
     let defaults = UserDefaults.standard
     
     // Data user default
-    var myData = Person(mytest: ["Alvar", "Joel"])
+    var myData = favoriteSaved()
     
     var body: some View {
         
                 VStack {
                 
-                CachedAsyncImage (url: URL(string: choice1.image), content: { image in
+                CachedAsyncImage (url: URL(string: selectedRadioStation.image), content: { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
@@ -62,52 +62,24 @@ struct DetalleUIView : View {
                     Text("Nästa program").padding()
                         .accessibilityLabel("Nästa program")
                    
-                    // MARK: Button favorite
-                
+                    // Button favorite
                     Button {
+                        
                         showingStar.toggle()
-                        if showingStar {
-                            
-                            if (userSettings.favorite.contains(choice1.id)){
-                                print("elemnto existe")
-                                showingStar = false
-                                deleteData(delFavorite: choice1.id)
-                                print(userSettings.favorite)
-                                print(showingStar)
-                                
-                            } else {
-                                userSettings.favorite.append(choice1.id)
-                                print(userSettings.favorite)
-                            }
-            
-                            //saveNewData()
-                            receivedURL.isFavorite = true
-                            print("receivedURL.isFavorite \(receivedURL.isFavorite)")
-                            
-                            
-                            
+                        
+                        if userSettings.favorite.contains(selectedRadioStation.id) {
+                            deleteFavorite(delFavorite: selectedRadioStation.id)
                         } else {
-                            receivedURL.isFavorite = false
-                            deleteData(delFavorite: choice1.id)
-                            print(userSettings.favorite)
-                            showingStar = false
+                            userSettings.favorite.append(selectedRadioStation.id)
                         }
+                        
+                        receivedURL.isFavorite = showingStar
                         
                     } label: {
-                        
-                        if showingStar {
-                           Image(systemName: "star.fill" )
-                                .foregroundColor(.yellow)
-                        }  else if checkIsFavorite(myFavoriteSetting: choice1.id) {
-                            
-                            Image(systemName: "star.fill" )
-                                 .foregroundColor(.yellow)
-                            
-                        } else {
-                            Image(systemName: "star")
-                                
-                        }
+                        Image(systemName: showingStar || checkIsFavorite(myFavoriteSetting: selectedRadioStation.id) ? "star.fill" : "star")
+                            .foregroundColor(showingStar || checkIsFavorite(myFavoriteSetting: selectedRadioStation.id) ? .yellow : .black)
                     }
+
                     
                 }
                 
@@ -117,34 +89,32 @@ struct DetalleUIView : View {
                 }
                
                     // Next programs
-                    //VStack {
                     newXMLSwiftUIView()
                         .onAppear {
                             print("receivedURL \(receivedURL.theURL)")
-                            print("the URL is \(choice1.url)")
+                            print("the URL is \(selectedRadioStation.url)")
                         }
-                    //}
+                   
             
                     
-            Button {
-                isPlaying.toggle()
-                print("isPlaying \(isPlaying)")
-                playSongRadio()
-                
-              
-            } label: {
-                
-                if isPlaying {
-                    Image("Pause2").resizable().aspectRatio(contentMode: .fit)
-                       .frame(width: 100, height: 100)
-                   
-                }
-                else {
-                    Image("But-Play2").resizable().aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                   
+                    Button(action: {
+                        isPlaying.toggle()
+                        print("isPlaying \(isPlaying)")
+                        playSongRadio()
+                    }) {
+                        if isPlaying {
+                            Image("Pause2")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 100)
+                        } else {
+                            Image("But-Play2")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 100)
+                        }
                     }
-                }
+
             .padding()
             }
         
@@ -152,7 +122,7 @@ struct DetalleUIView : View {
     
                 .background(Color.newColorGreenLight)
             
-            .navigationBarTitle("Radio \(choice1.name)", displayMode: .inline)
+            .navigationBarTitle("Radio \(selectedRadioStation.name)", displayMode: .inline)
             
                 // new button back
             .navigationBarBackButtonHidden(true)
@@ -173,7 +143,7 @@ struct DetalleUIView : View {
                     }
                 )
                 .onAppear(perform: {
-                             receivedURL.theURL = choice1.scheduleurl
+                             receivedURL.theURL = selectedRadioStation.scheduleurl
                              print("receivedURL.theURL \(receivedURL.theURL)")
                     print("Favorites \(userSettings.favorite)")
                     
@@ -185,7 +155,7 @@ struct DetalleUIView : View {
     
     // Funciones Favorites
 
-    func saveData(myData: Person) {
+    func saveData(myData: favoriteSaved) {
         
         if controlFunc {
             let encoder = JSONEncoder()
@@ -202,12 +172,12 @@ struct DetalleUIView : View {
     
     func saveNewData() {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data,
-           var loadedPerson = try? JSONDecoder().decode(Person.self, from: savedPerson),
-           !loadedPerson.mytest.contains(choice1.id) {
+           var loadedPerson = try? JSONDecoder().decode(favoriteSaved.self, from: savedPerson),
+           !loadedPerson.favoriteId.contains(selectedRadioStation.id) {
             
-            loadedPerson.mytest.append(choice1.id)
+            loadedPerson.favoriteId.append(selectedRadioStation.id)
             print("saveNewData()")
-            print(loadedPerson.mytest)
+            print(loadedPerson.favoriteId)
             saveData(myData: loadedPerson)
             print("new element added")
         } else {
@@ -216,7 +186,7 @@ struct DetalleUIView : View {
     }
 
    
-    func deleteData(delFavorite: String) {
+    func deleteFavorite(delFavorite: String) {
         if let index = userSettings.favorite.firstIndex(of: delFavorite) {
             userSettings.favorite.remove(at: index)
             print("Element removed from userSettings.favorite: \(delFavorite)")
@@ -239,7 +209,7 @@ struct DetalleUIView : View {
             try audioSession.setActive(true)
             print("AVAudioSession is Active")
             
-            player = AVPlayer(url: URL(string: choice1.url)!)
+            player = AVPlayer(url: URL(string: selectedRadioStation.url)!)
             player.play()
             isShowEq = true
             
@@ -258,7 +228,7 @@ struct DetalleUIView : View {
 
 struct DetalleUIView_Previews: PreviewProvider {
     static var previews: some View {
-        DetalleUIView(choice: "test", choice1: DemoRadio(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"))
+        DetalleUIView(choice: "test", selectedRadioStation: radioStationInfo(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"))
     }
 }
 

@@ -27,7 +27,7 @@ Usage: Initialize an instance of DemoRadio with the desired properties.
 
 Note: This struct conforms to the Hashable and Codable protocols.
 */
-struct DemoRadio: Hashable, Codable  {
+struct radioStationInfo: Hashable, Codable  {
 
     let image: String
     let imagetemplate: String

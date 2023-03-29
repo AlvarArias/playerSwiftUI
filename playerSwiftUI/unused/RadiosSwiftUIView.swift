@@ -11,7 +11,7 @@ struct RadiosSwiftUIView: View {
     
     @State var isSelect : Bool = false
    
-    let myRadioDemo = Bundle.main.decode([DemoRadio].self, from: "radios.json")
+    let myRadioDemo = Bundle.main.decode([radioStationInfo].self, from: "radios.json")
    
     let items = 1...10
     

@@ -15,7 +15,7 @@ struct HomeRadioView: View {
     @AppStorage("ringtone") private var theFirstRadio = ""
 
     // Use decode helper
-    @State var myRadioDemo: [DemoRadio] = Bundle.main.decode([DemoRadio].self, from: "radios23.json")
+    @State var radioStations: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
 
     @State private var items = 0...51
 
@@ -23,7 +23,9 @@ struct HomeRadioView: View {
     @State private var showingmySettings = false
     @State private var showingmySearch = false
     @State private var isVStackVisible = false
-
+    @State private var showingStar = false
+    
+    @State var isFavorite: Bool = false
 
     let textSelect = "Välj din radio"
 
@@ -39,33 +41,33 @@ struct HomeRadioView: View {
                 TabView {
                     switch theFirstRadio {
                     case "P2":
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", selectedRadioStation: radioStations[1])) {
                             Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", selectedRadioStation: radioStations[2])) {
                             Image("P3").accessibilityLabel("P3").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", selectedRadioStation: radioStations[0])) {
                             Image("P1").accessibilityLabel("P1").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     case "P3":
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", selectedRadioStation: radioStations[2])) {
                             Image("P3").accessibilityLabel("P3").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", selectedRadioStation: radioStations[0])) {
                             Image("P1").accessibilityLabel("P1").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", selectedRadioStation: radioStations[1])) {
                             Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     default:
-                        NavigationLink(destination: DetalleUIView(choice: "P1", choice1: myRadioDemo[0])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", selectedRadioStation: radioStations[0])) {
                             Image("P1").accessibilityLabel("P1").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P2", choice1: myRadioDemo[1])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", selectedRadioStation: radioStations[1])) {
                             Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P3", choice1: myRadioDemo[2])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", selectedRadioStation: radioStations[2])) {
                             Image("P3").accessibilityLabel("P3").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     }
@@ -95,23 +97,27 @@ struct HomeRadioView: View {
                     ForEach(items, id: \.self) { index in
                         VStack{
                             HStack {
-                                CachedAsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
+                                CachedAsyncImage(url: URL(string: radioStations[index].image), content: { image in
                                     image.resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 50, height: 50)
                                 }, placeholder: {
                                     ProgressView()
                                 })
-                                Text(myRadioDemo[index].tagline)
+                                Text(radioStations[index].tagline)
                                     .font(.caption)
                                     .lineLimit(3)
                                     .frame(width: 200)
+                               
+                                //arreglar al compportamiento
+                                favoriteButtonView(isFavorite: $isFavorite, selectedRadioStationId: radioStations[index].id)
+                                
                                 Spacer()
-                                NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
+                                NavigationLink(destination: DetalleUIView(choice: radioStations[index].siteurl, selectedRadioStation: radioStations[index])) {
                                     Image(systemName: "arrow.forward.circle")
                                         .foregroundColor(Color.black.opacity(0.85))
                                 }
-                                .accessibilityValue(myRadioDemo[index].id)
+                                .accessibilityValue(radioStations[index].id)
                             }
                             .padding(15)
                             .shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
@@ -161,6 +167,7 @@ struct HomeRadioView: View {
                     
                     Spacer()
                     
+                    /*
                     Button {
                         showingmySearch.toggle()
                     } label: {
@@ -170,6 +177,8 @@ struct HomeRadioView: View {
                     .sheet(isPresented: $showingmySearch) {
                         SerachView()
                     }
+                    */
+  
                 }
             }
 

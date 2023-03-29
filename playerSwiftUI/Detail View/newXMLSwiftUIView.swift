@@ -27,28 +27,7 @@ struct newXMLSwiftUIView: View {
     
     
     var body: some View {
-        /*
-        VStack{
-         
-            if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
-                        List{
-                            ForEach(0...4, id:\.self) {item in
-                                let myNewDateValue = myNewDate.transformDate(theProgramDate: parserControl.Schedule[item].episodeStarttimeutc)
-                                Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight).font(.title2)
-                                Text(parserControl.Schedule[item].episodeDescription).listRowBackground(Color.newColorGreenLight).font(.body)
-                                Text("Program time : \(myNewDateValue)").listRowBackground(Color.newColorGreenLight).font(.body)
-                                    .listRowSeparator(.hidden)
-                            }.listRowSeparator(.hidden)
-                        }.background(Color.newColorGreenLight)
-                    
-            } else {
-                Text("Ingen information tillgänglig")
-            }
-             
-            
-        }.background(Color.newColorGreenLight)
-        */
-        
+
         VStack {
             ScrollView {
                 if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {

@@ -24,8 +24,8 @@ struct checkFavorite {
     func checkIsFavorite(myRadioFavo: String) -> Bool {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                if loadedPerson.mytest.contains(where: { $0 == myRadioFavo }) {
+            if let loadedPerson = try? decoder.decode(favoriteSaved.self, from: savedPerson) {
+                if loadedPerson.favoriteId.contains(where: { $0 == myRadioFavo }) {
                     return true
                 } else {
                     return false
