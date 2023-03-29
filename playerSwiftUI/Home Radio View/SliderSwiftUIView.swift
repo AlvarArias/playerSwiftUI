@@ -8,13 +8,8 @@
 import SwiftUI
 import CachedAsyncImage
 
-//@available(iOS 15.0, *)
-
-
 
 struct SliderSwiftUIView: View {
-
-    @EnvironmentObject var receivedURL: theURLSetting
 
     @AppStorage("username") private var theUserName = ""
     @AppStorage("ringtone") private var theFirstRadio = ""
