@@ -10,56 +10,38 @@ import AVKit
 import Lottie
 import CachedAsyncImage
 
-struct Person : Decodable,Encodable, Hashable {
-    var mytest : [String]
-}
-
-
-class theURLSetting : ObservableObject {
-    @Published var theURL: String = ""
-    @Published var isFavorite : Bool = false
-}
 
 struct DetalleUIView : View {
         
     @Environment(\.presentationMode) var presentationMode
   
-
-    // Radio Object
-    @StateObject var receivedURL = theURLSetting()
-    var choice: String
-    @State var choice1 : DemoRadio
-    
-
-    // Player variables
-    @State var player = AVPlayer()
-    let url1  = "https://sverigesradio.se/topsy/direkt/srapi/2562.mp3"
-    @State var isPlaying : Bool = false
-    @State var volum : Float = 0
-    @State var sliderValue: Double = 0
-
-    @State var showingStar = false
-    @State var isShowEq = false
-    @State private var isFavorite = false
-    
-
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
-    //@AppStorage("username") private var theUserName = ""
     
-    /*
-     let defaults = UserDefaults.standard
-     let myarray = defaults.stringArray(forKey: "SavedStringArray") ?? [String]()
-     */
+    // Radio Object
+    @StateObject var receivedURL = theURLSetting()
+    
+    // Ver si se esta usando
+    var choice: String
+    
+    @State var choice1 : DemoRadio
+    
+    // Player variables
+    @State var player = AVPlayer()
+    //let url1  = "https://sverigesradio.se/topsy/direkt/srapi/2562.mp3"
+    @State private var isPlaying : Bool = false
+    @State private var volum : Float = 0
+    @State private var sliderValue: Double = 0
+
+    @State var showingStar = false
+    @State private var isShowEq = false
+    @State private var isFavorite = false
+    @State private var controlFunc = true
     
     let defaults = UserDefaults.standard
     
     // Data user default
     var myData = Person(mytest: ["Alvar", "Joel"])
-   
-    
-    @State var controlFunc = true
-        
     
     var body: some View {
         

@@ -14,6 +14,7 @@
 		622D45812897D409002810AD /* mySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45802897D409002810AD /* mySettings.swift */; };
 		622D45832897D45B002810AD /* newSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45822897D45B002810AD /* newSettingsView.swift */; };
 		623E0EDB29D483B9008A4DDE /* CheckFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E0EDA29D483B9008A4DDE /* CheckFunctions.swift */; };
+		623E0EDE29D4966E008A4DDE /* Detail Data Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E0EDD29D4966E008A4DDE /* Detail Data Model.swift */; };
 		623E24BE292E396E0034A076 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 623E24BD292E396E0034A076 /* CachedAsyncImage */; };
 		6244C2222885614200FE15B7 /* SerachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6244C2212885614200FE15B7 /* SerachView.swift */; };
 		624A1C31292B56B80059EB72 /* playerSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A1C30292B56B80059EB72 /* playerSwiftUIUITests.swift */; };
@@ -45,7 +46,6 @@
 		62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F00C275F5B3500B345AE /* playerSwiftUIApp.swift */; };
 		62A9F011275F5B3800B345AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A9F010275F5B3800B345AE /* Assets.xcassets */; };
 		62A9F014275F5B3800B345AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A9F013275F5B3800B345AE /* Preview Assets.xcassets */; };
-		62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9F022275FE7FB00B345AE /* PlayerConector.swift */; };
 		62D824772795AD5700461EF9 /* SplashSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */; };
 		62DBB5B1278CE8FA003EEFE2 /* radios.json in Resources */ = {isa = PBXBuildFile; fileRef = 62DBB5B0278CE8FA003EEFE2 /* radios.json */; };
 		62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */; };
@@ -109,6 +109,7 @@
 		622D45822897D45B002810AD /* newSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSettingsView.swift; sourceTree = "<group>"; };
 		6231D0E6287F54590026A11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = playerSwiftUI/Info.plist; sourceTree = SOURCE_ROOT; };
 		623E0EDA29D483B9008A4DDE /* CheckFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFunctions.swift; sourceTree = "<group>"; };
+		623E0EDD29D4966E008A4DDE /* Detail Data Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Detail Data Model.swift"; sourceTree = "<group>"; };
 		6244C2212885614200FE15B7 /* SerachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachView.swift; sourceTree = "<group>"; };
 		624A1C2E292B56B80059EB72 /* playerSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playerSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		624A1C30292B56B80059EB72 /* playerSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUIUITests.swift; sourceTree = "<group>"; };
@@ -148,7 +149,6 @@
 		62A9F010275F5B3800B345AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62A9F013275F5B3800B345AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		62A9F020275F8DE300B345AE /* RadioObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioObj.swift; sourceTree = "<group>"; };
-		62A9F022275FE7FB00B345AE /* PlayerConector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConector.swift; sourceTree = "<group>"; };
 		62A9F024275FEE5700B345AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = playerSwiftUI/Info.plist; sourceTree = SOURCE_ROOT; };
 		62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashSwiftUIView.swift; sourceTree = "<group>"; };
 		62DBB5B0278CE8FA003EEFE2 /* radios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radios.json; sourceTree = "<group>"; };
@@ -364,7 +364,6 @@
 				627A819E29D38E9D0092D2A3 /* JSON files */,
 				624F7480290C32B3003C3849 /* ModelPlayer.xcdatamodeld */,
 				62A9F020275F8DE300B345AE /* RadioObj.swift */,
-				62A9F022275FE7FB00B345AE /* PlayerConector.swift */,
 				62192A802796040C0090579A /* XMLSwiftUIView.swift */,
 				62A5540927989DAA00FB5615 /* Request.swift */,
 				622D45802897D409002810AD /* mySettings.swift */,
@@ -425,6 +424,7 @@
 		62DBB5B4278E2F19003EEFE2 /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				623E0EDD29D4966E008A4DDE /* Detail Data Model.swift */,
 				62DBB5B6278E3015003EEFE2 /* DetalleUIView.swift */,
 				624E945E2799C7B600803A83 /* newXMLSwiftUIView.swift */,
 				6299BFB128940CE9003C1DB0 /* LottieView.swift */,
@@ -611,13 +611,13 @@
 			files = (
 				62A5540A27989DAA00FB5615 /* Request.swift in Sources */,
 				624CC69729103849007186A2 /* FavoriteDispView.swift in Sources */,
+				623E0EDE29D4966E008A4DDE /* Detail Data Model.swift in Sources */,
 				62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */,
 				629AC839279DF4C500AA2BD9 /* CheckNetworkView.swift in Sources */,
 				623E0EDB29D483B9008A4DDE /* CheckFunctions.swift in Sources */,
 				62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */,
 				622D45832897D45B002810AD /* newSettingsView.swift in Sources */,
 				624D37D328ACC917008A5F3A /* song.swift in Sources */,
-				62A9F023275FE7FB00B345AE /* PlayerConector.swift in Sources */,
 				62ED857F2790CBC3009A7C1C /* SliderItem.swift in Sources */,
 				624D37D528ACC92F008A5F3A /* songViewModel.swift in Sources */,
 				6228217F294F394200A11422 /* RadioObj.swift in Sources */,
