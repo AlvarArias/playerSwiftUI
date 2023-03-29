@@ -279,37 +279,24 @@ struct DetalleUIView : View {
         }
     }
     
-    func checkIsFavorite(myRadioFavo:String) ->Bool {
-        
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                // Check value in array
-                if loadedPerson.mytest.contains(where: {$0 == myRadioFavo}) {
-                //print("is favorite")
-                return true
-                    
-                } else {
-                    
-                  return false
-                }
-            }
+    
+    func checkIsFavorite(myRadioFavo: String) -> Bool {
+        if let savedPersonData = defaults.object(forKey: "SavedPerson") as? Data,
+           let savedPerson = try? JSONDecoder().decode(Person.self, from: savedPersonData) {
+            
+            return savedPerson.mytest.contains(myRadioFavo)
         }
+        
         return false
     }
+
     
-    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
-        
-        if (userSettings.favorite.contains(myFavoriteSetting)) {
-            
-                return true
-                    
-                } else {
-                   //showingStar = false
-                  return false
-                }
-            }
-            
+
+    func checkIsFavorite2(myFavoriteSetting: String) -> Bool {
+        return userSettings.favorite.contains(myFavoriteSetting)
+    }
+
+     
     func testPlay() {
         do {
             let audioSession = AVAudioSession.sharedInstance()
