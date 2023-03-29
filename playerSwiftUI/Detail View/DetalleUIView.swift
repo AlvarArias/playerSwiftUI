@@ -71,7 +71,7 @@ struct DetalleUIView : View {
                             if (userSettings.favorite.contains(choice1.id)){
                                 print("elemnto existe")
                                 showingStar = false
-                                deleteData2(delFavorite: choice1.id)
+                                deleteData(delFavorite: choice1.id)
                                 print(userSettings.favorite)
                                 print(showingStar)
                                 
@@ -87,11 +87,8 @@ struct DetalleUIView : View {
                             
                             
                         } else {
-                          
-                            //deleteNewData()
                             receivedURL.isFavorite = false
-                            //userSettings.favorite.removeLast()
-                            deleteData2(delFavorite: choice1.id)
+                            deleteData(delFavorite: choice1.id)
                             print(userSettings.favorite)
                             showingStar = false
                         }
@@ -101,7 +98,7 @@ struct DetalleUIView : View {
                         if showingStar {
                            Image(systemName: "star.fill" )
                                 .foregroundColor(.yellow)
-                        }  else if checkIsFavorite2(myFavoriteSetting: choice1.id) {
+                        }  else if checkIsFavorite(myFavoriteSetting: choice1.id) {
                             
                             Image(systemName: "star.fill" )
                                  .foregroundColor(.yellow)
@@ -132,7 +129,7 @@ struct DetalleUIView : View {
             Button {
                 isPlaying.toggle()
                 print("isPlaying \(isPlaying)")
-                testPlay()
+                playSongRadio()
                 
               
             } label: {
@@ -237,67 +234,24 @@ struct DetalleUIView : View {
         
     }
     
-    func deleteNewData() {
-     
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            let decoder = JSONDecoder()
-            if var loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-               
-                // Check value in array
-                if loadedPerson.mytest.contains(where: {$0 == choice1.id}) {
-                   // it exists, do something
-                 print("Favorite exists")
-                    let myIndex = loadedPerson.mytest.firstIndex(of: choice1.id)
-                    print(myIndex!)
-                 
-                    loadedPerson.mytest.remove(at: myIndex!)
-                    
-                } else {
-                   //item could not be found
-                    print("elemento no existe")
-                }
-                
-                print("deleteNewData()")
-                print(loadedPerson.mytest)
-                
-                saveData(myData: loadedPerson)
-                
-            }
-        } else { print("no data deleteNewData()")}
-    }
-    
-    func deleteData2(delFavorite: String) {
-        
-        if (userSettings.favorite.contains(delFavorite)){
-            let index1 = userSettings.favorite.firstIndex(of: delFavorite) ?? 0
-            userSettings.favorite.remove(at: index1)
-            print(" nuevo array after delete element : \(userSettings.favorite)")
-            showingStar = false
-        
+   
+    func deleteData(delFavorite: String) {
+        if let index = userSettings.favorite.firstIndex(of: delFavorite) {
+            userSettings.favorite.remove(at: index)
+            print("Element removed from userSettings.favorite: \(delFavorite)")
         } else {
-            print("not value deleted")
+            print("Element not found in userSettings.favorite: \(delFavorite)")
         }
-    }
-    
-    
-    func checkIsFavorite(myRadioFavo: String) -> Bool {
-        if let savedPersonData = defaults.object(forKey: "SavedPerson") as? Data,
-           let savedPerson = try? JSONDecoder().decode(Person.self, from: savedPersonData) {
-            
-            return savedPerson.mytest.contains(myRadioFavo)
-        }
-        
-        return false
+        showingStar = false
     }
 
     
-
-    func checkIsFavorite2(myFavoriteSetting: String) -> Bool {
+    func checkIsFavorite(myFavoriteSetting: String) -> Bool {
         return userSettings.favorite.contains(myFavoriteSetting)
     }
 
      
-    func testPlay() {
+    func playSongRadio() {
         do {
             let audioSession = AVAudioSession.sharedInstance()
             try audioSession.setCategory(.playback)
