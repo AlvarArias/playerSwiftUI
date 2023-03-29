@@ -22,6 +22,7 @@
 		6229C7062964380400AF36F2 /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 6229C7052964380400AF36F2 /* radios23.json */; };
 		622D45812897D409002810AD /* mySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45802897D409002810AD /* mySettings.swift */; };
 		622D45832897D45B002810AD /* newSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622D45822897D45B002810AD /* newSettingsView.swift */; };
+		623E0EDB29D483B9008A4DDE /* CheckFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E0EDA29D483B9008A4DDE /* CheckFunctions.swift */; };
 		623E24BE292E396E0034A076 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 623E24BD292E396E0034A076 /* CachedAsyncImage */; };
 		6244C2222885614200FE15B7 /* SerachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6244C2212885614200FE15B7 /* SerachView.swift */; };
 		624A1C31292B56B80059EB72 /* playerSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A1C30292B56B80059EB72 /* playerSwiftUIUITests.swift */; };
@@ -117,6 +118,7 @@
 		622D45802897D409002810AD /* mySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySettings.swift; sourceTree = "<group>"; };
 		622D45822897D45B002810AD /* newSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSettingsView.swift; sourceTree = "<group>"; };
 		6231D0E6287F54590026A11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = playerSwiftUI/Info.plist; sourceTree = SOURCE_ROOT; };
+		623E0EDA29D483B9008A4DDE /* CheckFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFunctions.swift; sourceTree = "<group>"; };
 		6244C2212885614200FE15B7 /* SerachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachView.swift; sourceTree = "<group>"; };
 		624A1C2E292B56B80059EB72 /* playerSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playerSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		624A1C30292B56B80059EB72 /* playerSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUIUITests.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				62D824762795AD5700461EF9 /* SplashSwiftUIView.swift */,
 				629F1C8027905D26001BF441 /* SliderSwiftUIView.swift */,
 				629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */,
+				623E0EDA29D483B9008A4DDE /* CheckFunctions.swift */,
 			);
 			path = "Home Radio View";
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				624CC69729103849007186A2 /* FavoriteDispView.swift in Sources */,
 				62DBB5B7278E3015003EEFE2 /* DetalleUIView.swift in Sources */,
 				629AC839279DF4C500AA2BD9 /* CheckNetworkView.swift in Sources */,
+				623E0EDB29D483B9008A4DDE /* CheckFunctions.swift in Sources */,
 				62A0A54F27863EA7002CEB18 /* FavoritesSwiftUIView.swift in Sources */,
 				622D45832897D45B002810AD /* newSettingsView.swift in Sources */,
 				624D37D328ACC917008A5F3A /* song.swift in Sources */,

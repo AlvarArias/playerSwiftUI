@@ -23,8 +23,7 @@ struct SliderSwiftUIView: View {
     @State private var showingmySettings = false
     @State private var showingmySearch = false
 
-    // User defaults for favorites
-    let defaults = UserDefaults.standard
+
     let textSelect = "Välj din radio"
 
        
@@ -86,77 +85,42 @@ struct SliderSwiftUIView: View {
                 // TODO: Add more radio Station
                 // FIXME: Show favorites and impleent this in the view
                 
-                
-                 List {
-                 ForEach(items, id: \.self) { index in
-                 
-                 HStack {
-                 
-                 CachedAsyncImage (url: URL(string: myRadioDemo[index].image), content: { image in
-                 image.resizable()
-                 .aspectRatio(contentMode: .fill)
-                 .frame(width: 50, height: 50)
-                 },
-                 placeholder: {
-                 ProgressView()
-                 })
-                 
-                 
-                 Text(myRadioDemo[index].tagline).font(.body).lineLimit(3)
-                 .frame(width: 200)
-                 .font(.body)
-                 
-                 Spacer()
-                 
-                 
-                 NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
-                 
-                 Text("")
-                 }.accessibilityValue(myRadioDemo[index].id)
-                 
-                 
-                 } .listRowSeparator(.hidden)
-                 
-                 }
-                 .navigationBarTitle("Radio App", displayMode: .inline)
-                 
-                 }
-                 
-                // Work more is this View
-                /*
                 ScrollView {
-                ForEach(items, id: \.self) { index in
-                    HStack {
-                        CachedAsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
-                            image.resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 50, height: 50)
-                        }, placeholder: {
-                            ProgressView()
-                        })
-                        Text(myRadioDemo[index].tagline)
-                            .font(.body)
-                            .lineLimit(3)
-                            .frame(width: 200)
-                            .font(.body)
-                        Spacer()
-                        NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
-                            Text(">")
+                    ForEach(items, id: \.self) { index in
+                        VStack{
+                            HStack {
+                                CachedAsyncImage(url: URL(string: myRadioDemo[index].image), content: { image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 50, height: 50)
+                                }, placeholder: {
+                                    ProgressView()
+                                })
+                                Text(myRadioDemo[index].tagline)
+                                    .font(.caption)
+                                    .lineLimit(3)
+                                    .frame(width: 200)
+                                Spacer()
+                                NavigationLink(destination: DetalleUIView(choice: myRadioDemo[index].siteurl, choice1: myRadioDemo[index])) {
+                                    Image(systemName: "arrow.forward.circle")
+                                        .foregroundColor(Color.black.opacity(0.85))
+                                }
+                                .accessibilityValue(myRadioDemo[index].id)
+                            }
+                            .padding(15)
+                            .shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
+                            .background(Color.newPrimaryColor)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                            
                         }
-                        .accessibilityValue(myRadioDemo[index].id)
+                        
                     }
-                    .listRowSeparator(.hidden)
+                    .navigationBarTitle("Radio App", displayMode: .inline)
                 }
-                .navigationBarTitle("Radio App", displayMode: .inline)
                 
             }
-                
-                */
-               //TODO: Add social shared funtionality
-                
-
-            }
-            .background(Color.newColorGrayLight)
+            .background(Color.newColorGreenLight)
   
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
@@ -200,29 +164,6 @@ struct SliderSwiftUIView: View {
             }
         }
         
-    /// Check if a radio station is saved as a favorite.
-    ///
-    /// - Parameters:
-    ///   - myRadioFavo: The name of the radio station to check.
-    ///
-    /// - Returns: A Boolean value indicating whether the radio station is saved as a favorite.
-    ///
-    /// This function checks if a radio station is saved as a favorite in the app's saved data.
- 
-    func checkIsFavorite(myRadioFavo: String) -> Bool {
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                if loadedPerson.mytest.contains(where: { $0 == myRadioFavo }) {
-                    return true
-                } else {
-                    return false
-                }
-            }
-        }
-        return false
-    }
-
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
