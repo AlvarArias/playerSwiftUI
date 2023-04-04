@@ -32,7 +32,7 @@ struct favoriteButtonView: View {
                 
             }
             
-            receivedURL.isFavorite = isFavorite
+            //receivedURL.isFavorite = isFavorite
             
         } label: {
             Image(systemName: isFavorite || checkIsFavorite(myFavoriteSetting: selectedRadioStationId) ? "star.fill" : "star")

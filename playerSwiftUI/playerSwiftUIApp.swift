@@ -14,8 +14,9 @@ struct playerSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashSwiftUIView()
-            //SliderSwiftUIView()
+            //SplashSwiftUIView()
+           HomeRadioView()
+            //SerachView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 
         }

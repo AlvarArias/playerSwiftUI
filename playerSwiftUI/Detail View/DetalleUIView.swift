@@ -43,6 +43,8 @@ struct DetalleUIView : View {
     // Data user default
     var myData = favoriteSaved()
     
+    //@State var isFavorite: Bool = false
+
     var body: some View {
         
                 VStack {
@@ -62,15 +64,20 @@ struct DetalleUIView : View {
                     Text("Nästa program").padding()
                         .accessibilityLabel("Nästa program")
                    
+            
                     // Button favorite
+                    
                     Button {
                         
                         showingStar.toggle()
                         
                         if userSettings.favorite.contains(selectedRadioStation.id) {
                             deleteFavorite(delFavorite: selectedRadioStation.id)
+                           
+                            
                         } else {
                             userSettings.favorite.append(selectedRadioStation.id)
+                           
                         }
                         
                         receivedURL.isFavorite = showingStar
@@ -79,7 +86,7 @@ struct DetalleUIView : View {
                         Image(systemName: showingStar || checkIsFavorite(myFavoriteSetting: selectedRadioStation.id) ? "star.fill" : "star")
                             .foregroundColor(showingStar || checkIsFavorite(myFavoriteSetting: selectedRadioStation.id) ? .yellow : .black)
                     }
-
+                    
                     
                 }
                 
@@ -135,9 +142,13 @@ struct DetalleUIView : View {
                         
                         player.pause()
                         self.presentationMode.wrappedValue.dismiss()
-                        print("click and stop audio")
+                        print("click back and stop audio")
+                        print(checkIsFavorite(myFavoriteSetting: selectedRadioStation.id))
+                        print(selectedRadioStation.id)
+                        
+                        
                     }){
-                            //Text("Back").foregroundColor(.newSecundaryColor)
+                        Text("Back").foregroundColor(.newSecundaryColor)
                         Image(systemName: "arrow.uturn.backward")
                         .foregroundColor(.newSecundaryColor)
                     }
@@ -152,6 +163,7 @@ struct DetalleUIView : View {
         .environmentObject(receivedURL)
 
     }
+    
     
     // Funciones Favorites
 

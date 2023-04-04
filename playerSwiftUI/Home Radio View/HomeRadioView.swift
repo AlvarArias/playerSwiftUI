@@ -17,6 +17,10 @@ struct HomeRadioView: View {
     // Use decode helper
     @State var radioStations: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
 
+    // User default for favorites
+    @ObservedObject var userSettings = UserSettings()
+
+    
     @State private var items = 0...51
 
     @State private var showingFavorite = false
@@ -29,7 +33,6 @@ struct HomeRadioView: View {
 
     let textSelect = "Välj din radio"
 
-       
     var body: some View {
                
         NavigationView {
@@ -37,7 +40,7 @@ struct HomeRadioView: View {
             VStack {
                 
                 Text(theUserName)
-                
+                /*
                 TabView {
                     switch theFirstRadio {
                     case "P2":
@@ -82,7 +85,8 @@ struct HomeRadioView: View {
                         isVStackVisible = true
                     }
                 }
-                
+                */
+         
                 
                 HStack {
                     Text(textSelect).padding()
@@ -110,8 +114,24 @@ struct HomeRadioView: View {
                                     .frame(width: 200)
                                
                                 //arreglar al compportamiento
+                                /*
                                 favoriteButtonView(isFavorite: $isFavorite, selectedRadioStationId: radioStations[index].id)
+                                */
+                                /*
+                                if checkIsFavorite2(myFavoriteSetting: radioStations[index].id) {
+                                     Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                } else {
+                                    Image(systemName: "star")
+                                     
+                                }
+                                */
+                            
                                 
+                                Image(systemName: checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? "star.fill" : "star")
+                                    .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
+
+                                 
                                 Spacer()
                                 NavigationLink(destination: DetalleUIView(choice: radioStations[index].siteurl, selectedRadioStation: radioStations[index])) {
                                     Image(systemName: "arrow.forward.circle")
@@ -167,7 +187,7 @@ struct HomeRadioView: View {
                     
                     Spacer()
                     
-                    /*
+                    
                     Button {
                         showingmySearch.toggle()
                     } label: {
@@ -177,15 +197,26 @@ struct HomeRadioView: View {
                     .sheet(isPresented: $showingmySearch) {
                         SerachView()
                     }
-                    */
+                    
   
                 }
             }
-
-            
-            }
         }
+    }
+    
+    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
         
+        if (userSettings.favorite.contains(myFavoriteSetting)) {
+            
+                return true
+                    
+                } else {
+                   
+                  return false
+                }
+            }
+        
+    
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {

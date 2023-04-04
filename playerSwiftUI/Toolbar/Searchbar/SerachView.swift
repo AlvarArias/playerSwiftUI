@@ -25,6 +25,7 @@ struct SerachView: View {
     // User default for favorites
     let defaults = UserDefaults.standard
     
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -76,8 +77,7 @@ struct SerachView: View {
                             
                            
                         } .listRowSeparator(.hidden)
-                        
-                        
+                           
                     }
                     .navigationBarTitle("Sök", displayMode: .inline)
                 }

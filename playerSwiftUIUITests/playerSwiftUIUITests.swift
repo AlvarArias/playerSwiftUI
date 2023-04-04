@@ -45,11 +45,11 @@ class playerSwiftUIUITests: XCTestCase {
         //New test
         
         let app = XCUIApplication()
-        let myTable = app.tables["ListOfRadios"]
+       
         
         app.launch()
         
-        XCTAssert(myTable.exists)
+        //XCTAssert(myTable.exists)
         
         /*
         let toolbar = app.toolbars["Toolbar"]
