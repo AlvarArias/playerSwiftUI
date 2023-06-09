@@ -40,7 +40,7 @@ struct HomeRadioView: View {
             VStack {
                 
                 Text(theUserName)
-                /*
+                
                 TabView {
                     switch theFirstRadio {
                     case "P2":
@@ -85,7 +85,7 @@ struct HomeRadioView: View {
                         isVStackVisible = true
                     }
                 }
-                */
+                
          
                 
                 HStack {
@@ -99,8 +99,8 @@ struct HomeRadioView: View {
                 
                 ScrollView {
                     ForEach(items, id: \.self) { index in
-                        VStack{
-                            HStack {
+                        LazyVStack{
+                            LazyHStack {
                                 CachedAsyncImage(url: URL(string: radioStations[index].image), content: { image in
                                     image.resizable()
                                         .aspectRatio(contentMode: .fill)

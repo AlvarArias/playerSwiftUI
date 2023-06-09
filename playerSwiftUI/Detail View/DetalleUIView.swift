@@ -27,7 +27,7 @@ struct DetalleUIView : View {
     @State var selectedRadioStation : radioStationInfo
     
     // Player variables
-    @State var player = AVPlayer()
+    @State private var player = AVPlayer()
     //let url1  = "https://sverigesradio.se/topsy/direkt/srapi/2562.mp3"
     @State private var isPlaying : Bool = false
     @State private var volum : Float = 0
@@ -139,7 +139,7 @@ struct DetalleUIView : View {
                        // NavigationLink("Go to back", destination: SliderSwiftUIView())
                     
                     Button(action : {
-                        
+                        //player.replaceCurrentItem(with: nil)
                         player.pause()
                         self.presentationMode.wrappedValue.dismiss()
                         print("click back and stop audio")

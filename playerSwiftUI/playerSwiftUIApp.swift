@@ -16,7 +16,6 @@ struct playerSwiftUIApp: App {
         WindowGroup {
             //SplashSwiftUIView()
            HomeRadioView()
-            //SerachView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 
         }
