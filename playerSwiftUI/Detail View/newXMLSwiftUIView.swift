@@ -26,11 +26,14 @@ struct newXMLSwiftUIView: View {
     var myNewDate = theDateFormater()
     
     
+    
     var body: some View {
 
+        let itemsResult = parserControl.Schedule
+        
         VStack {
             ScrollView {
-                if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
+                if  !itemsResult.isEmpty {
                     ForEach(0...4, id: \.self) { index in
                         
                         let item = itemsResult[index]

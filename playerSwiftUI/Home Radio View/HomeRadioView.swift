@@ -15,8 +15,10 @@ struct HomeRadioView: View {
     @AppStorage("ringtone") private var theFirstRadio = ""
 
     // Use decode helper
-    @State var radioStations: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
+   // @State var radioStations: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
 
+    @State var radioStations: [radioStationInfo] = []
+    
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
 
@@ -64,13 +66,13 @@ struct HomeRadioView: View {
                             Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     default:
-                        NavigationLink(destination: DetalleUIView(choice: "P1", selectedRadioStation: radioStations[0])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P1", selectedRadioStation: radioStationInfo(image: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square" , imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter och aktualiteter, granskning och fördjupning men också livsåskådnings-och livsstilsprogram samt underhållning och upplevelser till exempel i form av teater.", siteurl: "https://sverigesradio.se/p1", url: "http://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"))) {
                             Image("P1").accessibilityLabel("P1").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P2", selectedRadioStation: radioStations[1])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P2", selectedRadioStation: radioStationInfo(image: "https://static-cdn.sr.se/images/163/2186754_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/163/2186754_512_512.jpg", color: "ff5a00", tagline: "P2 är den klassiska musikkanalen som även erbjuder jazz samt folk- och världsmusik. Digitalt sänder vi musikprogram dygnet runt, i FM finns även program på andra språk än svenska.", siteurl: "https://sverigesradio.se/p2", url: "http://sverigesradio.se/topsy/direkt/srapi/163.mp3", scheduleurl: "http://api.sr.se/v2/scheduledepisodes?channelid=163", xmltvid:  "p2.sr.se", name: "P2", id: "163"))) {
                             Image("P2").accessibilityLabel("P2").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
-                        NavigationLink(destination: DetalleUIView(choice: "P3", selectedRadioStation: radioStations[2])) {
+                        NavigationLink(destination: DetalleUIView(choice: "P3", selectedRadioStation: radioStationInfo(image: "https://static-cdn.sr.se/images/164/2186756_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/164/2186756_512_512.jpg", color: "19a972", tagline: "Kanalen för dig som gillar ny musik, livesänd radio och högkvalitativa poddar. Lyssna på P3 för populärkultur, samhällsjournalistik, musik och humor.", siteurl: "https://sverigesradio.se/p3", url: "http://sverigesradio.se/topsy/direkt/srapi/164.mp3", scheduleurl: "http://api.sr.se/v2/scheduledepisodes?channelid=164", xmltvid: "p3.sr.se", name: "P3", id: "164"))) {
                             Image("P3").accessibilityLabel("P3").cornerRadius(10).shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
                         }
                     }
@@ -96,69 +98,75 @@ struct HomeRadioView: View {
                 
                 // TODO: Add more radio Station
                 // FIXME: Show favorites and impleent this in the view
-                
-                ScrollView {
-                    ForEach(items, id: \.self) { index in
-                        LazyVStack{
-                            LazyHStack {
-                                CachedAsyncImage(url: URL(string: radioStations[index].image), content: { image in
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 50, height: 50)
-                                }, placeholder: {
-                                    ProgressView()
-                                })
-                                Text(radioStations[index].tagline)
-                                    .font(.caption)
-                                    .lineLimit(3)
-                                    .frame(width: 200)
-                               
-                                //arreglar al compportamiento
-                                /*
-                                favoriteButtonView(isFavorite: $isFavorite, selectedRadioStationId: radioStations[index].id)
-                                */
-                                /*
-                                if checkIsFavorite2(myFavoriteSetting: radioStations[index].id) {
+                if radioStations.count > 0 {
+                    ScrollView {
+                        ForEach(items, id: \.self) { index in
+                            LazyVStack{
+                                LazyHStack {
+                                    CachedAsyncImage(url: URL(string: radioStations[index].image), content: { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 50, height: 50)
+                                    }, placeholder: {
+                                        ProgressView()
+                                    })
+                                    Text(radioStations[index].tagline)
+                                        .font(.caption)
+                                        .lineLimit(3)
+                                        .frame(width: 200)
+                                    
+                                    //arreglar al compportamiento
+                                    /*
+                                     favoriteButtonView(isFavorite: $isFavorite, selectedRadioStationId: radioStations[index].id)
+                                     */
+                                    /*
+                                     if checkIsFavorite2(myFavoriteSetting: radioStations[index].id) {
                                      Image(systemName: "star.fill")
-                                        .foregroundColor(.yellow)
-                                } else {
-                                    Image(systemName: "star")
+                                     .foregroundColor(.yellow)
+                                     } else {
+                                     Image(systemName: "star")
                                      
+                                     }
+                                     */
+                                    
+                                    
+                                    Image(systemName: checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? "star.fill" : "star")
+                                        .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
+                                    
+                                    
+                                    Spacer()
+                                    NavigationLink(destination: DetalleUIView(choice: radioStations[index].siteurl, selectedRadioStation: radioStations[index])) {
+                                        Image(systemName: "arrow.forward.circle")
+                                            .foregroundColor(Color.black.opacity(0.85))
+                                    }
+                                    .accessibilityValue(radioStations[index].id)
                                 }
-                                */
-                            
+                                .padding(15)
+                                .shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
+                                .background(Color.newPrimaryColor)
+                                .cornerRadius(10)
+                                .padding(.horizontal)
                                 
-                                Image(systemName: checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? "star.fill" : "star")
-                                    .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
-
-                                 
-                                Spacer()
-                                NavigationLink(destination: DetalleUIView(choice: radioStations[index].siteurl, selectedRadioStation: radioStations[index])) {
-                                    Image(systemName: "arrow.forward.circle")
-                                        .foregroundColor(Color.black.opacity(0.85))
-                                }
-                                .accessibilityValue(radioStations[index].id)
                             }
-                            .padding(15)
-                            .shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
-                            .background(Color.newPrimaryColor)
-                            .cornerRadius(10)
-                            .padding(.horizontal)
+                            .opacity(isVStackVisible ? 1.0 : 0.0)
+                            .animation(.easeIn(duration: 1.5), value: isVStackVisible)
+                            .onAppear {
+                                withAnimation {
+                                    isVStackVisible = true
+                                }
+                            }
                             
                         }
-                        .opacity(isVStackVisible ? 1.0 : 0.0)
-                        .animation(.easeIn(duration: 1.5), value: isVStackVisible)
-                        .onAppear {
-                            withAnimation {
-                                isVStackVisible = true
-                            }
-                        }
-                        
+                        .navigationBarTitle("Radio App", displayMode: .inline)
                     }
-                    .navigationBarTitle("Radio App", displayMode: .inline)
                 }
-                
             }
+            .onAppear {
+                        if radioStations.isEmpty {
+                            loadRadioStations()
+                        }
+                    }
+            
             .background(Color.newColorGreenLight)
   
             .toolbar {
@@ -216,6 +224,21 @@ struct HomeRadioView: View {
                 }
             }
         
+    
+    func loadRadioStations() {
+            guard let url = Bundle.main.url(forResource: "radios23", withExtension: "json") else {
+                return
+            }
+
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                radioStations = try decoder.decode([radioStationInfo].self, from: data)
+            } catch {
+                print("Error loading radio stations: \(error)")
+            }
+        }
+    
     
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {

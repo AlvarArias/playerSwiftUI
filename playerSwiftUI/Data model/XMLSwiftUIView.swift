@@ -56,9 +56,9 @@ struct XMLSwiftUIView: View {
         //Text(note.title)
         //Text(note.description)
         //Text(note.starttimeutc)
-        
+            let itemsResult = parserControl.Schedule
             
-            if let itemsResult = parserControl.Schedule, !itemsResult.isEmpty {
+            if !itemsResult.isEmpty {
                         List{
                             ForEach(1...3, id:\.self) {item in
                                 Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight)
