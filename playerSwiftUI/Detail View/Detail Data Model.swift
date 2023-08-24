@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import AVKit
 
 struct favoriteSaved : Decodable,Encodable, Hashable {
     var favoriteId : [String]
@@ -25,5 +25,39 @@ class theURLSetting : ObservableObject {
 }
 
 
+class PlayRadio {
+    
+    var player = AVPlayer()
+    
+    func playSongRadio(radioURL: String, isPlaying: Bool) -> Bool {
+        
 
+        do {
+            
+            if isPlaying {
+                let audioSession = AVAudioSession.sharedInstance()
+                try audioSession.setCategory(.playback)
+                print("AVAudioSession Category Playback OK")
+                
+                try audioSession.setActive(true)
+                print("AVAudioSession is Active")
+                
+                player = AVPlayer(url: URL(string: radioURL)!)
+                player.play()
+                return true
+                
+            } else {
+                player.pause()
+                return false
+            }
+            
+            
+        } catch let error {
+            print("Failed to play audio: \(error.localizedDescription)")
+            return false
+        }
+        
+    }
+    
+}
 

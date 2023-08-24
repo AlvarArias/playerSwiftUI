@@ -40,7 +40,6 @@ struct XMLSwiftUIView: View {
         UITableView.appearance().separatorStyle = .none
         //UITableView.appearance().separatorStyle = .singleLine
     }
-    
     @StateObject var parserControl = ParseController()
 
    
@@ -48,7 +47,7 @@ struct XMLSwiftUIView: View {
     
     let note = try! XMLDecoder().decode(Note.self, from: Data(sourceXML.utf8))
 
-    
+   
     
     var body: some View {
         VStack{
