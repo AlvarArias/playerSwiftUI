@@ -34,19 +34,19 @@ class PlayRadio {
 
         do {
             
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playback)
+            try audioSession.setActive(true)
+            
+            player = AVPlayer(url: URL(string: radioURL)!)
+        
+            
             if isPlaying {
-                let audioSession = AVAudioSession.sharedInstance()
-                try audioSession.setCategory(.playback)
-                print("AVAudioSession Category Playback OK")
-                
-                try audioSession.setActive(true)
-                print("AVAudioSession is Active")
-                
-                player = AVPlayer(url: URL(string: radioURL)!)
                 player.play()
                 return true
                 
             } else {
+                
                 player.pause()
                 return false
             }
@@ -61,3 +61,73 @@ class PlayRadio {
     
 }
 
+
+protocol DataManager {
+    func manageData(data: String) -> Bool
+}
+
+// Asigno una responsabilidad a cada clase
+
+class saveFavorite : DataManager {
+    
+    @ObservedObject var userSettings = UserSettings()
+    
+    func manageData(data: String) -> Bool {
+        
+        let defaults = UserDefaults.standard
+        let decoder = JSONDecoder()
+        let encoder = JSONEncoder()
+
+        // verificar si existe
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data,
+           var loadFavorite = try? decoder.decode(favoriteSaved.self, from: savedPerson),
+           !loadFavorite.favoriteId.contains(data) {
+            
+            // si no existe grabar
+            loadFavorite.favoriteId.append(data)
+
+            // Save data
+            if let encoded = try? encoder.encode(loadFavorite) {
+                defaults.set(encoded, forKey: "SavedPerson")
+            }
+
+            return true
+
+        }
+            
+        return false
+    }
+    
+    
+}
+
+class deleteFavorite: DataManager {
+    
+    func manageData(data: String) -> Bool {
+        
+        @ObservedObject var userSettings = UserSettings()
+
+        if let index = userSettings.favorite.firstIndex(of: data) {
+            
+            userSettings.favorite.remove(at: index)
+            return true
+        }
+        
+        return false
+    }
+    
+}
+
+class checkFavoriteC: DataManager {
+    
+    @ObservedObject var userSettings = UserSettings()
+    
+    func manageData(data: String) -> Bool {
+        
+        let isFavorite = userSettings.favorite.contains(data)
+        
+        return isFavorite
+    }
+    
+    
+}
