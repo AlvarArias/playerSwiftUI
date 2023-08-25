@@ -15,7 +15,7 @@ struct playerSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             //SplashSwiftUIView()
-           HomeRadioView()
+            HomeRadioView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 
         }

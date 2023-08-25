@@ -62,6 +62,8 @@ class PlayRadio {
 }
 
 
+// Ver como testear adecuadamente
+
 protocol DataManager {
     func manageData(data: String, userSettings: UserSettings) -> Bool
 }
@@ -70,15 +72,14 @@ protocol DataManager {
 
 class saveFavorite : DataManager {
     
-    //@ObservedObject var userSettings = UserSettings()
-    
     func manageData(data: String, userSettings: UserSettings) -> Bool {
         
         let defaults = UserDefaults.standard
         let decoder = JSONDecoder()
         let encoder = JSONEncoder()
 
-        // verificar si existe
+        
+        // Decode data using JSON decode
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data,
            var loadFavorite = try? decoder.decode(favoriteSaved.self, from: savedPerson),
            !loadFavorite.favoriteId.contains(data) {
@@ -86,7 +87,7 @@ class saveFavorite : DataManager {
             // si no existe grabar
             loadFavorite.favoriteId.append(data)
 
-            // Save data
+            // Encode data JSON to user defaukts
             if let encoded = try? encoder.encode(loadFavorite) {
                 defaults.set(encoded, forKey: "SavedPerson")
             }
@@ -105,8 +106,6 @@ class deleteFavorite: DataManager {
     
     func manageData(data: String, userSettings: UserSettings) -> Bool {
         
-        //@ObservedObject var userSettings = UserSettings()
-
         if let index = userSettings.favorite.firstIndex(of: data) {
             
             userSettings.favorite.remove(at: index)
@@ -150,3 +149,4 @@ class YourDataManager: myDataManager {
         return isFavorite
     }
 }
+

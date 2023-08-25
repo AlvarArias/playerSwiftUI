@@ -34,6 +34,9 @@ struct HomeRadioView: View {
     @State var isFavorite: Bool = false
 
     let textSelect = "Välj din radio"
+    
+    var checkIfIsFavorite = checkFavoriteC()
+    @State private var isFavorieTest = false
 
     var body: some View {
                
@@ -129,9 +132,20 @@ struct HomeRadioView: View {
                                      }
                                      */
                                     
-                                    
+                                    /*
                                     Image(systemName: checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? "star.fill" : "star")
                                         .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
+                                    */
+                                    
+                                    Image(systemName: checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings) ? "star.fill" : "star")
+                                        .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
+                                    
+                                    Image(systemName: isFavorieTest ? "star.fill" : "star")
+                                        .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
+                                        .onAppear{
+                                            isFavorieTest = checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings)
+                                            print("is Favorite value isFavorite test = \(isFavorieTest)")
+                                        }
                                     
                                     
                                     Spacer()
