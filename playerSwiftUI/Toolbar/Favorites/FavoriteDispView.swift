@@ -82,20 +82,16 @@ struct FavoriteDispView: View {
                 }
                 
             }
-            
-                .toolbar {
+             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    Button { dismiss() } label: {
-                               Image(systemName: "arrow.down")
-                           .foregroundColor(.newSecundaryColor)
-                    }
-
-                    }
-           }
-                .navigationBarTitle("Favorites", displayMode: .inline)
             
+                    Button { dismiss() } label: {
+                        ArrowToolBarView()
+                    }
+                }
+           }
+            .navigationBarTitle("Favorites", displayMode: .inline)
         }
-        
     }
            
         

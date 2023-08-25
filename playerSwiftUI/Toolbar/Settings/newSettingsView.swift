@@ -53,19 +53,11 @@ struct newSettingsView: View {
         .background(Color.newColorGrayLight)
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
-                
-                Button { //dismiss()
-                    showing = true
-                    
-                } label: {
-                    Image(systemName: "arrow.down")
-                        .foregroundColor(Color.newSecundaryColor)
-                    }
-                .fullScreenCover(isPresented: $showing, content: HomeRadioView.init)
                
-                
+                Button { dismiss() } label: {
+                    ArrowToolBarView()
+                    }
                 }
-            
             }
             
         }

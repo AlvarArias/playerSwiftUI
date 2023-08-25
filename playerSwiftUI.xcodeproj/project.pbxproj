@@ -37,6 +37,7 @@
 		626EB3F82A98DEAA00A4A37D /* HomeModell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F72A98DEAA00A4A37D /* HomeModell.swift */; };
 		626EB3FA2A98E1C400A4A37D /* HomeModellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F92A98E1C400A4A37D /* HomeModellTest.swift */; };
 		626EB3FB2A98E30300A4A37D /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 6229C7052964380400AF36F2 /* radios23.json */; };
+		626EB3FD2A98F68600A4A37D /* ArrowToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */; };
 		6272D8172A98A54200D45F62 /* SaveFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272D8162A98A54200D45F62 /* SaveFavorite.swift */; };
 		6299BFAE28940B30003C1DB0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6299BFAD28940B30003C1DB0 /* Lottie */; };
 		6299BFB028940C59003C1DB0 /* music-equalizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 6299BFAF28940C59003C1DB0 /* music-equalizer.json */; };
@@ -144,6 +145,7 @@
 		626EB3F52A98C85600A4A37D /* NewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListView.swift; sourceTree = "<group>"; };
 		626EB3F72A98DEAA00A4A37D /* HomeModell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModell.swift; sourceTree = "<group>"; };
 		626EB3F92A98E1C400A4A37D /* HomeModellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModellTest.swift; sourceTree = "<group>"; };
+		626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowToolBarView.swift; sourceTree = "<group>"; };
 		6272D8162A98A54200D45F62 /* SaveFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavorite.swift; sourceTree = "<group>"; };
 		628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = playerSwiftUI.entitlements; sourceTree = "<group>"; };
 		6299BFAF28940C59003C1DB0 /* music-equalizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "music-equalizer.json"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				6243647028816EA500A20017 /* Settings */,
 				6244C2202885611700FE15B7 /* Searchbar */,
 				624CC68F290FD078007186A2 /* Favorites */,
+				626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */,
 			);
 			path = Toolbar;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				626EB3F82A98DEAA00A4A37D /* HomeModell.swift in Sources */,
 				629F1C8127905D27001BF441 /* HomeRadioView.swift in Sources */,
 				62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */,
+				626EB3FD2A98F68600A4A37D /* ArrowToolBarView.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
 				624F747F290C3268003C3849 /* DataController.swift in Sources */,
 				6259584829C9BE7500DCBAE5 /* Colors.swift in Sources */,

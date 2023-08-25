@@ -86,21 +86,7 @@ struct NewListView: View {
         
     }
         
-  
-    func loadRadioStations() {
-            guard let url = Bundle.main.url(forResource: "radios23", withExtension: "json") else {
-                return
-            }
 
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                radioStations = try decoder.decode([radioStationInfo].self, from: data)
-            } catch {
-                print("Error loading radio stations: \(error)")
-            }
-        }
-    
 }
 
 

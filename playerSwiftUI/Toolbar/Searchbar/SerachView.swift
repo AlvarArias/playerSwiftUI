@@ -89,12 +89,11 @@ struct SerachView: View {
                }
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
+                    
                     Button { dismiss() } label: {
-                               Image(systemName: "arrow.down")
-                            .foregroundColor(Color.newSecundaryColor)
+                        ArrowToolBarView()
                     }
-
-                    }
+                }
            }
         }
     }
