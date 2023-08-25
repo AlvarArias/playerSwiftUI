@@ -13,8 +13,6 @@ struct NewListView: View {
     @State var radioStations: [radioStationInfo] = []
     @State private var items = 0...51
     
-    var myRadioList = LoadRadioStationJSONFile()
-    
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
     

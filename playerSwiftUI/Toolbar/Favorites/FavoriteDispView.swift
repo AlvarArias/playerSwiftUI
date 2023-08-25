@@ -11,17 +11,20 @@ import CachedAsyncImage
 
 struct FavoriteDispView: View {
 
+    @State var radioStations: [radioStationInfo] = []
     @State private var items = 0...51
-    @State private var myRadioDemo: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
-    
-    @Environment(\.dismiss) var dismiss
-      
+   
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
     
     // Check if is favorite
     var checkIfIsFavorite = checkFavoriteC()
     
+    // Load Stations
+    var mYradioStation = LoadRadioStationJSONFile()
+    
+    @Environment(\.dismiss) var dismiss
+      
     var body: some View {
         NavigationView {
             
@@ -29,7 +32,7 @@ struct FavoriteDispView: View {
                  
                 List {
 
-                    ForEach(myRadioDemo, id: \.self) { name in
+                    ForEach(radioStations, id: \.self) { name in
                     
                         if checkIfIsFavorite.manageData(data: name.id, userSettings: userSettings) {
                         HStack {
@@ -72,6 +75,14 @@ struct FavoriteDispView: View {
                 }
                 .background(Color.newColorGrayLight)
                }
+            .onAppear {
+               
+                if radioStations.isEmpty {
+                    radioStations = mYradioStation.loadStation()
+                }
+                
+            }
+            
                 .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button { dismiss() } label: {
