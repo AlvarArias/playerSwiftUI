@@ -63,16 +63,16 @@ class PlayRadio {
 
 
 protocol DataManager {
-    func manageData(data: String) -> Bool
+    func manageData(data: String, userSettings: UserSettings) -> Bool
 }
 
 // Asigno una responsabilidad a cada clase
 
 class saveFavorite : DataManager {
     
-    @ObservedObject var userSettings = UserSettings()
+    //@ObservedObject var userSettings = UserSettings()
     
-    func manageData(data: String) -> Bool {
+    func manageData(data: String, userSettings: UserSettings) -> Bool {
         
         let defaults = UserDefaults.standard
         let decoder = JSONDecoder()
@@ -103,9 +103,9 @@ class saveFavorite : DataManager {
 
 class deleteFavorite: DataManager {
     
-    func manageData(data: String) -> Bool {
+    func manageData(data: String, userSettings: UserSettings) -> Bool {
         
-        @ObservedObject var userSettings = UserSettings()
+        //@ObservedObject var userSettings = UserSettings()
 
         if let index = userSettings.favorite.firstIndex(of: data) {
             
@@ -120,14 +120,33 @@ class deleteFavorite: DataManager {
 
 class checkFavoriteC: DataManager {
     
-    @ObservedObject var userSettings = UserSettings()
-    
-    func manageData(data: String) -> Bool {
+    func manageData(data: String, userSettings: UserSettings) -> Bool {
         
         let isFavorite = userSettings.favorite.contains(data)
-        
+                
         return isFavorite
+        
     }
     
     
+}
+
+
+// Mock for testing
+// Check if is favorite or not
+
+protocol myDataManager {
+    func manageData(data: String, userSettings: myUserSettings) -> Bool
+}
+
+
+struct myUserSettings {
+    var favorite: [String]
+}
+
+class YourDataManager: myDataManager {
+    func manageData(data: String, userSettings: myUserSettings) -> Bool {
+        let isFavorite = userSettings.favorite.contains(data)
+        return isFavorite
+    }
 }

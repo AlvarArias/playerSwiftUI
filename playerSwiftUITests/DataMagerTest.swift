@@ -13,50 +13,35 @@ protocol UserSettingsProtocol {
     var favorite: [String] { get set }
 }
 
+// Check if is or not
+    class DataManagerTests: XCTestCase {
 
-class CheckFavoriteCTests: XCTestCase {
+        func testManageDataForFavoriteData() {
+            // Arrange
+            let data = "TestItem"
+            let userSettings = myUserSettings(favorite: ["TestItem", "AnotherItem"])
+            let dataManager: myDataManager = YourDataManager()
 
-    var checkFavoriteCInstance: checkFavoriteC!
-    var userSettingsMock: UserSettingsMock!
-    
-    override func setUpWithError() throws {
-            userSettingsMock = UserSettingsMock()
-          //  checkFavoriteCInstance = checkFavoriteC(userSettings: userSettingsMock)
+            // Act
+            let result = dataManager.manageData(data: data, userSettings: userSettings)
+
+            // Assert
+            XCTAssertTrue(result, "Expected data to be marked as favorite")
         }
 
+        func testManageDataForNonFavoriteData() {
+            // Arrange
+            let data = "TestItem"
+            let userSettings = myUserSettings(favorite: ["AnotherItem"])
+            let dataManager: myDataManager = YourDataManager()
 
-    override func tearDownWithError() throws {
-        checkFavoriteCInstance = nil
-        userSettingsMock = nil
+            // Act
+            let result = dataManager.manageData(data: data, userSettings: userSettings)
+
+            // Assert
+            XCTAssertFalse(result, "Expected data not to be marked as favorite")
+        }
+        
+        // Add more test cases as needed
+        
     }
-
-    func testManageData_IsFavorite() {
-        // Set up any required dependencies or mocks
-        
-        // Mock UserSettings behavior
-        userSettingsMock.favorite = ["favorite1", "favorite2", "favorite3"]
-        
-        // Perform the test
-        //XCTAssertTrue(checkFavoriteCInstance.manageData(data: "favorite2"))
-      
-    }
-    
-    func testManageData_NotFavorite() {
-        // Set up any required dependencies or mocks
-        
-        // Mock UserSettings behavior
-        userSettingsMock.favorite = ["favorite1", "favorite3"]
-        
-        // Perform the test
-        //XCTAssertFalse(checkFavoriteCInstance.manageData(data: "favorite2"))
-    }
-    
-    // Add more test cases as needed
-
-}
-
-// Mock UserSettings
-class UserSettingsMock: UserSettingsProtocol {
-    var favorite: [String] = ["favorite1", "favorite2", "favorite3"]
-    // Override or add necessary properties/methods for testing
-}
