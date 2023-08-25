@@ -12,8 +12,7 @@ import CachedAsyncImage
 struct HomeRadioView: View {
 
     @AppStorage("username") private var theUserName = ""
-    @AppStorage("ringtone") private var theFirstRadio = ""
-
+    
     @State var radioStations: [radioStationInfo] = []
     @State private var items = 0...51
     
@@ -23,8 +22,7 @@ struct HomeRadioView: View {
     @State private var showingFavorite = false
     @State private var showingmySettings = false
     @State private var showingmySearch = false
-    @State private var isVStackVisible = false
-    @State private var showingStar = false
+    
     
     @State var isFavorite: Bool = false
 
