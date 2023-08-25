@@ -10,9 +10,7 @@ import CachedAsyncImage
 
 
 struct FavoriteDispView: View {
-    
-    @State private var searchText="163"
-    
+
     @State private var items = 0...51
     @State private var myRadioDemo: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
     

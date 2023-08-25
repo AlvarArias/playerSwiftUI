@@ -14,16 +14,11 @@ struct HomeRadioView: View {
     @AppStorage("username") private var theUserName = ""
     @AppStorage("ringtone") private var theFirstRadio = ""
 
-    // Use decode helper
-   // @State var radioStations: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
-
     @State var radioStations: [radioStationInfo] = []
+    @State private var items = 0...51
     
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
-
-    
-    @State private var items = 0...51
 
     @State private var showingFavorite = false
     @State private var showingmySettings = false
@@ -99,68 +94,11 @@ struct HomeRadioView: View {
                     CheckNetworkView()
                 }
                 
-                // TODO: Add more radio Station
-                // FIXME: Show favorites and impleent this in the view
-                if radioStations.count > 0 {
-                    ScrollView {
-                        ForEach(items, id: \.self) { index in
-                            LazyVStack{
-                                LazyHStack {
-                                    CachedAsyncImage(url: URL(string: radioStations[index].image), content: { image in
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 50, height: 50)
-                                    }, placeholder: {
-                                        ProgressView()
-                                    })
-                                    Text(radioStations[index].tagline)
-                                        .font(.caption)
-                                        .lineLimit(3)
-                                        .frame(width: 200)
-                                    
-                                   // Usando nueva classe checkFavoriteC
-                                    
-                                    Image(systemName: checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings) ? "star.fill" : "star")
-                                        .foregroundColor(checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings) ? .yellow : .none)
-                                        .onAppear{
-                                            isFavorieTest = checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings)
-                                            print("is Favorite value isFavorite test = \(isFavorieTest)")
-                                        }
-                                    
-                                    
-                                    Spacer()
-                                    NavigationLink(destination: DetalleUIView(choice: radioStations[index].siteurl, selectedRadioStation: radioStations[index])) {
-                                        Image(systemName: "arrow.forward.circle")
-                                            .foregroundColor(Color.black.opacity(0.85))
-                                    }
-                                    .accessibilityValue(radioStations[index].id)
-                                }
-                                .padding(15)
-                                .shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
-                                .background(Color.newPrimaryColor)
-                                .cornerRadius(10)
-                                .padding(.horizontal)
-                                
-                            }
-                            .opacity(isVStackVisible ? 1.0 : 0.0)
-                            .animation(.easeIn(duration: 1.5), value: isVStackVisible)
-                            .onAppear {
-                                withAnimation {
-                                    isVStackVisible = true
-                                }
-                            }
-                            
-                        }
-                        .navigationBarTitle("Radio App", displayMode: .inline)
-                    }
-                }
+                
+                // New list View
+                NewListView()
+                
             }
-            .onAppear {
-                        if radioStations.isEmpty {
-                            loadRadioStations()
-                        }
-                    }
-            
             .background(Color.newColorGreenLight)
   
             .toolbar {
@@ -205,22 +143,6 @@ struct HomeRadioView: View {
             }
         }
     }
-    
-    
-    func loadRadioStations() {
-            guard let url = Bundle.main.url(forResource: "radios23", withExtension: "json") else {
-                return
-            }
-
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                radioStations = try decoder.decode([radioStationInfo].self, from: data)
-            } catch {
-                print("Error loading radio stations: \(error)")
-            }
-        }
-    
     
 }
 struct SliderSwiftUIView_Previews: PreviewProvider {
