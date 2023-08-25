@@ -13,20 +13,32 @@ struct SerachView: View {
     
     @State private var searchText=""
     
+    @State var radioStations: [radioStationInfo] = []
     @State var items = 0...51
-    @State var myRadioDemo: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
-    
-    @Environment(\.dismiss) var dismiss
     
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
 
+    // Check if is favorite
+    var checkIfIsFavorite = checkFavoriteC()
     
-    // User default for favorites
-    let defaults = UserDefaults.standard
+    // Load Stations
+    var mYradioStation = LoadRadioStationJSONFile()
     
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
+        
+        var searchResults: [radioStationInfo] {
+            if searchText.isEmpty {
+                return radioStations
+            } else {
+                return radioStations.filter { word in
+                    word.tagline.contains(searchText)
+            }
+        }
+    }
+        
         NavigationView {
             VStack {
                  
@@ -50,24 +62,9 @@ struct SerachView: View {
                                 .font(.body)
                             
                             Spacer()
-                            // MARK: Favotite button out
-                            /*
-                            if checkIsFavorite(myRadioFavo: name.id) {
-                                 Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                            } else {
-                                Image(systemName: "star")
-                                 
-                            }
-                            */
-                           
-                            if checkIsFavorite2(myFavoriteSetting: name.id) {
-                                 Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                            } else {
-                                Image(systemName: "star")
-                                 
-                            }
+                            
+                            Image(systemName: checkIfIsFavorite.manageData(data: name.id, userSettings: userSettings) ? "star.fill" : "star")
+                                .foregroundColor(.yellow)
                             
                           
                             NavigationLink(destination: DetalleUIView(choice: name.siteurl, selectedRadioStation: name)) {
@@ -87,9 +84,15 @@ struct SerachView: View {
                             placement: .navigationBarDrawer(displayMode: .always))
                 
                }
-            .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    
+                .onAppear {
+               
+                if radioStations.isEmpty {
+                    radioStations = mYradioStation.loadStation()
+                        }
+                }
+            
+                .toolbar {
+                    ToolbarItemGroup(placement: .bottomBar) {
                     Button { dismiss() } label: {
                         ArrowToolBarView()
                     }
@@ -97,76 +100,10 @@ struct SerachView: View {
            }
         }
     }
-           var searchResults: [radioStationInfo] {
-               if searchText.isEmpty {
-                   return myRadioDemo
-               } else {
-                   return myRadioDemo.filter { word in
-                       word.tagline.contains(searchText)
-               }
-               
-              
-           }
-       }
-    
-    func checkIsFavorite(myRadioFavo:String) -> Bool{
-        
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(favoriteSaved.self, from: savedPerson) {
-   
-                // Check value in array
-                if loadedPerson.favoriteId.contains(where: {$0 == myRadioFavo}) {
-                   // it exists, do something
-               
-                return true
-                    
-                } else {
-                   //item could not be found
-                    
-                    return false
-                }
-            }
-        }
-        return false
-    }
-    
-    
-    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
-        
-        if (userSettings.favorite.contains(myFavoriteSetting)) {
-            
-                return true
-                    
-                } else {
-                   
-                  return false
-                }
-            }
-        
-    
-
+  
+ 
 }
     
-/*
-struct SerachView_Previews: PreviewProvider {
-    static var previews: some View {
-        SerachView()
-    }
-}
-*/
-    
-    
-/*
- AsyncImage(url: URL(string: name.image), content: { image in
-     image.resizable()
-         .aspectRatio(contentMode: .fill)
-         .frame(width: 50, height: 50)
- },
- placeholder: {
-     ProgressView()
- })
- */
 
 
 
