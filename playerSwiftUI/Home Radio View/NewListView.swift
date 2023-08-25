@@ -13,11 +13,16 @@ struct NewListView: View {
     @State var radioStations: [radioStationInfo] = []
     @State private var items = 0...51
     
+    var myRadioList = LoadRadioStationJSONFile()
+    
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
     
     // Check if is favorite
     var checkIfIsFavorite = checkFavoriteC()
+    
+    // Load Stations
+    var mYradioStation = LoadRadioStationJSONFile()
     
     @State private var isVStackVisible = false
     
@@ -64,8 +69,7 @@ struct NewListView: View {
                         .onAppear {
                             withAnimation {
                                 isVStackVisible = true
-                                
-                                
+
                             }
                         }
                         
@@ -77,13 +81,14 @@ struct NewListView: View {
             
         }.onAppear {
             if radioStations.isEmpty {
-                loadRadioStations()
+                radioStations = mYradioStation.loadStation()
             }
+ 
         }
         
     }
         
-    
+  
     func loadRadioStations() {
             guard let url = Bundle.main.url(forResource: "radios23", withExtension: "json") else {
                 return

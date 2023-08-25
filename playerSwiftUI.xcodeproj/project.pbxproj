@@ -34,6 +34,9 @@
 		626E2A512A9772E1009348F9 /* DataMagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626E2A502A9772E1009348F9 /* DataMagerTest.swift */; };
 		626EB3F42A98C73800A4A37D /* NewTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F32A98C73800A4A37D /* NewTabView.swift */; };
 		626EB3F62A98C85600A4A37D /* NewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F52A98C85600A4A37D /* NewListView.swift */; };
+		626EB3F82A98DEAA00A4A37D /* HomeModell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F72A98DEAA00A4A37D /* HomeModell.swift */; };
+		626EB3FA2A98E1C400A4A37D /* HomeModellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F92A98E1C400A4A37D /* HomeModellTest.swift */; };
+		626EB3FB2A98E30300A4A37D /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 6229C7052964380400AF36F2 /* radios23.json */; };
 		6272D8172A98A54200D45F62 /* SaveFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272D8162A98A54200D45F62 /* SaveFavorite.swift */; };
 		6299BFAE28940B30003C1DB0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6299BFAD28940B30003C1DB0 /* Lottie */; };
 		6299BFB028940C59003C1DB0 /* music-equalizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 6299BFAF28940C59003C1DB0 /* music-equalizer.json */; };
@@ -139,6 +142,8 @@
 		626E2A502A9772E1009348F9 /* DataMagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMagerTest.swift; sourceTree = "<group>"; };
 		626EB3F32A98C73800A4A37D /* NewTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabView.swift; sourceTree = "<group>"; };
 		626EB3F52A98C85600A4A37D /* NewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListView.swift; sourceTree = "<group>"; };
+		626EB3F72A98DEAA00A4A37D /* HomeModell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModell.swift; sourceTree = "<group>"; };
+		626EB3F92A98E1C400A4A37D /* HomeModellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModellTest.swift; sourceTree = "<group>"; };
 		6272D8162A98A54200D45F62 /* SaveFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavorite.swift; sourceTree = "<group>"; };
 		628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = playerSwiftUI.entitlements; sourceTree = "<group>"; };
 		6299BFAF28940C59003C1DB0 /* music-equalizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "music-equalizer.json"; sourceTree = "<group>"; };
@@ -342,6 +347,7 @@
 				6256950A28B35D12004DD765 /* playerSwiftUITests.swift */,
 				626E2A502A9772E1009348F9 /* DataMagerTest.swift */,
 				6272D8162A98A54200D45F62 /* SaveFavorite.swift */,
+				626EB3F92A98E1C400A4A37D /* HomeModellTest.swift */,
 			);
 			path = playerSwiftUITests;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 				629AC838279DF4C500AA2BD9 /* CheckNetworkView.swift */,
 				626EB3F32A98C73800A4A37D /* NewTabView.swift */,
 				626EB3F52A98C85600A4A37D /* NewListView.swift */,
+				626EB3F72A98DEAA00A4A37D /* HomeModell.swift */,
 			);
 			path = "Home Radio View";
 			sourceTree = "<group>";
@@ -581,6 +588,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				626EB3FB2A98E30300A4A37D /* radios23.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				626E2A512A9772E1009348F9 /* DataMagerTest.swift in Sources */,
+				626EB3FA2A98E1C400A4A37D /* HomeModellTest.swift in Sources */,
 				6256950B28B35D12004DD765 /* playerSwiftUITests.swift in Sources */,
 				6272D8172A98A54200D45F62 /* SaveFavorite.swift in Sources */,
 			);
@@ -642,6 +651,7 @@
 				629D68BB278EC409005E0214 /* Helper.swift in Sources */,
 				624B45D529129CE7004C0ACB /* TestSongView.swift in Sources */,
 				629AC835279D998600AA2BD9 /* Data_formater.swift in Sources */,
+				626EB3F82A98DEAA00A4A37D /* HomeModell.swift in Sources */,
 				629F1C8127905D27001BF441 /* HomeRadioView.swift in Sources */,
 				62192A812796040D0090579A /* XMLSwiftUIView.swift in Sources */,
 				62A9F00D275F5B3500B345AE /* playerSwiftUIApp.swift in Sources */,
