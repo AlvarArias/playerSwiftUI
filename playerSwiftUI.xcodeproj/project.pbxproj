@@ -259,10 +259,10 @@
 		623E0EDC29D48F5A008A4DDE /* Toolbar */ = {
 			isa = PBXGroup;
 			children = (
+				626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */,
 				6243647028816EA500A20017 /* Settings */,
 				6244C2202885611700FE15B7 /* Searchbar */,
 				624CC68F290FD078007186A2 /* Favorites */,
-				626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */,
 			);
 			path = Toolbar;
 			sourceTree = "<group>";

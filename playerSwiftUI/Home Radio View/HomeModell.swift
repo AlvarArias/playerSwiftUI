@@ -24,9 +24,7 @@ class LoadRadioStationJSONFile {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 radioStations = try decoder.decode([radioStationInfo].self, from: data)
-                
-                print("load radios")
-                
+    
                 return radioStations
                 
             } catch {
