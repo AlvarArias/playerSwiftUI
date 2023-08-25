@@ -15,7 +15,7 @@ import Foundation
 /// - Returns: A Boolean value indicating whether the radio station is saved as a favorite.
 ///
 /// This function checks if a radio station is saved as a favorite in the app's saved data.
-
+/*
 struct checkFavorite {
     
     // User defaults for favorites
@@ -36,4 +36,4 @@ struct checkFavorite {
     }
     
 }
-
+*/

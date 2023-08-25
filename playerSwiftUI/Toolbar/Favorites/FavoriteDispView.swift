@@ -17,12 +17,12 @@ struct FavoriteDispView: View {
     @State private var myRadioDemo: [radioStationInfo] = Bundle.main.decode([radioStationInfo].self, from: "radios23.json")
     
     @Environment(\.dismiss) var dismiss
-    
-    // User default for favorites
-    let defaults = UserDefaults.standard
-  
+      
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
+    
+    // Check if is favorite
+    var checkIfIsFavorite = checkFavoriteC()
     
     var body: some View {
         NavigationView {
@@ -30,12 +30,10 @@ struct FavoriteDispView: View {
             VStack {
                  
                 List {
-                
-                    
+
                     ForEach(myRadioDemo, id: \.self) { name in
-                    //if checkIsFavorite(myRadioFavo: name.id)
-                        
-                        if checkIsFavorite2(myFavoriteSetting: name.id) {
+                    
+                        if checkIfIsFavorite.manageData(data: name.id, userSettings: userSettings) {
                         HStack {
                                                     
                             CachedAsyncImage (url: URL(string: name.image), content: { image in
@@ -55,21 +53,10 @@ struct FavoriteDispView: View {
                                 .foregroundColor(Color.black)
                           
                             Spacer()
-                            /*
-                            if checkIsFavorite(myRadioFavo: name.id) {
-                                Image(systemName: "star.fill")
-                                   .foregroundColor(.yellow)
-                            } else {
-                                Image(systemName: "star")
-                            }
-                            */
-                            if checkIsFavorite2(myFavoriteSetting: name.id) {
-                                 Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                            } else {
-                                Image(systemName: "star")
-                                 
-                            }
+       
+                            Image(systemName: checkIfIsFavorite.manageData(data: name.id, userSettings: userSettings) ? "star.fill" : "star")
+                                .foregroundColor(.yellow)
+                                
                             
                             
                             NavigationLink(destination: DetalleUIView(choice: name.siteurl, selectedRadioStation: name)) {
@@ -102,42 +89,7 @@ struct FavoriteDispView: View {
         
     }
            
-    
-    func checkIsFavorite(myRadioFavo:String) ->Bool {
         
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(favoriteSaved.self, from: savedPerson) {
-               
-                // Check value in array
-                if loadedPerson.favoriteId.contains(where: {$0 == myRadioFavo}) {
-                   // it exists, do something
-                 
-                return true
-                    
-                } else {
-                   //item could not be found
-                    //print("Radio \(myRadioFavo) is not Favorite")
-                    
-                    return false
-                }
-            }
-        }
-        return false
-    }
-
-    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
-        
-        if (userSettings.favorite.contains(myFavoriteSetting)) {
-            
-                return true
-                    
-                } else {
-                   
-                  return false
-                }
-            }
-    
 }
     
 struct FavoriteDispView_Previews: PreviewProvider {
@@ -146,13 +98,4 @@ struct FavoriteDispView_Previews: PreviewProvider {
     }
 }
 
-/*
-AsyncImage(url: URL(string: name.image), content: { image in
-    image.resizable()
-        .aspectRatio(contentMode: .fill)
-        .frame(width: 50, height: 50)
-},
-placeholder: {
-    ProgressView()
-})
-*/
+

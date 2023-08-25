@@ -118,30 +118,10 @@ struct HomeRadioView: View {
                                         .lineLimit(3)
                                         .frame(width: 200)
                                     
-                                    //arreglar al compportamiento
-                                    /*
-                                     favoriteButtonView(isFavorite: $isFavorite, selectedRadioStationId: radioStations[index].id)
-                                     */
-                                    /*
-                                     if checkIsFavorite2(myFavoriteSetting: radioStations[index].id) {
-                                     Image(systemName: "star.fill")
-                                     .foregroundColor(.yellow)
-                                     } else {
-                                     Image(systemName: "star")
-                                     
-                                     }
-                                     */
-                                    
-                                    /*
-                                    Image(systemName: checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? "star.fill" : "star")
-                                        .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
-                                    */
+                                   // Usando nueva classe checkFavoriteC
                                     
                                     Image(systemName: checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings) ? "star.fill" : "star")
-                                        .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
-                                    
-                                    Image(systemName: isFavorieTest ? "star.fill" : "star")
-                                        .foregroundColor(checkIsFavorite2(myFavoriteSetting: radioStations[index].id) ? .yellow : .none)
+                                        .foregroundColor(checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings) ? .yellow : .none)
                                         .onAppear{
                                             isFavorieTest = checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings)
                                             print("is Favorite value isFavorite test = \(isFavorieTest)")
@@ -226,18 +206,6 @@ struct HomeRadioView: View {
         }
     }
     
-    func checkIsFavorite2(myFavoriteSetting: String) ->Bool {
-        
-        if (userSettings.favorite.contains(myFavoriteSetting)) {
-            
-                return true
-                    
-                } else {
-                   
-                  return false
-                }
-            }
-        
     
     func loadRadioStations() {
             guard let url = Bundle.main.url(forResource: "radios23", withExtension: "json") else {
