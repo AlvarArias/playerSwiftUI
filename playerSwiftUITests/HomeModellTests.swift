@@ -8,7 +8,7 @@
 import XCTest
 @testable import playerSwiftUI
 
-final class HomeModellTest: XCTestCase {
+final class HomeModellTests: XCTestCase {
     
     func testLoadStation() throws {
         let bundle = Bundle(for: type(of: self))

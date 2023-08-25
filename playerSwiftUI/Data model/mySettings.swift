@@ -32,8 +32,7 @@ Usage: Initialize an instance of UserSettings to manage and store user settings.
                 UserDefaults.standard.set(ringtone, forKey: "ringtone")
             }
         }
-        
-        
+
         @Published var favorite: [String] {
             didSet {
                 UserDefaults.standard.set(favorite, forKey: "SavedFavoriteUS")
@@ -41,18 +40,7 @@ Usage: Initialize an instance of UserSettings to manage and store user settings.
         }
         
         public var ringtones = ["P1", "P2", "P3"]
-       /*
-        init() {
-            self.username = UserDefaults.standard.object(forKey: "username") as? String ?? ""
-            
-            self.isPrivate = UserDefaults.standard.object(forKey: "isAccountPrivate") as? Bool ?? true
-            
-            self.ringtone = UserDefaults.standard.object(forKey: "ringtone") as? String ?? "P1"
-            
-            self.favorite = UserDefaults.standard.object(forKey: "SavedFavoriteUS") as?  [String] ?? ["p1"]
-        
-        }
-        */
+   
        init() {
            self.username = UserDefaults.standard.string(forKey: "username") ?? ""
            self.isPrivate = UserDefaults.standard.bool(forKey: "isAccountPrivate")
