@@ -25,3 +25,16 @@ final class NetworkMonitor: ObservableObject {
         monitor.start(queue: queue)
     }
 }
+
+struct mytest  {
+    
+    func validate(name: String) -> Bool{
+        
+        if name == "Alvar" {
+            return false
+        }
+        
+        return true
+    }
+    
+}

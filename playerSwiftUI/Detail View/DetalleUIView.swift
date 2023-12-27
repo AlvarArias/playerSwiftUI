@@ -26,12 +26,7 @@ struct DetalleUIView : View {
     
     @State var selectedRadioStation : radioStationInfo
     
-    // Player variables
-    @State private var player = AVPlayer()
-    //let url1  = "https://sverigesradio.se/topsy/direkt/srapi/2562.mp3"
     @State private var isPlaying : Bool = false
-    @State private var volum : Float = 0
-    @State private var sliderValue: Double = 0
     
     @State var showingStar = false
     @State private var isShowEq = false
@@ -145,8 +140,7 @@ struct DetalleUIView : View {
                 // NavigationLink("Go to back", destination: SliderSwiftUIView())
             
             Button(action : {
-                //player.replaceCurrentItem(with: nil)
-                player.pause()
+                playRadio.player.pause()
                 self.presentationMode.wrappedValue.dismiss()
                 print("click back and stop audio")
                 print(checkIsFavorite(myFavoriteSetting: selectedRadioStation.id))
