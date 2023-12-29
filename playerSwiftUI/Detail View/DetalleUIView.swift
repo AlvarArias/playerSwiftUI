@@ -25,9 +25,7 @@ struct DetalleUIView : View {
     var choice: String
     
     @State var selectedRadioStation : radioStationInfo
-    
     @State private var isPlaying : Bool = false
-    
     @State var showingStar = false
     @State private var isShowEq = false
     @State private var isFavorite = false
@@ -104,11 +102,10 @@ struct DetalleUIView : View {
                 isPlaying.toggle()
                 print("isPlaying \(isPlaying)")
                 
-                isShowEq = playRadio.playSongRadio(radioURL: selectedRadioStation.url, isPlaying: isPlaying)
+               isShowEq = playRadio.playSongRadio(radioURL: selectedRadioStation.url, isPlaying: isPlaying)
                 
-            }) {
-                
-                
+            })
+            {
                 if isPlaying {
                     Image("Pause2")
                         .resizable()
@@ -124,6 +121,13 @@ struct DetalleUIView : View {
             }
             
             .padding()
+            .onAppear {
+                print("buton play apear")
+                isPlaying = true
+                isShowEq = playRadio.playSongRadio(radioURL: selectedRadioStation.url, isPlaying: isPlaying)
+                
+            }
+            
         }
         
         .frame(maxWidth: .infinity)
