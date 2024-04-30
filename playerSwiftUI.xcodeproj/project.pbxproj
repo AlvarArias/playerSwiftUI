@@ -38,7 +38,6 @@
 		626EB3FA2A98E1C400A4A37D /* HomeModellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F92A98E1C400A4A37D /* HomeModellTests.swift */; };
 		626EB3FB2A98E30300A4A37D /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 6229C7052964380400AF36F2 /* radios23.json */; };
 		626EB3FD2A98F68600A4A37D /* ArrowToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */; };
-		62803BD62ADFE3430022768E /* playerSwiftUITestsUinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62803BD52ADFE3430022768E /* playerSwiftUITestsUinit.swift */; };
 		6299BFAE28940B30003C1DB0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6299BFAD28940B30003C1DB0 /* Lottie */; };
 		6299BFB028940C59003C1DB0 /* music-equalizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 6299BFAF28940C59003C1DB0 /* music-equalizer.json */; };
 		6299BFB228940CE9003C1DB0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299BFB128940CE9003C1DB0 /* LottieView.swift */; };
@@ -139,7 +138,6 @@
 		626EB3F92A98E1C400A4A37D /* HomeModellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModellTests.swift; sourceTree = "<group>"; };
 		626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowToolBarView.swift; sourceTree = "<group>"; };
 		62803BD32ADFE3430022768E /* playerSwiftUITestsUinit.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playerSwiftUITestsUinit.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		62803BD52ADFE3430022768E /* playerSwiftUITestsUinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUITestsUinit.swift; sourceTree = "<group>"; };
 		628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = playerSwiftUI.entitlements; sourceTree = "<group>"; };
 		6299BFAF28940C59003C1DB0 /* music-equalizer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "music-equalizer.json"; sourceTree = "<group>"; };
 		6299BFB128940CE9003C1DB0 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -199,13 +197,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6224830E296314F000382923 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		622ABE602934EDD600D052D2 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,14 +321,6 @@
 			path = "JSON files";
 			sourceTree = "<group>";
 		};
-		62803BD42ADFE3430022768E /* playerSwiftUITestsUinit */ = {
-			isa = PBXGroup;
-			children = (
-				62803BD52ADFE3430022768E /* playerSwiftUITestsUinit.swift */,
-			);
-			path = playerSwiftUITestsUinit;
-			sourceTree = "<group>";
-		};
 		62A0A54B27862AEC002CEB18 /* Data model */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,9 +342,7 @@
 				62A9F00B275F5B3500B345AE /* playerSwiftUI */,
 				6256950928B35D12004DD765 /* playerSwiftUITests */,
 				624A1C2F292B56B80059EB72 /* playerSwiftUIUITests */,
-				62803BD42ADFE3430022768E /* playerSwiftUITestsUinit */,
 				62A9F00A275F5B3500B345AE /* Products */,
-				6224830E296314F000382923 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -624,7 +605,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62803BD62ADFE3430022768E /* playerSwiftUITestsUinit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
