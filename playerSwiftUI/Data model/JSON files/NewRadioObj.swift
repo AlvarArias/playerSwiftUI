@@ -1,4 +1,12 @@
 //
+//  NewRadioObj.swift
+//  playerSwiftUI
+//
+//  Created by Alvar Arias on 2024-04-30.
+//
+
+import Foundation
+//
 //  RadioObj.swift
 //  playerSwiftUI
 //
@@ -17,16 +25,15 @@ import UIKit
 // https://api.sr.se/api/v2/channels
 // https://api.sr.se/v2/channels?page=2 (proxima página)
 
-
-import Foundation
-
-/**
+/*
+ 
 A struct that represents a radio station, containing various properties such as name, image, and URL.
 
 Usage: Initialize an instance of DemoRadio with the desired properties.
 
 Note: This struct conforms to the Hashable and Codable protocols.
 */
+
 struct radioStationInfo: Hashable, Codable  {
 
     let image: String
@@ -43,3 +50,4 @@ struct radioStationInfo: Hashable, Codable  {
     
     
 }
+
