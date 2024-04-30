@@ -22,7 +22,7 @@ final class HomeModellTests: XCTestCase {
         let expectedStations = try! decoder.decode([radioStationInfo].self, from: data)
         
         let loadRadioStationJSONFile = LoadRadioStationJSONFile()
-        //loadRadioStationJSONFile.loadStation()
+        loadRadioStationJSONFile.loadStation()
         
         XCTAssertEqual(loadRadioStationJSONFile.radioStations, expectedStations, "Loaded radio stations do not match the expected ones")
     }

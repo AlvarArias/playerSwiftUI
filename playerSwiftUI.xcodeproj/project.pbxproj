@@ -38,7 +38,6 @@
 		626EB3FA2A98E1C400A4A37D /* HomeModellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3F92A98E1C400A4A37D /* HomeModellTests.swift */; };
 		626EB3FB2A98E30300A4A37D /* radios23.json in Resources */ = {isa = PBXBuildFile; fileRef = 6229C7052964380400AF36F2 /* radios23.json */; };
 		626EB3FD2A98F68600A4A37D /* ArrowToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */; };
-		6272D8172A98A54200D45F62 /* SaveFavoriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272D8162A98A54200D45F62 /* SaveFavoriteTests.swift */; };
 		62803BD62ADFE3430022768E /* playerSwiftUITestsUinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62803BD52ADFE3430022768E /* playerSwiftUITestsUinit.swift */; };
 		6299BFAE28940B30003C1DB0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6299BFAD28940B30003C1DB0 /* Lottie */; };
 		6299BFB028940C59003C1DB0 /* music-equalizer.json in Resources */ = {isa = PBXBuildFile; fileRef = 6299BFAF28940C59003C1DB0 /* music-equalizer.json */; };
@@ -130,12 +129,6 @@
 		624A1C2E292B56B80059EB72 /* playerSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playerSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		624A1C30292B56B80059EB72 /* playerSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUIUITests.swift; sourceTree = "<group>"; };
 		624A1C32292B56B80059EB72 /* playerSwiftUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUnitTests.swift; sourceTree = "<group>"; };
-		624A1C4C292BA0A20059EB72 /* PlayerAppleTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAppleTVApp.swift; sourceTree = "<group>"; };
-		624A1C4E292BA0A20059EB72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		624A1C50292BA0A30059EB72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		624A1C53292BA0A30059EB72 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		624A1C58292BC7920059EB72 /* TVSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSliderView.swift; sourceTree = "<group>"; };
-		624A1C5A292BCAD50059EB72 /* MediaTV.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MediaTV.xcassets; sourceTree = "<group>"; };
 		624B45D429129CE7004C0ACB /* TestSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSongView.swift; sourceTree = "<group>"; };
 		624B45D62912B1B1004C0ACB /* NewSongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongModel.swift; sourceTree = "<group>"; };
 		624C33DC292555E100528E45 /* Notes  */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Notes "; sourceTree = "<group>"; };
@@ -154,7 +147,6 @@
 		626EB3F72A98DEAA00A4A37D /* HomeModell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModell.swift; sourceTree = "<group>"; };
 		626EB3F92A98E1C400A4A37D /* HomeModellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModellTests.swift; sourceTree = "<group>"; };
 		626EB3FC2A98F68600A4A37D /* ArrowToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowToolBarView.swift; sourceTree = "<group>"; };
-		6272D8162A98A54200D45F62 /* SaveFavoriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavoriteTests.swift; sourceTree = "<group>"; };
 		62803BD32ADFE3430022768E /* playerSwiftUITestsUinit.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playerSwiftUITestsUinit.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62803BD52ADFE3430022768E /* playerSwiftUITestsUinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerSwiftUITestsUinit.swift; sourceTree = "<group>"; };
 		628CF57B27A4385000024E8B /* playerSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = playerSwiftUI.entitlements; sourceTree = "<group>"; };
@@ -309,27 +301,6 @@
 			path = playerSwiftUIUITests;
 			sourceTree = "<group>";
 		};
-		624A1C4B292BA0A20059EB72 /* PlayerAppleTV */ = {
-			isa = PBXGroup;
-			children = (
-				624A1C4C292BA0A20059EB72 /* PlayerAppleTVApp.swift */,
-				624A1C4E292BA0A20059EB72 /* ContentView.swift */,
-				624A1C58292BC7920059EB72 /* TVSliderView.swift */,
-				624A1C50292BA0A30059EB72 /* Assets.xcassets */,
-				624A1C52292BA0A30059EB72 /* Preview Content */,
-				624A1C5A292BCAD50059EB72 /* MediaTV.xcassets */,
-			);
-			path = PlayerAppleTV;
-			sourceTree = "<group>";
-		};
-		624A1C52292BA0A30059EB72 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				624A1C53292BA0A30059EB72 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		624CC68F290FD078007186A2 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,7 +337,6 @@
 			children = (
 				6256950A28B35D12004DD765 /* playerSwiftUITests.swift */,
 				626E2A502A9772E1009348F9 /* DataMagerTests.swift */,
-				6272D8162A98A54200D45F62 /* SaveFavoriteTests.swift */,
 				626EB3F92A98E1C400A4A37D /* HomeModellTests.swift */,
 			);
 			path = playerSwiftUITests;
@@ -440,7 +410,6 @@
 				62A9F00B275F5B3500B345AE /* playerSwiftUI */,
 				6256950928B35D12004DD765 /* playerSwiftUITests */,
 				624A1C2F292B56B80059EB72 /* playerSwiftUIUITests */,
-				624A1C4B292BA0A20059EB72 /* PlayerAppleTV */,
 				6228216B294F332700A11422 /* playerSwiftUI2 */,
 				62803BD42ADFE3430022768E /* playerSwiftUITestsUinit */,
 				62A9F00A275F5B3500B345AE /* Products */,
@@ -700,7 +669,6 @@
 				626E2A512A9772E1009348F9 /* DataMagerTests.swift in Sources */,
 				626EB3FA2A98E1C400A4A37D /* HomeModellTests.swift in Sources */,
 				6256950B28B35D12004DD765 /* playerSwiftUITests.swift in Sources */,
-				6272D8172A98A54200D45F62 /* SaveFavoriteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
