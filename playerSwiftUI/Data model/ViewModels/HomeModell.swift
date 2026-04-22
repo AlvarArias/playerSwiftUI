@@ -5,37 +5,21 @@
 //  Created by Alvar Arias on 2023-08-25.
 //
 
-import SwiftUI
+import Foundation
+import Observation
 
+@MainActor
+@Observable
+final class StationStore {
+    var stations: [RadioStation] = []
 
-class LoadRadioStationJSONFile {
-    
-    var radioStations: [radioStationInfo] = []
-    
-    func loadStation() -> [radioStationInfo] {
-        
-            guard let url = Bundle.main.url(forResource: "radios23", withExtension: "json") else {
-                
-    
-                return []
-            }
-
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                radioStations = try decoder.decode([radioStationInfo].self, from: data)
-    
-                return radioStations
-                
-            } catch {
-                print("Error loading radio stations: \(error)")
-                return []
-            }
-        
-        
+    func load() {
+        guard let url = Bundle.main.url(forResource: "radios23", withExtension: "json"),
+              let data = try? Data(contentsOf: url) else { return }
+        do {
+            stations = try JSONDecoder().decode([RadioStation].self, from: data)
+        } catch {
+            print("StationStore: \(error)")
         }
-    
+    }
 }
-    
-
-

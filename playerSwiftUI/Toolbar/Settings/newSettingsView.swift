@@ -6,67 +6,41 @@
 //
 
 import SwiftUI
-/*
-class RefreshActionPerformer: ObservableObject {
-    @Published private(set) var isPerforming = false
 
-    func perform(_ action: RefreshAction) async {
-        guard !isPerforming else { return }
-        isPerforming = true
-        await action()
-        isPerforming = false
+struct SettingsView: View {
+    @Environment(UserSettings.self) private var userSettings
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        @Bindable var settings = userSettings
+
+        NavigationStack {
+            Form {
+                Section("Användarprofil") {
+                    TextField("Användarnamn", text: $settings.username)
+
+                    Text("Första radiohemmet")
+                    Picker("Välj radio", selection: $settings.preferredStation) {
+                        ForEach(userSettings.availableStations, id: \.self) { station in
+                            Text(station)
+                        }
+                    }
+                    Text("Vald radio: \(userSettings.preferredStation)")
+                }
+            }
+            .navigationTitle("Spelarinställningar")
+            .navigationBarTitleDisplayMode(.inline)
+            .background(Color.newColorGrayLight)
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button { dismiss() } label: { ArrowToolBarView() }
+                }
+            }
+        }
     }
 }
-*/
 
-struct newSettingsView: View {
-    
-    @ObservedObject var userSettings = UserSettings()
-    
-    @Environment(\.dismiss) var dismiss
-
-    @State private var showing = false
-    
-    var body: some View {
-        NavigationView {
-        Form {
-            Section(header: Text("Användarprofil")) {
-                TextField("Användarnamn", text: $userSettings.username)
-            
-                /*
-                Toggle(isOn: $userSettings.isPrivate){
-                    Text("Private Account")
-                }
-                */
-                Text("Första radiohemmet")
-                
-                Picker(selection: $userSettings.ringtone, label: Text("Välj radio")){
-                    ForEach(userSettings.ringtones, id:\.self){ringtone in
-                        Text(ringtone)
-                    }
-                }
-                Text("Vald radio: \(userSettings.ringtone)")
-            }
-        }
-        .navigationBarTitle("Spelarinställningar")
-        .navigationBarTitleDisplayMode(.inline)
-        .background(Color.newColorGrayLight)
-        .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-               
-                Button { dismiss() } label: {
-                    ArrowToolBarView()
-                    }
-                }
-            }
-            
-        }
-     }
-    }
-
-
-struct newSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        newSettingsView()
-    }
+#Preview {
+    SettingsView()
+        .environment(UserSettings())
 }

@@ -6,110 +6,74 @@
 //
 
 import Foundation
-import UIKit
-import SwiftUI
+import Observation
 
-
-
-struct scheduledEpisode {
-    var episodeTitle: String
-    var episodeDescription: String
-    var episodeStarttimeutc: String
+struct ScheduledEpisode: Sendable {
+    let title: String
+    let description: String
+    let startTimeUTC: String
 }
 
+// Non-isolated helper: runs synchronously inside ScheduleParser.fetchSchedule (always on main actor).
+private final class XMLEpisodeParser: NSObject, XMLParserDelegate, @unchecked Sendable {
+    private(set) var episodes: [ScheduledEpisode] = []
+    private var currentElement = ""
+    private var currentTitle = ""
+    private var currentDescription = ""
+    private var currentStartTime = ""
 
-
- class ParseController: NSObject, XMLParserDelegate, ObservableObject {
-    @Published var Schedule: [scheduledEpisode] = []
-    var elementName: String = String()
-    var theEpisodeTitle = String()
-    var theEpisodeDescription = String()
-    var theStartTime = String()
-    // https://api.sr.se/v2/scheduledepisodes?channelid=132
-    
-    
-     func loadData(theRadioURL: String) {
-         
-         if (theRadioURL == "") { return } else {
-        
-        let semaphore = DispatchSemaphore (value: 0)
-        
-
-        var request = URLRequest(url: URL(string: theRadioURL)!,timeoutInterval: Double.infinity)
-        request.httpMethod = "GET"
-    
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-          guard let data = data else {
-              Swift.print(String(describing: error))
-            semaphore.signal()
-            return
-          }
-            DispatchQueue.main.async {
-            let parser = XMLParser(data: data)
-            parser.delegate = self
-            parser.parse()
-            }
-            //print(self.Schedule)
-            
-            //print(String(data: data, encoding: .utf8)!)
-            semaphore.signal()
-            
-        }
-        task.resume()
-        semaphore.wait()
-         
-         }
-             
-        }
-         
-         
- 
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        
-      
+    func parser(_ parser: XMLParser, didStartElement elementName: String,
+                namespaceURI: String?, qualifiedName: String?,
+                attributes: [String: String] = [:]) {
         if elementName == "scheduledepisode" {
-            theEpisodeTitle = String()
-            theEpisodeDescription = String()
-            theStartTime = String()
+            currentTitle = ""
+            currentDescription = ""
+            currentStartTime = ""
         }
-    
-        self.elementName = elementName
-        
+        currentElement = elementName
     }
-    
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-        
-        if elementName == "scheduledepisode" {
-            
-            let book = scheduledEpisode(episodeTitle: theEpisodeTitle, episodeDescription: theEpisodeDescription, episodeStarttimeutc: theStartTime)
-            
-            Schedule.append(book)
-            
 
-        }
-       
-        
+    func parser(_ parser: XMLParser, didEndElement elementName: String,
+                namespaceURI: String?, qualifiedName: String?) {
+        guard elementName == "scheduledepisode" else { return }
+        episodes.append(ScheduledEpisode(
+            title: currentTitle,
+            description: currentDescription,
+            startTimeUTC: currentStartTime
+        ))
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        
-        if (!data.isEmpty) {
-                if self.elementName == "title" {
-                    theEpisodeTitle += data
-                } else if self.elementName == "description" {
-                    theEpisodeDescription += data
-                } else if self.elementName == "starttimeutc" {
-                    theStartTime += data
-                }
-            }
+        let text = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty else { return }
+        switch currentElement {
+        case "title":        currentTitle += text
+        case "description":  currentDescription += text
+        case "starttimeutc": currentStartTime += text
+        default: break
+        }
     }
-    
-
-    
 }
-    
+
+@MainActor
+@Observable
+final class ScheduleParser {
+    var episodes: [ScheduledEpisode] = []
+    var isLoading = false
+
+    func fetchSchedule(from urlString: String) async {
+        guard !urlString.isEmpty, let url = URL(string: urlString) else { return }
+        isLoading = true
+        defer { isLoading = false }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let xmlHelper = XMLEpisodeParser()
+            let parser = XMLParser(data: data)
+            parser.delegate = xmlHelper
+            parser.parse()
+            episodes = xmlHelper.episodes
+        } catch {
+            print("ScheduleParser: \(error)")
+        }
+    }
+}

@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct ArrowToolBarView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
     var body: some View {
         Image(systemName: "arrow.down")
-     .foregroundColor(Color.newSecundaryColor)
+            .foregroundStyle(Color.newSecundaryColor)
     }
 }
 
-struct ArrowToolBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        ArrowToolBarView()
-    }
+#Preview {
+    ArrowToolBarView()
 }

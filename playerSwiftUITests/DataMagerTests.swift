@@ -1,5 +1,5 @@
 //
-//  DataMagerTest.swift
+//  DataMagerTests.swift
 //  playerSwiftUITests
 //
 //  Created by Alvar Arias on 2023-08-24.
@@ -8,40 +8,52 @@
 import XCTest
 @testable import playerSwiftUI
 
-// Protocol for a UserSettings-like object
-protocol UserSettingsProtocol {
-    var favorite: [String] { get set }
-}
+final class DateTransformerTests: XCTestCase {
 
-// Check if is or not
-    class DataManagerTests: XCTestCase {
+    var transformer: DateTransformer!
 
-        func testManageDataForFavoriteData() {
-            // Arrange
-            let data = "TestItem"
-            let userSettings = myUserSettings(favorite: ["TestItem", "AnotherItem"])
-            let dataManager: myDataManager = YourDataManager()
-
-            // Act
-            let result = dataManager.manageData(data: data, userSettings: userSettings)
-
-            // Assert
-            XCTAssertTrue(result, "Expected data to be marked as favorite")
-        }
-
-        func testManageDataForNonFavoriteData() {
-            // Arrange
-            let data = "TestItem"
-            let userSettings = myUserSettings(favorite: ["AnotherItem"])
-            let dataManager: myDataManager = YourDataManager()
-
-            // Act
-            let result = dataManager.manageData(data: data, userSettings: userSettings)
-
-            // Assert
-            XCTAssertFalse(result, "Expected data not to be marked as favorite")
-        }
-        
-        // Add more test cases as needed
-        
+    override func setUp() {
+        super.setUp()
+        transformer = DateTransformer()
     }
+
+    override func tearDown() {
+        transformer = nil
+        super.tearDown()
+    }
+
+    func testTransformDate_invalidString_returnsOriginalInput() {
+        let input = "not-a-date"
+        let result = transformer.transformDate(theProgramDate: input)
+        XCTAssertEqual(result, input)
+    }
+
+    func testTransformDate_emptyString_returnsEmptyString() {
+        let input = ""
+        let result = transformer.transformDate(theProgramDate: input)
+        XCTAssertEqual(result, input)
+    }
+
+    func testTransformDate_validISO8601_returnsFormattedString() {
+        let input = "2024-06-15T14:30:00Z"
+        let result = transformer.transformDate(theProgramDate: input)
+        XCTAssertNotEqual(result, input, "A valid ISO 8601 date should be reformatted")
+        XCTAssertTrue(result.contains("15"), "Formatted date should contain the day '15'")
+    }
+
+    func testTransformDate_validISO8601_doesNotContainT() {
+        let input = "2024-06-15T14:30:00Z"
+        let result = transformer.transformDate(theProgramDate: input)
+        XCTAssertFalse(result.contains("T"), "Formatted date should not contain ISO 8601 'T' separator")
+    }
+
+    func testTransformDate_legacyAlias_worksIdentically() {
+        let a = DateTransformer()
+        let b = theDateFormater()
+        let input = "2024-06-15T14:30:00Z"
+        XCTAssertEqual(
+            a.transformDate(theProgramDate: input),
+            b.transformDate(theProgramDate: input)
+        )
+    }
+}

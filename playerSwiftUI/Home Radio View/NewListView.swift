@@ -9,90 +9,55 @@ import SwiftUI
 import CachedAsyncImage
 
 struct NewListView: View {
-    
-    @State var radioStations: [radioStationInfo] = []
-    @State private var items = 0...51
-    
-    // User default for favorites
-    @ObservedObject var userSettings = UserSettings()
-    
-    // Check if is favorite
-    var checkIfIsFavorite = checkFavoriteC()
-    
-    // Load Stations
-    var mYradioStation = LoadRadioStationJSONFile()
-    
-    @State private var isVStackVisible = false
-    
+    @Environment(StationStore.self) private var stationStore
+    @Environment(UserSettings.self) private var userSettings
+    @State private var isVisible = false
+
     var body: some View {
-        VStack {
-            if radioStations.count > 0 {
-                ScrollView {
-                    ForEach(items, id: \.self) { index in
-                        LazyVStack{
-                            LazyHStack {
-                                CachedAsyncImage(url: URL(string: radioStations[index].image), content: { image in
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 50, height: 50)
-                                }, placeholder: {
-                                    ProgressView()
-                                })
-                                Text(radioStations[index].tagline)
-                                    .font(.caption)
-                                    .lineLimit(3)
-                                    .frame(width: 200)
-                                
-                                // Usando nueva classe checkFavoriteC
-                                
-                                Image(systemName: checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings) ? "star.fill" : "star")
-                                    .foregroundColor(checkIfIsFavorite.manageData(data: radioStations[index].id, userSettings: userSettings) ? .yellow : .none)
-                                
-                                Spacer()
-                                NavigationLink(destination: DetalleUIView(choice: radioStations[index].siteurl, selectedRadioStation: radioStations[index])) {
-                                    Image(systemName: "arrow.forward.circle")
-                                        .foregroundColor(Color.black.opacity(0.85))
-                                }
-                                .accessibilityValue(radioStations[index].id)
-                            }
-                            .padding(15)
-                            .shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
-                            .background(Color.newPrimaryColor)
-                            .cornerRadius(10)
-                            .padding(.horizontal)
-                            
+        ScrollView {
+            LazyVStack(spacing: 8) {
+                ForEach(stationStore.stations) { station in
+                    HStack {
+                        CachedAsyncImage(url: URL(string: station.image)) { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
+                                .clipShape(RoundedRectangle(cornerRadius: 6))
+                        } placeholder: {
+                            ProgressView()
+                                .frame(width: 50, height: 50)
                         }
-                        .opacity(isVStackVisible ? 1.0 : 0.0)
-                        .animation(.easeIn(duration: 1.5), value: isVStackVisible)
-                        .onAppear {
-                            withAnimation {
-                                isVStackVisible = true
 
-                            }
+                        Text(station.tagline)
+                            .font(.caption)
+                            .lineLimit(3)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
+                        Image(systemName: userSettings.isFavorite(station.id) ? "star.fill" : "star")
+                            .foregroundStyle(userSettings.isFavorite(station.id) ? .yellow : .secondary)
+
+                        NavigationLink(destination: DetalleUIView(station: station)) {
+                            Image(systemName: "arrow.forward.circle")
+                                .foregroundStyle(Color.black.opacity(0.85))
                         }
-                        
+                        .accessibilityValue(station.id)
                     }
-                    .navigationBarTitle("Radio App", displayMode: .inline)
+                    .padding(15)
+                    .background(Color.newPrimaryColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .shadow(color: .gray, radius: 0.5, x: 0.5, y: -0.5)
+                    .padding(.horizontal)
+                    .opacity(isVisible ? 1.0 : 0.0)
+                    .animation(.easeIn(duration: 1.5), value: isVisible)
                 }
-                
             }
-            
-        }.onAppear {
-            if radioStations.isEmpty {
-                radioStations = mYradioStation.loadStation()
-            }
- 
         }
-        
+        .onAppear { isVisible = true }
     }
-        
-
 }
 
-
-
-struct NewListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewListView()
-    }
+#Preview {
+    NewListView()
+        .environment(StationStore())
+        .environment(UserSettings())
 }

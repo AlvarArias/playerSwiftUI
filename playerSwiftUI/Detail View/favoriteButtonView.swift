@@ -7,58 +7,22 @@
 
 import SwiftUI
 
-struct favoriteButtonView: View {
-    
-    // User default for favorites
-    @ObservedObject var userSettings = UserSettings()
-    
-    @State var showingStar = false
-    
-    @Binding var isFavorite: Bool
-    
-    // Radio Object
-    @StateObject var receivedURL = theURLSetting()
-    
-    let selectedRadioStationId: String
-    
+struct FavoriteButton: View {
+    let stationId: String
+    @Environment(UserSettings.self) private var userSettings
+
     var body: some View {
         Button {
-            isFavorite.toggle()
-            
-            if userSettings.favorite.contains(selectedRadioStationId) {
-                deleteFavorite(delFavorite: selectedRadioStationId)
-            } else {
-                userSettings.favorite.append(selectedRadioStationId)
-                
-            }
-            
-            //receivedURL.isFavorite = isFavorite
-            
+            userSettings.toggleFavorite(stationId)
         } label: {
-            Image(systemName: isFavorite || checkIsFavorite(myFavoriteSetting: selectedRadioStationId) ? "star.fill" : "star")
-                .foregroundColor(isFavorite || checkIsFavorite(myFavoriteSetting: selectedRadioStationId) ? .yellow : .black)
+            Image(systemName: userSettings.isFavorite(stationId) ? "star.fill" : "star")
+                .foregroundStyle(userSettings.isFavorite(stationId) ? .yellow : .primary)
         }
+        .accessibilityLabel(userSettings.isFavorite(stationId) ? "Ta bort favorit" : "Lägg till favorit")
     }
-    
-    func deleteFavorite(delFavorite: String) {
-        if let index = userSettings.favorite.firstIndex(of: delFavorite) {
-            userSettings.favorite.remove(at: index)
-            print("Element removed from userSettings.favorite: \(delFavorite)")
-        } else {
-            print("Element not found in userSettings.favorite: \(delFavorite)")
-        }
-        showingStar = false
-    }
-    
-    func checkIsFavorite(myFavoriteSetting: String) -> Bool {
-        return userSettings.favorite.contains(myFavoriteSetting)
-    }
-    
 }
 
-
-struct favoriteButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        favoriteButtonView(isFavorite: .constant(false), selectedRadioStationId: "14")
-    }
+#Preview {
+    FavoriteButton(stationId: "132")
+        .environment(UserSettings())
 }

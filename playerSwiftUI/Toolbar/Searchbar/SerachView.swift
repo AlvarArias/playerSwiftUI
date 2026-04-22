@@ -5,105 +5,69 @@
 //  Created by Alvar Arias on 2022-07-18.
 //
 
-import Foundation
 import SwiftUI
 import CachedAsyncImage
 
-struct SerachView: View {
-    
-    @State private var searchText=""
-    
-    @State var radioStations: [radioStationInfo] = []
-    @State var items = 0...51
-    
-    // User default for favorites
-    @ObservedObject var userSettings = UserSettings()
+struct SearchView: View {
+    @Environment(StationStore.self) private var stationStore
+    @Environment(UserSettings.self) private var userSettings
+    @Environment(\.dismiss) private var dismiss
 
-    // Check if is favorite
-    var checkIfIsFavorite = checkFavoriteC()
-    
-    // Load Stations
-    var mYradioStation = LoadRadioStationJSONFile()
-    
-    @Environment(\.dismiss) var dismiss
-    
+    @State private var searchText = ""
+
+    private var searchResults: [RadioStation] {
+        if searchText.isEmpty { return stationStore.stations }
+        return stationStore.stations.filter {
+            $0.tagline.localizedCaseInsensitiveContains(searchText) ||
+            $0.name.localizedCaseInsensitiveContains(searchText)
+        }
+    }
+
     var body: some View {
-        
-        var searchResults: [radioStationInfo] {
-            if searchText.isEmpty {
-                return radioStations
-            } else {
-                return radioStations.filter { word in
-                    word.tagline.contains(searchText)
+        NavigationStack {
+            List(searchResults) { station in
+                HStack {
+                    CachedAsyncImage(url: URL(string: station.image)) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 50, height: 50)
+                            .clipShape(RoundedRectangle(cornerRadius: 6))
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 50, height: 50)
+                    }
+
+                    Text(station.tagline)
+                        .font(.body)
+                        .lineLimit(3)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Image(systemName: userSettings.isFavorite(station.id) ? "star.fill" : "star")
+                        .foregroundStyle(userSettings.isFavorite(station.id) ? .yellow : .secondary)
+
+                    NavigationLink(destination: DetalleUIView(station: station)) {
+                        EmptyView()
+                    }
+                }
+                .listRowSeparator(.hidden)
+            }
+            .listStyle(.plain)
+            .background(Color.newColorGrayLight)
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .navigationTitle("Sök")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button { dismiss() } label: { ArrowToolBarView() }
+                }
             }
         }
     }
-        
-        NavigationView {
-            VStack {
-                 
-                List {
-                    ForEach(searchResults, id: \.self) { name in
-                       
-                        HStack {
-                          
-                            CachedAsyncImage (url: URL(string: name.image), content: { image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                            },
-                            placeholder: {
-                                ProgressView()
-                            })
-                            
-                            
-                            Text(name.tagline).font(.body).lineLimit(3)
-                                .frame(width: 200)
-                                .font(.body)
-                            
-                            Spacer()
-                            
-                            Image(systemName: checkIfIsFavorite.manageData(data: name.id, userSettings: userSettings) ? "star.fill" : "star")
-                                .foregroundColor(.yellow)
-                            
-                          
-                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, selectedRadioStation: name)) {
-                                
-                                Text("")
-                            }
-                            
-                           
-                        } .listRowSeparator(.hidden)
-                           
-                    }
-                    .navigationBarTitle("Sök", displayMode: .inline)
-                }
-                .background(Color.newColorGrayLight)
-                
-                .searchable(text: $searchText,
-                            placement: .navigationBarDrawer(displayMode: .always))
-                
-               }
-                .onAppear {
-               
-                if radioStations.isEmpty {
-                    radioStations = mYradioStation.loadStation()
-                        }
-                }
-            
-                .toolbar {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                    Button { dismiss() } label: {
-                        ArrowToolBarView()
-                    }
-                }
-           }
-        }
-    }
-  
- 
 }
-    
 
-
-
+#Preview {
+    SearchView()
+        .environment(StationStore())
+        .environment(UserSettings())
+        .environment(PlayerViewModel())
+}

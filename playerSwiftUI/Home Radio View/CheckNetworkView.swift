@@ -6,38 +6,25 @@
 //
 
 import SwiftUI
-/// A view that displays a Wi-Fi or no Wi-Fi icon based on the current network connectivity status.
+
 struct CheckNetworkView: View {
-    
-    /// An observed object that monitors the network connectivity status.
-    @ObservedObject private var monitor = NetworkMonitor()
-    /// A state variable that indicates whether to show an alert sheet when there is no network connection.
-    @State private var showAlertSheet = false
-    
+    @Environment(NetworkMonitor.self) private var monitor
+    @State private var showAlert = false
+
     var body: some View {
-        VStack {
-            if monitor.isConnected {
-                Image(systemName: "wifi")
-            } else {
-                Image(systemName: "wifi.slash")
+        Image(systemName: monitor.isConnected ? "wifi" : "wifi.slash")
+            .onChange(of: monitor.isConnected) { _, connected in
+                if !connected { showAlert = true }
             }
-        }
-        .onAppear {
-            if !monitor.isConnected {
-                showAlertSheet = true
+            .alert("Ingen internetanslutning", isPresented: $showAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text("Aktivera Wi-Fi eller mobildata")
             }
-        }
-        .alert(isPresented: $showAlertSheet) {
-            Alert(title: Text("No Internet Connection"), message: Text("Please enable Wi-Fi or Cellular data"), dismissButton: .default(Text("Cancel")))
-        }
     }
 }
 
-
-struct CheckNetworkView_Previews: PreviewProvider {
-    static var previews: some View {
-        CheckNetworkView()
-    }
+#Preview {
+    CheckNetworkView()
+        .environment(NetworkMonitor())
 }
-
-

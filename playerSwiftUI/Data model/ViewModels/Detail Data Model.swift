@@ -6,147 +6,52 @@
 //
 
 import Foundation
-import SwiftUI
-import AVKit
+import AVFoundation
+import Observation
 
-struct favoriteSaved : Decodable,Encodable, Hashable {
-    var favoriteId : [String]
-    
-    init() {
-            self.favoriteId = []
+@MainActor
+@Observable
+final class PlayerViewModel {
+    var isPlaying = false
+    var currentStation: RadioStation?
+    var showError = false
+    var errorMessage = ""
+
+    private let player = AVPlayer()
+
+    func togglePlayback(for station: RadioStation) {
+        if isPlaying && currentStation?.id == station.id {
+            player.pause()
+            isPlaying = false
+        } else {
+            play(station)
         }
- 
-}
+    }
 
+    func stop() {
+        player.pause()
+        isPlaying = false
+        currentStation = nil
+    }
 
-class theURLSetting : ObservableObject {
-    @Published var theURL: String = ""
-    @Published var isFavorite : Bool = false
-}
-
-
-class PlayRadio {
-    
-    var player = AVPlayer()
-    
-    func playSongRadio(radioURL: String, isPlaying: Bool) -> Bool {
-        
-
+    private func play(_ station: RadioStation) {
+        guard let url = URL(string: station.url) else {
+            errorMessage = "Ogiltig ström-URL"
+            showError = true
+            return
+        }
         do {
-            
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.playback)
-            try audioSession.setActive(true)
-            
-            player = AVPlayer(url: URL(string: radioURL)!)
-        
-            
-            if isPlaying {
-                player.play()
-                return true
-                
-            } else {
-                
-                player.pause()
-                return false
-            }
-            
-            
-        } catch let error {
-            print("Failed to play audio: \(error.localizedDescription)")
-            return false
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(.playback)
+            try session.setActive(true)
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
+            return
         }
-        
-    }
-    
-}
-
-
-// Ver como testear adecuadamente
-
-protocol DataManager {
-    func manageData(data: String, userSettings: UserSettings) -> Bool
-}
-
-// Asigno una responsabilidad a cada clase
-
-class saveFavorite : DataManager {
-    
-    func manageData(data: String, userSettings: UserSettings) -> Bool {
-        
-        let defaults = UserDefaults.standard
-        let decoder = JSONDecoder()
-        let encoder = JSONEncoder()
-
-        
-        // Decode data using JSON decode
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data,
-           var loadFavorite = try? decoder.decode(favoriteSaved.self, from: savedPerson),
-           !loadFavorite.favoriteId.contains(data) {
-            
-            // si no existe grabar
-            loadFavorite.favoriteId.append(data)
-
-            // Encode data JSON to user defaukts
-            if let encoded = try? encoder.encode(loadFavorite) {
-                defaults.set(encoded, forKey: "SavedPerson")
-            }
-
-            return true
-
-        }
-            
-        return false
-    }
-    
-    
-}
-
-class deleteFavorite: DataManager {
-    
-    func manageData(data: String, userSettings: UserSettings) -> Bool {
-        
-        if let index = userSettings.favorite.firstIndex(of: data) {
-            
-            userSettings.favorite.remove(at: index)
-            return true
-        }
-        
-        return false
-    }
-    
-}
-
-class checkFavoriteC: DataManager {
-    
-    func manageData(data: String, userSettings: UserSettings) -> Bool {
-        
-        let isFavorite = userSettings.favorite.contains(data)
-                
-        return isFavorite
-        
-    }
-    
-    
-}
-
-
-// Mock for testing
-// Check if is favorite or not
-
-protocol myDataManager {
-    func manageData(data: String, userSettings: myUserSettings) -> Bool
-}
-
-
-struct myUserSettings {
-    var favorite: [String]
-}
-
-class YourDataManager: myDataManager {
-    func manageData(data: String, userSettings: myUserSettings) -> Bool {
-        let isFavorite = userSettings.favorite.contains(data)
-        return isFavorite
+        player.replaceCurrentItem(with: AVPlayerItem(url: url))
+        player.play()
+        currentStation = station
+        isPlaying = true
     }
 }
-

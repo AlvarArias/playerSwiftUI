@@ -4,103 +4,63 @@
 //
 //  Created by Alvar Arias on 2022-10-31.
 //
-import Foundation
+
 import SwiftUI
 import CachedAsyncImage
 
-
 struct FavoriteDispView: View {
+    @Environment(StationStore.self) private var stationStore
+    @Environment(UserSettings.self) private var userSettings
+    @Environment(\.dismiss) private var dismiss
 
-    @State var radioStations: [radioStationInfo] = []
-    @State private var items = 0...51
-   
-    // User default for favorites
-    @ObservedObject var userSettings = UserSettings()
-    
-    // Check if is favorite
-    var checkIfIsFavorite = checkFavoriteC()
-    
-    // Load Stations
-    var mYradioStation = LoadRadioStationJSONFile()
-    
-    @Environment(\.dismiss) var dismiss
-      
+    private var favoriteStations: [RadioStation] {
+        stationStore.stations.filter { userSettings.isFavorite($0.id) }
+    }
+
     var body: some View {
-        NavigationView {
-            
-            VStack {
-                 
-                List {
+        NavigationStack {
+            List(favoriteStations) { station in
+                HStack {
+                    CachedAsyncImage(url: URL(string: station.image)) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 50, height: 50)
+                            .clipShape(RoundedRectangle(cornerRadius: 6))
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 50, height: 50)
+                    }
 
-                    ForEach(radioStations, id: \.self) { name in
-                    
-                        if checkIfIsFavorite.manageData(data: name.id, userSettings: userSettings) {
-                        HStack {
-                                                    
-                            CachedAsyncImage (url: URL(string: name.image), content: { image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                            },
-                            placeholder: {
-                                ProgressView()
-                            })
-                            
-                             
-                            Text(name.tagline).font(.body).lineLimit(3)
-                                .frame(width: 200)
-                                .font(.body)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(Color.black)
-                          
-                            Spacer()
-       
-                            Image(systemName: checkIfIsFavorite.manageData(data: name.id, userSettings: userSettings) ? "star.fill" : "star")
-                                .foregroundColor(.yellow)
-                                
-                            
-                            
-                            NavigationLink(destination: DetalleUIView(choice: name.siteurl, selectedRadioStation: name)) {
-                                
-                                Text("")
-                            }
-                        
-                           
-                        } .listRowSeparator(.hidden)
-                        
-                        }
+                    Text(station.tagline)
+                        .font(.body)
+                        .lineLimit(3)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(.yellow)
+
+                    NavigationLink(destination: DetalleUIView(station: station)) {
+                        EmptyView()
                     }
-                  
-                    .navigationBarTitle("Favoriter", displayMode: .inline)
                 }
-                .background(Color.newColorGrayLight)
-               }
-            .onAppear {
-               
-                if radioStations.isEmpty {
-                    radioStations = mYradioStation.loadStation()
-                }
-                
+                .listRowSeparator(.hidden)
             }
-             .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-            
-                    Button { dismiss() } label: {
-                        ArrowToolBarView()
-                    }
+            .listStyle(.plain)
+            .background(Color.newColorGrayLight)
+            .navigationTitle("Favoriter")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button { dismiss() } label: { ArrowToolBarView() }
                 }
-           }
-            .navigationBarTitle("Favorites", displayMode: .inline)
+            }
         }
     }
-           
-        
-}
-    
-struct FavoriteDispView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteDispView()
-    }
 }
 
-
+#Preview {
+    FavoriteDispView()
+        .environment(StationStore())
+        .environment(UserSettings())
+        .environment(PlayerViewModel())
+}

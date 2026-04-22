@@ -4,37 +4,30 @@
 //
 //  Created by Alvar Arias on 2022-01-23.
 //
+
 import Foundation
 import Network
+import Observation
 
- /// Check Network
-///
-///  Thsi class check if the network is valiable or not
-final class NetworkMonitor: ObservableObject {
-    let monitor = NWPathMonitor()
-    let queue = DispatchQueue(label: "Monitor")
-     
-    @Published var isConnected = true
-     
+@MainActor
+@Observable
+final class NetworkMonitor {
+    private(set) var isConnected = true
+
+    private let monitor = NWPathMonitor()
+
     init() {
-        monitor.pathUpdateHandler =  { [weak self] path in
-            DispatchQueue.main.async {
-                self?.isConnected = path.status == .satisfied ? true : false
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.pathUpdateHandler = { [weak self] path in
+            let connected = path.status == .satisfied
+            Task { @MainActor [weak self] in
+                self?.isConnected = connected
             }
         }
         monitor.start(queue: queue)
     }
-}
 
-struct mytest  {
-    
-    func validate(name: String) -> Bool{
-        
-        if name == "Alvar" {
-            return false
-        }
-        
-        return true
+    deinit {
+        monitor.cancel()
     }
-    
 }

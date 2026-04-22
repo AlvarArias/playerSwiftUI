@@ -1,109 +1,76 @@
 //
-//  SliderSwiftUIView.swift
+//  HomeRadioView.swift
 //  playerSwiftUI
 //
 //  Created by Alvar Arias on 2022-01-13.
 //
 
 import SwiftUI
-import CachedAsyncImage
-
 
 struct HomeRadioView: View {
-
     @AppStorage("username") private var theUserName = ""
-    
-    @State var radioStations: [radioStationInfo] = []
-    @State private var items = 0...51
-    
-    // User default for favorites
-    @ObservedObject var userSettings = UserSettings()
-
-    @State private var showingFavorite = false
-    @State private var showingmySettings = false
-    @State private var showingmySearch = false
-    
-    
-    @State var isFavorite: Bool = false
-
-    let textSelect = "Välj din radio"
-    
-    var checkIfIsFavorite = checkFavoriteC()
-    @State private var isFavorieTest = false
+    @State private var showSettings = false
+    @State private var showFavorites = false
+    @State private var showSearch = false
 
     var body: some View {
-               
-        NavigationView {
-        
-            VStack {
-                
+        NavigationStack {
+            VStack(spacing: 0) {
                 Text(theUserName)
-                
-                // New tab view
+
                 NewTabView()
-                
+
                 HStack {
-                    Text(textSelect).padding()
-                        .accessibilityLabel(textSelect)
+                    Text("Välj din radio")
+                        .padding()
+                        .accessibilityLabel("Välj din radio")
                     CheckNetworkView()
                 }
-                
-                
-                // New list View
+
                 NewListView()
-                
             }
             .background(Color.newColorGreenLight)
-  
+            .navigationTitle("Radio App")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button {
-                        showingmySettings.toggle()
+                        showSettings.toggle()
                     } label: {
                         Image(systemName: "gearshape")
-                            .foregroundColor(Color.newSecundaryColor)
+                            .foregroundStyle(Color.newSecundaryColor)
                     }
-                    .sheet(isPresented: $showingmySettings) {
-                        newSettingsView()
-                    }
-                    
+
                     Spacer()
-                    
+
                     Button {
-                        showingFavorite.toggle()
+                        showFavorites.toggle()
                     } label: {
                         Image(systemName: "star")
-                            .foregroundColor(.newSecundaryColor)
+                            .foregroundStyle(Color.newSecundaryColor)
                     }
-                    .sheet(isPresented: $showingFavorite) {
-                        FavoriteDispView()
-                    }
-                    
+
                     Spacer()
-                    
-                    
+
                     Button {
-                        showingmySearch.toggle()
+                        showSearch.toggle()
                     } label: {
                         Image(systemName: "magnifyingglass.circle")
-                            .foregroundColor(.newSecundaryColor)
+                            .foregroundStyle(Color.newSecundaryColor)
                     }
-                    .sheet(isPresented: $showingmySearch) {
-                        SerachView()
-                    }
-                    
-  
                 }
             }
+            .sheet(isPresented: $showSettings) { SettingsView() }
+            .sheet(isPresented: $showFavorites) { FavoriteDispView() }
+            .sheet(isPresented: $showSearch) { SearchView() }
         }
     }
-    
-}
-struct SliderSwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeRadioView()
-    }
 }
 
-
-
+#Preview {
+    HomeRadioView()
+        .environment(StationStore())
+        .environment(UserSettings())
+        .environment(NetworkMonitor())
+        .environment(PlayerViewModel())
+}
