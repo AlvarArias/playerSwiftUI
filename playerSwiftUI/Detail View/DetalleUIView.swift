@@ -10,26 +10,70 @@ import AVKit
 import Lottie
 import CachedAsyncImage
 
+// Data Models
+struct radioStationInfo: Identifiable {
+    let id: String
+    let name: String
+    let image: String
+    let color: String
+    let tagline: String
+    let siteurl: String
+    let url: String
+    let scheduleurl: String
+    let imagetemplate: String
+    let xmltvid: String
+}
 
-struct DetalleUIView : View {
+struct favoriteSaved: Codable {
+    var favoriteId: [String]
+}
+
+struct UserSettings: ObservableObject {
+    var favorite: [String] = []
+}
+
+// ViewModel
+class DetalleUIViewViewModel: ObservableObject {
+    @Published var isPlaying: Bool = false
+    @Published var isShowEq: Bool = false
+    @Published var receivedURL: URL?
+    @Published var userSettings: UserSettings = UserSettings()
     
+    func playSongRadio(radioURL: String, isPlaying: Bool) -> Bool {
+        // Simulate playing the song and updating the equalizer
+        // Add logic to handle actual audio playback here
+        print("playing the song \(radioURL)")
+        return isPlaying
+    }
+    
+    func togglePlay() {
+        isPlaying = !isPlaying
+    }
+}
+
+
+struct DetalleUIView: View {
+    @StateObject private var viewModel = DetalleUIViewViewModel()
+
     @Environment(\.presentationMode) var presentationMode
     
     // User default for favorites
     @ObservedObject var userSettings = UserSettings()
     
     // Radio Object
-    @StateObject var receivedURL = theURLSetting()
+    @StateObject var receivedURLSetting = theURLSetting()
     
     // Ver si se esta usando
     var choice: String
     
-    @State var selectedRadioStation : radioStationInfo
+    @State private var selectedRadioStation : radioStationInfo
     @State private var isPlaying : Bool = false
-    @State var showingStar = false
+    @State private var showingStar = false
     @State private var isShowEq = false
     @State private var isFavorite = false
     @State private var controlFunc = true
+    @State private var isDataSaved = false
+    
     
     let defaults = UserDefaults.standard
     
@@ -39,9 +83,7 @@ struct DetalleUIView : View {
     var playRadio = PlayRadio()
     
     var body: some View {
-        
         VStack {
-            
             CachedAsyncImage (url: URL(string: selectedRadioStation.image), content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fit)
@@ -52,28 +94,22 @@ struct DetalleUIView : View {
                 ProgressView()
             })
             
-            
             HStack{
                 Text("Nästa program").padding()
                     .accessibilityLabel("Nästa program")
                 
-                
-                // Button favorite
-                
                 Button {
-                    
                     showingStar.toggle()
                     
                     if userSettings.favorite.contains(selectedRadioStation.id) {
                         deleteFavorite(delFavorite: selectedRadioStation.id)
-                        
                         
                     } else {
                         userSettings.favorite.append(selectedRadioStation.id)
                         
                     }
                     
-                    receivedURL.isFavorite = showingStar
+                    viewModel.userSettings = userSettings // Update ViewModel
                     
                 } label: {
                     Image(systemName: showingStar || checkIsFavorite(myFavoriteSetting: selectedRadioStation.id) ? "star.fill" : "star")
@@ -88,86 +124,21 @@ struct DetalleUIView : View {
                     .frame(width: 50, height: 50)
             }
             
-            
-            // Next programs
-            newXMLSwiftUIView()
-                .onAppear {
-                    print("receivedURL \(receivedURL.theURL)")
-                    print("the URL is \(selectedRadioStation.url)")
-                }
-            
-            
-            
-            Button(action: {
-                isPlaying.toggle()
-                print("isPlaying \(isPlaying)")
-                
-               isShowEq = playRadio.playSongRadio(radioURL: selectedRadioStation.url, isPlaying: isPlaying)
-                
-            })
-            {
-                if isPlaying {
-                    Image("Pause2")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                } else {
-                    Image("But-Play2")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                }
-                
+            Button {
+                viewModel.togglePlay()
+            } label: {
+                Image(systemName: isPlaying ? "pause.fill" : "play.fill")
             }
-            
-            .padding()
-            .onAppear {
-                print("buton play apear")
-                isPlaying = true
-                isShowEq = playRadio.playSongRadio(radioURL: selectedRadioStation.url, isPlaying: isPlaying)
-                
-            }
-            
+
         }
-        
-        .frame(maxWidth: .infinity)
-        
-        .background(Color.newColorGreenLight)
-        
-        .navigationBarTitle("Radio \(selectedRadioStation.name)", displayMode: .inline)
-        
-        // new button back
-        .navigationBarBackButtonHidden(true)
-        
-        .navigationBarItems(
-            leading:
-                // NavigationLink("Go to back", destination: SliderSwiftUIView())
-            
-            Button(action : {
-                playRadio.player.pause()
-                self.presentationMode.wrappedValue.dismiss()
-                print("click back and stop audio")
-                print(checkIsFavorite(myFavoriteSetting: selectedRadioStation.id))
-                print(selectedRadioStation.id)
-                
-                
-            }){
-                Text("Back").foregroundColor(.newSecundaryColor)
-                Image(systemName: "arrow.uturn.backward")
-                    .foregroundColor(.newSecundaryColor)
-            }
-        )
         .onAppear(perform: {
-            receivedURL.theURL = selectedRadioStation.scheduleurl
-            print("receivedURL.theURL \(receivedURL.theURL)")
+            receivedURLSetting.theURL = selectedRadioStation.scheduleurl
+            print("receivedURLSetting.theURL \(receivedURLSetting.theURL)")
             print("Favorites \(userSettings.favorite)")
             
         })
-        
-        .environmentObject(receivedURL)
-        
+        .environmentObject(viewModel)
     }
-    
     
     // Funciones Favorites
     
@@ -214,14 +185,6 @@ struct DetalleUIView : View {
     
     func checkIsFavorite(myFavoriteSetting: String) -> Bool {
         return userSettings.favorite.contains(myFavoriteSetting)
-    }
-    
-    
-    
-    struct DetalleUIView_Previews: PreviewProvider {
-        static var previews: some View {
-            DetalleUIView(choice: "test", selectedRadioStation: radioStationInfo(image:" https://static-cdn.sr.se/images/132/2186745_512_512.jpg?preset=api-default-square", imagetemplate: "https://static-cdn.sr.se/images/132/2186745_512_512.jpg", color: "31a1bd", tagline: "Talat innehåll om samhälle, kultur och vetenskap. Kanalen erbjuder nyheter \noch aktualiteter, granskning och fördjupning men också livsåskådnings-och \nlivsstilsprogram samt underhållning och upplevelser till exempel i form av \nteater.",siteurl: "http://api.sr.se/v2/scheduledepisodes?channelid=132", url:"https://sverigesradio.se/topsy/direkt/srapi/132.mp3", scheduleurl: "https://api.sr.se/v2/scheduledepisodes?channelid=132", xmltvid: "p1.sr.se", name: "P1", id: "132"))
-        }
     }
     
 }

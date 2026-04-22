@@ -22,9 +22,14 @@
 		<key>playerSwiftUI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>playerSwiftUI2.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>playerSwiftUITestsUinit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -58,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>6256950728B35D12004DD765</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>62803BD22ADFE3430022768E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
