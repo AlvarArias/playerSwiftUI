@@ -40,42 +40,25 @@ struct XMLSwiftUIView: View {
         UITableView.appearance().separatorStyle = .none
         //UITableView.appearance().separatorStyle = .singleLine
     }
-    @StateObject var parserControl = ParseController()
+    @State private var parserControl = ScheduleParser()
 
-   
     let theFakeURL = "https://api.sr.se/v2/scheduledepisodes?channelid=132"
-    
-    let note = try! XMLDecoder().decode(Note.self, from: Data(sourceXML.utf8))
 
-   
-    
     var body: some View {
-        VStack{
-        //Text(note.episodeid)
-        //Text(note.title)
-        //Text(note.description)
-        //Text(note.starttimeutc)
-            let itemsResult = parserControl.Schedule
-            
-            if !itemsResult.isEmpty {
-                        List{
-                            ForEach(1...3, id:\.self) {item in
-                                Text(parserControl.Schedule[item].episodeTitle).listRowBackground(Color.newColorGreenLight)
-                                
-                            }
-                        }.background(Color.newColorGreenLight)
-                    
+        VStack {
+            if !parserControl.episodes.isEmpty {
+                List {
+                    ForEach(0..<min(3, parserControl.episodes.count), id: \.self) { index in
+                        Text(parserControl.episodes[index].title)
+                            .listRowBackground(Color.newColorGreenLight)
+                    }
+                }.background(Color.newColorGreenLight)
             }
-        
-            
-        }.background(Color.newColorGreenLight)
-        .onAppear(perform: {
-            DispatchQueue.main.async { parserControl.loadData(theRadioURL: theFakeURL)
-                
-                //print(parserControl.Schedule[0].episodeTitle)
-    }
-            //print(parserControl.Schedule[0].episodeTitle)
-        })
+        }
+        .background(Color.newColorGreenLight)
+        .task {
+            await parserControl.fetchSchedule(from: theFakeURL)
+        }
     }
 }
     
