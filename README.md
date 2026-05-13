@@ -14,7 +14,6 @@ Swedish Radio (SVT/SR) streaming app for iOS, built entirely with SwiftUI.
 
 - Stream Swedish radio stations (SVT/SR) in real time
 - Background audio playback with lock screen controls
-- WatchOS companion app for playback control on the wrist
 - Favorites saved with Core Data
 - Live schedule data via SVT XML API
 - Station search and tab navigation
