@@ -13,6 +13,7 @@ struct DetalleUIView: View {
 
     @Environment(PlayerViewModel.self) private var player
     @Environment(UserSettings.self) private var userSettings
+    @Environment(StationStore.self) private var stationStore
     @State private var scheduleParser = ScheduleParser()
     @State private var pulseRings = false
 
@@ -26,8 +27,8 @@ struct DetalleUIView: View {
         ScrollView {
             VStack(spacing: 20) {
 
-                // Station image
-                CachedAsyncImage(url: URL(string: station.image)) { image in
+                // Station image — program image when available, fallback to channel logo
+                CachedAsyncImage(url: URL(string: stationStore.nowPlayingImages[station.id] ?? station.image)) { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)

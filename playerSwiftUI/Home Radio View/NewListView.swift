@@ -17,21 +17,28 @@ struct NewListView: View {
         ScrollView {
             LazyVStack(spacing: 8) {
                 ForEach(stationStore.stations) { station in
-                    HStack {
-                        CachedAsyncImage(url: URL(string: station.image)) { image in
+                    let programImage = stationStore.nowPlayingImages[station.id] ?? station.image
+
+                    HStack(spacing: 14) {
+                        CachedAsyncImage(url: URL(string: programImage)) { image in
                             image.resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 50, height: 50)
-                                .clipShape(RoundedRectangle(cornerRadius: 6))
+                                .scaledToFill()
                         } placeholder: {
                             ProgressView()
-                                .frame(width: 50, height: 50)
+                        }
+                        .frame(width: 56, height: 56)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(station.name)
+                                .font(.headline)
+                            Text(station.tagline)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(1)
                         }
 
-                        Text(station.tagline)
-                            .font(.caption)
-                            .lineLimit(3)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
 
                         Image(systemName: userSettings.isFavorite(station.id) ? "star.fill" : "star")
                             .foregroundStyle(userSettings.isFavorite(station.id) ? .yellow : .secondary)
