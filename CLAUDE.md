@@ -60,17 +60,19 @@ SwiftUI radio streaming app for SVT/SR (Swedish Radio) channels targeting iOS, w
 
 ### Data Flow
 ```
-radios23.json → LoadRadioStationJSONFile → HomeModell (ViewModel) → HomeRadioView → DetalleUIView
-SVT XML API → ParseController (XMLParser) → XMLSwiftUIView (schedule data)
+radios23.json → StationStore.load() → HomeRadioView / NewListView → DetalleUIView
+SR API v2     → StationStore.loadNowPlayingImages() → nowPlayingImages[stationId] → station cards + detail image
+SVT XML API   → ScheduleParser.fetchSchedule() → ScheduleView (schedule data)
+AVPlayer KVO  → PlayerViewModel (isPlaying / isBuffering) → DetalleUIView animations
 ```
 
 ### Key Classes/Structs
-- `LoadRadioStationJSONFile` — loads `radios23.json` from bundle, returns `[radioStationInfo]`
-- `PlayRadio` — wraps `AVPlayer`, handles audio session and stream playback
+- `StationStore` — `@MainActor @Observable` — loads `radios23.json`, fetches `nowPlayingImages` from SR API in parallel at launch
+- `PlayerViewModel` — `@MainActor @Observable` — wraps `AVPlayer`, KVO on `timeControlStatus` drives `isPlaying` and `isBuffering`
+- `UserSettings` — `@Observable` — UserDefaults wrapper for user preferences and favorites
 - `ParseController: XMLParserDelegate, ObservableObject` — fetches and parses SVT schedule XML feed
 - `DataController` — Core Data stack (`NSPersistentContainer`)
-- `UserSettings: ObservableObject` — UserDefaults wrapper for user preferences and favorites
-- `theURLSetting: ObservableObject` — current playing URL and favorite state
+- `ScheduleParser` — `@Observable` — async schedule fetching for `DetalleUIView`
 
 ---
 
@@ -159,17 +161,22 @@ guard let url = URL(string: theRadioURL) else { return }
 
 ### SwiftUI Patterns
 ```swift
-// Inject DataController via environment
-.environment(\.managedObjectContext, dataController.container.viewContext)
+// Inject @Observable objects via environment (iOS 17+)
+.environment(stationStore)
+.environment(playerViewModel)
 
-// Use @StateObject for owned view models
-@StateObject private var homeModell = HomeModell()
+// Read @Observable from environment in views
+@Environment(StationStore.self) private var stationStore
+@Environment(PlayerViewModel.self) private var player
 
 // Prefer .task over .onAppear for async operations
-.task { await homeModell.fetchStations() }
+.task { await scheduleParser.fetchSchedule(from: station.scheduleurl) }
 
 // Handle playback errors at View level
-.alert("Playback Error", isPresented: $viewModel.showError) { ... }
+.alert("Uppspelningsfel", isPresented: $playerBinding.showError) { ... }
+
+// Buffering state via KVO — never set isPlaying manually
+// player.timeControlStatus drives isPlaying and isBuffering automatically
 ```
 
 ---
@@ -194,8 +201,8 @@ playerSwiftUI/
 │   │   ├── Song playing now/
 │   │   │   └── NewSongModel.swift      ← Now-playing metadata model
 │   │   ├── ViewModels/
-│   │   │   ├── HomeModell.swift        ← Station list state (LoadRadioStationJSONFile)
-│   │   │   └── Detail Data Model.swift ← PlayRadio, theURLSetting, favoriteSaved
+│   │   │   ├── HomeModell.swift        ← StationStore (@Observable) — station list + nowPlayingImages from SR API
+│   │   │   └── Detail Data Model.swift ← PlayerViewModel (@Observable) — AVPlayer + KVO (isPlaying, isBuffering)
 │   │   ├── Request.swift               ← ParseController (XMLParser for SVT schedule API)
 │   │   ├── XMLSwiftUIView.swift        ← XML schedule display view
 │   │   └── mySettings.swift           ← UserSettings (UserDefaults wrapper)
@@ -244,10 +251,18 @@ playerSwiftUI/
 | File | Issue | Status |
 |------|-------|--------|
 | `Request.swift` | Uses `DispatchSemaphore` — blocks thread | Pending async/await migration |
-| `Detail Data Model.swift` | `PlayRadio` missing `@MainActor` | Pending Swift 6 migration |
-| `HomeModell.swift` | `LoadRadioStationJSONFile` is not `ObservableObject` | Refactor needed |
 | `mySettings.swift` | Favorites in `UserDefaults` may conflict with Core Data favorites | Consolidate to one source |
 | `SerachView.swift` | Filename typo (missing 'a') | Low priority rename |
+
+### Completed (this cycle)
+
+| File | Change |
+| ---- | ------ |
+| `Detail Data Model.swift` | Replaced `PlayRadio` with `PlayerViewModel` — `@MainActor @Observable`, KVO on `timeControlStatus` |
+| `HomeModell.swift` | Replaced `LoadRadioStationJSONFile` with `StationStore` — `@MainActor @Observable`, parallel SR API image fetch |
+| `DetalleUIView.swift` | Buffering rings animation, program image from `nowPlayingImages`, equalizer tied to KVO state |
+| `NewListView.swift` | Program image from `nowPlayingImages` per station card |
+| `LottieView.swift` | `isPlaying` parameter — `play()`/`pause()` driven from `updateUIView`, not `makeUIView` |
 
 ---
 
@@ -255,18 +270,17 @@ playerSwiftUI/
 
 ### Immediate
 1. Migrate `Request.swift` — replace `DispatchSemaphore` with async/await
-2. Add `@MainActor` to `PlayRadio` and `theURLSetting`
-3. Consolidate favorites: pick Core Data OR `UserDefaults`, remove the other
-4. Add error UI for network failures in `CheckNetworkView`
+2. Consolidate favorites: pick Core Data OR `UserDefaults`, remove the other
+3. Add error UI for network failures in `CheckNetworkView`
 
 ### Medium-term
 1. Enable Swift 6 strict concurrency: `SWIFT_STRICT_CONCURRENCY = targeted`
 2. Extract reusable station row component from `NewListView`
 3. Unify radio station model — ensure `radioStationInfo` and `NewRadioObj` are not duplicating
-4. Add unit tests for `ParseController` and `LoadRadioStationJSONFile`
+4. Add unit tests for `ScheduleParser` and `StationStore`
 
 ### Long-term
-1. Implement offline caching for station list
+
+1. Implement offline caching for station list and program images
 2. Improve watchOS companion: live now-playing sync via WatchConnectivity
 3. Accessibility improvements (VoiceOver labels for player controls)
-4. Migrate from `ObservableObject` to `@Observable` (iOS 17+)
