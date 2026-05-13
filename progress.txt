@@ -90,6 +90,10 @@ PENDIENTES — LARGO PLAZO
 
 [ ] Caché offline para lista de estaciones e imágenes de programas
 
-[ ] watchOS: sincronización en vivo via WatchConnectivity
+[ ] watchOS: implementar funcionalidad completa (target existe pero solo tiene boilerplate)
+    - Lista de estaciones desde radios23.json
+    - Reproducción de audio con AVPlayer
+    - Controles básicos play/pausa
+    - (opcional) Sincronización en vivo via WatchConnectivity
 
 [ ] Mejoras de accesibilidad (VoiceOver en controles del reproductor)
