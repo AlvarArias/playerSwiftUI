@@ -1,0 +1,88 @@
+playerSwiftUI — Progress
+========================
+
+COMPLETADAS
+-----------
+
+[✓] PlayerViewModel con KVO
+    - Reemplazó PlayRadio y theURLSetting
+    - @MainActor @Observable
+    - KVO sobre AVPlayer.timeControlStatus → isPlaying, isBuffering
+    - Archivo: Data model/ViewModels/Detail Data Model.swift
+
+[✓] StationStore con nowPlayingImages
+    - Reemplazó LoadRadioStationJSONFile
+    - @MainActor @Observable
+    - Carga radios23.json + fetch paralelo a SR API v2
+    - Imagen del programa actual por canal (Microsoft date parsing)
+    - Archivo: Data model/ViewModels/HomeModell.swift
+
+[✓] Equalizer Lottie vinculado al estado real de AVPlayer
+    - LottieView acepta isPlaying: Bool
+    - play()/pause() en updateUIView, no en makeUIView
+    - Se muestra solo cuando el sonido se está reproduciendo
+    - Archivo: Detail View/LottieView.swift
+
+[✓] Animación de anillos de buffering en DetalleUIView
+    - Dos anillos pulsantes alrededor del botón play
+    - Se muestran mientras el stream carga (.waitingToPlayAtSpecifiedRate)
+    - Desaparecen cuando el audio arranca (.playing)
+    - No se muestran al pausar
+    - Archivo: Detail View/DetalleUIView.swift
+
+[✓] Imagen del programa actual en tarjetas de lista
+    - NewListView usa nowPlayingImages[station.id] ?? station.image
+    - Archivo: Home Radio View/NewListView.swift
+
+[✓] Imagen del programa actual en vista de detalle
+    - DetalleUIView usa nowPlayingImages[station.id] ?? station.image
+    - Archivo: Detail View/DetalleUIView.swift
+
+[✓] Contexto del proyecto hermano New_SR_Player
+    - Ruta y tabla de componentes reutilizables en CLAUDE.md
+    - Memoria guardada para sesiones futuras
+
+[✓] CLAUDE.md actualizado
+    - Arquitectura, data flow, patrones SwiftUI y next steps al día
+
+
+PENDIENTES — INMEDIATO
+-----------------------
+
+[ ] Migrar Request.swift
+    - Reemplazar DispatchSemaphore con async/await + withCheckedContinuation
+    - Actualmente bloquea un hilo
+
+[ ] Consolidar favoritos
+    - Elegir entre Core Data o UserDefaults como única fuente
+    - Eliminar la duplicación entre DataController y UserSettings
+
+[ ] UI de error en CheckNetworkView
+    - Mostrar feedback visual cuando no hay red
+
+
+PENDIENTES — MEDIO PLAZO
+-------------------------
+
+[ ] Habilitar Swift 6 strict concurrency
+    - SWIFT_STRICT_CONCURRENCY = targeted en Build Settings
+
+[ ] Extraer componente de fila de estación reutilizable
+    - Refactorizar el HStack de NewListView a un componente propio
+
+[ ] Unificar modelo de estación
+    - Verificar que radioStationInfo y NewRadioObj no dupliquen campos
+
+[ ] Tests unitarios
+    - ScheduleParser
+    - StationStore (carga JSON, fetch de imágenes)
+
+
+PENDIENTES — LARGO PLAZO
+-------------------------
+
+[ ] Caché offline para lista de estaciones e imágenes de programas
+
+[ ] watchOS: sincronización en vivo via WatchConnectivity
+
+[ ] Mejoras de accesibilidad (VoiceOver en controles del reproductor)
