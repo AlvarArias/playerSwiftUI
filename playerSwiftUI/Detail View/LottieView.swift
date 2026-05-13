@@ -10,16 +10,22 @@ import Lottie
 
 struct LottieView: UIViewRepresentable {
     let lottieFile: String
+    var isPlaying: Bool = true
 
     func makeUIView(context: Context) -> AnimationView {
         let view = AnimationView(name: lottieFile)
         view.loopMode = .loop
-        view.play()
         view.contentMode = .scaleAspectFit
         return view
     }
 
-    func updateUIView(_ uiView: AnimationView, context: Context) {}
+    func updateUIView(_ uiView: AnimationView, context: Context) {
+        if isPlaying {
+            uiView.play()
+        } else {
+            uiView.pause()
+        }
+    }
 }
 
 #Preview {

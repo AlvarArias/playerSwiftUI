@@ -14,9 +14,11 @@ struct DetalleUIView: View {
     @Environment(PlayerViewModel.self) private var player
     @Environment(UserSettings.self) private var userSettings
     @State private var scheduleParser = ScheduleParser()
+    @State private var pulseRings = false
 
     private var isCurrentStation: Bool { player.currentStation?.id == station.id }
     private var isPlaying: Bool { isCurrentStation && player.isPlaying }
+    private var isBuffering: Bool { isCurrentStation && player.isBuffering }
 
     var body: some View {
         @Bindable var playerBinding = player
@@ -37,14 +39,34 @@ struct DetalleUIView: View {
 
                 // Playback controls
                 HStack(spacing: 24) {
-                    Button {
-                        player.togglePlayback(for: station)
-                    } label: {
-                        Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                            .font(.system(size: 64))
-                            .foregroundStyle(Color.newSecundaryColor)
+                    ZStack {
+                        // Buffering rings — visible only while stream is loading
+                        ForEach(0..<2, id: \.self) { i in
+                            Circle()
+                                .stroke(Color.newSecundaryColor, lineWidth: 1.5)
+                                .frame(width: 64, height: 64)
+                                .scaleEffect(pulseRings ? 1.35 + Double(i) * 0.2 : 1.0)
+                                .opacity(pulseRings ? 0 : 0.45)
+                                .animation(
+                                    pulseRings
+                                        ? .easeOut(duration: 0.85).repeatForever(autoreverses: false).delay(Double(i) * 0.28)
+                                        : .none,
+                                    value: pulseRings
+                                )
+                        }
+
+                        Button {
+                            player.togglePlayback(for: station)
+                        } label: {
+                            Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                                .font(.system(size: 64))
+                                .foregroundStyle(Color.newSecundaryColor)
+                        }
+                        .accessibilityLabel(isPlaying ? "Pausa" : "Spela")
                     }
-                    .accessibilityLabel(isPlaying ? "Pausa" : "Spela")
+                    .onChange(of: isBuffering) { _, buffering in
+                        pulseRings = buffering
+                    }
 
                     Button {
                         userSettings.toggleFavorite(station.id)
@@ -58,9 +80,9 @@ struct DetalleUIView: View {
 
                 // Lottie equalizer — only when this station is playing
                 if isPlaying {
-                    LottieView(lottieFile: "music-equalizer")
+                    LottieView(lottieFile: "music-equalizer", isPlaying: isPlaying)
                         .frame(width: 60, height: 60)
-                        .transition(.opacity)
+                        .transition(.opacity.combined(with: .scale(scale: 0.8)))
                 }
 
                 // Schedule section

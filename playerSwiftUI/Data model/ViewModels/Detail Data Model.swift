@@ -13,16 +13,26 @@ import Observation
 @Observable
 final class PlayerViewModel {
     var isPlaying = false
+    var isBuffering = false
     var currentStation: RadioStation?
     var showError = false
     var errorMessage = ""
 
     private let player = AVPlayer()
+    private var statusObserver: NSKeyValueObservation?
+
+    init() {
+        statusObserver = player.observe(\.timeControlStatus, options: [.new]) { [weak self] player, _ in
+            Task { @MainActor [weak self] in
+                self?.isPlaying = player.timeControlStatus == .playing
+                self?.isBuffering = player.timeControlStatus == .waitingToPlayAtSpecifiedRate
+            }
+        }
+    }
 
     func togglePlayback(for station: RadioStation) {
-        if isPlaying && currentStation?.id == station.id {
+        if currentStation?.id == station.id && player.timeControlStatus != .paused {
             player.pause()
-            isPlaying = false
         } else {
             play(station)
         }
@@ -30,7 +40,6 @@ final class PlayerViewModel {
 
     func stop() {
         player.pause()
-        isPlaying = false
         currentStation = nil
     }
 
@@ -52,6 +61,5 @@ final class PlayerViewModel {
         player.replaceCurrentItem(with: AVPlayerItem(url: url))
         player.play()
         currentStation = station
-        isPlaying = true
     }
 }
