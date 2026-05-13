@@ -1,5 +1,24 @@
 # playerSwiftUI — CLAUDE.md
 
+## Proyecto hermano — New_SR_Player
+
+Ruta: `/Users/alvararias/Documents/Swift Apps/Apps Projects/SVT API Radio project/New_SR_Player`
+
+Proyecto más avanzado (Swift 6, iOS 26+) del que se pueden portar componentes listos. Antes de construir algo nuevo, revisar si ya existe ahí.
+
+| Componente listo                                             | Archivo en New_SR_Player          |
+| ------------------------------------------------------------ | --------------------------------- |
+| `PulsingRing` ViewModifier (buffering rings)                 | `Helpers/LottieStruc.swift`       |
+| `PlayPulseButtonStyle` (scale on press)                      | `Helpers/LottieStruc.swift`       |
+| `EqualizerView` (3 barras animadas)                          | `Helpers/LottieStruc.swift`       |
+| `GIFView` (GIF sin dependencias)                             | `Helpers/LottieStruc.swift`       |
+| `BannerStore` (error banners auto-dismiss)                   | `Helpers/BannerStore.swift`       |
+| `AudioPlayer` (AVPlayer + KVO + NowPlaying + RemoteCommand)  | `Model/Player/AudioPlayer.swift`  |
+| `FavoritesStore` (UserDefaults + JSONEncoder)                | `Model/FavoritesStore.swift`      |
+| `SRAPIClient` (SR API v2 async/await)                        | `Model/Player/SRAPIClient.swift`  |
+
+---
+
 ## Project Overview
 
 SwiftUI radio streaming app for SVT/SR (Swedish Radio) channels targeting iOS, watchOS, and Share Extension.
