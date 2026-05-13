@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeRadioView: View {
     @AppStorage("username") private var theUserName = ""
+    @Environment(NetworkMonitor.self) private var monitor
     @State private var showSettings = false
     @State private var showFavorites = false
     @State private var showSearch = false
@@ -20,14 +21,15 @@ struct HomeRadioView: View {
 
                 NewTabView()
 
-                HStack {
+                if monitor.isConnected {
                     Text("Välj din radio")
                         .padding()
                         .accessibilityLabel("Välj din radio")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    NewListView()
+                } else {
                     CheckNetworkView()
                 }
-
-                NewListView()
             }
             .background(Color.newColorGreenLight)
             .navigationTitle("Radio App")

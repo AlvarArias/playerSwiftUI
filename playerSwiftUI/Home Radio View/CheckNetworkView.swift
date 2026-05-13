@@ -8,23 +8,41 @@
 import SwiftUI
 
 struct CheckNetworkView: View {
-    @Environment(NetworkMonitor.self) private var monitor
-    @State private var showAlert = false
+    @Environment(StationStore.self) private var stationStore
 
     var body: some View {
-        Image(systemName: monitor.isConnected ? "wifi" : "wifi.slash")
-            .onChange(of: monitor.isConnected) { _, connected in
-                if !connected { showAlert = true }
+        VStack(spacing: 20) {
+            Spacer()
+
+            Image(systemName: "wifi.slash")
+                .font(.system(size: 64))
+                .foregroundStyle(.secondary)
+
+            Text("Ingen internetanslutning")
+                .font(.title2.weight(.semibold))
+
+            Text("Kontrollera Wi-Fi eller mobildata och försök igen.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+
+            Button {
+                stationStore.load()
+            } label: {
+                Label("Försök igen", systemImage: "arrow.clockwise")
+                    .padding(.horizontal, 8)
             }
-            .alert("Ingen internetanslutning", isPresented: $showAlert) {
-                Button("OK", role: .cancel) {}
-            } message: {
-                Text("Aktivera Wi-Fi eller mobildata")
-            }
+            .buttonStyle(.borderedProminent)
+            .padding(.top, 8)
+
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 #Preview {
     CheckNetworkView()
-        .environment(NetworkMonitor())
+        .environment(StationStore())
 }

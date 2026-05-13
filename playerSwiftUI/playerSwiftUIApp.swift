@@ -13,7 +13,6 @@ struct playerSwiftUIApp: App {
     @State private var player = PlayerViewModel()
     @State private var userSettings = UserSettings()
     @State private var networkMonitor = NetworkMonitor()
-    @State private var dataController = DataController()
 
     var body: some Scene {
         WindowGroup {
@@ -22,7 +21,6 @@ struct playerSwiftUIApp: App {
                 .environment(player)
                 .environment(userSettings)
                 .environment(networkMonitor)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
                 .task { stationStore.load() }
         }
     }

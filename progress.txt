@@ -45,20 +45,27 @@ COMPLETADAS
 [✓] CLAUDE.md actualizado
     - Arquitectura, data flow, patrones SwiftUI y next steps al día
 
+[✓] Request.swift ya migrado (verificado)
+    - ScheduleParser ya usa async/await y @MainActor @Observable
+    - No había DispatchSemaphore, tarea ya estaba completa
+
+[✓] Consolidar favoritos — UserDefaults como única fuente
+    - Eliminado DataController de playerSwiftUIApp.swift
+    - Eliminado .environment(\.managedObjectContext, ...) del App entry point
+    - UserSettings (UserDefaults) es la única fuente de verdad para favoritos
+    - DataController.swift conservado en proyecto por si se necesita en el futuro
+
+[✓] UI de error en CheckNetworkView
+    - CheckNetworkView rediseñado como página offline completa
+      (icono wifi.slash, mensaje, botón "Försök igen" que llama stationStore.load())
+    - HomeRadioView actualizado: muestra lista si hay red, CheckNetworkView si no hay
+    - Eliminado el icono inline del HStack — la UI ahora es a pantalla completa
+
 
 PENDIENTES — INMEDIATO
 -----------------------
 
-[ ] Migrar Request.swift
-    - Reemplazar DispatchSemaphore con async/await + withCheckedContinuation
-    - Actualmente bloquea un hilo
-
-[ ] Consolidar favoritos
-    - Elegir entre Core Data o UserDefaults como única fuente
-    - Eliminar la duplicación entre DataController y UserSettings
-
-[ ] UI de error en CheckNetworkView
-    - Mostrar feedback visual cuando no hay red
+(todas completadas — ver sección COMPLETADAS)
 
 
 PENDIENTES — MEDIO PLAZO
