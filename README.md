@@ -1,6 +1,6 @@
 # playerSwiftUI
 
-Swedish Radio (SVT/SR) streaming app for iOS and watchOS, built entirely with SwiftUI.
+Swedish Radio (SVT/SR) streaming app for iOS, built entirely with SwiftUI.
 
 ![Swift](https://img.shields.io/badge/Swift-5.x-orange?style=flat&logo=swift)
 ![iOS](https://img.shields.io/badge/iOS-16+-blue?style=flat&logo=apple)
